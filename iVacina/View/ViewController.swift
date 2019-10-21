@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         formatarBotao(botao: botaoFacebook)
         formatarTextField(textField: emailTextField)
         formatarTextField(textField: senhaTextField)
+        
+        
     }
    
     

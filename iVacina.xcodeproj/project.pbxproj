@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0803BB2359F7A4009676C1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0803BA2359F7A4009676C1 /* Login.storyboard */; };
+		1F0803BD2359FE09009676C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803BC2359FE09009676C1 /* LoginViewController.swift */; };
+		1F0803BF235A0982009676C1 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803BE235A0982009676C1 /* CadastroViewController.swift */; };
+		1F0803C1235A1264009676C1 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */; };
+		1F0803C3235A1B2F009676C1 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C2235A1B2F009676C1 /* Usuario.swift */; };
+		1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0803C4235A3428009676C1 /* Maps.storyboard */; };
+		1F0803C7235A3444009676C1 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C6235A3444009676C1 /* MapsViewController.swift */; };
+		1F0803CA235A34B0009676C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0803C9235A34B0009676C1 /* MapKit.framework */; };
 		BC1D055D234E739C0063CADE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055C234E739C0063CADE /* UIViewExtension.swift */; };
 		BC1D055F234E74820063CADE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055E234E74820063CADE /* Colors.swift */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
 		BC4DAFF42335794700AEC6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF32335794700AEC6F7 /* ViewController.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
-		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
 		BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */; };
 		BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473C23551AB0004F565A /* NewsViewController.swift */; };
 		BCDE473F23551AD5004F565A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473E23551AD5004F565A /* News.swift */; };
@@ -22,6 +29,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0803BA2359F7A4009676C1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		1F0803BC2359FE09009676C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1F0803BE235A0982009676C1 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
+		1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
+		1F0803C2235A1B2F009676C1 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		1F0803C4235A3428009676C1 /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
+		1F0803C6235A3444009676C1 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		1F0803C9235A34B0009676C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1F5EAD5C235A7C5500490E8C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iVacina/Info.plist; sourceTree = SOURCE_ROOT; };
 		BC1D055C234E739C0063CADE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BC1D055E234E74820063CADE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,7 +46,6 @@
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC4DAFF82335794800AEC6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4DAFFB2335794800AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BC4DAFFD2335794800AEC6F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCDE473C23551AB0004F565A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		BCDE473E23551AD5004F565A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		BCDE474023551BA3004F565A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -43,12 +58,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F0803CA235A34B0009676C1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0803C8235A34B0009676C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F0803C9235A34B0009676C1 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC1D054F234E3F250063CADE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +83,10 @@
 		BC1D0550234E3F2F0063CADE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1F0803BA2359F7A4009676C1 /* Login.storyboard */,
+				1F0803BC2359FE09009676C1 /* LoginViewController.swift */,
+				1F0803BE235A0982009676C1 /* CadastroViewController.swift */,
+				1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -67,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				BCDE473E23551AD5004F565A /* News.swift */,
+				1F0803C2235A1B2F009676C1 /* Usuario.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +144,8 @@
 		BC1D0556234E3FAD0063CADE /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				1F0803C4235A3428009676C1 /* Maps.storyboard */,
+				1F0803C6235A3444009676C1 /* MapsViewController.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -123,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				BC4DAFF82335794800AEC6F7 /* Assets.xcassets */,
-				BC4DAFFD2335794800AEC6F7 /* Info.plist */,
 				BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */,
 			);
 			path = "Supporting Files";
@@ -134,6 +164,7 @@
 			children = (
 				BC4DAFF02335794600AEC6F7 /* iVacina */,
 				BC4DAFEF2335794600AEC6F7 /* Products */,
+				1F0803C8235A34B0009676C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +182,7 @@
 				BC1D0551234E3F370063CADE /* Model */,
 				BC1D0552234E3F470063CADE /* View */,
 				BC1D054F234E3F250063CADE /* Controller */,
+				1F5EAD5C235A7C5500490E8C /* Info.plist */,
 				BC1D0557234E40290063CADE /* Supporting Files */,
 			);
 			path = iVacina;
@@ -224,8 +256,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
+				1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */,
 				BCDE474323551BA3004F565A /* TableViewCell.xib in Resources */,
-				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
+				1F0803BB2359F7A4009676C1 /* Login.storyboard in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,11 +270,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F0803C7235A3444009676C1 /* MapsViewController.swift in Sources */,
+				1F0803BD2359FE09009676C1 /* LoginViewController.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
+				1F0803BF235A0982009676C1 /* CadastroViewController.swift in Sources */,
+				1F0803C1235A1264009676C1 /* EsqueceuSenhaViewController.swift in Sources */,
 				BC4DAFF42335794700AEC6F7 /* ViewController.swift in Sources */,
 				BC1D055F234E74820063CADE /* Colors.swift in Sources */,
 				BC1D055D234E739C0063CADE /* UIViewExtension.swift in Sources */,
+				1F0803C3235A1B2F009676C1 /* Usuario.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				BCDE474223551BA3004F565A /* TableViewCell.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
@@ -393,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
