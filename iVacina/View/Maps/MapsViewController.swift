@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import MapKit
+import MapKit //mapa
+import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController, MKMapViewDelegate {
-
+    
     @IBOutlet weak var mapa: MKMapView!
     
     var localizacao = CLLocationManager()
@@ -18,16 +19,17 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mapa.delegate = self
+        self.localizacao.delegate = self
         
         //Solicitar acesso ao GPS:
         self.localizacao.requestWhenInUseAuthorization()
+        self.localizacao.requestAlwaysAuthorization()
         
     }
     
     
-    @IBAction func clicouLocalizacaoAtual(_ sender: UIButton) {
-        
+    @IBAction func clicouLocalizacao(_ sender: UIButton) {
+
         //Pegar a localição do usuário:
         self.localizacao.desiredAccuracy = kCLLocationAccuracyBest
         
@@ -36,8 +38,18 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         
         
         //Pegar latitude e longitude da localização do usuário:
-        let latitude = Double((localizacao.location?.coordinate.latitude)  ?? 0.0)
-        let longitude = Double((localizacao.location?.coordinate.longitude) ?? 0.0)
+    }
+    
+    
+}
+
+extension MapsViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+        let latitude = Double(locValue.latitude)
+        let longitude = Double(locValue.longitude)
         
         //Definir o centro e o zoom da exibição:
         let center = CLLocationCoordinate2DMake(latitude, longitude)
@@ -46,8 +58,37 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         //Exibir a localização do usuário:
         let exibirLocalizacao = MKCoordinateRegion(center: center, span: span)
         self.mapa.setRegion(exibirLocalizacao, animated: true)
+        
     }
 }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
 
 
 

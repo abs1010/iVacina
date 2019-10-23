@@ -29,6 +29,12 @@ class CadastroViewController: UIViewController {
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToBtn(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
+        self.nomeTextField.formatarTextField()
+        self.emailTextField.formatarTextField()
+        self.senhaTextField.formatarTextField()
+        self.senha2TextField.formatarTextField()
+        self.botaoCriarConta.formatarBotao()
+        
         self.botaoCriarConta.isEnabled = false
     }
 

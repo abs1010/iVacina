@@ -15,6 +15,7 @@
 		1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0803C4235A3428009676C1 /* Maps.storyboard */; };
 		1F0803C7235A3444009676C1 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C6235A3444009676C1 /* MapsViewController.swift */; };
 		1F0803CA235A34B0009676C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0803C9235A34B0009676C1 /* MapKit.framework */; };
+		1F41D3F3235FEA7200E57665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
 		BC1D055D234E739C0063CADE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055C234E739C0063CADE /* UIViewExtension.swift */; };
 		BC1D055F234E74820063CADE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055E234E74820063CADE /* Colors.swift */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
@@ -259,6 +260,7 @@
 				1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */,
 				BCDE474323551BA3004F565A /* TableViewCell.xib in Resources */,
 				1F0803BB2359F7A4009676C1 /* Login.storyboard in Resources */,
+				1F41D3F3235FEA7200E57665 /* Assets.xcassets in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

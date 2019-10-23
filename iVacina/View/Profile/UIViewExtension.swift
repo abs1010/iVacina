@@ -36,4 +36,20 @@ extension UIButton {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func formatarBotao(){
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.masksToBounds = true
+    }
+    
+}
+
+extension UITextField {
+    
+    func formatarTextField(){
+        self.layer.cornerRadius = self.frame.size.height/2
+        self.layer.masksToBounds = true
+        self.backgroundColor = Colors.lightGrey
+        self.layer.borderColor = Colors.darkGrey.cgColor
+        self.layer.borderWidth = 1.0
+    }
 }

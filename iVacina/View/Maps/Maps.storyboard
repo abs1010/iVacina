@@ -21,21 +21,25 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkh-3t-Qyi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc7-rN-wXg">
-                                <rect key="frame" x="148" y="562" width="118" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hA-fc-GDI">
+                                <rect key="frame" x="148" y="621" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Localização atual"/>
                                 <connections>
-                                    <action selector="clicouLocalizacaoAtual:" destination="w8u-6Q-DmN" eventType="touchUpInside" id="frC-IA-TmX"/>
+                                    <action selector="clicouLocalizacao:" destination="w8u-6Q-DmN" eventType="touchUpInside" id="nwI-t7-qh0"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="4tf-5H-4Cm"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="trailing" secondItem="owL-Tc-Pfl" secondAttribute="trailing" id="60v-Ic-vUa"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="bottom" secondItem="owL-Tc-Pfl" secondAttribute="bottom" id="N4u-MH-OcK"/>
                             <constraint firstItem="owL-Tc-Pfl" firstAttribute="bottom" secondItem="Qkh-3t-Qyi" secondAttribute="bottom" id="Umw-w0-tuA"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="owL-Tc-Pfl" secondAttribute="top" id="XpA-oD-ccM"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="aWb-5H-tHf"/>
                             <constraint firstItem="owL-Tc-Pfl" firstAttribute="trailing" secondItem="Qkh-3t-Qyi" secondAttribute="trailing" id="sVq-Mt-3mH"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="owL-Tc-Pfl" secondAttribute="top" id="tIz-K0-gPh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="owL-Tc-Pfl"/>
                     </view>

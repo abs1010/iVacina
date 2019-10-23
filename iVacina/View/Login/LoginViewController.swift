@@ -28,13 +28,13 @@ class LoginViewController: UIViewController {
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToBtn(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
-        formatarBotao(botao: self.botaoCriarConta)
-        formatarBotao(botao: self.botaoEntrar)
-        formatarTextField(textField: self.emailTextField)
-        formatarTextField(textField: self.senhaTextField)
-        
-        self.botaoFacebook.setImage(imagem, for: .normal)
         self.botaoEntrar.backgroundColor = Colors.green
+        self.botaoFacebook.setImage(imagem, for: .normal)
+        
+        self.botaoCriarConta.formatarBotao()
+        self.botaoEntrar.formatarBotao()
+        self.emailTextField.formatarTextField()
+        self.senhaTextField.formatarTextField()
         
         self.emailTextField.delegate = self
         self.senhaTextField.delegate = self
@@ -51,20 +51,6 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    
-    
-    func formatarBotao(botao: UIButton){
-        botao.layer.cornerRadius = botao.frame.size.height/2
-        botao.layer.masksToBounds = true
-    }
-    
-    func formatarTextField(textField: UITextField){
-        textField.layer.cornerRadius = textField.frame.size.height/2
-        textField.layer.masksToBounds = true
-        textField.backgroundColor = Colors.lightGrey
-        textField.layer.borderColor = Colors.darkGrey.cgColor
-        textField.layer.borderWidth = 1.0
-    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
