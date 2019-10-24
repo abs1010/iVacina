@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
-        self.botaoCriarConta.setGradientToBtn(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
+        self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
         self.botaoEntrar.backgroundColor = Colors.green
         self.botaoFacebook.setImage(imagem, for: .normal)

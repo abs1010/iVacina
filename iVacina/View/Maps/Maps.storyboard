@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w8u-6Q-DmN">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w8u-6Q-DmN">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Maps View Controller-->
+        <!--Maps-->
         <scene sceneID="MtE-iI-KTP">
             <objects>
                 <viewController storyboardIdentifier="MapsViewController" id="w8u-6Q-DmN" customClass="MapsViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkh-3t-Qyi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hA-fc-GDI">
                                 <rect key="frame" x="148" y="621" width="118" height="30"/>
@@ -43,6 +41,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="owL-Tc-Pfl"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Maps" image="map" catalog="system" selectedImage="map.fill" id="Q50-GF-Eto"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapa" destination="Qkh-3t-Qyi" id="sOu-Yc-A1I"/>
                     </connections>
@@ -52,4 +52,8 @@
             <point key="canvasLocation" x="81" y="159"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map" catalog="system" width="64" height="58"/>
+        <image name="map.fill" catalog="system" width="64" height="54"/>
+    </resources>
 </document>

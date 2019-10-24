@@ -7,51 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0803BB2359F7A4009676C1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0803BA2359F7A4009676C1 /* Login.storyboard */; };
-		1F0803BD2359FE09009676C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803BC2359FE09009676C1 /* LoginViewController.swift */; };
-		1F0803BF235A0982009676C1 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803BE235A0982009676C1 /* CadastroViewController.swift */; };
-		1F0803C1235A1264009676C1 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */; };
-		1F0803C3235A1B2F009676C1 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C2235A1B2F009676C1 /* Usuario.swift */; };
-		1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0803C4235A3428009676C1 /* Maps.storyboard */; };
-		1F0803C7235A3444009676C1 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0803C6235A3444009676C1 /* MapsViewController.swift */; };
-		1F0803CA235A34B0009676C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F0803C9235A34B0009676C1 /* MapKit.framework */; };
-		1F41D3F3235FEA7200E57665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
-		BC1D055D234E739C0063CADE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055C234E739C0063CADE /* UIViewExtension.swift */; };
-		BC1D055F234E74820063CADE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1D055E234E74820063CADE /* Colors.swift */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
-		BC4DAFF42335794700AEC6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF32335794700AEC6F7 /* ViewController.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
+		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
 		BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */; };
+		BC4FB64D235F606600961466 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4FB64C235F606600961466 /* Home.storyboard */; };
+		BC4FB652235F610600961466 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4FB651235F610600961466 /* Profile.storyboard */; };
+		BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC571724235922D900E60909 /* NewsDataProvider.swift */; };
+		BC5717272359236400E60909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717262359236400E60909 /* Extensions.swift */; };
+		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
+		BC5717BE235A9F0D00E60909 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = BC5717BD235A9F0D00E60909 /* news.json */; };
+		BC5717C1235BF7AC00E60909 /* News2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717BF235BF7AC00E60909 /* News2TableViewCell.swift */; };
+		BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */; };
+		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
+		BCDE13412361241B006F6657 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDE133D2361241B006F6657 /* Login.storyboard */; };
+		BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133E2361241B006F6657 /* CadastroViewController.swift */; };
+		BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133F2361241B006F6657 /* LoginViewController.swift */; };
+		BCDE13462361249F006F6657 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE13442361249F006F6657 /* MapsViewController.swift */; };
+		BCDE13472361249F006F6657 /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDE13452361249F006F6657 /* Maps.storyboard */; };
+		BCDE134923612516006F6657 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE134823612516006F6657 /* Colors.swift */; };
+		BCDE134B236125C9006F6657 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDE134A236125C9006F6657 /* MapKit.framework */; };
 		BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473C23551AB0004F565A /* NewsViewController.swift */; };
 		BCDE473F23551AD5004F565A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473E23551AD5004F565A /* News.swift */; };
-		BCDE474223551BA3004F565A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE474023551BA3004F565A /* TableViewCell.swift */; };
-		BCDE474323551BA3004F565A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDE474123551BA3004F565A /* TableViewCell.xib */; };
+		BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE474023551BA3004F565A /* NewsTableViewCell.swift */; };
+		BCDE474323551BA3004F565A /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDE474123551BA3004F565A /* NewsTableViewCell.xib */; };
 		BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */; };
+		BCEA0A6F235E95D600C33D1E /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEA0A6E235E95D600C33D1E /* News.storyboard */; };
+		F62F9301C8E03B45C6CDF240 /* Pods_iVacina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02481286E08E332928A0808E /* Pods_iVacina.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F0803BA2359F7A4009676C1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		1F0803BC2359FE09009676C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1F0803BE235A0982009676C1 /* CadastroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
-		1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
-		1F0803C2235A1B2F009676C1 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
-		1F0803C4235A3428009676C1 /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
-		1F0803C6235A3444009676C1 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
-		1F0803C9235A34B0009676C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		1F5EAD5C235A7C5500490E8C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iVacina/Info.plist; sourceTree = SOURCE_ROOT; };
-		BC1D055C234E739C0063CADE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		BC1D055E234E74820063CADE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		02481286E08E332928A0808E /* Pods_iVacina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVacina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
+		64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.release.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.release.xcconfig"; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC4DAFF32335794700AEC6F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC4DAFF82335794800AEC6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4DAFFB2335794800AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC4FB64C235F606600961466 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		BC4FB651235F610600961466 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		BC571724235922D900E60909 /* NewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataProvider.swift; sourceTree = "<group>"; };
+		BC5717262359236400E60909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		BC5717BD235A9F0D00E60909 /* news.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
+		BC5717BF235BF7AC00E60909 /* News2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News2TableViewCell.swift; sourceTree = "<group>"; };
+		BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
+		BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
+		BCDE133D2361241B006F6657 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		BCDE133E2361241B006F6657 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
+		BCDE133F2361241B006F6657 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BCDE13442361249F006F6657 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		BCDE13452361249F006F6657 /* Maps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
+		BCDE134823612516006F6657 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BCDE134A236125C9006F6657 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BCDE473C23551AB0004F565A /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		BCDE473E23551AD5004F565A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		BCDE474023551BA3004F565A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		BCDE474123551BA3004F565A /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		BCDE474023551BA3004F565A /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		BCDE474123551BA3004F565A /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsOfNewsViewController.swift; sourceTree = "<group>"; };
+		BCEA0A3D235E160300C33D1E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iVacina/Info.plist; sourceTree = "<group>"; };
+		BCEA0A6E235E95D600C33D1E /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +75,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F0803CA235A34B0009676C1 /* MapKit.framework in Frameworks */,
+				BCDE134B236125C9006F6657 /* MapKit.framework in Frameworks */,
+				F62F9301C8E03B45C6CDF240 /* Pods_iVacina.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F0803C8235A34B0009676C1 /* Frameworks */ = {
+		B313066A86070179B25CE2A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F0803C9235A34B0009676C1 /* MapKit.framework */,
+				BCDE134A236125C9006F6657 /* MapKit.framework */,
+				02481286E08E332928A0808E /* Pods_iVacina.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,6 +95,9 @@
 		BC1D054F234E3F250063CADE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC57172C23593E8300E60909 /* NewsController.swift */,
+				BC571724235922D900E60909 /* NewsDataProvider.swift */,
+				BC5717BD235A9F0D00E60909 /* news.json */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -84,10 +105,10 @@
 		BC1D0550234E3F2F0063CADE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				1F0803BA2359F7A4009676C1 /* Login.storyboard */,
-				1F0803BC2359FE09009676C1 /* LoginViewController.swift */,
-				1F0803BE235A0982009676C1 /* CadastroViewController.swift */,
-				1F0803C0235A1264009676C1 /* EsqueceuSenhaViewController.swift */,
+				BCDE133E2361241B006F6657 /* CadastroViewController.swift */,
+				BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */,
+				BCDE133D2361241B006F6657 /* Login.storyboard */,
+				BCDE133F2361241B006F6657 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -96,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				BCDE473E23551AD5004F565A /* News.swift */,
-				1F0803C2235A1B2F009676C1 /* Usuario.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,12 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				BC4DAFF52335794700AEC6F7 /* Main.storyboard */,
-				BC4DAFF32335794700AEC6F7 /* ViewController.swift */,
-				BC1D0550234E3F2F0063CADE /* Login */,
-				BC1D0554234E3F860063CADE /* Home */,
+				BC4FB64E235F607400961466 /* Home */,
 				BC1D0553234E3F660063CADE /* News */,
 				BC1D0556234E3FAD0063CADE /* Maps */,
 				BC1D0555234E3FA60063CADE /* Profile */,
+				BC1D0550234E3F2F0063CADE /* Login */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,6 +137,7 @@
 		BC1D0553234E3F660063CADE /* News */ = {
 			isa = PBXGroup;
 			children = (
+				BCEA0A6E235E95D600C33D1E /* News.storyboard */,
 				BCDE473C23551AB0004F565A /* NewsViewController.swift */,
 				BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */,
 				BCDE474423551BB9004F565A /* Cells */,
@@ -125,19 +145,10 @@
 			path = News;
 			sourceTree = "<group>";
 		};
-		BC1D0554234E3F860063CADE /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		BC1D0555234E3FA60063CADE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				BC1D055E234E74820063CADE /* Colors.swift */,
-				BC1D055C234E739C0063CADE /* UIViewExtension.swift */,
-				BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */,
+				BC4FB651235F610600961466 /* Profile.storyboard */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -145,8 +156,8 @@
 		BC1D0556234E3FAD0063CADE /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				1F0803C4235A3428009676C1 /* Maps.storyboard */,
-				1F0803C6235A3444009676C1 /* MapsViewController.swift */,
+				BCDE13452361249F006F6657 /* Maps.storyboard */,
+				BCDE13442361249F006F6657 /* MapsViewController.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 		BC1D0557234E40290063CADE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */,
 				BC4DAFF82335794800AEC6F7 /* Assets.xcassets */,
 				BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */,
 			);
@@ -164,8 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				BC4DAFF02335794600AEC6F7 /* iVacina */,
+				BCEA0A3D235E160300C33D1E /* Info.plist */,
 				BC4DAFEF2335794600AEC6F7 /* Products */,
-				1F0803C8235A34B0009676C1 /* Frameworks */,
+				C62FA9D35B1DF07AAA9B9D42 /* Pods */,
+				B313066A86070179B25CE2A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,19 +197,47 @@
 				BC1D0551234E3F370063CADE /* Model */,
 				BC1D0552234E3F470063CADE /* View */,
 				BC1D054F234E3F250063CADE /* Controller */,
-				1F5EAD5C235A7C5500490E8C /* Info.plist */,
+				BC571723235922A400E60909 /* Helper */,
 				BC1D0557234E40290063CADE /* Supporting Files */,
 			);
 			path = iVacina;
 			sourceTree = "<group>";
 		};
+		BC4FB64E235F607400961466 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BC4FB64C235F606600961466 /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BC571723235922A400E60909 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BCDE134823612516006F6657 /* Colors.swift */,
+				BC5717262359236400E60909 /* Extensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		BCDE474423551BB9004F565A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				BCDE474023551BA3004F565A /* TableViewCell.swift */,
-				BCDE474123551BA3004F565A /* TableViewCell.xib */,
+				BCDE474023551BA3004F565A /* NewsTableViewCell.swift */,
+				BCDE474123551BA3004F565A /* NewsTableViewCell.xib */,
+				BC5717BF235BF7AC00E60909 /* News2TableViewCell.swift */,
+				BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C62FA9D35B1DF07AAA9B9D42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */,
+				64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +247,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC4DB0002335794800AEC6F7 /* Build configuration list for PBXNativeTarget "iVacina" */;
 			buildPhases = (
+				A39CEFF0EB0A2D9C30263335 /* [CP] Check Pods Manifest.lock */,
 				BC4DAFEA2335794600AEC6F7 /* Sources */,
 				BC4DAFEB2335794600AEC6F7 /* Frameworks */,
 				BC4DAFEC2335794600AEC6F7 /* Resources */,
+				66FC778B62BE44CCF0EBF5E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,34 +301,87 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
-				1F0803C5235A3428009676C1 /* Maps.storyboard in Resources */,
-				BCDE474323551BA3004F565A /* TableViewCell.xib in Resources */,
-				1F0803BB2359F7A4009676C1 /* Login.storyboard in Resources */,
-				1F41D3F3235FEA7200E57665 /* Assets.xcassets in Resources */,
+				BC4FB652235F610600961466 /* Profile.storyboard in Resources */,
+				BC5717BE235A9F0D00E60909 /* news.json in Resources */,
+				BCDE474323551BA3004F565A /* NewsTableViewCell.xib in Resources */,
+				BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */,
+				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
+				BCEA0A6F235E95D600C33D1E /* News.storyboard in Resources */,
+				BCDE13472361249F006F6657 /* Maps.storyboard in Resources */,
+				BC4FB64D235F606600961466 /* Home.storyboard in Resources */,
+				BCDE13412361241B006F6657 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66FC778B62BE44CCF0EBF5E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A39CEFF0EB0A2D9C30263335 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iVacina-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC4DAFEA2335794600AEC6F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F0803C7235A3444009676C1 /* MapsViewController.swift in Sources */,
-				1F0803BD2359FE09009676C1 /* LoginViewController.swift in Sources */,
+				BCDE13462361249F006F6657 /* MapsViewController.swift in Sources */,
+				BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */,
+				BC5717C1235BF7AC00E60909 /* News2TableViewCell.swift in Sources */,
+				BCDE134923612516006F6657 /* Colors.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
+				BC57172D23593E8300E60909 /* NewsController.swift in Sources */,
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
-				1F0803BF235A0982009676C1 /* CadastroViewController.swift in Sources */,
-				1F0803C1235A1264009676C1 /* EsqueceuSenhaViewController.swift in Sources */,
-				BC4DAFF42335794700AEC6F7 /* ViewController.swift in Sources */,
-				BC1D055F234E74820063CADE /* Colors.swift in Sources */,
-				BC1D055D234E739C0063CADE /* UIViewExtension.swift in Sources */,
-				1F0803C3235A1B2F009676C1 /* Usuario.swift in Sources */,
+				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
+				BC5717272359236400E60909 /* Extensions.swift in Sources */,
+				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
-				BCDE474223551BA3004F565A /* TableViewCell.swift in Sources */,
+				BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
+				BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,12 +525,12 @@
 		};
 		BC4DB0012335794800AEC6F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -447,12 +544,12 @@
 		};
 		BC4DB0022335794800AEC6F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

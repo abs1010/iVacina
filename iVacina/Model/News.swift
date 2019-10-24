@@ -8,10 +8,28 @@
 
 import Foundation
 
-struct news {
-    var mainTopic : String
-    var readingTime : String
-    var descriptiveNews : String
-    var date : Date
-    var image : String
+struct NewsElement: Codable {
+
+    let source: Source?
+    let author, title: String?
+    let newsDescription: String?
+    let url: String?
+    let urlToImage: String?
+    let publishedAt: String
+    let content: String?
+
+    enum CodingKeys: String, CodingKey {
+        case source
+        case author, title
+        case newsDescription = "description"
+        case url, urlToImage, publishedAt, content
+    }
+    
+    // MARK: - Source
+    struct Source: Codable {
+        let id, name: String?
+    }
+    
 }
+
+typealias News = [NewsElement]

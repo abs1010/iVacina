@@ -25,9 +25,8 @@ class CadastroViewController: UIViewController {
         self.senhaTextField.delegate = self
         self.senha2TextField.delegate = self
         
-
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
-        self.botaoCriarConta.setGradientToBtn(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
+        self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
         self.nomeTextField.formatarTextField()
         self.emailTextField.formatarTextField()
