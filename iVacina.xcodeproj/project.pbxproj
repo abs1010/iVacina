@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA02361348500DC0941 /* HomeViewController.swift */; };
+		4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */; };
+		4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */; };
+		4F90ABAB236134A200DC0941 /* StatusCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA4236134A100DC0941 /* StatusCustomCell.swift */; };
+		4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA5236134A100DC0941 /* DadosMedicoTableViewCell.swift */; };
+		4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA6236134A100DC0941 /* StatusCustomCell.xib */; };
+		4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA8236134A100DC0941 /* PessoaCell.swift */; };
+		4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB1236134B900DC0941 /* Vacina.swift */; };
+		4F90ABB6236134B900DC0941 /* Grupo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB2236134B900DC0941 /* Grupo.swift */; };
+		4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB3236134B900DC0941 /* Pessoa.swift */; };
+		4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB9236134D700DC0941 /* HomeController.swift */; };
+		4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABBC2361356600DC0941 /* ProfileController.swift */; };
+		4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABBE2361359700DC0941 /* ProfileViewController.swift */; };
+		4F90ABC22361359F00DC0941 /* CadastroVacinaCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABC02361359F00DC0941 /* CadastroVacinaCustomCell.swift */; };
+		4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */; };
+		4F90ABC52361365000DC0941 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC42361365000DC0941 /* Home.storyboard */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
 		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
 		BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */; };
-		BC4FB64D235F606600961466 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4FB64C235F606600961466 /* Home.storyboard */; };
 		BC4FB652235F610600961466 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4FB651235F610600961466 /* Profile.storyboard */; };
 		BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC571724235922D900E60909 /* NewsDataProvider.swift */; };
 		BC5717272359236400E60909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717262359236400E60909 /* Extensions.swift */; };
@@ -39,13 +54,28 @@
 /* Begin PBXFileReference section */
 		02481286E08E332928A0808E /* Pods_iVacina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVacina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
+		4F90ABA02361348500DC0941 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DadosMedicoTableViewCell.xib; sourceTree = "<group>"; };
+		4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PessoaCollectionViewCell.swift; sourceTree = "<group>"; };
+		4F90ABA4236134A100DC0941 /* StatusCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCustomCell.swift; sourceTree = "<group>"; };
+		4F90ABA5236134A100DC0941 /* DadosMedicoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DadosMedicoTableViewCell.swift; sourceTree = "<group>"; };
+		4F90ABA6236134A100DC0941 /* StatusCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusCustomCell.xib; sourceTree = "<group>"; };
+		4F90ABA8236134A100DC0941 /* PessoaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PessoaCell.swift; sourceTree = "<group>"; };
+		4F90ABB1236134B900DC0941 /* Vacina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vacina.swift; sourceTree = "<group>"; };
+		4F90ABB2236134B900DC0941 /* Grupo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grupo.swift; sourceTree = "<group>"; };
+		4F90ABB3236134B900DC0941 /* Pessoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pessoa.swift; sourceTree = "<group>"; };
+		4F90ABB9236134D700DC0941 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		4F90ABBC2361356600DC0941 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		4F90ABBE2361359700DC0941 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4F90ABC02361359F00DC0941 /* CadastroVacinaCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroVacinaCustomCell.swift; sourceTree = "<group>"; };
+		4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CadastroVacinaCustomCell.xib; sourceTree = "<group>"; };
+		4F90ABC42361365000DC0941 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.release.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.release.xcconfig"; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC4DAFF82335794800AEC6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4DAFFB2335794800AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BC4FB64C235F606600961466 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		BC4FB651235F610600961466 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		BC571724235922D900E60909 /* NewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataProvider.swift; sourceTree = "<group>"; };
 		BC5717262359236400E60909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -95,6 +125,8 @@
 		BC1D054F234E3F250063CADE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4F90ABB9236134D700DC0941 /* HomeController.swift */,
+				4F90ABBC2361356600DC0941 /* ProfileController.swift */,
 				BC57172C23593E8300E60909 /* NewsController.swift */,
 				BC571724235922D900E60909 /* NewsDataProvider.swift */,
 				BC5717BD235A9F0D00E60909 /* news.json */,
@@ -117,6 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				BCDE473E23551AD5004F565A /* News.swift */,
+				4F90ABB2236134B900DC0941 /* Grupo.swift */,
+				4F90ABB3236134B900DC0941 /* Pessoa.swift */,
+				4F90ABB1236134B900DC0941 /* Vacina.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +184,9 @@
 			isa = PBXGroup;
 			children = (
 				BC4FB651235F610600961466 /* Profile.storyboard */,
+				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
+				4F90ABC02361359F00DC0941 /* CadastroVacinaCustomCell.swift */,
+				4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -206,7 +244,14 @@
 		BC4FB64E235F607400961466 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BC4FB64C235F606600961466 /* Home.storyboard */,
+				4F90ABC42361365000DC0941 /* Home.storyboard */,
+				4F90ABA02361348500DC0941 /* HomeViewController.swift */,
+				4F90ABA5236134A100DC0941 /* DadosMedicoTableViewCell.swift */,
+				4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */,
+				4F90ABA8236134A100DC0941 /* PessoaCell.swift */,
+				4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */,
+				4F90ABA4236134A100DC0941 /* StatusCustomCell.swift */,
+				4F90ABA6236134A100DC0941 /* StatusCustomCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -300,16 +345,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */,
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
 				BC4FB652235F610600961466 /* Profile.storyboard in Resources */,
 				BC5717BE235A9F0D00E60909 /* news.json in Resources */,
 				BCDE474323551BA3004F565A /* NewsTableViewCell.xib in Resources */,
 				BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */,
+				4F90ABC52361365000DC0941 /* Home.storyboard in Resources */,
 				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
+				4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
 				BCEA0A6F235E95D600C33D1E /* News.storyboard in Resources */,
+				4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */,
 				BCDE13472361249F006F6657 /* Maps.storyboard in Resources */,
-				BC4FB64D235F606600961466 /* Home.storyboard in Resources */,
 				BCDE13412361241B006F6657 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,16 +416,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */,
+				4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */,
 				BCDE13462361249F006F6657 /* MapsViewController.swift in Sources */,
+				4F90ABC22361359F00DC0941 /* CadastroVacinaCustomCell.swift in Sources */,
 				BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */,
 				BC5717C1235BF7AC00E60909 /* News2TableViewCell.swift in Sources */,
 				BCDE134923612516006F6657 /* Colors.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
+				4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */,
+				4F90ABB6236134B900DC0941 /* Grupo.swift in Sources */,
+				4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */,
+				4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */,
 				BC57172D23593E8300E60909 /* NewsController.swift in Sources */,
+				4F90ABAB236134A200DC0941 /* StatusCustomCell.swift in Sources */,
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
 				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
+				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				BC5717272359236400E60909 /* Extensions.swift in Sources */,
 				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
+				4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */,
+				4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */,
+				4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,

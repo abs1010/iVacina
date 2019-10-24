@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GjM-cg-AK5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vnr-wA-iXe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,26 +8,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Perfil-->
-        <scene sceneID="wfY-JO-VHL">
+        <!--Profile-->
+        <scene sceneID="zMv-Hg-H2O">
             <objects>
-                <viewController id="GjM-cg-AK5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZiH-sC-rrC">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vnr-wA-iXe" customClass="ProfileViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="634-3a-Zmt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="hvW-bR-Bez"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-4G-8yc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8OH-M1-JPb">
+                                        <rect key="frame" x="162" y="10" width="90" height="90"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="Hot-Fh-7Yl"/>
+                                            <constraint firstAttribute="height" constant="90" id="cLY-yI-Uai"/>
+                                        </constraints>
+                                    </imageView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6I-NH-PiJ">
+                                        <rect key="frame" x="21" y="175" width="373" height="548"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vN0-wt-XIX">
+                                        <rect key="frame" x="70" y="112" width="275" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8OH-M1-JPb" firstAttribute="top" secondItem="Uyw-4G-8yc" secondAttribute="top" constant="10" id="Gc4-xC-2rs"/>
+                                    <constraint firstItem="8OH-M1-JPb" firstAttribute="centerX" secondItem="Uyw-4G-8yc" secondAttribute="centerX" id="NVd-Fy-JgF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="eH6-KP-ZqW"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="nnA-Jh-SQ8"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aQb-F4-6Ub" firstAttribute="bottom" secondItem="Uyw-4G-8yc" secondAttribute="bottom" id="B2z-9u-ymN"/>
+                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="trailing" secondItem="aQb-F4-6Ub" secondAttribute="trailing" id="f8c-Au-q6d"/>
+                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="leading" secondItem="aQb-F4-6Ub" secondAttribute="leading" id="j4i-Jc-hS3"/>
+                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="top" secondItem="aQb-F4-6Ub" secondAttribute="top" id="tvr-fU-fC5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aQb-F4-6Ub"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Perfil" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="n6a-9Y-M42"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="bUI-0b-9BL"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imagem" destination="8OH-M1-JPb" id="Oio-AF-Ids"/>
+                        <outlet property="nomeTextField" destination="vN0-wt-XIX" id="Pfa-ie-aus"/>
+                        <outlet property="profileTableView" destination="i6I-NH-PiJ" id="J8h-Gk-cl2"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qS9-7n-03M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNa-h2-7bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="1314"/>
+            <point key="canvasLocation" x="159.42028985507247" y="-133.25892857142856"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="person.circle" catalog="system" width="64" height="62"/>
-        <image name="person.circle.fill" catalog="system" width="64" height="62"/>
-    </resources>
 </document>
