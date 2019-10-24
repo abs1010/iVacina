@@ -30,6 +30,8 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Permitir acesso ao GPS?</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
