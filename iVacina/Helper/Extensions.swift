@@ -125,6 +125,19 @@ extension UITableViewCell {
 }
 
 
+extension UITableView {
+    
+    func setGradientToCellNaTableView(colorOne: UIColor, colorTwo: UIColor) {
+
+          let gradientLayer = CAGradientLayer()
+          gradientLayer.frame = bounds
+          gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+          //gradientLayer.locations = [0.0, 1.0]
+          layer.insertSublayer(gradientLayer, at: 0)
+      }
+    
+}
+
 //===============================================================================================================
 
 //DA TELA LOGIN TESTE ANTERIOR COPY

@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class NewsTableViewCell: UITableViewCell {
 
-    var noticia : NewsElement?
     
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,14 +22,30 @@ class NewsTableViewCell: UITableViewCell {
     
     func setupCell(noticia: NewsElement){
         self.titleLabel.text = noticia.title
-        self.briefingLabel.text = noticia.newsDescription
+        self.briefingLabel.text = noticia.articleDescription
         self.sourceLabel.text = noticia.source?.name
         self.releaseTimeLabel.text = noticia.publishedAt
         
-        if noticia.urlToImage != "" {
-        self.imagem.image = UIImage(named: noticia.urlToImage ?? "")
-        }
-        else {self.imagem.image = UIImage(named: "placeholder")}
+        let stringErro : URL?
+        
+        stringErro = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.brownweinraub.com%2Fhome%2Fplaceholder%2F&psig=AOvVaw2vj5whQLDgxppQFL4rvO0g&ust=1572916839983000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPj6yv-xz-UCFQAAAAAdAAAAABAN")
+           
+        if let urlString = noticia.urlToImage {
+            self.imagem.af_setImage(withURL: URL(string: urlString)!,
+        placeholderImage: UIImage(named: "loading"),
+        filter: nil,
+        imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
+        runImageTransitionIfCached: false) {response in
+        // Check if the image isn't already cached
+        // if response.response != nil {
+        //
+        //}
+            
+         }
+         
+     }
+        
+        
     }
     
     
@@ -37,14 +53,11 @@ class NewsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.holderView.formatarUIView()
-        //formatarUIView(containerView: holderView)
-        self.holderView.setGradientToView(colorOne: UIColor.azulClaroCustom, colorTwo: UIColor.azulEscuroCustom)
 
-        
+        self.holderView.formatarUIView()
+        self.holderView.setGradientToView(colorOne: UIColor.azulClaroCustom, colorTwo: UIColor.azulEscuroCustom)
     }
-//
+
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 //

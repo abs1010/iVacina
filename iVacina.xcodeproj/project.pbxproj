@@ -31,9 +31,10 @@
 		BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC571724235922D900E60909 /* NewsDataProvider.swift */; };
 		BC5717272359236400E60909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717262359236400E60909 /* Extensions.swift */; };
 		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
-		BC5717BE235A9F0D00E60909 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = BC5717BD235A9F0D00E60909 /* news.json */; };
 		BC5717C1235BF7AC00E60909 /* News2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717BF235BF7AC00E60909 /* News2TableViewCell.swift */; };
 		BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */; };
+		BCACCE982370A66500224462 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCACCE972370A66500224462 /* BaseViewController.swift */; };
+		BCACCE9A2370A8F200224462 /* loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = BCACCE992370A8F100224462 /* loading1.json */; };
 		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
 		BCDE13412361241B006F6657 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDE133D2361241B006F6657 /* Login.storyboard */; };
 		BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133E2361241B006F6657 /* CadastroViewController.swift */; };
@@ -80,9 +81,10 @@
 		BC571724235922D900E60909 /* NewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataProvider.swift; sourceTree = "<group>"; };
 		BC5717262359236400E60909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
-		BC5717BD235A9F0D00E60909 /* news.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
 		BC5717BF235BF7AC00E60909 /* News2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News2TableViewCell.swift; sourceTree = "<group>"; };
 		BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
+		BCACCE972370A66500224462 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BCACCE992370A8F100224462 /* loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading1.json; sourceTree = "<group>"; };
 		BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
 		BCDE133D2361241B006F6657 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCDE133E2361241B006F6657 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +131,6 @@
 				4F90ABBC2361356600DC0941 /* ProfileController.swift */,
 				BC57172C23593E8300E60909 /* NewsController.swift */,
 				BC571724235922D900E60909 /* NewsDataProvider.swift */,
-				BC5717BD235A9F0D00E60909 /* news.json */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,7 +176,9 @@
 				BCEA0A6E235E95D600C33D1E /* News.storyboard */,
 				BCDE473C23551AB0004F565A /* NewsViewController.swift */,
 				BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */,
+				BCACCE972370A66500224462 /* BaseViewController.swift */,
 				BCDE474423551BB9004F565A /* Cells */,
+				BCACCE962370A60300224462 /* Animation */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -265,6 +268,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		BCACCE962370A60300224462 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				BCACCE992370A8F100224462 /* loading1.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		BCDE474423551BB9004F565A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,10 +359,10 @@
 				4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */,
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
 				BC4FB652235F610600961466 /* Profile.storyboard in Resources */,
-				BC5717BE235A9F0D00E60909 /* news.json in Resources */,
 				BCDE474323551BA3004F565A /* NewsTableViewCell.xib in Resources */,
 				BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */,
 				4F90ABC52361365000DC0941 /* Home.storyboard in Resources */,
+				BCACCE9A2370A8F200224462 /* loading1.json in Resources */,
 				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
 				4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
@@ -374,13 +385,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -421,6 +438,7 @@
 				BCDE13462361249F006F6657 /* MapsViewController.swift in Sources */,
 				4F90ABC22361359F00DC0941 /* CadastroVacinaCustomCell.swift in Sources */,
 				BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */,
+				BCACCE982370A66500224462 /* BaseViewController.swift in Sources */,
 				BC5717C1235BF7AC00E60909 /* News2TableViewCell.swift in Sources */,
 				BCDE134923612516006F6657 /* Colors.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
@@ -591,6 +609,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -610,6 +629,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

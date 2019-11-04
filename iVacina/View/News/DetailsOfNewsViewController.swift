@@ -7,18 +7,17 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DetailsOfNewsViewController: UIViewController {
     
     @IBOutlet weak var imagem: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
     
     
-    var selectedNew : Int?
+    var selectedNew : NewsElement?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
           return .lightContent
@@ -28,9 +27,46 @@ class DetailsOfNewsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.setupCell()
+        
+    }
+    
+    func setupCell(){
+        
+        self.titleLabel.text = self.selectedNew?.title
+        self.descriptionLabel.text = self.selectedNew?.articleDescription
+        
+        if let urlString = self.selectedNew?.urlToImage {
+              self.imagem.af_setImage(withURL: URL(string: urlString)!,
+              placeholderImage: UIImage(named: "loading"),
+              filter: nil,
+              imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
+              runImageTransitionIfCached: false) {response in
+              // Check if the image isn't already cached
+              // if response.response != nil {
+              //
+              //}
+                  
+               }
+               
+           }
+        
+        
+        //self.selectedNew = NewsElement()
+        //let contadorSort = Int.random(in: 1...9)
+        //self.imagem.image = UIImage(named: "news\(contadorSort)")
+        
+    }
+    
+    
+    @IBAction func clicouBack(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
 
-        let contadorSort = Int.random(in: 1...9)
-        self.imagem.image = UIImage(named: "news\(contadorSort)")
         
         //--------
         
@@ -120,14 +156,3 @@ class DetailsOfNewsViewController: UIViewController {
 //                make.edges.equalTo(textContainer).inset(14)
 //            }
         //--------
-        
-        
-    }
-    
-    @IBAction func clicouBack(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-}
