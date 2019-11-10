@@ -35,6 +35,7 @@
 		BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */; };
 		BCACCE982370A66500224462 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCACCE972370A66500224462 /* BaseViewController.swift */; };
 		BCACCE9A2370A8F200224462 /* loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = BCACCE992370A8F100224462 /* loading1.json */; };
+		BCB3E9EB237340BC008062F8 /* 2DetailsOfNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */; };
 		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
 		BCDE13412361241B006F6657 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDE133D2361241B006F6657 /* Login.storyboard */; };
 		BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133E2361241B006F6657 /* CadastroViewController.swift */; };
@@ -85,6 +86,7 @@
 		BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
 		BCACCE972370A66500224462 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BCACCE992370A8F100224462 /* loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading1.json; sourceTree = "<group>"; };
+		BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2DetailsOfNewsViewController.swift; sourceTree = "<group>"; };
 		BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
 		BCDE133D2361241B006F6657 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCDE133E2361241B006F6657 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				BCEA0A6E235E95D600C33D1E /* News.storyboard */,
 				BCDE473C23551AB0004F565A /* NewsViewController.swift */,
 				BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */,
+				BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */,
 				BCACCE972370A66500224462 /* BaseViewController.swift */,
 				BCDE474423551BB9004F565A /* Cells */,
 				BCACCE962370A60300224462 /* Animation */,
@@ -455,6 +458,7 @@
 				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
 				4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */,
 				4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */,
+				BCB3E9EB237340BC008062F8 /* 2DetailsOfNewsViewController.swift in Sources */,
 				4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */,

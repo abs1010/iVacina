@@ -21,7 +21,7 @@ class News2TableViewCell: UITableViewCell {
        func setupCell(noticia: NewsElement){
            self.titleLabel.text = noticia.title
            self.briefingLabel.text = noticia.articleDescription
-           self.sourceLabel.text = noticia.source?.name
+//           self.sourceLabel.text = noticia.source?.name
            self.releaseTimeLabel?.text = noticia.publishedAt ?? ""
            
               

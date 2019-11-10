@@ -11,22 +11,22 @@ import SnapKit
 
 class NewsViewController: BaseViewController {
     
-    @IBOutlet weak var listaNewsTableView: UITableView!
+    @IBOutlet private weak var listaNewsTableView: UITableView!
     
     var controller: NewsController?
     
     //Colocar a Status Bar em branco
     //    override var preferredStatusBarStyle: UIStatusBarStyle {
     //           return .lightContent
-    //       }
+    //    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //Loading
         showLoading()
-
+        
         //Delegate and protocols
         NewsController().loadNews()
         self.controller = NewsController()
@@ -34,7 +34,7 @@ class NewsViewController: BaseViewController {
         self.controller?.delegate = self
         
         self.controller?.loadNews()
-                
+        
         //table view Extension
         self.listaNewsTableView.delegate = self
         self.listaNewsTableView.dataSource = self
@@ -82,8 +82,8 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
             return cell
             
         }
-        
-        //CELL NORMAL
+            
+            //CELL NORMAL
         else {
             
             self.listaNewsTableView.rowHeight = 400
@@ -107,7 +107,34 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
             self.present(vc, animated: true, completion: nil)
             
         }
+        //        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "_DetailsOfNewsViewController") as? _DetailsOfNewsViewController {
+        //
+        //            vc.selectedNew = self.controller?.loadCurrentNews(indexPath: indexPath)
+        //
+        //            self.present(vc, animated: true, completion: nil)
+        //
+        //        }
         
     }
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//
+//        print("fez scroll")
+//
+//        let activityView = UIActivityIndicatorView(style: .gray)
+//        activityView.center = self.view.center
+//
+//        activityView.center = CGPoint(x: 100, y: 20)
+//
+//        self.view.addSubview(activityView)
+//        activityView.startAnimating()
+//
+//
+//        self.controller?.loadNews()
+//        self.listaNewsTableView.reloadData()
+//        //sleep(2)
+//        //activityView.stopAnimating()
+//
+//    }
     
 }
