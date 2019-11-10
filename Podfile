@@ -8,6 +8,7 @@ target 'iVacina' do
   # Pods for iVacina
 
 	pod 'SnapKit', '~> 5.0.0'
+	pod 'Alamofire'
 
 
 end
