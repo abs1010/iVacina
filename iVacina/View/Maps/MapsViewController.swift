@@ -12,55 +12,71 @@ import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController, MKMapViewDelegate {
     
-    @IBOutlet weak var mapa: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
-    var localizacao = CLLocationManager()
+    let locationManager: CLLocationManager = CLLocationManager()
+    let zoomInMeters: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.localizacao.delegate = self
-        
-        //Solicitar acesso ao GPS:
-        self.localizacao.requestWhenInUseAuthorization()
-        self.localizacao.requestAlwaysAuthorization()
-        
-    }
-    
-    
-    @IBAction func clicouLocalizacao(_ sender: UIButton) {
+        setupLocationManager()
 
-        //Pegar a localição do usuário:
-        self.localizacao.desiredAccuracy = kCLLocationAccuracyBest
-        
-        //Monitorar a localização do usuário:
-        self.localizacao.startUpdatingLocation()
-        
-        
-        //Pegar latitude e longitude da localização do usuário:
     }
     
     
+    func centerLocation() {
+        if let currentLocation = locationManager.location?.coordinate{
+            let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
+            self.mapView.setRegion(region, animated: true)
+            self.mapView.showsUserLocation = true
+        }
+    }
+    
+    func setupLocationManager() {
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func checkLocationAutorization(){
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse:
+                centerLocation()
+                break
+            case .denied:
+                //alerta de erro
+                break
+            case .notDetermined:
+                self.locationManager.requestAlwaysAuthorization()
+                break
+            case .restricted:
+                //alerta de erro
+                break
+            case .authorizedAlways:
+                break
+            @unknown default:
+                break
+            }
+        } else {
+            //alerta de erro
+        }
+    }
 }
+
 
 extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        
-        let latitude = Double(locValue.latitude)
-        let longitude = Double(locValue.longitude)
-        
-        //Definir o centro e o zoom da exibição:
-        let center = CLLocationCoordinate2DMake(latitude, longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        
-        //Exibir a localização do usuário:
-        let exibirLocalizacao = MKCoordinateRegion(center: center, span: span)
-        self.mapa.setRegion(exibirLocalizacao, animated: true)
-        
+        centerLocation()
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAutorization()
+    }
+
 }
+
     
     
     
