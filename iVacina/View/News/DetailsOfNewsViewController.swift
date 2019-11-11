@@ -66,7 +66,8 @@ class DetailsOfNewsViewController: UIViewController {
       //self.descriptionLabel.text = self.selectedNew?.articleDescription ?? ""
         self.timeToRead.text = "1 min"
         self.source.text = self.selectedNew?.source?.name ?? ""
-        self.contentLabel.text = "\(self.selectedNew?.articleDescription ?? "") \n\n \(self.selectedNew?.content ?? "")..."
+        self.contentTextView.text = "\(self.selectedNew?.articleDescription ?? "") \n\n \(self.selectedNew?.content ?? "")..."
+        //self.contentLabel.text = "\(self.selectedNew?.articleDescription ?? "") \n\n \(self.selectedNew?.content ?? "")..."
         
         if let urlString = self.selectedNew?.urlToImage {
             print(urlString)

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YOb-jG-vZp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,7 +80,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="8Zr-mJ-qgH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -136,14 +135,26 @@
                                             <action selector="btnGotoSource:" destination="KNV-em-ykB" eventType="touchUpInside" id="chF-yE-7SM"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oIG-zG-xBw">
+                                        <rect key="frame" x="8" y="0.0" width="398" height="373"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="iSa-dt-tqa" firstAttribute="leading" secondItem="hRU-y3-N7S" secondAttribute="leading" constant="87" id="514-Mb-hCf"/>
                                     <constraint firstAttribute="trailing" secondItem="bYx-wA-0nS" secondAttribute="trailing" constant="8" id="7PA-Bt-qns"/>
+                                    <constraint firstItem="oIG-zG-xBw" firstAttribute="leading" secondItem="hRU-y3-N7S" secondAttribute="leading" constant="8" id="Ud4-od-Okq"/>
                                     <constraint firstItem="bYx-wA-0nS" firstAttribute="leading" secondItem="hRU-y3-N7S" secondAttribute="leading" constant="8" id="Y4n-J1-F4K"/>
                                     <constraint firstAttribute="bottom" secondItem="iSa-dt-tqa" secondAttribute="bottom" constant="30" id="cOe-LJ-GL1"/>
                                     <constraint firstItem="iSa-dt-tqa" firstAttribute="top" secondItem="bYx-wA-0nS" secondAttribute="bottom" constant="8" id="cza-90-HU2"/>
                                     <constraint firstAttribute="trailing" secondItem="iSa-dt-tqa" secondAttribute="trailing" constant="87" id="fXl-Pi-yza"/>
+                                    <constraint firstItem="iSa-dt-tqa" firstAttribute="top" secondItem="oIG-zG-xBw" secondAttribute="bottom" constant="8" id="jQc-oZ-8Vj"/>
+                                    <constraint firstItem="oIG-zG-xBw" firstAttribute="top" secondItem="hRU-y3-N7S" secondAttribute="top" id="kFL-Np-OZe"/>
+                                    <constraint firstAttribute="trailing" secondItem="oIG-zG-xBw" secondAttribute="trailing" constant="8" id="nv1-7j-60U"/>
                                     <constraint firstItem="bYx-wA-0nS" firstAttribute="top" secondItem="hRU-y3-N7S" secondAttribute="top" id="zsa-NU-EeF"/>
                                 </constraints>
                             </view>
@@ -166,6 +177,7 @@
                     <connections>
                         <outlet property="btnsource" destination="iSa-dt-tqa" id="uSX-NP-Avo"/>
                         <outlet property="contentLabel" destination="bYx-wA-0nS" id="cbJ-Gq-KIt"/>
+                        <outlet property="contentTextView" destination="oIG-zG-xBw" id="qZE-Ez-PRZ"/>
                         <outlet property="imagem" destination="zx3-BN-COF" id="uFZ-Hi-og7"/>
                         <outlet property="source" destination="V84-wN-1ha" id="KNp-aV-xi1"/>
                         <outlet property="timeToRead" destination="N6n-QL-FHP" id="dvD-69-IRb"/>
