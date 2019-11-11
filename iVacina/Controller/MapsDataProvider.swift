@@ -21,7 +21,7 @@ class MapsDataProvider {
             Alamofire.request(url).responseJSON { (response) in
                 
                 do {
-                    let decodeObject = try? JSONDecoder().decode(PostoDeSaude.self, from: response.data ?? Data())
+                    let decodeObject = try JSONDecoder().decode(PostoDeSaude.self, from: response.data ?? Data())
                     
                     completion(decodeObject, false)
                     

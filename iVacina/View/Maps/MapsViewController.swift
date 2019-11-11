@@ -12,6 +12,8 @@ import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController, MKMapViewDelegate {
     
+    var postoDeSaude: PostoDeSaude = []
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager: CLLocationManager = CLLocationManager()
@@ -20,6 +22,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
+        MapsController().loadPostosDeSaude { (response, error) in
+            if let response = response {
+                self.postoDeSaude = response
+                print (self.postoDeSaude[0])
+            }
+        }
 
     }
     
