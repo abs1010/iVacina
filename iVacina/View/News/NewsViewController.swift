@@ -101,19 +101,6 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
             
         }
         
-//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "_DetailsOfNewsViewController") as? _DetailsOfNewsViewController {
-//
-//                    vc.selectedNew = self.controller?.loadCurrentNews(indexPath: indexPath)
-//
-//                    self.present(vc, animated: true, completion: nil)
-//
-//                }
-
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-         print("fez scroll")
     }
     
     //func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
