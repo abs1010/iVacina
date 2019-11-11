@@ -12,7 +12,7 @@ import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController, MKMapViewDelegate {
     
-    var postoDeSaude: PostoDeSaude = []
+    var arrayPostoDeSaude: PostoDeSaude = []
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,14 +22,23 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
-        MapsController().loadPostosDeSaude { (response, error) in
-            if let response = response {
-                self.postoDeSaude = response
-                print (self.postoDeSaude[0])
-            }
-        }
+        self.mapView.addAnnotations(getPostoDeSaude())
 
     }
+    
+            func getPostoDeSaude() -> [MapsLocals] {
+                var arrayMapsLocals: [MapsLocals] = []
+                MapsController().loadPostosDeSaude { (response, error) in
+                    if let response = response {
+                        for value in response {
+                            let currentPostoDeSaude = MapsLocals(json: value)
+                            print (currentPostoDeSaude)
+                            arrayMapsLocals.append(currentPostoDeSaude)
+                        }
+                    }
+                }
+                return arrayMapsLocals
+            }
     
     
     func centerLocation() {

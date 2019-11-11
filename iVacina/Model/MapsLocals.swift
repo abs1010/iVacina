@@ -1,12 +1,13 @@
 //
-//  MapsEstabelecimentos.swift
+//  MapsLocals.swift
 //  iVacina
 //
-//  Created by Marcela Limieri Tozzato on 10/11/19.
+//  Created by Marcela Limieri Tozzato on 11/11/19.
 //  Copyright © 2019 Alan Silva. All rights reserved.
 //
 
 import Foundation
+import MapKit
 
 struct PostoDeSaudeElement: Codable {
     let nomeFantasia: String
@@ -18,6 +19,14 @@ struct PostoDeSaudeElement: Codable {
     let telefone: String?
     let turnoAtendimento: TurnoAtendimento
     let lat, long: Double
+    
+    var address: String {
+        return "\(self.logradouro), \(self.numero) \n\(self.bairro) - \(self.cep) \n\(self.cidade) - \(self.uf)"
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: lat, longitude: long)
+    }
 
     enum CodingKeys: String, CodingKey {
         case nomeFantasia, tipoUnidade
@@ -45,4 +54,28 @@ enum TurnoAtendimento: String, Codable {
 }
 
 typealias PostoDeSaude = [PostoDeSaudeElement]
+
+class MapsLocals: NSObject, MKAnnotation {
+    
+    let title: String?
+    let subtitle: String?
+    var coordinate: CLLocationCoordinate2D
+    
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+    
+    self.title = title
+    self.subtitle = subtitle
+    self.coordinate = coordinate
+    
+    super.init()
+        
+    }
+    
+    init(json: PostoDeSaudeElement){
+        
+        self.title = json.nomeFantasia
+        self.subtitle = json.address
+        self.coordinate = json.coordinate
+    }
+}
 
