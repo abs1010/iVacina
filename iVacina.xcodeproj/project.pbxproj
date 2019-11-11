@@ -23,6 +23,13 @@
 		4F90ABC22361359F00DC0941 /* CadastroVacinaCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABC02361359F00DC0941 /* CadastroVacinaCustomCell.swift */; };
 		4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */; };
 		4F90ABC52361365000DC0941 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC42361365000DC0941 /* Home.storyboard */; };
+		BC3203582378BFD500E3EECB /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3203562378BFD500E3EECB /* TitleTableViewCell.swift */; };
+		BC3203592378BFD500E3EECB /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3203572378BFD500E3EECB /* TitleTableViewCell.xib */; };
+		BC32035B2378C55000E3EECB /* 2DetailsOfNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC32035A2378C55000E3EECB /* 2DetailsOfNewsViewController.swift */; };
+		BC32035E2378E5EC00E3EECB /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC32035C2378E5EC00E3EECB /* DescriptionTableViewCell.swift */; };
+		BC32035F2378E5EC00E3EECB /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC32035D2378E5EC00E3EECB /* DescriptionTableViewCell.xib */; };
+		BC3203622378E5FD00E3EECB /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3203602378E5FD00E3EECB /* ContentTableViewCell.swift */; };
+		BC3203632378E5FD00E3EECB /* ContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3203612378E5FD00E3EECB /* ContentTableViewCell.xib */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
 		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
@@ -35,7 +42,6 @@
 		BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */; };
 		BCACCE982370A66500224462 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCACCE972370A66500224462 /* BaseViewController.swift */; };
 		BCACCE9A2370A8F200224462 /* loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = BCACCE992370A8F100224462 /* loading1.json */; };
-		BCB3E9EB237340BC008062F8 /* 2DetailsOfNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */; };
 		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
 		BCDE13412361241B006F6657 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDE133D2361241B006F6657 /* Login.storyboard */; };
 		BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133E2361241B006F6657 /* CadastroViewController.swift */; };
@@ -73,6 +79,13 @@
 		4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CadastroVacinaCustomCell.xib; sourceTree = "<group>"; };
 		4F90ABC42361365000DC0941 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.release.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.release.xcconfig"; sourceTree = "<group>"; };
+		BC3203562378BFD500E3EECB /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		BC3203572378BFD500E3EECB /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		BC32035A2378C55000E3EECB /* 2DetailsOfNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 2DetailsOfNewsViewController.swift; sourceTree = "<group>"; };
+		BC32035C2378E5EC00E3EECB /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		BC32035D2378E5EC00E3EECB /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
+		BC3203602378E5FD00E3EECB /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		BC3203612378E5FD00E3EECB /* ContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentTableViewCell.xib; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,7 +99,6 @@
 		BC5717C0235BF7AC00E60909 /* News2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
 		BCACCE972370A66500224462 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BCACCE992370A8F100224462 /* loading1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading1.json; sourceTree = "<group>"; };
-		BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2DetailsOfNewsViewController.swift; sourceTree = "<group>"; };
 		BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaViewController.swift; sourceTree = "<group>"; };
 		BCDE133D2361241B006F6657 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCDE133E2361241B006F6657 /* CadastroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CadastroViewController.swift; sourceTree = "<group>"; };
@@ -178,9 +190,10 @@
 				BCEA0A6E235E95D600C33D1E /* News.storyboard */,
 				BCDE473C23551AB0004F565A /* NewsViewController.swift */,
 				BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */,
-				BCB3E9EA237340BC008062F8 /* 2DetailsOfNewsViewController.swift */,
+				BC32035A2378C55000E3EECB /* 2DetailsOfNewsViewController.swift */,
 				BCACCE972370A66500224462 /* BaseViewController.swift */,
 				BCDE474423551BB9004F565A /* Cells */,
+				BC32035523787E7300E3EECB /* DetailCells */,
 				BCACCE962370A60300224462 /* Animation */,
 			);
 			path = News;
@@ -214,6 +227,19 @@
 				BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC32035523787E7300E3EECB /* DetailCells */ = {
+			isa = PBXGroup;
+			children = (
+				BC3203562378BFD500E3EECB /* TitleTableViewCell.swift */,
+				BC3203572378BFD500E3EECB /* TitleTableViewCell.xib */,
+				BC32035C2378E5EC00E3EECB /* DescriptionTableViewCell.swift */,
+				BC32035D2378E5EC00E3EECB /* DescriptionTableViewCell.xib */,
+				BC3203602378E5FD00E3EECB /* ContentTableViewCell.swift */,
+				BC3203612378E5FD00E3EECB /* ContentTableViewCell.xib */,
+			);
+			path = DetailCells;
 			sourceTree = "<group>";
 		};
 		BC4DAFE52335794600AEC6F7 = {
@@ -359,9 +385,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC3203592378BFD500E3EECB /* TitleTableViewCell.xib in Resources */,
 				4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */,
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
 				BC4FB652235F610600961466 /* Profile.storyboard in Resources */,
+				BC32035F2378E5EC00E3EECB /* DescriptionTableViewCell.xib in Resources */,
 				BCDE474323551BA3004F565A /* NewsTableViewCell.xib in Resources */,
 				BC5717C2235BF7AC00E60909 /* News2TableViewCell.xib in Resources */,
 				4F90ABC52361365000DC0941 /* Home.storyboard in Resources */,
@@ -373,6 +401,7 @@
 				4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */,
 				BCDE13472361249F006F6657 /* Maps.storyboard in Resources */,
 				BCDE13412361241B006F6657 /* Login.storyboard in Resources */,
+				BC3203632378E5FD00E3EECB /* ContentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +465,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC32035B2378C55000E3EECB /* 2DetailsOfNewsViewController.swift in Sources */,
+				BC3203582378BFD500E3EECB /* TitleTableViewCell.swift in Sources */,
 				4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */,
 				4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */,
 				BCDE13462361249F006F6657 /* MapsViewController.swift in Sources */,
@@ -450,15 +481,16 @@
 				4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */,
 				4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */,
 				BC57172D23593E8300E60909 /* NewsController.swift in Sources */,
+				BC32035E2378E5EC00E3EECB /* DescriptionTableViewCell.swift in Sources */,
 				4F90ABAB236134A200DC0941 /* StatusCustomCell.swift in Sources */,
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
 				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				BC5717272359236400E60909 /* Extensions.swift in Sources */,
+				BC3203622378E5FD00E3EECB /* ContentTableViewCell.swift in Sources */,
 				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
 				4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */,
 				4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */,
-				BCB3E9EB237340BC008062F8 /* 2DetailsOfNewsViewController.swift in Sources */,
 				4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */,

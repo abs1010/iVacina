@@ -15,12 +15,6 @@ class NewsViewController: BaseViewController {
     
     var controller: NewsController?
     
-    //Colocar a Status Bar em branco
-    //    override var preferredStatusBarStyle: UIStatusBarStyle {
-    //           return .lightContent
-    //    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +40,6 @@ class NewsViewController: BaseViewController {
     }
     
 }
-
 
 extension NewsViewController : NewsControllerDelegate {
     func successOnLoadingNewsController() {
@@ -87,6 +80,7 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
         else {
             
             self.listaNewsTableView.rowHeight = 400
+            self.listaNewsTableView.rowHeight = UITableView.automaticDimension
             let cell : NewsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell)!
             
             cell.setupCell(noticia: (self.controller?.loadCurrentNews(indexPath: indexPath))!)
@@ -97,7 +91,6 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailsOfNewsViewController") as? DetailsOfNewsViewController {
@@ -107,20 +100,26 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
             self.present(vc, animated: true, completion: nil)
             
         }
-        //        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "_DetailsOfNewsViewController") as? _DetailsOfNewsViewController {
-        //
-        //            vc.selectedNew = self.controller?.loadCurrentNews(indexPath: indexPath)
-        //
-        //            self.present(vc, animated: true, completion: nil)
-        //
-        //        }
+        
+//                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "_DetailsOfNewsViewController") as? _DetailsOfNewsViewController {
+//
+//                    vc.selectedNew = self.controller?.loadCurrentNews(indexPath: indexPath)
+//
+//                    self.present(vc, animated: true, completion: nil)
+//
+//                }
+
         
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//
-//        print("fez scroll")
-//
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+         print("fez scroll")
+    }
+    
+    //func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+     //   print("fez scroll")
+
 //        let activityView = UIActivityIndicatorView(style: .gray)
 //        activityView.center = self.view.center
 //
@@ -135,6 +134,6 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
 //        //sleep(2)
 //        //activityView.stopAnimating()
 //
-//    }
+ //   }
     
 }

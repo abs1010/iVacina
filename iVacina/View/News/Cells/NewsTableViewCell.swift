@@ -22,14 +22,14 @@ class NewsTableViewCell: UITableViewCell {
     
     func getReadingTime(noticia: NewsElement) -> String {
         
-       if noticia.publishedAt?.count ?? 0 <= 100 {
-        return "1 minuto de leitura"
+       if noticia.publishedAt?.count ?? 0 >= 300 {
+        return "3 minutos"
        }else if
-        noticia.publishedAt?.count ?? 0 <= 200 {
-        return "2 minuto de leitura"
+        noticia.publishedAt?.count ?? 0 >= 200 {
+        return "2 minutos"
         }
        else {
-        return "Mais de 3 minutos de leitura"
+        return "1 minuto"
         }
     
     }
