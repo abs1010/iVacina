@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */; };
+		1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */; };
+		1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */; };
 		4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA02361348500DC0941 /* HomeViewController.swift */; };
 		4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */; };
 		4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */; };
@@ -53,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		02481286E08E332928A0808E /* Pods_iVacina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVacina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDataProvider.swift; sourceTree = "<group>"; };
+		1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
+		1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocals.swift; sourceTree = "<group>"; };
 		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
 		4F90ABA02361348500DC0941 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DadosMedicoTableViewCell.xib; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 				BC57172C23593E8300E60909 /* NewsController.swift */,
 				BC571724235922D900E60909 /* NewsDataProvider.swift */,
 				BC5717BD235A9F0D00E60909 /* news.json */,
+				1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */,
+				1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 				4F90ABB2236134B900DC0941 /* Grupo.swift */,
 				4F90ABB3236134B900DC0941 /* Pessoa.swift */,
 				4F90ABB1236134B900DC0941 /* Vacina.swift */,
+				1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,16 +380,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,13 +436,16 @@
 				4F90ABAB236134A200DC0941 /* StatusCustomCell.swift in Sources */,
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
 				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
+				1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				BC5717272359236400E60909 /* Extensions.swift in Sources */,
 				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
 				4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */,
 				4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */,
 				4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */,
+				1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
+				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BCDE474223551BA3004F565A /* NewsTableViewCell.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
 				BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */,

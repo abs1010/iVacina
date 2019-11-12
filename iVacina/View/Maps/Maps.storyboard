@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w8u-6Q-DmN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w8u-6Q-DmN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,34 +17,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkh-3t-Qyi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hA-fc-GDI">
-                                <rect key="frame" x="148" y="621" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Localização atual"/>
-                                <connections>
-                                    <action selector="clicouLocalizacao:" destination="w8u-6Q-DmN" eventType="touchUpInside" id="nwI-t7-qh0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="4tf-5H-4Cm"/>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="trailing" secondItem="owL-Tc-Pfl" secondAttribute="trailing" id="60v-Ic-vUa"/>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="bottom" secondItem="owL-Tc-Pfl" secondAttribute="bottom" id="N4u-MH-OcK"/>
-                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="bottom" secondItem="Qkh-3t-Qyi" secondAttribute="bottom" id="Umw-w0-tuA"/>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="owL-Tc-Pfl" secondAttribute="top" id="XpA-oD-ccM"/>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="aWb-5H-tHf"/>
-                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="trailing" secondItem="Qkh-3t-Qyi" secondAttribute="trailing" id="sVq-Mt-3mH"/>
-                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="owL-Tc-Pfl" secondAttribute="top" id="tIz-K0-gPh"/>
+                            <constraint firstAttribute="bottom" secondItem="Qkh-3t-Qyi" secondAttribute="bottom" id="3lC-FY-BkO"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="trailing" secondItem="owL-Tc-Pfl" secondAttribute="trailing" id="BF7-S0-kva"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="Aii-Lg-Zca" secondAttribute="top" id="RkN-4p-ibo"/>
+                            <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="uEp-qG-PvS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="owL-Tc-Pfl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Maps" image="map" catalog="system" selectedImage="map.fill" id="Q50-GF-Eto"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapa" destination="Qkh-3t-Qyi" id="sOu-Yc-A1I"/>
+                        <outlet property="mapView" destination="Qkh-3t-Qyi" id="2AJ-jE-SJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftz-aL-qwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,7 +41,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map" catalog="system" width="64" height="58"/>
-        <image name="map.fill" catalog="system" width="64" height="54"/>
+        <image name="map" catalog="system" width="64" height="56"/>
+        <image name="map.fill" catalog="system" width="64" height="56"/>
     </resources>
 </document>
