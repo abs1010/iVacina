@@ -1,16 +1,26 @@
 PODS:
-  - SnapKit (5.0.1)
+  - Alamofire (4.9.1)
+  - lottie-ios (3.1.5)
+  - SDWebImage (5.3.1):
+    - SDWebImage/Core (= 5.3.1)
+  - SDWebImage/Core (5.3.1)
 
 DEPENDENCIES:
-  - SnapKit (~> 5.0.0)
+  - Alamofire
+  - lottie-ios
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - SnapKit
+    - Alamofire
+    - lottie-ios
+    - SDWebImage
 
 SPEC CHECKSUMS:
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
+  SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
 
-PODFILE CHECKSUM: cef4e03c5725b4c29376b951de555bac2fd2a61f
+PODFILE CHECKSUM: 497b14ec9363e735ed4b8cb16dd5d39d05d3785c
 
 COCOAPODS: 1.6.1

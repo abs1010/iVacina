@@ -29,8 +29,6 @@ class HomeViewController: UIViewController {
         self.homeTableView.register(UINib(nibName: "StatusCustomCell", bundle: nil), forCellReuseIdentifier: "statusCell")
         self.homeTableView.register(UINib(nibName: "DadosMedicoTableViewCell", bundle: nil), forCellReuseIdentifier: "dadosMedicoCell")
         
-        
-        
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         
         self.calendarLabel.text = self.getDate()
@@ -38,14 +36,14 @@ class HomeViewController: UIViewController {
         self.homeController.carregarPessoas()
     }
     @IBAction func editarAcao(_ sender: UIButton) {
-        
-        let storyboardProfile = UIStoryboard(name: "Profile", bundle: nil)
-        
-        if let viewController = storyboardProfile.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-            self.navigationController?.pushViewController(viewController, animated: true)
-            viewController.profileController.setPessoa(pessoa: self.homeController.pessoa)
-        }
+        self.configureProfile()
+        self.tabBarController?.selectedIndex = 3
+    }
     
+    func configureProfile() {
+        if let vc = self.tabBarController?.viewControllers?[3] as? ProfileViewController {
+            vc.profileController.setPessoa(pessoa: self.homeController.pessoa)
+        }
     }
     
     func getDate() -> String {
@@ -73,7 +71,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.homeController.setPessoa(index: indexPath.row)
+        let item = collectionView.cellForItem(at: indexPath)
+        item?.backgroundColor = Colors.azulClaroCustom
+        self.configureProfile()
         self.homeTableView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let item = collectionView.cellForItem(at: indexPath)
+        item?.backgroundColor = UIColor.clear
     }
 }
 
@@ -127,6 +133,4 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
-
-
 

@@ -17,13 +17,14 @@ class ProfileViewController: UIViewController {
     var profileController: ProfileController = ProfileController()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
-        
+         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.profileTableView.delegate = self
         self.profileTableView.dataSource = self
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
+        self.imagem.layer.cornerRadius = self.imagem.frame.size.height/2
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
         self.nomeTextField.text = self.profileController.getPessoa()?.nome
         self.imagem.image = UIImage(named: self.profileController.getPessoa()?.imagem ?? "")
@@ -72,6 +73,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
             
     }
-    
     
 }

@@ -7,101 +7,118 @@
 //
 
 import UIKit
-import SnapKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: BaseViewController {
     
-    @IBOutlet weak var listaNewsTableView: UITableView!
+    @IBOutlet private weak var listaNewsTableView: UITableView!
     
     var controller: NewsController?
-    var arrayOfNews: News?
-    
-    
-    //Colocar a Status Bar em branco
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//           return .lightContent
-//       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Loading
+        showLoading()
+        
+        //Delegate and protocols
+        NewsController().loadNews()
         self.controller = NewsController()
         
+        self.controller?.delegate = self
+        
+        self.controller?.loadNews()
+        
+        //table view Extension
+        self.listaNewsTableView.delegate = self
+        self.listaNewsTableView.dataSource = self
+        
+        //registering Custom Cells
         self.listaNewsTableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         self.listaNewsTableView.register(UINib(nibName: "News2TableViewCell", bundle: nil), forCellReuseIdentifier: "News2TableViewCell")
-        
-        //self.view.setGradientToView(colorOne: UIColor.azulEscuroCustom, colorTwo: UIColor.azulClaroCustom)
-        
-        self.controller?.getAListOfNews(completion: { (response, error) in
-            
-            if let _response = response {
-                
-                self.arrayOfNews = _response
-                self.listaNewsTableView.delegate = self
-                self.listaNewsTableView.dataSource = self
-            }
-            
-        })
         
     }
     
 }
 
-extension NewsViewController : UITableViewDataSource {
-   
+extension NewsViewController : NewsControllerDelegate {
+    func successOnLoadingNewsController() {
+        self.listaNewsTableView.reloadData()
+        hideLoading()
+    }
+    
+    func errorOnLoadingNewsController(error: Error?) {
+        hideLoading()
+    }
+}
+
+
+extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.arrayOfNews?.count ?? 0
+        return self.controller?.numberOfRowsInSection() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let count = self.arrayOfNews?.count ?? 0
-        let contadorSort = Int.random(in: 2...count - 1)
+        let contadorSort = Int.random(in: 2...(self.controller?.numberOfRowsInSection() ?? 0))
         
-        print(contadorSort)
-        //if indexPath.row == contadorSort {
-        if indexPath.row == 3 || indexPath.row == 8 {
-        self.listaNewsTableView.rowHeight = 166
-        let cell : News2TableViewCell = (tableView.dequeueReusableCell(withIdentifier: "News2TableViewCell", for: indexPath) as? News2TableViewCell)!
         
-        return cell
+        //CELL PEQUENA
+        if indexPath.row == contadorSort { // 3 || indexPath.row == 8 {
             
-        }
-        
-        else {
-        //---
-        self.listaNewsTableView.rowHeight = 400
-        let cell : NewsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell)! //{
+            self.listaNewsTableView.rowHeight = 166
+            let cell : News2TableViewCell = (tableView.dequeueReusableCell(withIdentifier: "News2TableViewCell", for: indexPath) as? News2TableViewCell)!
             
-            cell.setupCell(noticia: (self.arrayOfNews?[indexPath.row])!)
+            cell.setupCell(noticia: (self.controller?.loadCurrentNews(indexPath: indexPath))!)
             
             return cell
-        //}
-        
+            
+        }
+            
+            //CELL NORMAL
+        else {
+            
+            self.listaNewsTableView.rowHeight = 400
+            self.listaNewsTableView.rowHeight = UITableView.automaticDimension
+            let cell : NewsTableViewCell = (tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as? NewsTableViewCell)!
+            
+            cell.setupCell(noticia: (self.controller?.loadCurrentNews(indexPath: indexPath))!)
+            
+            return cell
+            
         }
         
-       // return UITableViewCell()
-        
     }
-    
-    
-}
-
-
-extension NewsViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailsOfNewsViewController") as? DetailsOfNewsViewController {
             
-            vc.selectedNew = indexPath.row
+            vc.selectedNew = self.controller?.loadCurrentNews(indexPath: indexPath)
             
             self.present(vc, animated: true, completion: nil)
             
         }
         
-        
-        
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        //print("fez scroll")
+
+//        let activityView = UIActivityIndicatorView(style: .gray)
+//        activityView.center = self.view.center
+//
+//        activityView.center = CGPoint(x: 100, y: 20)
+//        self.view.addSubview(activityView)
+//        activityView.startAnimating()
+//
+//
+//        self.controller?.loadNews()
+//        self.listaNewsTableView.reloadData()
+//        //activityView.stopAnimating()
+
+    }
+
 }
+
