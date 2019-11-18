@@ -21,13 +21,22 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         setupLocationManager()
-        self.mapView.addAnnotations(getPostoDeSaude())
-
+        
+        
+        self.getPostoDeSaude { (array, error) in
+            
+            if let arrayLocals = array {
+                self.mapView.addAnnotations(arrayLocals)
+            }
+        }
     }
     
-            func getPostoDeSaude() -> [MapsLocals] {
+    func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
+                
                 var arrayMapsLocals: [MapsLocals] = []
+               
                 MapsController().loadPostosDeSaude { (response, error) in
                     if let response = response {
                         for value in response {
@@ -35,10 +44,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
                             print (currentPostoDeSaude)
                             arrayMapsLocals.append(currentPostoDeSaude)
                         }
+                        completion(arrayMapsLocals, false)
                     }
+                
                 }
-                return arrayMapsLocals
-            }
+     }
     
     
     func centerLocation() {

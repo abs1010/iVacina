@@ -55,6 +55,8 @@ enum TurnoAtendimento: String, Codable {
 
 typealias PostoDeSaude = [PostoDeSaudeElement]
 
+
+
 class MapsLocals: NSObject, MKAnnotation {
     
     let title: String?
