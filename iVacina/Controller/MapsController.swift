@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
+
 class MapsController {
     
     func loadPostosDeSaude (completion: @escaping completion<PostoDeSaude?>) {

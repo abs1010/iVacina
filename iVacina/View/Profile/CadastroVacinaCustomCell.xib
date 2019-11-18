@@ -27,7 +27,6 @@
                         <rect key="frame" x="256" y="6.5" width="51" height="31"/>
                     </switch>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="ts8-jh-Cdm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1J0-bN-P7t"/>
                     <constraint firstAttribute="trailing" secondItem="zgx-d7-XFW" secondAttribute="trailing" constant="15" id="7pz-bL-ESV"/>
@@ -35,6 +34,7 @@
                     <constraint firstItem="zgx-d7-XFW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZOB-6l-beh"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="vacinaLabel" destination="ts8-jh-Cdm" id="Wwi-98-xk6"/>

@@ -7,28 +7,55 @@
 //
 
 import Foundation
+import Alamofire
 
+protocol NewsProviderDelegate : class {
+    func successOnLoadingNews(newsHeader: NewsHeader?)
+    func errorOnLoadingNews(error: Error?)
+}
 
+let BASE_URL = "https://newsapi.org/v2/top-headlines?"
+let COUNTRY = "br"
+let CATEGORY = "health"
 let API_KEY = "6ace23c5086742ea849174cf7e33169b"
 
-typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
-
-class NewsDataProvider {
+class NewsProvider {
     
-    func getNews(completion: @escaping completion<News?>) {
+    weak var delegate : NewsProviderDelegate?
+    
+    func loadNews() {
         
-        if let path = Bundle.main.path(forResource: "news", ofType: "json") {
+        let urlString: String = BASE_URL + "country=" + COUNTRY + "&category=" + CATEGORY + "&apiKey=" + API_KEY
+        //print(urlString)
+        
+        if let url: URL = URL(string: urlString) {
             
-            do {
+            Alamofire.request(url, method: .get).responseJSON { (response) in
                 
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                if response.response?.statusCode == 200 {
+                    
+                    do {
+                        
+                        let model = try JSONDecoder().decode(NewsHeader.self, from: response.data ?? Data())
+                        
+                        self.delegate?.successOnLoadingNews(newsHeader: model)
+                        
+                        print("\(model.articles?.count ?? 0) resultados obtidos da API.")
+                        //print(model?.articles?[1].author)
+                        
+                    }catch let error {
+                        print(error)
+                        print("Erro: Problema ao retrieve data")
+                        self.delegate?.errorOnLoadingNews(error: error)
+                    }
+                    
+                }
+                else {
+                    print("=============error")
+                    print(response.error ?? "")
+                    self.delegate?.errorOnLoadingNews(error: response.error)
+                }
                 
-                let decodeObject = try? JSONDecoder().decode(News.self, from: data)
-                
-                completion(decodeObject, false)
-                
-            }catch {
-                completion(nil, true)
             }
             
         }
