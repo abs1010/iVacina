@@ -42,7 +42,7 @@
         <!--Details Of News View Controller-->
         <scene sceneID="5Rn-8u-Q1W">
             <objects>
-                <viewController storyboardIdentifier="DetailsOfNewsViewController" modalPresentationStyle="fullScreen" id="plS-e9-tNl" customClass="DetailsOfNewsViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsOfNewsViewController" id="plS-e9-tNl" customClass="DetailsOfNewsViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a38-MG-TgC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

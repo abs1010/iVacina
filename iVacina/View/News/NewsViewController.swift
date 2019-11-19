@@ -21,7 +21,6 @@ class NewsViewController: BaseViewController {
         showLoading()
         
         //Delegate and protocols
-        NewsController().loadNews()
         self.controller = NewsController()
         
         self.controller?.delegate = self

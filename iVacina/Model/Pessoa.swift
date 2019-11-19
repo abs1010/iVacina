@@ -8,6 +8,19 @@
 
 import Foundation
 
+enum Grupo {
+    case Crianca, Adolescente, Adulto, Idoso
+}
+
+enum TipoSanguineo : String {
+    case A_ = "A-"
+    case B_ = "B-"
+    case O_ = "O-"
+    case A  = "A+"
+    case B  = "B+"
+    case O  = "O+"
+}
+
 struct Pessoa {
     var nome: String
     var listaVacina: [Vacina]
