@@ -12,7 +12,6 @@ import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController, MKMapViewDelegate {
     
-    var arrayPostoDeSaude: PostoDeSaude = []
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,38 +20,59 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setupLocationManager()
         
         
         self.getPostoDeSaude { (array, error) in
             
             if let arrayLocals = array {
+                print(arrayLocals[0].coordinate)
+                print(arrayLocals[1].coordinate)
+                print(arrayLocals[2].coordinate)
+                print(arrayLocals[3].coordinate)
                 self.mapView.addAnnotations(arrayLocals)
             }
         }
     }
     
+    //    func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
+    //
+    //                var arrayMapsLocals: [MapsLocals] = []
+    //
+    //                MapsController().loadPostosDeSaude { (response, error) in
+    //                    if let response = response {
+    //                        for value in response {
+    //                            let currentPostoDeSaude = MapsLocals(json: value)
+    //                            print (currentPostoDeSaude)
+    //                            arrayMapsLocals.append(currentPostoDeSaude)
+    //                        }
+    //                        completion(arrayMapsLocals, false)
+    //                    }
+    //
+    //                }
+    //     }
+    
     func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
-                
-                var arrayMapsLocals: [MapsLocals] = []
-               
-                MapsController().loadPostosDeSaude { (response, error) in
-                    if let response = response {
-                        for value in response {
-                            let currentPostoDeSaude = MapsLocals(json: value)
-                            print (currentPostoDeSaude)
-                            arrayMapsLocals.append(currentPostoDeSaude)
-                        }
-                        completion(arrayMapsLocals, false)
-                    }
-                
+        
+        var arrayMapsLocals: [MapsLocals] = []
+        
+        MapsDataProvider().loadPostosDeSaude(latitude: -23.5615, longitude: -46.656, raio: 1000.0) { (response, error) in
+            if let response = response {
+                for value in response {
+                    let currentPostoDeSaude = MapsLocals(json: value)
+                    print (currentPostoDeSaude)
+                    arrayMapsLocals.append(currentPostoDeSaude)
                 }
-     }
+                completion(arrayMapsLocals, false)
+            }
+        }
+    }
     
     
     func centerLocation() {
         if let currentLocation = locationManager.location?.coordinate{
+            print(currentLocation)
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
@@ -101,34 +121,34 @@ extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAutorization()
     }
-
+    
 }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
