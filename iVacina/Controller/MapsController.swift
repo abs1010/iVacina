@@ -12,14 +12,4 @@ typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
 
 class MapsController {
     
-    func loadPostosDeSaude (completion: @escaping completion<PostoDeSaude?>) {
-        
-        MapsDataProvider().loadPostosDeSaude { (response, error) in
-            if let response = response {
-                completion(response, false)
-            } else {
-                completion(nil, false)
-            }
-        }
-    }
 }

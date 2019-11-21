@@ -13,29 +13,22 @@ class MapsDataProvider {
     
     typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
     
-    func loadPostosDeSaude(completion: @escaping completion<PostoDeSaude?>) {
-        
-        let urlString: String = "http://mobile-aceite.tcu.gov.br/mapa-da-saude/rest/estabelecimentos"
-        if let url: URL = URL(string: urlString) {
-            
-            Alamofire.request(url).responseJSON { (response) in
-                
-                do {
-                    let decodeObject = try JSONDecoder().decode(PostoDeSaude.self, from: response.data ?? Data())
-                    
-                    completion(decodeObject, false)
-                    
-                } catch {
-                    completion(nil, true)
-                }
-            }
-        }
-    }
-    
     
     func loadPostosDeSaude(latitude: Double, longitude:Double, raio: Float, completion: @escaping completion<PostoDeSaude?>) {
+        //minha mock rio de Janeiro
+        let urlString: String = "https://private-ee73ab-postosdesaude.apiary-mock.com/postos/rio-de-janeiro"
         
-        let urlString: String = "http://mobile-aceite.tcu.gov.br:80/mapa-da-saude/rest/estabelecimentos/latitude/\(latitude)/longitude/\(longitude)/raio/\(raio)"
+        //mock Rio Modificada
+        //let urlString: String = "http://www.mocky.io/v2/5dd5c5543300002d00f3830f"
+        
+        //mock Rio
+        //let urlString: String = "http://www.mocky.io/v2/5dd5a0023300007d00f38293"
+        
+        //mock Sao Paulo
+        //let urlString: String = "http://www.mocky.io/v2/5dd5b91e33000023bdf382e8"
+        
+        //URL Original
+        //let urlString: String = "http://mobile-aceite.tcu.gov.br:80/mapa-da-saude/rest/estabelecimentos/latitude/\(latitude)/longitude/\(longitude)/raio/\(raio)"
         if let url: URL = URL(string: urlString) {
             Alamofire.request(url).responseJSON { (response) in
                 
@@ -49,6 +42,9 @@ class MapsDataProvider {
                         completion(decodeObject, false)
                         
                     } catch {
+                        print("================================")
+                        print(error)
+                        print("================================")
                         completion(nil, true)
                     }
                 }
