@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84B6AAA1CC36E0B0372CC298E5EE2D59"
+               BlueprintIdentifier = "E02621A8D2A7ADD8BB68C1E086F79634"
                BuildableName = "Pods_iVacina.framework"
                BlueprintName = "Pods-iVacina"
                ReferencedContainer = "container:Pods.xcodeproj">

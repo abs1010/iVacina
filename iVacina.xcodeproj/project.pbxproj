@@ -18,7 +18,6 @@
 		4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA6236134A100DC0941 /* StatusCustomCell.xib */; };
 		4F90ABAF236134A200DC0941 /* PessoaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA8236134A100DC0941 /* PessoaCell.swift */; };
 		4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB1236134B900DC0941 /* Vacina.swift */; };
-		4F90ABB6236134B900DC0941 /* Grupo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB2236134B900DC0941 /* Grupo.swift */; };
 		4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB3236134B900DC0941 /* Pessoa.swift */; };
 		4F90ABBB236134D700DC0941 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABB9236134D700DC0941 /* HomeController.swift */; };
 		4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABBC2361356600DC0941 /* ProfileController.swift */; };
@@ -55,6 +54,7 @@
 		BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473C23551AB0004F565A /* NewsViewController.swift */; };
 		BCDE473F23551AD5004F565A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE473E23551AD5004F565A /* News.swift */; };
 		BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */; };
+		BCFC76A4238377AD00AED3E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCFC76A3238377AD00AED3E6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +71,6 @@
 		4F90ABA6236134A100DC0941 /* StatusCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusCustomCell.xib; sourceTree = "<group>"; };
 		4F90ABA8236134A100DC0941 /* PessoaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PessoaCell.swift; sourceTree = "<group>"; };
 		4F90ABB1236134B900DC0941 /* Vacina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vacina.swift; sourceTree = "<group>"; };
-		4F90ABB2236134B900DC0941 /* Grupo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grupo.swift; sourceTree = "<group>"; };
 		4F90ABB3236134B900DC0941 /* Pessoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pessoa.swift; sourceTree = "<group>"; };
 		4F90ABB9236134D700DC0941 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		4F90ABBC2361356600DC0941 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		BCDE474523551CC3004F565A /* DetailsOfNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsOfNewsViewController.swift; sourceTree = "<group>"; };
 		BCEA0A3D235E160300C33D1E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = iVacina/Info.plist; sourceTree = "<group>"; };
 		BCEA0A6E235E95D600C33D1E /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		BCFC76A3238377AD00AED3E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				BCDE473E23551AD5004F565A /* News.swift */,
-				4F90ABB2236134B900DC0941 /* Grupo.swift */,
 				4F90ABB3236134B900DC0941 /* Pessoa.swift */,
 				4F90ABB1236134B900DC0941 /* Vacina.swift */,
 				1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */,
@@ -228,6 +227,7 @@
 			children = (
 				BC4DAFF02335794600AEC6F7 /* iVacina */,
 				BCEA0A3D235E160300C33D1E /* Info.plist */,
+				BCFC76A3238377AD00AED3E6 /* GoogleService-Info.plist */,
 				BC4DAFEF2335794600AEC6F7 /* Products */,
 				C62FA9D35B1DF07AAA9B9D42 /* Pods */,
 				B313066A86070179B25CE2A3 /* Frameworks */,
@@ -379,6 +379,7 @@
 				4F90ABC52361365000DC0941 /* Home.storyboard in Resources */,
 				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
 				4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */,
+				BCFC76A4238377AD00AED3E6 /* GoogleService-Info.plist in Resources */,
 				BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */,
 				4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */,
 				BCDE13472361249F006F6657 /* Maps.storyboard in Resources */,
@@ -400,16 +401,20 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -455,7 +460,6 @@
 				BCDE134923612516006F6657 /* Colors.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
 				4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */,
-				4F90ABB6236134B900DC0941 /* Grupo.swift in Sources */,
 				4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */,
 				4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */,
 				BC57172D23593E8300E60909 /* NewsController.swift in Sources */,
