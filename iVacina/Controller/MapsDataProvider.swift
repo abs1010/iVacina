@@ -13,7 +13,6 @@ class MapsDataProvider {
     
     typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
     
-    
     func loadPostosDeSaude(latitude: Double, longitude:Double, raio: Float, completion: @escaping completion<PostoDeSaude?>) {
         //minha mock rio de Janeiro
         let urlString: String = "https://private-ee73ab-postosdesaude.apiary-mock.com/postos/rio-de-janeiro"

@@ -24,7 +24,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         setupLocationManager()
         
         
-        self.getPostoDeSaude { (array, error) in
+        MapsController().getPostoDeSaude { (array, error) in
             
             if let arrayLocals = array {
                 print(arrayLocals[26].coordinate)
@@ -36,21 +36,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
-        
-        var arrayMapsLocals: [MapsLocals] = []
-        
-        MapsDataProvider().loadPostosDeSaude(latitude: -23.5615, longitude: -46.656, raio: 1000.0) { (response, error) in
-            if let response = response {
-                for value in response {
-                    let currentPostoDeSaude = MapsLocals(json: value)
-                    print (currentPostoDeSaude)
-                    arrayMapsLocals.append(currentPostoDeSaude)
-                }
-                completion(arrayMapsLocals, false)
-            }
-        }
-    }
     
     
     func centerLocation() {
