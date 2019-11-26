@@ -10,5 +10,9 @@ target 'iVacina' do
   pod 'Alamofire'
   pod 'lottie-ios'
   pod 'SDWebImage', '~> 5.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase'  
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 end

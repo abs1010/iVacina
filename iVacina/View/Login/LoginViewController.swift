@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -39,7 +40,6 @@ class LoginViewController: UIViewController {
         self.emailTextField.delegate = self
         self.senhaTextField.delegate = self
         
-        self.botaoEntrar.isEnabled = false
     }
     
     
@@ -51,6 +51,28 @@ class LoginViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    
+    @IBAction func clicouEntrar(_ sender: UIButton) {
+        
+        if let email = emailTextField.text, let senha = senhaTextField.text {
+            
+            Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
+                if error == nil {
+                    self.goToHome()
+                } else {
+                    Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
+                }
+            }
+        }
+    }
+    
+    func goToHome() {
+        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        
+        guard let vc: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -67,11 +89,4 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let email = self.emailTextField.text, let senha = self.senhaTextField.text{
-            if !email.isEmpty && !senha.isEmpty {
-                self.botaoEntrar.isEnabled = true
-            }
-        }
-    }
 }

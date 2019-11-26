@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>102971263497-odarlfdnv3bdupvle6i9qi46lo1ckh1g.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.102971263497-odarlfdnv3bdupvle6i9qi46lo1ckh1g</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCtAAydAvCmADFDBv2HvR_HB55_iv3PSdQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>102971263497</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.abstec.iVacina</string>
+	<key>PROJECT_ID</key>
+	<string>ivacina-d1cc7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ivacina-d1cc7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:102971263497:ios:9ac49bc0824a383e7086d8</string>
+	<key>DATABASE_URL</key>
+	<string>https://ivacina-d1cc7.firebaseio.com</string>
+</dict>
+</plist>

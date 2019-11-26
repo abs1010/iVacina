@@ -8,18 +8,24 @@
 
 import Foundation
 
-typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
+typealias completion <T> = (_ result: T, _ failure: NetworkingError?) -> Void
 
 class MapsController {
     
-    func loadPostosDeSaude (completion: @escaping completion<PostoDeSaude?>) {
+    func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
         
-        MapsDataProvider().loadPostosDeSaude { (response, error) in
+        var arrayMapsLocals: [MapsLocals] = []
+        
+        MapsDataProvider().loadPostosDeSaude(latitude: -23.5615, longitude: -46.656, raio: 1000.0) { (response, error) in
             if let response = response {
-                completion(response, false)
-            } else {
-                completion(nil, false)
+                for value in response {
+                    let currentPostoDeSaude = MapsLocals(json: value)
+                    print (currentPostoDeSaude)
+                    arrayMapsLocals.append(currentPostoDeSaude)
+                }
+                completion(arrayMapsLocals, nil)
             }
         }
     }
+    
 }
