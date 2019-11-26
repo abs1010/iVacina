@@ -41,4 +41,28 @@ class HomeController {
         return self.pessoa?.listaProximaVacina.count ?? 0
     }
     
+    func getPorcentagemVacinas() -> Float{
+        var sizeTomadas: Float = 0.0
+        var result: Float
+        var tamanhoListas: Int
+        
+        for status in self.pessoa?.listaVacina ?? [] {
+            if status.status {
+                sizeTomadas = sizeTomadas + 1.0
+            }
+        }
+        
+        tamanhoListas = (self.pessoa?.listaVacina.count ?? 0) + (self.pessoa?.listaProximaVacina.count ?? 0)
+        result = sizeTomadas/Float(tamanhoListas)
+        
+        return result
+    }
+    
+    func getStatusBarProgress() -> Float {
+        return self.getPorcentagemVacinas()
+    }
+    
+    func getStatusBarLabel() -> String {
+        return String(format: "%.0f", (self.getPorcentagemVacinas()*100)) + "%"
+    }
 }

@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calendarLabel: UILabel!
     @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak var porcentagemLabel: UILabel!
+    @IBOutlet weak var barraStatus: UIProgressView!
     
     var homeController: HomeController = HomeController()
     
@@ -34,7 +36,12 @@ class HomeViewController: UIViewController {
         self.calendarLabel.text = self.getDate()
         
         self.homeController.carregarPessoas()
+        
+        self.homeController.setPessoa(index: 0)
+        self.configureProfile()
+        
     }
+    
     @IBAction func editarAcao(_ sender: UIButton) {
         self.configureProfile()
         self.tabBarController?.selectedIndex = 3
@@ -44,6 +51,10 @@ class HomeViewController: UIViewController {
         if let vc = self.tabBarController?.viewControllers?[3] as? ProfileViewController {
             vc.profileController.setPessoa(pessoa: self.homeController.pessoa)
         }
+        
+        self.barraStatus.setProgress(self.homeController.getStatusBarProgress(), animated: false)
+        self.porcentagemLabel.text = self.homeController.getStatusBarLabel()
+        
     }
     
     func getDate() -> String {
