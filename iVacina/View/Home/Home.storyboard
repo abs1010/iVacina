@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,9 +128,11 @@
                     <navigationItem key="navigationItem" title="Meus dependentes" id="Bei-c8-GhJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barraStatus" destination="4eq-LZ-iiX" id="o44-SI-DZp"/>
                         <outlet property="calendarLabel" destination="2Fq-Vd-Tth" id="lSL-Yy-bRw"/>
                         <outlet property="homeCollectionView" destination="11l-5g-eFV" id="jky-lp-x1D"/>
                         <outlet property="homeTableView" destination="1FB-x2-byA" id="de6-sV-G3t"/>
+                        <outlet property="porcentagemLabel" destination="lma-et-ujo" id="WRY-oO-R6j"/>
                         <outlet property="statusLabel" destination="qHV-rs-cSR" id="1ye-AS-eUs"/>
                     </connections>
                 </viewController>
