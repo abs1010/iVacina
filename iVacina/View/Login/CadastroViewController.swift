@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class CadastroViewController: UIViewController {
 
@@ -33,14 +35,67 @@ class CadastroViewController: UIViewController {
         self.senhaTextField.formatarTextField()
         self.senha2TextField.formatarTextField()
         self.botaoCriarConta.formatarBotao()
-        
-        self.botaoCriarConta.isEnabled = false
     }
-
+    
+    
+    @IBAction func clicouCriarConta(_ sender: UIButton) {
+        if let email = emailTextField.text,
+            let senha = senhaTextField.text,
+            let senha2 = senha2TextField.text {
+            
+            if senha == senha2 {
+                Auth.auth().createUser(withEmail: email, password: senha) { (authResult, error) in
+                    if error == nil {
+                        self.registrarUsuario()
+                    } else {
+                        Alert().showAlert(title: "Erro", message: error?.localizedDescription , vc: self)
+                    }
+                }
+                
+            } else {
+                Alert().showAlert(title: "Erro", message: "Verificar senha: os valores informados não são iguais", vc: self)
+            }
+        }
+        
+    }
+    
     
     @IBAction func clicouCancelar(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+
+    
+    func registrarUsuario(){
+        let nome = nomeTextField.text ?? ""
+            let email = emailTextField.text ?? ""
+            let senha = senhaTextField.text ?? ""
+            
+            let context = Database.database().reference()
+            
+            let postObject = ["nome": nome, "email": email, "senha": senha]
+            
+            let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
+            
+            context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
+                if error == nil {
+                    self.goToHome()
+                    print("Passei por aqui ")
+                } else {
+                    if let error = error {
+                    print("Erro ao criar referencia do usuário no Firebase: \(error.localizedDescription)")
+                    }
+                }
+            }
+        
+    }
+    
+    func goToHome() {
+        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+        
+        guard let vc: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -62,11 +117,4 @@ extension CadastroViewController: UITextFieldDelegate{
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let nome = self.nomeTextField.text, let email = self.emailTextField.text, let senha = self.senhaTextField.text, let senha2 = self.senha2TextField.text {
-            if !nome.isEmpty && !email.isEmpty && !senha.isEmpty && !senha2.isEmpty {
-                self.botaoCriarConta.isEnabled = true
-            }
-        }
-    }
 }

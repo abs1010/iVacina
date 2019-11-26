@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FAB5367238DC10500C19B1F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAB5366238DC10500C19B1F /* Alert.swift */; };
 		1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */; };
 		1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */; };
 		1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		02481286E08E332928A0808E /* Pods_iVacina.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVacina.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FAB5366238DC10500C19B1F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDataProvider.swift; sourceTree = "<group>"; };
 		1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
 		1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocals.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				BCA3252A237C823300151E44 /* Animation */,
 				BCDE134823612516006F6657 /* Colors.swift */,
 				BC5717262359236400E60909 /* Extensions.swift */,
+				1FAB5366238DC10500C19B1F /* Alert.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -398,23 +401,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-iVacina/Pods-iVacina-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -468,6 +457,7 @@
 				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
 				1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
+				1FAB5367238DC10500C19B1F /* Alert.swift in Sources */,
 				BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */,
 				BC5717272359236400E60909 /* Extensions.swift in Sources */,
 				BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */,
