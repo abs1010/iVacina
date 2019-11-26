@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
+typealias completion <T> = (_ result: T, _ failure: NetworkingError?) -> Void
 
 class MapsController {
     
@@ -23,7 +23,7 @@ class MapsController {
                     print (currentPostoDeSaude)
                     arrayMapsLocals.append(currentPostoDeSaude)
                 }
-                completion(arrayMapsLocals, false)
+                completion(arrayMapsLocals, nil)
             }
         }
     }

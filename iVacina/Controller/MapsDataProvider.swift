@@ -11,10 +11,11 @@ import Alamofire
 
 class MapsDataProvider {
     
-    typealias completion <T> = (_ result: T, _ failure: Bool) -> Void
+    typealias completion <T> = (_ result: T, _ failure: NetworkingError?) -> Void
     
     func loadPostosDeSaude(latitude: Double, longitude:Double, raio: Float, completion: @escaping completion<PostoDeSaude?>) {
         //minha mock rio de Janeiro
+        
         let urlString: String = "https://private-ee73ab-postosdesaude.apiary-mock.com/postos/rio-de-janeiro"
         
         //mock Rio Modificada
@@ -38,14 +39,17 @@ class MapsDataProvider {
                     do {
                         let decodeObject = try JSONDecoder().decode(PostoDeSaude.self, from: response.data ?? Data())
                         
-                        completion(decodeObject, false)
+                        completion(decodeObject, nil)
                         
                     } catch {
                         print("================================")
                         print(error)
                         print("================================")
-                        completion(nil, true)
+                        completion(nil, .invalidResponse)
+                        
                     }
+                } else {
+                    completion(nil, .invalidRequest)
                 }
                 
             }
@@ -53,6 +57,17 @@ class MapsDataProvider {
         
     }
     
+}
+
+enum NetworkingError: String, Error {
+    
+    case invalidRequest = "Você fez uma requisição invalida"
+    case invalidResponse = "Há alguma coisa errada com a resposta que recebemos"
+}
+
+extension NetworkingError: LocalizedError {
+    
+    var errorDescription: String? { return NSLocalizedString(rawValue, comment: "")}
 }
 
 
