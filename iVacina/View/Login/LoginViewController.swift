@@ -64,8 +64,7 @@ class LoginViewController: UIViewController {
             
             Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
                 if error == nil {
-                    self.delegate?.loggedUser(email: email)
-                    self.goToHome()
+                    self.goToHome(email: email)
                     
                 } else {
                     Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
@@ -74,12 +73,12 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func goToHome() {
+    func goToHome(email: String) {
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
-        
+        self.delegate?.loggedUser(email: email)
         self.present(vc, animated: true, completion: nil)
     }
 }

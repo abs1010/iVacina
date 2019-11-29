@@ -34,6 +34,8 @@
 		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
 		BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFFA2335794800AEC6F7 /* LaunchScreen.storyboard */; };
 		BC4FB652235F610600961466 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4FB651235F610600961466 /* Profile.storyboard */; };
+		BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5365B42391BDD6001F9822 /* OptionTableViewCell.swift */; };
+		BC5365B72391BDD6001F9822 /* OptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5365B52391BDD6001F9822 /* OptionTableViewCell.xib */; };
 		BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC571724235922D900E60909 /* NewsDataProvider.swift */; };
 		BC5717272359236400E60909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717262359236400E60909 /* Extensions.swift */; };
 		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
@@ -97,6 +99,8 @@
 		BC4DAFF82335794800AEC6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4DAFFB2335794800AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC4FB651235F610600961466 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		BC5365B42391BDD6001F9822 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
+		BC5365B52391BDD6001F9822 /* OptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionTableViewCell.xib; sourceTree = "<group>"; };
 		BC571724235922D900E60909 /* NewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataProvider.swift; sourceTree = "<group>"; };
 		BC5717262359236400E60909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
@@ -211,8 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				BC4FB651235F610600961466 /* Profile.storyboard */,
-				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
 				BC82FE34238C59620091327D /* ManageProfilesViewController.swift */,
+				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
 				BC82FE43238F59060091327D /* Cells */,
 			);
 			path = Profile;
@@ -309,6 +313,8 @@
 			children = (
 				4F90ABC02361359F00DC0941 /* CadastroVacinaCustomCell.swift */,
 				4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */,
+				BC5365B42391BDD6001F9822 /* OptionTableViewCell.swift */,
+				BC5365B52391BDD6001F9822 /* OptionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				BC4DAFFC2335794800AEC6F7 /* LaunchScreen.storyboard in Resources */,
 				BC4FB652235F610600961466 /* Profile.storyboard in Resources */,
 				4F90ABC52361365000DC0941 /* Home.storyboard in Resources */,
+				BC5365B72391BDD6001F9822 /* OptionTableViewCell.xib in Resources */,
 				BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */,
 				4F90ABAD236134A200DC0941 /* StatusCustomCell.xib in Resources */,
 				BCFC76A4238377AD00AED3E6 /* GoogleService-Info.plist in Resources */,
@@ -512,6 +519,7 @@
 				1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */,
 				BC82FE48238F59D00091327D /* ProfileDataProvider.swift in Sources */,
 				BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */,
+				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,

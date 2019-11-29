@@ -12,6 +12,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
 
     @IBOutlet weak var vacinaLabel: UILabel!
     @IBOutlet weak var vacinaSwitch: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

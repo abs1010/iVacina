@@ -15,14 +15,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calendarLabel: UILabel!
     @IBOutlet weak var homeTableView: UITableView!
     
-    var homeController: HomeController? = HomeController()
-    //var homeController: HomeController?
+    var homeController: HomeController?// = HomeController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.homeController = HomeController()
+        self.homeController = HomeController()
         self.homeController?.delegate = self
         self.homeController?.setupController()
+        
         // Do any additional setup after loading the view.
         
         self.homeCollectionView.dataSource = self
