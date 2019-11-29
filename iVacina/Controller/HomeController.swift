@@ -8,7 +8,20 @@
 
 import Foundation
 
+protocol HomeControllerDelegate : class {
+    func loggedUserToView(email: String)
+}
+
 class HomeController {
+
+    var provider: LoginViewController?
+    weak var delegate: HomeControllerDelegate?
+    
+    func setupController(){
+        self.provider = LoginViewController()
+        self.provider?.delegate = self
+    }
+    
     var listaPessoa: [Pessoa]?
     var pessoa: Pessoa?
     
@@ -41,4 +54,12 @@ class HomeController {
         return self.pessoa?.listaProximaVacina.count ?? 0
     }
     
+}
+
+extension HomeController : LoginViewControllerDelegate {
+    
+    func loggedUser(email: String) {
+        self.delegate?.loggedUserToView(email: email)
+        print("Passou Home Controller\(email)")
+    }
 }

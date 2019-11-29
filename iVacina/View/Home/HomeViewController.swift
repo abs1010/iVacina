@@ -15,10 +15,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calendarLabel: UILabel!
     @IBOutlet weak var homeTableView: UITableView!
     
-    var homeController: HomeController = HomeController()
+    var homeController: HomeController? = HomeController()
+    //var homeController: HomeController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.homeController = HomeController()
+        self.homeController?.delegate = self
+        self.homeController?.setupController()
         // Do any additional setup after loading the view.
         
         self.homeCollectionView.dataSource = self
@@ -33,8 +37,9 @@ class HomeViewController: UIViewController {
         
         self.calendarLabel.text = self.getDate()
         
-        self.homeController.carregarPessoas()
+        self.homeController?.carregarPessoas()
     }
+    
     @IBAction func editarAcao(_ sender: UIButton) {
         self.configureProfile()
         self.tabBarController?.selectedIndex = 3
@@ -42,7 +47,7 @@ class HomeViewController: UIViewController {
     
     func configureProfile() {
         if let vc = self.tabBarController?.viewControllers?[3] as? ProfileViewController {
-            vc.profileController.setPessoa(pessoa: self.homeController.pessoa)
+            vc.profileController.setPessoa(pessoa: self.homeController?.pessoa)
         }
     }
     
@@ -59,18 +64,18 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.homeController.getTamanhoListaPessoa()
+        return self.homeController?.getTamanhoListaPessoa() ?? 0
     
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item: PessoaCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "pessoaItem", for: indexPath) as? PessoaCollectionViewCell
-        item?.setPessoa(pessoa: self.homeController.getPessoaSelecionada(index: indexPath.row))
+        item?.setPessoa(pessoa: (self.homeController?.getPessoaSelecionada(index: indexPath.row))!)
         return item ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.homeController.setPessoa(index: indexPath.row)
+        self.homeController?.setPessoa(index: indexPath.row)
         let item = collectionView.cellForItem(at: indexPath)
         item?.backgroundColor = Colors.azulClaroCustom
         self.configureProfile()
@@ -87,9 +92,9 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return self.homeController.getTamanhoListaVacina()
+            return self.homeController?.getTamanhoListaVacina() ?? 0
         case 1:
-            return self.homeController.getTamanhoListaProximaVacina()
+            return self.homeController?.getTamanhoListaProximaVacina() ?? 0
         default:
             return 1
         }
@@ -100,14 +105,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         let cell: StatusCustomCell? = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as? StatusCustomCell
         switch indexPath.section {
         case 0:
-            cell?.setStatusVacina(vacina: self.homeController.pessoa?.listaVacina[indexPath.row])
+            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaVacina[indexPath.row])
             return cell ?? UITableViewCell()
         case 1:
-            cell?.setStatusVacina(vacina: self.homeController.pessoa?.listaProximaVacina[indexPath.row])
+            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaProximaVacina[indexPath.row])
             return cell ?? UITableViewCell()
         default:
             let cell: DadosMedicoTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "dadosMedicoCell", for: indexPath) as? DadosMedicoTableViewCell
-            cell?.setCell(pessoa: self.homeController.pessoa)
+            cell?.setCell(pessoa: self.homeController?.pessoa)
             cell?.isUserInteractionEnabled = false
             return cell ?? UITableViewCell()
         }
@@ -134,3 +139,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+extension HomeViewController : HomeControllerDelegate {
+    
+    func loggedUserToView(email: String) {
+        self.statusLabel.text = email
+        print("Estou na ViewController\(email)")
+    }
+    
+}
