@@ -1,8 +1,8 @@
 //
-//  PessoaCell.swift
+//  ProfileDataProvider.swift
 //  iVacina
 //
-//  Created by Bruna Ferreira on 21/10/19.
+//  Created by Alan Silva on 27/11/19.
 //  Copyright © 2019 Alan Silva. All rights reserved.
 //
 

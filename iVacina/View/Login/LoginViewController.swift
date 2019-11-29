@@ -9,6 +9,10 @@
 import UIKit
 import FirebaseAuth
 
+protocol LoginViewControllerDelegate : class {
+    func loggedUser(email: String)
+}
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -16,6 +20,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var botaoEntrar: UIButton!
     @IBOutlet weak var botaoCriarConta: UIButton!
     @IBOutlet weak var botaoFacebook: UIButton!
+    
+    weak var delegate : LoginViewControllerDelegate?
     
     var imagem: UIImage? = UIImage(named: "fb-login-button-pt")
     
@@ -58,7 +64,9 @@ class LoginViewController: UIViewController {
             
             Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
                 if error == nil {
+                    self.delegate?.loggedUser(email: email)
                     self.goToHome()
+                    
                 } else {
                     Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
                 }
@@ -67,9 +75,10 @@ class LoginViewController: UIViewController {
     }
     
     func goToHome() {
-        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
         
-        guard let vc: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        
+        guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
         self.present(vc, animated: true, completion: nil)
     }

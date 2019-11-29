@@ -34,7 +34,6 @@ class NewsController {
         self.setupController()
         self.provider?.loadNews()
 
-        
     }
 
 
