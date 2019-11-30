@@ -14,8 +14,11 @@ class OptionTableViewCell: UITableViewCell {
     @IBOutlet weak var btnLista: UIButton!
     
     
-    
     func setupCell(){
+        
+    }
+    
+    @IBAction func btnGrupos(_ sender: UIButton) {
         
     }
     

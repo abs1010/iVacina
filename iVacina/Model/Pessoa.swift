@@ -39,23 +39,62 @@ struct Pessoa {
     var alergias: String?
 }
 
-enum vacinasCriancaEnum {
-    case gripe
-    case caxumba
+enum vacinasCriancaEnum: Int, CaseIterable {
+    case gripe = 0
+    case caxumba = 1
+    case none
 }
 
-enum vacinasAdultoEnum {
-    case duplaAdultoDT
-    case gripe
-    case meningiteBACWY
-    case hpv
-    case pneumonia
-    case herpesZoster
-    case febreAmarela
-    case hepatiteB
-    case tripliceViral
-    case hepatiteA
-    case varicela
+enum vacinasAdolescenteEnum: Int, CaseIterable {
+    case gripe = 0
+    case tripliceViral = 1
+    case hepatiteA = 2
+    case varicela = 3
+    case none
+}
+
+enum vacinasAdultoEnum: Int, CaseIterable {
+    case duplaAdultoDT = 0
+    case gripe = 1
+    case meningiteBACWY = 2
+    case hpv = 3
+    case pneumonia = 4
+    case herpesZoster = 5
+    case febreAmarela = 6
+    case hepatiteB = 7
+    case tripliceViral = 8
+    case hepatiteA = 9
+    case varicela = 10
+    case none
+}
+
+enum vacinasIdosoEnum: Int, CaseIterable {
+    case gripe = 0
+    case caxumba = 1
+    case none
+}
+
+enum vacinasGestanteEnum: Int, CaseIterable {
+    case hpv = 0
+    case gripe  = 1
+    case caxumba = 2
+}
+
+struct Dependente {
+    
+    var nome: String?
+    var imagem: String?
+    var grupo: Grupo
+    var tipoSanguineo: TipoSanguineo
+    var hipertenso: Bool?
+    var diabetico: Bool?
+    var doadorOrgaos: Bool?
+    var pcd: Bool?
+    var vacinasCrianca: [[vacinasCriancaEnum? : Bool?]]
+    var vacinasAdolescente: [[vacinasAdolescenteEnum? : Bool?]]
+    var vacinasAdulto: [[vacinasAdultoEnum? : Bool?]]
+    var vacinasIdoso: [[vacinasIdosoEnum? : Bool?]]
+    var vacinasGestante: [[vacinasGestanteEnum? : Bool?]]
 }
 
 class Person {
@@ -70,12 +109,13 @@ class Person {
     var doadorOrgaos: Bool?
     var pcd: Bool?
     var vacinasCrianca: [[vacinasCriancaEnum? : Bool?]]
-//    var vacinasAdolescente:
+    var vacinasAdolescente: [[vacinasAdolescenteEnum? : Bool?]]
     var vacinasAdulto: [[vacinasAdultoEnum? : Bool?]]
-//    var vacinasIdoso:
-//    var vacinasGestante:
+    var vacinasIdoso: [[vacinasIdosoEnum? : Bool?]]
+    var vacinasGestante: [[vacinasGestanteEnum? : Bool?]]
+    var dependentes: [String]
     
-    init(nome: String?, email: String?, imagem: String?, grupo: Grupo, tipoSanguineo: TipoSanguineo, hipertenso: Bool?, diabetico: Bool?, doadorOrgaos: Bool?, pcd: Bool?, vacinasCrianca: [[vacinasCriancaEnum? : Bool?]], vacinasAdulto: [[vacinasAdultoEnum? : Bool?]]) {
+    init(nome: String?, email: String?, imagem: String?, grupo: Grupo, tipoSanguineo: TipoSanguineo, hipertenso: Bool?, diabetico: Bool?, doadorOrgaos: Bool?, pcd: Bool?, vacinasCrianca: [[vacinasCriancaEnum? : Bool?]], vacinasAdolescente: [[vacinasAdolescenteEnum? : Bool?]], vacinasAdulto: [[vacinasAdultoEnum? : Bool?]], vacinasIdoso: [[vacinasIdosoEnum? : Bool?]], vacinasGestante: [[vacinasGestanteEnum? : Bool?]], dependentes: [String]) {
         self.nome = nome
         self.email = email
         self.imagem = imagem
@@ -86,7 +126,11 @@ class Person {
         self.doadorOrgaos = doadorOrgaos
         self.pcd = pcd
         self.vacinasCrianca = vacinasCrianca
+        self.vacinasAdolescente = vacinasAdolescente
         self.vacinasAdulto = vacinasAdulto
+        self.vacinasIdoso = vacinasIdoso
+        self.vacinasGestante = vacinasGestante
+        self.dependentes = dependentes
     }
     
 }

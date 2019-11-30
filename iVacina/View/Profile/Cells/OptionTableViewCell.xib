@@ -25,21 +25,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-6D-3Pt">
-                        <rect key="frame" x="294" y="11" width="16" height="22"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-6D-3Pt">
+                        <rect key="frame" x="280" y="5" width="26" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="16" id="RkU-gc-hXu"/>
+                            <constraint firstAttribute="width" constant="26" id="RkU-gc-hXu"/>
                         </constraints>
-                        <state key="normal" image="greaterthan.circle" catalog="system"/>
+                        <state key="normal">
+                            <attributedString key="attributedTitle">
+                                <fragment content="&gt;">
+                                    <attributes>
+                                        <font key="NSFont" metaFont="system" size="18"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                        </state>
+                        <connections>
+                            <action selector="btnGrupos:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gH1-qk-B5b"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="XDg-wv-Ysf" secondAttribute="bottom" constant="11.5" id="M8Z-3O-crz"/>
                     <constraint firstItem="XDg-wv-Ysf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11.5" id="TJo-7z-ayj"/>
                     <constraint firstItem="XDg-wv-Ysf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="TLX-fv-C3a"/>
-                    <constraint firstAttribute="trailing" secondItem="TUb-6D-3Pt" secondAttribute="trailing" constant="10" id="Yv5-kR-LXf"/>
+                    <constraint firstAttribute="trailing" secondItem="TUb-6D-3Pt" secondAttribute="trailing" constant="14" id="Yv5-kR-LXf"/>
                     <constraint firstAttribute="bottom" secondItem="TUb-6D-3Pt" secondAttribute="bottom" constant="11" id="tRX-9M-9xY"/>
-                    <constraint firstItem="TUb-6D-3Pt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="xtx-ff-31i"/>
+                    <constraint firstItem="TUb-6D-3Pt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xtx-ff-31i"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -51,7 +62,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="greaterthan.circle" catalog="system" width="64" height="60"/>
-    </resources>
 </document>

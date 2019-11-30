@@ -39,6 +39,8 @@
 		BC571725235922D900E60909 /* NewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC571724235922D900E60909 /* NewsDataProvider.swift */; };
 		BC5717272359236400E60909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5717262359236400E60909 /* Extensions.swift */; };
 		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
+		BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85523930AC000DE5457 /* GruposViewController.swift */; };
+		BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */; };
 		BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE34238C59620091327D /* ManageProfilesViewController.swift */; };
 		BC82FE37238DD36B0091327D /* TipoVacinasStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */; };
 		BC82FE3F238F4F020091327D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE3E238F4F010091327D /* LoginController.swift */; };
@@ -104,6 +106,8 @@
 		BC571724235922D900E60909 /* NewsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataProvider.swift; sourceTree = "<group>"; };
 		BC5717262359236400E60909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		BC66A85523930AC000DE5457 /* GruposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GruposViewController.swift; sourceTree = "<group>"; };
+		BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoSanguineoViewController.swift; sourceTree = "<group>"; };
 		BC82FE34238C59620091327D /* ManageProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfilesViewController.swift; sourceTree = "<group>"; };
 		BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoVacinasStrings.swift; sourceTree = "<group>"; };
 		BC82FE3E238F4F010091327D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				BC4FB651235F610600961466 /* Profile.storyboard */,
 				BC82FE34238C59620091327D /* ManageProfilesViewController.swift */,
 				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
+				BC66A85523930AC000DE5457 /* GruposViewController.swift */,
+				BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */,
 				BC82FE43238F59060091327D /* Cells */,
 			);
 			path = Profile;
@@ -508,6 +514,7 @@
 				BCDE474623551CC3004F565A /* DetailsOfNewsViewController.swift in Sources */,
 				BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */,
 				1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */,
+				BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */,
 				BC82FE41238F4F250091327D /* CadastroController.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				1FAB5367238DC10500C19B1F /* Alert.swift in Sources */,
@@ -522,6 +529,7 @@
 				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
+				BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
 				BC82FE37238DD36B0091327D /* TipoVacinasStrings.swift in Sources */,
 				BCDE13422361241B006F6657 /* CadastroViewController.swift in Sources */,
