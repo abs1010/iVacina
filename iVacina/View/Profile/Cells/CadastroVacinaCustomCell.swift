@@ -16,20 +16,15 @@ class CadastroVacinaCustomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.vacinaSwitch.isOn = false
-        // Initialization code
     }
+    
+    
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-    }
-    
-    func setCell(vacina: Vacina?){
-        if let _vacina =  vacina{
-            self.vacinaLabel.text = _vacina.nome
-            self.vacinaSwitch.isOn = _vacina.status
-        }
     }
     
     func setupCell(grupo: Grupo, indexPath: IndexPath){

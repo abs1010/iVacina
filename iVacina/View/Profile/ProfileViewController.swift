@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var imagem: UIImageView!
     @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet weak var profileTableView: UITableView!
@@ -48,28 +48,28 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
+        
         switch section {
         case 0:
-            return 2
+            return 6
         case 1:
             switch self.group {
             case .Crianca:
-                return vacinasCriancaEnum.allCases.count
+                return vacinasCriancaEnum.allCases.count - 1
             case .Adolescente:
-                return vacinasAdolescenteEnum.allCases.count
+                return vacinasAdolescenteEnum.allCases.count - 1
             case .Adulto:
-                return vacinasAdultoEnum.allCases.count
+                return vacinasAdultoEnum.allCases.count - 1
             case .Idoso:
-                return vacinasIdosoEnum.allCases.count
+                return vacinasIdosoEnum.allCases.count - 1
             case .Gestante:
-                return vacinasGestanteEnum.allCases.count
+                return vacinasGestanteEnum.allCases.count - 1
             }
             
         default:
             return 0
         }
-    
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,33 +79,71 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             
             if indexPath.row == 0 {
-            
-            let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-            cell.cellTitle.text = "Grupo"
-            
-           return cell
+                
+                let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
+                cell.cellTitle.text = "Grupo"
+                
+                return cell
                 
             }
             if indexPath.row == 1 {
-             
-             let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-             cell.cellTitle.text = "Tipo Sanguíneo "
-             
-            return cell
-                 
-             }
+                
+                let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
+                cell.cellTitle.text = "Tipo Sanguíneo "
+                
+                return cell
+                
+            }
             
-        case 1:
-
+            if indexPath.row == 2 {
+                
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.setupCell(grupo: group, indexPath: indexPath)
+                cell?.vacinaLabel.text = "Hipertenso(a)"
                 
                 return cell ?? UITableViewCell()
+                
+            }
+            
+            if indexPath.row == 3 {
+            
+                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                cell?.vacinaLabel.text = "Diabético(a)"
+                
+                return cell ?? UITableViewCell()
+                
+            }
+
+            if indexPath.row == 4 {
+            
+                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                cell?.vacinaLabel.text = "Doador de órgãos"
+                
+                return cell ?? UITableViewCell()
+                
+            }
+            
+            if indexPath.row == 5 {
+            
+                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                cell?.vacinaLabel.text = "PCD"
+                
+                return cell ?? UITableViewCell()
+                
+            }
+            
+            
+            
+        case 1:
+            
+            let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+            cell?.setupCell(grupo: group, indexPath: indexPath)
+            
+            return cell ?? UITableViewCell()
             
         default:
             
             return UITableViewCell()
-        
+            
         }
         return UITableViewCell()
     }
@@ -116,7 +154,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-       
+            
         case 0:
             return "Dados Pessois"
         case 1:
@@ -124,7 +162,28 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return ""
         }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Grupo
+        if indexPath.row == 0 {
             
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GruposViewController") as? GruposViewController {
+                
+                self.present(vc, animated: true, completion: nil)
+                
+            }
+            
+        }
+        
+        if indexPath.row == 1 {
+            
+            
+            
+        }
+        
     }
     
 }

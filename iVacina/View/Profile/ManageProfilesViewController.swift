@@ -15,9 +15,6 @@ class ManageProfilesViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pagControl: UIPageControl!
-    
-    
-    
     @IBOutlet weak var btnTrocarSenha: UIButton!
     
     override func viewDidLoad() {

@@ -11,11 +11,12 @@ import UIKit
 class GruposViewController: UIViewController {
 
     @IBOutlet weak var grupoTableView: UITableView!
-    var grupoArray : [String] = ["Criança", "Adoslecente", "Adulto", "Idoso", "Gestante"]
+
+    var controller : ProfileController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.controller = ProfileController()
         self.grupoTableView.delegate = self
         self.grupoTableView.dataSource = self
 
@@ -27,20 +28,31 @@ class GruposViewController: UIViewController {
 extension GruposViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.controller?.grupoArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = self.grupoArray[indexPath.row]
+        cell.textLabel?.text = self.controller?.grupoArray[indexPath.row]
         
         return cell
         
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.dismiss(animated: true) {
+            
+            print("Clicou na \(indexPath.row) linha")
+            
+            //self.controller?.profileViewController = ProfileViewController()
+            self.controller?.profileViewController?.group = .Crianca
+            self.controller?.profileViewController?.profileTableView.reloadData()
+        }
+        
+    }
     
     
 }
