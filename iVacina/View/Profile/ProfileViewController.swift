@@ -28,20 +28,54 @@ class ProfileViewController: UIViewController {
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
-        self.imagem.layer.cornerRadius = self.imagem.frame.size.height/2
+        //self.imagem.layer.cornerRadius = self.imagem.frame.size.height / 2
         
-        //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW
+        //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW E TEXTFIELD
         self.profileTableView.delegate = self
         self.profileTableView.dataSource = self
+        self.nomeTextField.delegate = self
         
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
         
+        
+    }
 
+//MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
+    
+    @IBAction func openCameraOrLibrary(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Adicionar foto", message: "Selecione uma opção", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            self.getImage(fromSourceType: .camera)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Album", style: .default, handler: { (action) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
+        
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
-//MARK: - VIEW WILL APPEAR
+    func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    //MARK: - VIEW WILL APPEAR
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -59,8 +93,8 @@ class ProfileViewController: UIViewController {
 
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-
-//MARK: - NUMBER OF ROWS IN SECTION
+    
+    //MARK: - NUMBER OF ROWS IN SECTION
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -86,8 +120,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
-
-//MARK: - CELL FOR ROW DA TABE VIEW
+    
+    //MARK: - CELL FOR ROW DA TABE VIEW
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -122,16 +156,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if indexPath.row == 3 {
-            
+                
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.vacinaLabel.text = "Diabético(a)"
                 
                 return cell ?? UITableViewCell()
                 
             }
-
-            if indexPath.row == 4 {
             
+            if indexPath.row == 4 {
+                
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.vacinaLabel.text = "Doador de órgãos"
                 
@@ -140,7 +174,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if indexPath.row == 5 {
-            
+                
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.vacinaLabel.text = "PCD"
                 
@@ -182,7 +216,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-//MARK: - DID SELECT
+    //MARK: - DID SELECT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -218,7 +252,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
 
 extension ProfileViewController : nameGruposViewControllerDelegate {
-
+    
     func selectedGroup(grupo: Grupo?) {
         self.group = grupo!
         self.profileTableView.reloadData()
@@ -233,4 +267,33 @@ extension ProfileViewController : TipoSanguineoViewControllerDelegate {
         print("\(tipoSanguineo) foi selecionado hein!")
     }
     
+}
+
+extension ProfileViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField.isEqual(self.nomeTextField){
+            self.nomeTextField.resignFirstResponder()
+        }
+        
+        return true
+        
+    }
+    
+}
+
+//MARK: - EXTENSION DA CAMERA
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        self.imagem.image = image
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }
