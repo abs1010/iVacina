@@ -39,47 +39,6 @@ struct Pessoa {
     var alergias: String?
 }
 
-enum vacinasCriancaEnum: Int, CaseIterable {
-    case gripe = 0
-    case caxumba = 1
-    case none
-}
-
-enum vacinasAdolescenteEnum: Int, CaseIterable {
-    case gripe = 0
-    case tripliceViral = 1
-    case hepatiteA = 2
-    case varicela = 3
-    case none
-}
-
-enum vacinasAdultoEnum: Int, CaseIterable {
-    case duplaAdultoDT = 0
-    case gripe = 1
-    case meningiteBACWY = 2
-    case hpv = 3
-    case pneumonia = 4
-    case herpesZoster = 5
-    case febreAmarela = 6
-    case hepatiteB = 7
-    case tripliceViral = 8
-    case hepatiteA = 9
-    case varicela = 10
-    case none
-}
-
-enum vacinasIdosoEnum: Int, CaseIterable {
-    case gripe = 0
-    case caxumba = 1
-    case none
-}
-
-enum vacinasGestanteEnum: Int, CaseIterable {
-    case hpv = 0
-    case gripe  = 1
-    case caxumba = 2
-}
-
 struct Dependente {
     
     var nome: String?

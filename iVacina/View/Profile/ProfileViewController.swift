@@ -17,25 +17,36 @@ class ProfileViewController: UIViewController {
     var profileController: ProfileController = ProfileController()
     
     var selectedUser: Person?
+    
+    //Carrega grupo Adulto por padrao
     var group: Grupo = .Adulto
+    
     //var selectedUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[ .gripe : true, .caxumba : false ]], vacinasAdolescente: [[ .gripe : true]], vacinasAdulto: [[ .duplaAdultoDT : false, .gripe : true, .meningiteBACWY : true, .hpv : true, .pneumonia : true, .herpesZoster : true, .febreAmarela : false, .hepatiteB : true, .tripliceViral : false, .hepatiteA : true, .varicela : false]], vacinasIdoso: [[ .gripe : true]], vacinasGestante: [[ .gripe : true]], dependentes: ["Davi de Franca"])
     
     override func viewDidLoad() {
-        self.selectedUser?.grupo = .Adulto
+        
+        //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
+        self.imagem.image = UIImage(named: "loading")
+        self.imagem.layer.cornerRadius = self.imagem.frame.size.height/2
+        
+        //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW
         self.profileTableView.delegate = self
         self.profileTableView.dataSource = self
+        
+        //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
         
-        self.imagem.image = UIImage(named: "loading")
-        self.imagem.layer.cornerRadius = self.imagem.frame.size.height/2
+
     }
+    
+//MARK: - VIEW WILL APPEAR
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.nomeTextField.text = self.profileController.getPessoa()?.nome
-        self.imagem.image = UIImage(named: self.profileController.getPessoa()?.imagem ?? "")
+        //self.imagem.image = UIImage(named: self.profileController.getPessoa()?.imagem ?? "")
     }
     
     @IBAction func btnVoltar(_ sender: UIButton) {
@@ -45,7 +56,11 @@ class ProfileViewController: UIViewController {
     
 }
 
+
+
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+
+//MARK: - NUMBER OF ROWS IN SECTION
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -71,6 +86,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+
+//MARK: - CELL FOR ROW DA TABE VIEW
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -156,7 +173,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
             
         case 0:
-            return "Dados Pessois"
+            return "Dados Pessoais"
         case 1:
             return "Marque as vacinas que tomou"
         default:
@@ -165,12 +182,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+//MARK: - DID SELECT
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //Grupo
+        //Chama ViewController de Grupo
         if indexPath.row == 0 {
             
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GruposViewController") as? GruposViewController {
+                
+                vc.delegate = self
                 
                 self.present(vc, animated: true, completion: nil)
                 
@@ -178,12 +199,38 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
+        //Chama ViewController de Tipo Sanguineo
         if indexPath.row == 1 {
             
-            
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipoSanguineoViewController") as? TipoSanguineoViewController {
+                
+                vc.delegate = self
+                
+                self.present(vc, animated: true, completion: nil)
+            }
             
         }
         
+    }
+    
+}
+
+//MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
+
+extension ProfileViewController : nameGruposViewControllerDelegate {
+
+    func selectedGroup(grupo: Grupo?) {
+        self.group = grupo!
+        self.profileTableView.reloadData()
+    }
+    
+}
+
+//MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
+
+extension ProfileViewController : TipoSanguineoViewControllerDelegate {
+    func selectedTipoSanguineo(tipoSanguineo: TipoSanguineo) {
+        print("\(tipoSanguineo) foi selecionado hein!")
     }
     
 }

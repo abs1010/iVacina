@@ -32,14 +32,37 @@ class CadastroVacinaCustomCell: UITableViewCell {
         if grupo == .Crianca {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
-            self.vacinaLabel.text = raw
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+            
+        }
+
+        if grupo == .Adolescente {
+            
+            let raw : String = "\(vacinasAdolescenteEnum(rawValue: indexPath.row) ?? vacinasAdolescenteEnum.none)"
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
             
         }
         
         if grupo == .Adulto {
             
             let raw : String = "\(vacinasAdultoEnum(rawValue: indexPath.row) ?? vacinasAdultoEnum.none)"
-            self.vacinaLabel.text = raw
+
+                self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+
+        }
+    
+        
+        if grupo == .Idoso {
+            
+            let raw : String = "\(vacinasIdosoEnum(rawValue: indexPath.row) ?? vacinasIdosoEnum.none)"
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+            
+        }
+        
+        if grupo == .Gestante {
+            
+            let raw : String = "\(vacinasGestanteEnum(rawValue: indexPath.row) ?? vacinasGestanteEnum.none)"
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
             
         }
         
