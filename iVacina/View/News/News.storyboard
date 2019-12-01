@@ -16,16 +16,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="400" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxD-bO-Lx5">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="jxD-bO-Lx5" secondAttribute="bottom" id="8fP-uf-inE"/>
-                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="trailing" secondItem="umh-P6-uQv" secondAttribute="trailing" id="L01-lT-tdY"/>
-                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="leading" secondItem="umh-P6-uQv" secondAttribute="leading" id="mXb-wf-Yp7"/>
-                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="top" secondItem="umh-P6-uQv" secondAttribute="top" id="wLb-2i-7dl"/>
+                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="leading" secondItem="umh-P6-uQv" secondAttribute="leading" id="0VG-Ml-yfQ"/>
+                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="top" secondItem="ACi-6z-Dnv" secondAttribute="top" id="DrP-78-9kY"/>
+                            <constraint firstAttribute="bottom" secondItem="jxD-bO-Lx5" secondAttribute="bottom" id="nVy-eo-pWc"/>
+                            <constraint firstItem="jxD-bO-Lx5" firstAttribute="trailing" secondItem="umh-P6-uQv" secondAttribute="trailing" id="qN0-c9-pVS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="umh-P6-uQv"/>
                     </view>
@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p74-Mj-1S6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="832"/>
+            <point key="canvasLocation" x="73.913043478260875" y="831.69642857142856"/>
         </scene>
         <!--Details Of News View Controller-->
         <scene sceneID="5Rn-8u-Q1W">
