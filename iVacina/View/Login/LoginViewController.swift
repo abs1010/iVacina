@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var botaoCriarConta: UIButton!
     @IBOutlet weak var botaoFacebook: UIButton!
     
+    var homeController: HomeController?
     var imagem: UIImage? = UIImage(named: "fb-login-button-pt")
     
     //Colocar a Status Bar em branco
@@ -58,7 +59,8 @@ class LoginViewController: UIViewController {
             
             Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
                 if error == nil {
-                    self.goToHome()
+                    self.goToHome(email: email)
+                    
                 } else {
                     Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
                 }
@@ -66,10 +68,15 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func goToHome() {
-        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+    func goToHome(email: String) {
         
-        guard let vc: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        
+        guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
+        
+        self.homeController?.initHomeViewController()
+        //self.homeController?.homeViewController?.homeController = HomeController()
+        self.homeController?.homeViewController?.loggedEmail = email
         
         self.present(vc, animated: true, completion: nil)
     }

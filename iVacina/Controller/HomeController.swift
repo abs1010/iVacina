@@ -4,11 +4,18 @@
 //
 //  Created by Bruna Ferreira on 18/10/19.
 //  Copyright © 2019 Bruna Ferreira. All rights reserved.
-//
+//  
 
 import Foundation
 
 class HomeController {
+    
+    var homeViewController: HomeViewController?
+    
+    func initHomeViewController(){
+        self.homeViewController = HomeViewController()
+    }
+    
     var listaPessoa: [Pessoa]?
     var pessoa: Pessoa?
     
