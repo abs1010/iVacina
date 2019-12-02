@@ -4,22 +4,16 @@
 //
 //  Created by Bruna Ferreira on 18/10/19.
 //  Copyright © 2019 Bruna Ferreira. All rights reserved.
-//
+//  
 
 import Foundation
 
-protocol HomeControllerDelegate : class {
-    func loggedUserToView(email: String)
-}
-
 class HomeController {
-
-    var provider: LoginViewController?
-    weak var delegate: HomeControllerDelegate?
     
-    func setupController(){
-        self.provider = LoginViewController()
-        self.provider?.delegate = self
+    var homeViewController: HomeViewController?
+    
+    func initHomeViewController(){
+        self.homeViewController = HomeViewController()
     }
     
     var listaPessoa: [Pessoa]?
@@ -54,12 +48,4 @@ class HomeController {
         return self.pessoa?.listaProximaVacina.count ?? 0
     }
     
-}
-
-extension HomeController : LoginViewControllerDelegate {
-    
-    func loggedUser(email: String) {
-        self.delegate?.loggedUserToView(email: email)
-        print("Passou Home Controller\(email)")
-    }
 }
