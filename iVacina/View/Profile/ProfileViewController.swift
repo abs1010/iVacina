@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var imagem: UIImageView!
-    @IBOutlet weak var nomeTextField: UITextField!
-    @IBOutlet weak var profileTableView: UITableView!
+    @IBOutlet private weak var imagem: UIImageView!
+    @IBOutlet private weak var nomeTextField: UITextField!
+    @IBOutlet private weak var profileTableView: UITableView!
     
     var profileController: ProfileController = ProfileController()
     
@@ -21,14 +22,12 @@ class ProfileViewController: UIViewController {
     //Carrega grupo Adulto por padrao
     var group: Grupo = .Adulto
     
-    //var selectedUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[ .gripe : true, .caxumba : false ]], vacinasAdolescente: [[ .gripe : true]], vacinasAdulto: [[ .duplaAdultoDT : false, .gripe : true, .meningiteBACWY : true, .hpv : true, .pneumonia : true, .herpesZoster : true, .febreAmarela : false, .hepatiteB : true, .tripliceViral : false, .hepatiteA : true, .varicela : false]], vacinasIdoso: [[ .gripe : true]], vacinasGestante: [[ .gripe : true]], dependentes: ["Davi de Franca"])
-    
     override func viewDidLoad() {
         
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
-        //self.imagem.layer.cornerRadius = self.imagem.frame.size.height / 2
+        self.imagem.layer.cornerRadius = self.imagem.frame.size.height / 2
         
         //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW E TEXTFIELD
         self.profileTableView.delegate = self
@@ -39,10 +38,9 @@ class ProfileViewController: UIViewController {
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
         
-        
     }
-
-//MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
+    
+    //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
     
     @IBAction func openCameraOrLibrary(_ sender: UIButton) {
         
@@ -75,22 +73,72 @@ class ProfileViewController: UIViewController {
     }
     
     
-    //MARK: - VIEW WILL APPEAR
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.nomeTextField.text = self.profileController.getPessoa()?.nome
-        //self.imagem.image = UIImage(named: self.profileController.getPessoa()?.imagem ?? "")
-    }
+    //MARK: - BUTTONS DA NAVIGATION
     
     @IBAction func btnVoltar(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
+        
+        print("Clicou no botao")
+        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: ["Davi de Franca"])
+        
+        saveInfo(field: tempUser)
+        
+    }
+    
+    func saveInfo(field: Person){
+        
+        //aponta par o banco de dados
+        let context = Database.database().reference()
+        
+        //fields
+        let nome = "Alan Teste"
+        let email = "abs101010@gmail.com"//self.selectedUser?.email
+        let imagem = "palmeiras"//UIImage(named: "palmeiras")
+        let grupo = "adulto"//self.group
+        let tipoSanguineo = field.nome
+        let hipertenso = field.hipertenso
+        let diabetico = field.diabetico
+        let doadorOrgaos = field.doadorOrgaos
+        let pcd = field.pcd
+        
+        //        vacinasCrianca: [[ .gripe : true, .caxumba : false ]],
+        //        vacinasAdolescente: [[ .gripe : true]],
+        //        vacinasAdulto: [[ .duplaAdultoDT : false, .gripe : true, .meningiteBACWY : true, .hpv : true, .pneumonia : true, .herpesZoster : true, .febreAmarela : false, .hepatiteB : true, .tripliceViral : false, .hepatiteA : true, .varicela : false]],
+        //        vacinasIdoso: [[ .gripe : true]],
+        //        vacinasGestante: [[ .gripe : true]],
+        //        dependentes: ["Davi de Franca"])
+        
+        let postObject:[String : Any] = ["name" : nome,
+                                         "email" : email,
+                                         "imagem" : imagem,
+                                         "grupo" : grupo,
+                                         "tipoSanguineo" : tipoSanguineo,
+                                         "hipertenso" : hipertenso,
+                                         "diabetico" : diabetico,
+                                         "doadorOrgaos" : doadorOrgaos,
+                                         "pcd" : pcd]
+        
+        
+        let formattedEmail = (email.replacingOccurrences(of: ".", with: ","))
+        print("salvando os dados")
+        
+        context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
+            
+            if error == nil {
+                print("Foi com sucesso")
+                //self.alertOk()
+            }else{
+                print("Deu erro: \(error)")
+            }
+            
+        }
+        
+    }
     
 }
-
-
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -121,7 +169,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    //MARK: - CELL FOR ROW DA TABE VIEW
+    //MARK: - CELL FOR ROW DA TABLE VIEW
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -221,7 +269,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //Chama ViewController de Grupo
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && indexPath.section == 0 {
             
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "GruposViewController") as? GruposViewController {
                 
@@ -234,7 +282,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         //Chama ViewController de Tipo Sanguineo
-        if indexPath.row == 1 {
+        if indexPath.row == 1 && indexPath.section == 0 {
             
             if let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipoSanguineoViewController") as? TipoSanguineoViewController {
                 

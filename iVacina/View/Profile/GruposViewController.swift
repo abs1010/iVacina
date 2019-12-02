@@ -75,6 +75,8 @@ extension GruposViewController : UITableViewDelegate, UITableViewDataSource {
             
             print("Clicou na \(indexPath.row) linha")
             
+            //PRECISA LIMPAR A TABLEVIEW COM AS MARCACOES DOS SWITCH
+            
         }
         
     }
