@@ -10,6 +10,10 @@ import Foundation
 
 class ProfileController {
     var pessoa: Pessoa?
+    var profileViewController : ProfileViewController?
+    
+    var grupoArray : [String] = ["Criança", "Adoslecente", "Adulto", "Idoso", "Gestante"]
+    var tipoSanguineoArray : [String] = ["A-", "B-", "O-", "A+", "B+", "O+"]
     
     func getTamanhoListaVacina() -> Int{
         return self.pessoa?.listaVacina.count ?? 0

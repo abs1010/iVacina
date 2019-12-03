@@ -10,39 +10,27 @@ import UIKit
 
 class ManageProfilesViewController: UIViewController {
     
-    enum tipoVacina {
-        case duplaAdultoDT
-        case gripe
-        case meningiteBACWY
-        case hpv
-        case pneumonia
-        case herpesZoster
-        case febreAmarela
-        case hepatiteB
-        case tripliceViral
-        case hepatiteA
-        case varicela
-    }
-   
-    
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pagControl: UIPageControl!
-    
-    
-    
     @IBOutlet weak var btnTrocarSenha: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //temp
+        self.nameTextField.text = "Bruna Marcela"
+        self.emailTextField.text = "seuemail.com.br"
+        //
 
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
-    
         self.btnTrocarSenha.formatarBotao()
         self.btnTrocarSenha.backgroundColor = UIColor.green
-        // Do any additional setup after loading the view.
+        
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+
     }
     
     
@@ -56,13 +44,36 @@ class ManageProfilesViewController: UIViewController {
     
     @IBAction func tappedAddDependent(_ sender: UIButton) {
         
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+      //  if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
                
-               self.present(vc, animated: true, completion: nil)
+      //         self.present(vc, animated: true, completion: nil)
                
-           }
+    //       }
 
     }
     
 
 }
+
+extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) {
+        
+        return cell
+        }
+        else {
+            
+            return UICollectionViewCell()
+            
+        }
+    }
+    
+    
+}
+
+

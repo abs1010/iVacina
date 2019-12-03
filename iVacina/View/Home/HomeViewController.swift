@@ -15,14 +15,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calendarLabel: UILabel!
     @IBOutlet weak var homeTableView: UITableView!
     
-    var homeController: HomeController? = HomeController()
-    //var homeController: HomeController?
+    var homeController: HomeController?// = HomeController()
+    var loggedEmail: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.homeController = HomeController()
-        self.homeController?.delegate = self
-        self.homeController?.setupController()
+        
+        if self.homeController == nil {
+           self.homeController = HomeController()
+        }
+        self.statusLabel.text = self.loggedEmail
         // Do any additional setup after loading the view.
         
         self.homeCollectionView.dataSource = self
@@ -135,15 +137,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             return "Dados médico"
         }
-    }
-    
-}
-
-extension HomeViewController : HomeControllerDelegate {
-    
-    func loggedUserToView(email: String) {
-        self.statusLabel.text = email
-        print("Estou na ViewController\(email)")
     }
     
 }
