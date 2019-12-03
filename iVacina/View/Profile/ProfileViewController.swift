@@ -81,12 +81,62 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
-        
+        //remover - temporario
         let dependente1: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
          let dependente2: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
 
-        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[ .BCG : true, .Hepatite_B : false, .Penta_1_Dose : true, .Poliomielite_1_Dose : false, .Poliomielite_2_Dose : true, .Poliomielite_3_Dose : false, .Pneumococica_10 : true, .Rotavirus_Humano_1_Dose : false, .Meningococica_C : true, .Penta_2_Dose : false, .Pneumococica_10_Valente : true, .Rotavirus_Humano_2_Dose : false, .Febre_Amarela : true, .Triplice_Viral : false, .Pneumococica_Reforco : true, .Meningococica_Reforco : false, .Hepatite_A : true, .Tetra_Viral : false, .DTP : true, .Varicela : false]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: [dependente1, dependente2])
-        
+        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false,
+            vacinasCrianca: [[ .BCG : true,
+                               .Hepatite_B : false,
+                               .Penta_1_Dose : true,
+                               .Poliomielite_1_Dose : false,
+                               .Poliomielite_2_Dose : true,
+                               .Poliomielite_3_Dose : false,
+                               .Pneumococica_10 : true,
+                               .Rotavirus_Humano_1_Dose : false,
+                               .Meningococica_C : true,
+                               .Penta_2_Dose : false,
+                               .Pneumococica_10_Valente : true,
+                               .Rotavirus_Humano_2_Dose : false,
+                               .Febre_Amarela : true,
+                               .Triplice_Viral : false,
+                               .Pneumococica_Reforco : true,
+                               .Meningococica_Reforco : false,
+                               .Hepatite_A : true,
+                               .Tetra_Viral : false,
+                               .DTP : true,
+                               .Varicela : false]],
+            vacinasAdolescente: [[ .HPV_1_Dose : true,
+                                   .HPV_2_Dose : true,
+                                   .Meningococica_C : true,
+                                   .Hepatite_B : true,
+                                   .Febre_Amarela_1_Dose : true,
+                                   .Dupla_Adulto_DT : true,
+                                   .Triplice_Viral : true,
+                                   .Pneumococica_23_Valente : true]],
+            vacinasAdulto: [[.Dupla_Adulto_DT : true,
+                             .Gripe : true,
+                             .Meningite_BACWY : true,
+                             .Hpv : true,
+                             .Pneumonia : true,
+                             .Herpes_Zoster : true,
+                             .Febre_Amarela : true,
+                             .Hepatite_B : true,
+                             .Triplice_Viral : true,
+                             .Hepatite_A : true,
+                             .Varicela : true]],
+            vacinasIdoso: [[ .Hepatite_B : true,
+                             .Febre_Amarela : true,
+                             .Dupla_Adulto_DT : true,
+                             .Pneumococica_23_Valente : true,
+                             .Gripe_Anual : true]],
+            vacinasGestante: [[.Hepatite_B : true,
+                               .Dupla_Adulto_DT : true,
+                               .dTpa : true,
+                               .Influenza : true]],
+            dependentes: [dependente1, dependente2])
+
+        //Calling the saving method
         self.profileController.saveInfo(person: tempUser)
         
     }
@@ -180,8 +230,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell ?? UITableViewCell()
                 
             }
-            
-            
             
         case 1:
             

@@ -50,16 +50,6 @@ class ProfileController {
         let doadorOrgaos = person?.doadorOrgaos
         let pcd = person?.pcd
         
-        let personalData:[String : Any] = ["name" : nome ?? "",
-                                           "email" : email ?? "",
-                                           "imagem" : imagem ?? "",
-                                           "grupo" : grupo,
-                                           "tipoSanguineo" : tipoSanguineo ?? "",
-                                           "hipertenso" : hipertenso ?? "",
-                                           "diabetico" : diabetico ?? "",
-                                           "doadorOrgaos" : doadorOrgaos ?? "",
-                                           "pcd" : pcd ?? ""]
-        
         //Vacinas Crianca
         let BCG_CR                     = person?.vacinasCrianca[0][.BCG]
         let Hepatite_B_CR              = person?.vacinasCrianca[0][.Hepatite_B]
@@ -82,6 +72,53 @@ class ProfileController {
         let DTP_CR                     = person?.vacinasCrianca[0][.DTP]
         let Varicela_CR                = person?.vacinasCrianca[0][.Varicela]
         
+        //Vacinas Adolescente
+        let HPV_1_Dose_AD              = person?.vacinasAdolescente[0][.HPV_1_Dose]
+        let HPV_2_Dose_AD              = person?.vacinasAdolescente[0][.HPV_2_Dose]
+        let Meningococica_C_AD         = person?.vacinasAdolescente[0][.Meningococica_C]
+        let Hepatite_B_AD              = person?.vacinasAdolescente[0][.Hepatite_B]
+        let Febre_Amarela_1_Dose_AD    = person?.vacinasAdolescente[0][.Febre_Amarela_1_Dose]
+        let Dupla_Adulto_DT_AD         = person?.vacinasAdolescente[0][.Dupla_Adulto_DT]
+        let Triplice_Viral_AD          = person?.vacinasAdolescente[0][.Triplice_Viral]
+        let Pneumococica_23_Valente_AD = person?.vacinasAdolescente[0][.Pneumococica_23_Valente]
+        
+        //Vacinas Adulto
+        let Dupla_Adulto_DT_ADU        = person?.vacinasAdulto[0][.Dupla_Adulto_DT]
+        let Gripe_ADU                  = person?.vacinasAdulto[0][.Gripe]
+        let Meningite_BACWY_ADU        = person?.vacinasAdulto[0][.Meningite_BACWY]
+        let Hpv_ADU                    = person?.vacinasAdulto[0][.Hpv]
+        let Pneumonia_ADU              = person?.vacinasAdulto[0][.Pneumonia]
+        let Herpes_Zoster_ADU          = person?.vacinasAdulto[0][.Herpes_Zoster]
+        let Febre_Amarela_ADU          = person?.vacinasAdulto[0][.Febre_Amarela]
+        let Hepatite_B_ADU             = person?.vacinasAdulto[0][.Hepatite_B]
+        let Triplice_Viral_ADU         = person?.vacinasAdulto[0][.Triplice_Viral]
+        let Hepatite_A_ADU             = person?.vacinasAdulto[0][.Hepatite_A]
+        let Varicela_ADU               = person?.vacinasAdulto[0][.Varicela]
+        
+        //Vacinas Idoso
+        let Hepatite_B_ID              = person?.vacinasIdoso[0][.Hepatite_B]
+        let Febre_Amarela_ID           = person?.vacinasIdoso[0][.Febre_Amarela]
+        let Dupla_Adulto_DT_ID         = person?.vacinasIdoso[0][.Dupla_Adulto_DT]
+        let Pneumococica_23_Valente_ID = person?.vacinasIdoso[0][.Pneumococica_23_Valente]
+        let Gripe_Anual_ID             = person?.vacinasIdoso[0][.Gripe_Anual]
+        
+        //Vacinas Gestante
+        let Hepatite_B_GES             = person?.vacinasGestante[0][.Hepatite_B]
+        let Dupla_Adulto_DT_GES        = person?.vacinasGestante[0][.Dupla_Adulto_DT]
+        let dTpa_GES                   = person?.vacinasGestante[0][.dTpa]
+        let Influenza_GES              = person?.vacinasGestante[0][.Influenza]
+        
+        let personalData:[String : Any] = ["name" : nome ?? "",
+                                           "email" : email ?? "",
+                                           "imagem" : imagem ?? "",
+                                           "grupo" : grupo,
+                                           "tipoSanguineo" : tipoSanguineo ?? "",
+                                           "hipertenso" : hipertenso ?? "",
+                                           "diabetico" : diabetico ?? "",
+                                           "doadorOrgaos" : doadorOrgaos ?? "",
+                                           "pcd" : pcd ?? ""]
+        
+        
         let vacinasCrianca:[String : Any] = [ "BCG" : BCG_CR! ?? "",
                                               "Hepatite_B" : Hepatite_B_CR! ?? "",
                                               "Penta_1_Dose" : Penta_1_Dose_CR! ?? "",
@@ -103,16 +140,6 @@ class ProfileController {
                                               "DTP" : DTP_CR! ?? "",
                                               "Varicela" : Varicela_CR! ?? ""]
         
-        //Vacinas Adolescente
-        let HPV_1_Dose_AD              = person?.vacinasAdolescente[0][.HPV_1_Dose]
-        let HPV_2_Dose_AD              = person?.vacinasAdolescente[0][.HPV_2_Dose]
-        let Meningococica_C_AD         = person?.vacinasAdolescente[0][.Meningococica_C]
-        let Hepatite_B_AD              = person?.vacinasAdolescente[0][.Hepatite_B]
-        let Febre_Amarela_1_Dose_AD    = person?.vacinasAdolescente[0][.Febre_Amarela_1_Dose]
-        let Dupla_Adulto_DT_AD         = person?.vacinasAdolescente[0][.Dupla_Adulto_DT]
-        let Triplice_Viral_AD          = person?.vacinasAdolescente[0][.Triplice_Viral]
-        let Pneumococica_23_Valente_AD = person?.vacinasAdolescente[0][.Pneumococica_23_Valente]
-
         let vacinasAdolescente:[String : Any] = [ "HPV_1_Dose" : HPV_1_Dose_AD! ?? "",
                                                   "HPV_2_Dose" : HPV_2_Dose_AD! ?? "",
                                                   "Meningococica_C" : Meningococica_C_AD! ?? "",
@@ -122,19 +149,6 @@ class ProfileController {
                                                   "Triplice_Viral" : Triplice_Viral_AD! ?? "",
                                                   "Pneumococica_23_Valente" : Pneumococica_23_Valente_AD! ?? ""]
         
-        //Vacinas Adulto
-        let Dupla_Adulto_DT_ADU        = person?.vacinasAdulto[0][.Dupla_Adulto_DT]
-        let Gripe_ADU                  = person?.vacinasAdulto[0][.Gripe]
-        let Meningite_BACWY_ADU        = person?.vacinasAdulto[0][.Meningite_BACWY]
-        let Hpv_ADU                    = person?.vacinasAdulto[0][.Hpv]
-        let Pneumonia_ADU              = person?.vacinasAdulto[0][.Pneumonia]
-        let Herpes_Zoster_ADU          = person?.vacinasAdulto[0][.Herpes_Zoster]
-        let Febre_Amarela_ADU          = person?.vacinasAdulto[0][.Febre_Amarela]
-        let Hepatite_B_ADU             = person?.vacinasAdulto[0][.Hepatite_B]
-        let Triplice_Viral_ADU         = person?.vacinasAdulto[0][.Triplice_Viral]
-        let Hepatite_A_ADU             = person?.vacinasAdulto[0][.Hepatite_A]
-        let Varicela_ADU               = person?.vacinasAdulto[0][.Varicela]
-
         let vacinasAdulto:[String : Any] = [ "Dupla_Adulto_DT" : Dupla_Adulto_DT_ADU! ?? "",
                                              "Gripe" : Gripe_ADU! ?? "",
                                              "Meningite_BACWY" : Meningite_BACWY_ADU! ?? "",
@@ -147,29 +161,17 @@ class ProfileController {
                                              "Hepatite_A" : Hepatite_A_ADU! ?? "",
                                              "Varicela" : Varicela_ADU! ?? ""]
         
-//
-//        enum vacinasIdosoEnum: Int, CaseIterable {
-//            case Hepatite_B = 0
-//            case Febre_Amarela = 1
-//            case Dupla_Adulto_DT = 2
-//            case Pneumococica_23_Valente = 3
-//            case Gripe_Anual = 4
-//            case none
-//        }
-//
-//        enum vacinasGestanteEnum: Int, CaseIterable {
-//            case Hepatite_B = 0
-//            case Dupla_Adulto_DT = 1
-//            case dTpa = 2
-//            case Influenza = 3
-//            case none
-//        }
-//
+        let vacinasIdoso:[String : Any] = [ "Hepatite_B" : Hepatite_B_ID! ?? "",
+                                            "Febre_Amarela" : Febre_Amarela_ID! ?? "",
+                                            "Dupla_Adulto_DT" : Dupla_Adulto_DT_ID! ?? "",
+                                            "Pneumococica_23_Valente" : Pneumococica_23_Valente_ID! ?? "",
+                                            "Gripe_Anual" : Gripe_Anual_ID! ?? ""]
         
+        let vacinasGestante:[String : Any] = [ "Hepatite_B" : Hepatite_B_GES! ?? "",
+                                               "Dupla_Adulto_DT" : Dupla_Adulto_DT_GES! ?? "",
+                                               "dTpa" : dTpa_GES! ?? "",
+                                               "Influenza" : Influenza_GES! ?? ""]
         
-        
-        
-
         let formattedEmail = (email?.replacingOccurrences(of: ".", with: ","))!
         //GRAVANDO OS DADOS PESSOAS
         context.child("user/profile").child(formattedEmail).setValue(personalData) { (error, context) in
@@ -211,7 +213,7 @@ class ProfileController {
             
         }
         //GRAVANDO AS VACINAS DE IDOSO
-        context.child("user/profile").child(formattedEmail).child("vacinasIdoso").setValue(vacinasCrianca) { (error, context) in
+        context.child("user/profile").child(formattedEmail).child("vacinasIdoso").setValue(vacinasIdoso) { (error, context) in
             if error == nil {
                 print("Dados das vacinas de \(email ?? "") salvos com sucesso")
                 //self.alertOk()
@@ -221,7 +223,7 @@ class ProfileController {
             
         }
         //GRAVANDO AS VACINAS DE GESTANTE
-        context.child("user/profile").child(formattedEmail).child("vacinasGestante").setValue(vacinasCrianca) { (error, context) in
+        context.child("user/profile").child(formattedEmail).child("vacinasGestante").setValue(vacinasGestante) { (error, context) in
             if error == nil {
                 print("Dados das vacinas de \(email ?? "") salvos com sucesso")
                 //self.alertOk()
@@ -231,21 +233,43 @@ class ProfileController {
             
         }
         
-//DEPENDENTES
-        
-        let nomedependente = "Davi Silva"
-
-        
-        context.child("user/profile").child(formattedEmail).child("dependentes/\(nomedependente)").setValue(vacinasCrianca) { (error, context) in
-            if error == nil {
-                print("Dados das vacinas de \(email) salvos com sucesso")
-                //self.alertOk()
-            }else{
-                print("Deu erro: \(error.debugDescription)")
+        //DEPENDENTES
+        if let arrayDep = person?.dependentes {
+            var seq = 0
+            
+            for dependent in arrayDep {
+                
+                let nome = dependent?.nome
+                let imagem = dependent?.imagem
+                let grupo = String("\(dependent?.grupo)")
+                let tipoSanguineo = dependent?.nome
+                let hipertenso = dependent?.hipertenso
+                let diabetico = dependent?.diabetico
+                let doadorOrgaos = dependent?.doadorOrgaos
+                
+                let dependentData:[String : Any] = ["name" : nome ?? "",
+                                                    "imagem" : imagem ?? "",
+                                                    "grupo" : grupo,
+                                                    "tipoSanguineo" : tipoSanguineo ?? "",
+                                                    "hipertenso" : hipertenso ?? "",
+                                                    "diabetico" : diabetico ?? "",
+                                                    "doadorOrgaos" : doadorOrgaos ?? "",
+                                                    "pcd" : pcd ?? ""]
+                
+                context.child("user/profile").child(formattedEmail).child("dependentes/\(seq)").setValue(dependentData) { (error, context) in
+                    if error == nil {
+                        print("Dados do dependente \(String(describing: nome)) - \(seq) salvos com sucesso")
+                        //self.alertOk()
+                    }else{
+                        print("Deu erro: \(error.debugDescription)")
+                    }
+                    
+                }
+                
+                seq += 1
+                
             }
-
         }
-        
         
     }
     
