@@ -27,10 +27,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         MapsController().getPostoDeSaude { (array, error) in
             
             if let arrayLocals = array {
-                print(arrayLocals[26].coordinate)
-                print(arrayLocals[27].coordinate)
-                print(arrayLocals[28].coordinate)
-                print(arrayLocals[29].coordinate)
+                print(arrayLocals[1].coordinate)
+                print(arrayLocals[2].coordinate)
+                print(arrayLocals[3].coordinate)
+                print(arrayLocals[4].coordinate)
                 self.mapView.addAnnotations(arrayLocals)
             }
         }
