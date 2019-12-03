@@ -22,20 +22,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         setupLocationManager()
-        
-        
-        MapsController().getPostoDeSaude { (array, error) in
-            
-            if let arrayLocals = array {
-                print(arrayLocals[1].coordinate)
-                print(arrayLocals[2].coordinate)
-                print(arrayLocals[3].coordinate)
-                print(arrayLocals[4].coordinate)
-                self.mapView.addAnnotations(arrayLocals)
-            }
-        }
+
     }
-    
     
     
     func centerLocation() {
@@ -44,6 +32,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
+            
         }
     }
     
@@ -83,7 +72,17 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
 
 extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         centerLocation()
+        
+        if let currentLocation = locationManager.location?.coordinate{
+        MapsController().getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
+            
+            if let arrayLocals = array {
+                self.mapView.addAnnotations(arrayLocals)
+            }
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
