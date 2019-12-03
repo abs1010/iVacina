@@ -8,15 +8,45 @@
 
 import UIKit
 
+//protocol CadastroVacinaCustomCellDelegate {
+//    func changeOfState(indexPath: Int, state: Bool)
+//}
+
 class CadastroVacinaCustomCell: UITableViewCell {
     
     @IBOutlet weak var vacinaLabel: UILabel!
     @IBOutlet weak var vacinaSwitch: UISwitch!
     
+    //private var index : Int
+    
+  //  var delegate : CadastroVacinaCustomCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.vacinaSwitch.isOn = false
+        self.vacinaSwitch.backgroundColor = .azulClaroCustom
+        self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
     }
+    
+    @IBAction func changedStateOnSwitch(_ sender: UISwitch) {
+        
+        //self.delegate?.changeOfState(indexPath: self.index, state: sender.isOn)
+        
+        if sender.isOn {
+            print("Liguei...\(self.vacinaLabel.text)")
+            self.vacinaSwitch.backgroundColor = .azulEscuroCustom
+            self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
+        }
+        else {
+            print("Desliguei huhu...\(self.vacinaLabel.text)")
+            self.vacinaSwitch.backgroundColor = .azulClaroCustom
+            self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
+            
+        }
+        
+        
+    }
+    
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,7 +63,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
             
         }
-
+        
         if grupo == .Adolescente {
             
             let raw : String = "\(vacinasAdolescenteEnum(rawValue: indexPath.row) ?? vacinasAdolescenteEnum.none)"
@@ -44,11 +74,11 @@ class CadastroVacinaCustomCell: UITableViewCell {
         if grupo == .Adulto {
             
             let raw : String = "\(vacinasAdultoEnum(rawValue: indexPath.row) ?? vacinasAdultoEnum.none)"
-
-                self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-
+            
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+            
         }
-    
+        
         
         if grupo == .Idoso {
             

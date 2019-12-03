@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+//let uid = Auth.auth().currentUser?.uid
 
 class ProfileViewController: UIViewController {
     
@@ -81,65 +82,15 @@ class ProfileViewController: UIViewController {
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         
-        print("Clicou no botao")
-        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: ["Davi de Franca"])
-        
-        saveInfo(field: tempUser)
-        
-    }
-    
-    func saveInfo(field: Person){
-        
-        //aponta par o banco de dados
-        let context = Database.database().reference()
-        
-        //fields
-        let nome = "Alan Teste"
-        let email = "abs101010@gmail.com"//self.selectedUser?.email
-        let imagem = "palmeiras"//UIImage(named: "palmeiras")
-        let grupo = "adulto"//self.group
-        let tipoSanguineo = field.nome
-        let hipertenso = field.hipertenso
-        let diabetico = field.diabetico
-        let doadorOrgaos = field.doadorOrgaos
-        let pcd = field.pcd
-        
-        //        vacinasCrianca: [[ .gripe : true, .caxumba : false ]],
-        //        vacinasAdolescente: [[ .gripe : true]],
-        //        vacinasAdulto: [[ .duplaAdultoDT : false, .gripe : true, .meningiteBACWY : true, .hpv : true, .pneumonia : true, .herpesZoster : true, .febreAmarela : false, .hepatiteB : true, .tripliceViral : false, .hepatiteA : true, .varicela : false]],
-        //        vacinasIdoso: [[ .gripe : true]],
-        //        vacinasGestante: [[ .gripe : true]],
-        //        dependentes: ["Davi de Franca"])
-        
-        let postObject:[String : Any] = ["name" : nome,
-                                         "email" : email,
-                                         "imagem" : imagem,
-                                         "grupo" : grupo,
-                                         "tipoSanguineo" : tipoSanguineo,
-                                         "hipertenso" : hipertenso,
-                                         "diabetico" : diabetico,
-                                         "doadorOrgaos" : doadorOrgaos,
-                                         "pcd" : pcd]
-        
-        
-        let formattedEmail = (email.replacingOccurrences(of: ".", with: ","))
-        print("salvando os dados")
-        
-        context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
-            
-            if error == nil {
-                print("Foi com sucesso")
-                //self.alertOk()
-            }else{
-                print("Deu erro: \(error)")
-            }
-            
-        }
-        
-    }
-    
-}
+        let dependente1: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
+         let dependente2: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
 
+        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[ .BCG : true, .Hepatite_B : false, .Penta_1_Dose : true, .Poliomielite_1_Dose : false, .Poliomielite_2_Dose : true, .Poliomielite_3_Dose : false, .Pneumococica_10 : true, .Rotavirus_Humano_1_Dose : false, .Meningococica_C : true, .Penta_2_Dose : false, .Pneumococica_10_Valente : true, .Rotavirus_Humano_2_Dose : false, .Febre_Amarela : true, .Triplice_Viral : false, .Pneumococica_Reforco : true, .Meningococica_Reforco : false, .Hepatite_A : true, .Tetra_Viral : false, .DTP : true, .Varicela : false]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: [dependente1, dependente2])
+        
+        self.profileController.saveInfo(person: tempUser)
+        
+    }
+}
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - NUMBER OF ROWS IN SECTION
@@ -264,7 +215,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    //MARK: - DID SELECT
+//MARK: - DID SELECT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

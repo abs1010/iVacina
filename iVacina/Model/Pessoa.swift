@@ -72,9 +72,9 @@ class Person {
     var vacinasAdulto: [[vacinasAdultoEnum? : Bool?]]
     var vacinasIdoso: [[vacinasIdosoEnum? : Bool?]]
     var vacinasGestante: [[vacinasGestanteEnum? : Bool?]]
-    var dependentes: [String]
+    var dependentes: [Dependente?]
     
-    init(nome: String?, email: String?, imagem: String?, grupo: Grupo, tipoSanguineo: TipoSanguineo, hipertenso: Bool?, diabetico: Bool?, doadorOrgaos: Bool?, pcd: Bool?, vacinasCrianca: [[vacinasCriancaEnum? : Bool?]], vacinasAdolescente: [[vacinasAdolescenteEnum? : Bool?]], vacinasAdulto: [[vacinasAdultoEnum? : Bool?]], vacinasIdoso: [[vacinasIdosoEnum? : Bool?]], vacinasGestante: [[vacinasGestanteEnum? : Bool?]], dependentes: [String]) {
+    init(nome: String?, email: String?, imagem: String?, grupo: Grupo, tipoSanguineo: TipoSanguineo, hipertenso: Bool?, diabetico: Bool?, doadorOrgaos: Bool?, pcd: Bool?, vacinasCrianca: [[vacinasCriancaEnum? : Bool?]], vacinasAdolescente: [[vacinasAdolescenteEnum? : Bool?]], vacinasAdulto: [[vacinasAdultoEnum? : Bool?]], vacinasIdoso: [[vacinasIdosoEnum? : Bool?]], vacinasGestante: [[vacinasGestanteEnum? : Bool?]], dependentes: [Dependente?]) {
         self.nome = nome
         self.email = email
         self.imagem = imagem
