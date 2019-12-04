@@ -10,8 +10,12 @@ import UIKit
 import MapKit //mapa
 import CoreLocation //localização do usuário
 
-class MapsViewController: UIViewController, MKMapViewDelegate {
+class MapsViewController: UIViewController {
     
+    
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var wazeBtn: UIButton!
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,20 +26,23 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         setupLocationManager()
+        displayView(enable: false)
         
-        
-        MapsController().getPostoDeSaude { (array, error) in
-            
-            if let arrayLocals = array {
-                print(arrayLocals[26].coordinate)
-                print(arrayLocals[27].coordinate)
-                print(arrayLocals[28].coordinate)
-                print(arrayLocals[29].coordinate)
-                self.mapView.addAnnotations(arrayLocals)
-            }
-        }
+        mapView.delegate = self
+
     }
     
+    @IBAction func tappedWazeBtn(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    func displayView(enable: Bool){
+        self.detailView.isHidden = !enable
+        self.titleLbl.isHidden = !enable
+        self.wazeBtn.isHidden = !enable
+    }
     
     
     func centerLocation() {
@@ -44,6 +51,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
+            
         }
     }
     
@@ -78,18 +86,41 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             //alerta de erro
         }
     }
+
 }
 
 
 extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         centerLocation()
+        
+        if let currentLocation = locationManager.location?.coordinate{
+        MapsController().getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
+            
+            if let arrayLocals = array {
+                self.mapView.addAnnotations(arrayLocals)
+            }
+            }
+        }
+        
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAutorization()
     }
     
+}
+
+extension MapsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print(view.annotation?.title)
+        displayView(enable: true)
+        titleLbl.text = view.annotation?.title ?? ""
+        
+    }
 }
 
 
