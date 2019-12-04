@@ -13,6 +13,10 @@ import CoreLocation //localização do usuário
 class MapsViewController: UIViewController {
     
     
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var wazeBtn: UIButton!
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager: CLLocationManager = CLLocationManager()
@@ -22,9 +26,22 @@ class MapsViewController: UIViewController {
         super.viewDidLoad()
         
         setupLocationManager()
+        displayView(enable: false)
         
         mapView.delegate = self
 
+    }
+    
+    @IBAction func tappedWazeBtn(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    func displayView(enable: Bool){
+        self.detailView.isHidden = !enable
+        self.titleLbl.isHidden = !enable
+        self.wazeBtn.isHidden = !enable
     }
     
     
@@ -100,6 +117,9 @@ extension MapsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print(view.annotation?.title)
+        displayView(enable: true)
+        titleLbl.text = view.annotation?.title ?? ""
+        
     }
 }
 
