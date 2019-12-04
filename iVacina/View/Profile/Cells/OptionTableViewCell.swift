@@ -11,14 +11,27 @@ import UIKit
 class OptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellTitle: UILabel!
+    @IBOutlet weak var chosenTitle: UILabel!
     @IBOutlet weak var btnLista: UIButton!
     
-    func setupCell(){
+    var gruposViewController = GruposViewController()
+    
+    func setupCell(indexPath: IndexPath){
+        
+        if indexPath.row == 0 && indexPath.section == 0 {
+            self.cellTitle.text = "Grupo"
+        }
+        if indexPath.row == 1 && indexPath.section == 0 {
+            self.cellTitle.text = "Tipo Sanguíneo"
+        }
         
     }
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.gruposViewController.delegate = self
+        
         // Initialization code
     }
 
@@ -29,3 +42,12 @@ class OptionTableViewCell: UITableViewCell {
     }
     
 }
+
+extension OptionTableViewCell : nameGruposViewControllerDelegate {
+    
+    func selectedGroup(grupo: Grupo?) {
+        self.chosenTitle.text = "\(grupo)"
+    }
+    
+}
+

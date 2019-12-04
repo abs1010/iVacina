@@ -18,12 +18,15 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
+    var cadastro : CadastroVacinaCustomCell?
     var selectedUser: Person?
     
     //Carrega grupo Adulto por padrao
     var group: Grupo = .Adulto
     
     override func viewDidLoad() {
+        //INICIALIZANDO CADASTRO PARA OBTER A MUDANCA DOS SWITCHES
+        self.cadastro = CadastroVacinaCustomCell()
         
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
@@ -34,6 +37,7 @@ class ProfileViewController: UIViewController {
         self.profileTableView.delegate = self
         self.profileTableView.dataSource = self
         self.nomeTextField.delegate = self
+        self.cadastro?.delegate = self
         
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
@@ -82,10 +86,107 @@ class ProfileViewController: UIViewController {
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         //remover - temporario
-        let dependente1: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
-         let dependente2: Dependente = Dependente(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : false]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : false]])
+        let davi: Dependente = Dependente(nome: "Leonardo Sobrenome", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false,
+            vacinasCrianca: [[ .BCG : true,
+            .Hepatite_B : true,
+            .Penta_1_Dose : true,
+            .Poliomielite_1_Dose : true,
+            .Poliomielite_2_Dose : true,
+            .Poliomielite_3_Dose : true,
+            .Pneumococica_10 : true,
+            .Rotavirus_Humano_1_Dose : true,
+            .Meningococica_C : true,
+            .Penta_2_Dose : true,
+            .Pneumococica_10_Valente : true,
+            .Rotavirus_Humano_2_Dose : true,
+            .Febre_Amarela : true,
+            .Triplice_Viral : true,
+            .Pneumococica_Reforco : true,
+            .Meningococica_Reforco : true,
+            .Hepatite_A : true,
+            .Tetra_Viral : true,
+            .DTP : true,
+            .Varicela : false]],
+            vacinasAdolescente: [[ .HPV_1_Dose : false,
+                                              .HPV_2_Dose : true,
+                                              .Meningococica_C : true,
+                                              .Hepatite_B : false,
+                                              .Febre_Amarela_1_Dose : true,
+                                              .Dupla_Adulto_DT : true,
+                                              .Triplice_Viral : true,
+                                              .Pneumococica_23_Valente : false]],
+                       vacinasAdulto: [[.Dupla_Adulto_DT : true,
+                                        .Gripe : true,
+                                        .Meningite_BACWY : true,
+                                        .Hpv : false,
+                                        .Pneumonia : true,
+                                        .Herpes_Zoster : true,
+                                        .Febre_Amarela : false,
+                                        .Hepatite_B : true,
+                                        .Triplice_Viral : true,
+                                        .Hepatite_A : true,
+                                        .Varicela : true]],
+                       vacinasIdoso: [[ .Hepatite_B : true,
+                                        .Febre_Amarela : true,
+                                        .Dupla_Adulto_DT : false,
+                                        .Pneumococica_23_Valente : false,
+                                        .Gripe_Anual : true]],
+                       vacinasGestante: [[.Hepatite_B : true,
+                                          .Dupla_Adulto_DT : true,
+                                          .dTpa : true,
+                                          .Influenza : false]])
+        
+        
+//        let carol: Dependente = Dependente(nome: "Carol Silva", imagem: "carol.jpg", grupo: .Crianca, tipoSanguineo: .B_, hipertenso: true, diabetico: false, doadorOrgaos: true, pcd: false, vacinasCrianca: [[ .BCG : true,
+//            .Hepatite_B : true,
+//            .Penta_1_Dose : false,
+//            .Poliomielite_1_Dose : true,
+//            .Poliomielite_2_Dose : true,
+//            .Poliomielite_3_Dose : true,
+//            .Pneumococica_10 : true,
+//            .Rotavirus_Humano_1_Dose : false,
+//            .Meningococica_C : false,
+//            .Penta_2_Dose : false,
+//            .Pneumococica_10_Valente : false,
+//            .Rotavirus_Humano_2_Dose : true,
+//            .Febre_Amarela : true,
+//            .Triplice_Viral : true,
+//            .Pneumococica_Reforco : true,
+//            .Meningococica_Reforco : false,
+//            .Hepatite_A : false,
+//            .Tetra_Viral : true,
+//            .DTP : true,
+//            .Varicela : true]],
+//                        vacinasAdolescente: [[ .HPV_1_Dose : true,
+//                                              .HPV_2_Dose : true,
+//                                              .Meningococica_C : false,
+//                                              .Hepatite_B : true,
+//                                              .Febre_Amarela_1_Dose : true,
+//                                              .Dupla_Adulto_DT : true,
+//                                              .Triplice_Viral : true,
+//                                              .Pneumococica_23_Valente : true]],
+//                       vacinasAdulto: [[.Dupla_Adulto_DT : true,
+//                                        .Gripe : true,
+//                                        .Meningite_BACWY : false,
+//                                        .Hpv : true,
+//                                        .Pneumonia : true,
+//                                        .Herpes_Zoster : false,
+//                                        .Febre_Amarela : true,
+//                                        .Hepatite_B : true,
+//                                        .Triplice_Viral : true,
+//                                        .Hepatite_A : true,
+//                                        .Varicela : false]],
+//                       vacinasIdoso: [[ .Hepatite_B : true,
+//                                        .Febre_Amarela : true,
+//                                        .Dupla_Adulto_DT : true,
+//                                        .Pneumococica_23_Valente : false,
+//                                        .Gripe_Anual : true]],
+//                       vacinasGestante: [[.Hepatite_B : true,
+//                                          .Dupla_Adulto_DT : true,
+//                                          .dTpa : false,
+//                                          .Influenza : true]])
 
-        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false,
+        let tempUser: Person = Person(nome: "Marcela Tozzato", email: "marcelatozzato@gmail.com", imagem: "bruna.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false,
             vacinasCrianca: [[ .BCG : true,
                                .Hepatite_B : false,
                                .Penta_1_Dose : true,
@@ -134,7 +235,7 @@ class ProfileViewController: UIViewController {
                                .Dupla_Adulto_DT : true,
                                .dTpa : true,
                                .Influenza : true]],
-            dependentes: [dependente1, dependente2])
+            dependentes: [])
 
         //Calling the saving method
         self.profileController.saveInfo(person: tempUser)
@@ -181,7 +282,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                cell.cellTitle.text = "Grupo"
+
+                cell.setupCell(indexPath: indexPath)
                 
                 return cell
                 
@@ -189,7 +291,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 1 {
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                cell.cellTitle.text = "Tipo Sanguíneo "
+ 
+                cell.setupCell(indexPath: indexPath)
                 
                 return cell
                 
@@ -198,7 +301,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 2 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Hipertenso(a)"
+            
+                cell?.setupCellHeader(indexPath: indexPath)
                 
                 return cell ?? UITableViewCell()
                 
@@ -207,7 +311,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 3 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Diabético(a)"
+                cell?.setupCellHeader(indexPath: indexPath)
                 
                 return cell ?? UITableViewCell()
                 
@@ -216,7 +320,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Doador de órgãos"
+                cell?.setupCellHeader(indexPath: indexPath)
                 
                 return cell ?? UITableViewCell()
                 
@@ -225,7 +329,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 5 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "PCD"
+                cell?.setupCellHeader(indexPath: indexPath)
                 
                 return cell ?? UITableViewCell()
                 
@@ -267,6 +371,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print("\(indexPath.row) na section \(indexPath.section)")
         //Chama ViewController de Grupo
         if indexPath.row == 0 && indexPath.section == 0 {
             
@@ -343,4 +448,12 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+extension ProfileViewController : CadastroVacinaCustomCellDelegate {
+    
+    func changeOfState(state: Bool, string: String) {
+        print("O Estado do botao é \(state) da \(string)")
+    }
+    
 }

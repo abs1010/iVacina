@@ -12,7 +12,6 @@ protocol nameGruposViewControllerDelegate {
     func selectedGroup (grupo: Grupo?)
 }
 
-
 class GruposViewController: UIViewController {
 
     @IBOutlet weak var grupoTableView: UITableView!
