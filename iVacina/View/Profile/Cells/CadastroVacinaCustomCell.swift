@@ -19,9 +19,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
     @IBOutlet weak var vacinaLabel: UILabel!
     @IBOutlet weak var vacinaSwitch: UISwitch!
     
-    //private var index : Int
-    
-    var delegate : CadastroVacinaCustomCellDelegate?
+    weak var delegate : CadastroVacinaCustomCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,25 +30,20 @@ class CadastroVacinaCustomCell: UITableViewCell {
     
     @IBAction func changedStateOnSwitch(_ sender: UISwitch) {
         
-        self.delegate?.changeOfState(state: true, string: self.vacinaLabel.text!)
+        self.delegate?.changeOfState(state: sender.isOn, string: self.vacinaLabel.text!)
         
         if sender.isOn {
-            print("Liguei...\(self.vacinaLabel.text)")
+            //print("Liguei...\(self.vacinaLabel.text)")
             self.vacinaSwitch.backgroundColor = .azulEscuroCustom
             self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
         }
         else {
-            print("Desliguei huhu...\(self.vacinaLabel.text)")
+            //print("Desliguei huhu...\(self.vacinaLabel.text)")
             self.vacinaSwitch.backgroundColor = .azulClaroCustom
             self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
             
         }
         
-        //        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-        //
-        //              vc.delegate = self
-        //
-        //          }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -11,12 +11,13 @@ import UIKit
 class OptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellTitle: UILabel!
-    @IBOutlet weak var chosenTitle: UILabel!
-    @IBOutlet weak var btnLista: UIButton!
+    @IBOutlet weak var groupLabel: UILabel!
     
-    var gruposViewController = GruposViewController()
+    var controller : ProfileViewController?
     
     func setupCell(indexPath: IndexPath){
+        
+        //self.controller?.delegate = self
         
         if indexPath.row == 0 && indexPath.section == 0 {
             self.cellTitle.text = "Grupo"
@@ -27,11 +28,9 @@ class OptionTableViewCell: UITableViewCell {
         
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.gruposViewController.delegate = self
-        
+        self.controller?.delegate = self
         // Initialization code
     }
 
@@ -43,11 +42,9 @@ class OptionTableViewCell: UITableViewCell {
     
 }
 
-extension OptionTableViewCell : nameGruposViewControllerDelegate {
-    
-    func selectedGroup(grupo: Grupo?) {
-        self.chosenTitle.text = "\(grupo)"
+extension OptionTableViewCell : ProfileViewControllerDelegate {
+    func setGrupo(grupo: Grupo) {
+        self.groupLabel.text = String("\(grupo)")
     }
     
 }
-
