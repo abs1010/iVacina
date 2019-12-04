@@ -10,7 +10,7 @@ import UIKit
 import MapKit //mapa
 import CoreLocation //localização do usuário
 
-class MapsViewController: UIViewController, MKMapViewDelegate {
+class MapsViewController: UIViewController {
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -22,6 +22,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         setupLocationManager()
+        
+        mapView.delegate = self
 
     }
     
@@ -67,6 +69,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             //alerta de erro
         }
     }
+
 }
 
 
@@ -83,12 +86,21 @@ extension MapsViewController: CLLocationManagerDelegate {
             }
             }
         }
+        
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAutorization()
     }
     
+}
+
+extension MapsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print(view.annotation?.title)
+    }
 }
 
 
