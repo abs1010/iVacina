@@ -21,8 +21,9 @@ class MapsDataProvider {
          
          if let url = URL(string: baseURL){
              
-             let parameters: [String:Any] = ["latitude": latitude, "longitude": longitude, "categories": "medcenters"]
+             let parameters: [String:Any] = ["latitude": latitude, "longitude": longitude, "categories": "health"]
              
+            //medcenters
              let header: HTTPHeaders = ["Authorization": apiKey]
              
              Alamofire.request(url, method: .get, parameters: parameters, headers: header).responseJSON { (response) in
