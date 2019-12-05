@@ -35,14 +35,14 @@ class TipoSanguineoViewController: UIViewController {
 extension TipoSanguineoViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.controller?.getNumberOfRowsInSectionForBloodType() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = self.controller?.tipoSanguineoArray[indexPath.row]
+        cell.textLabel?.text = self.controller?.getIndexOfBloodType(indexPath: indexPath)
         
         return cell
         

@@ -13,8 +13,6 @@ class OptionTableViewCell: UITableViewCell {
     @IBOutlet weak var cellTitle: UILabel!
     @IBOutlet weak var groupLabel: UILabel!
     
-    var controller : ProfileViewController?
-    
     func setupCell(indexPath: IndexPath){
         
         //self.controller?.delegate = self
@@ -30,7 +28,6 @@ class OptionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.controller?.delegate = self
         // Initialization code
     }
 
@@ -38,13 +35,6 @@ class OptionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-}
-
-extension OptionTableViewCell : ProfileViewControllerDelegate {
-    func setGrupo(grupo: Grupo) {
-        self.groupLabel.text = String("\(grupo)")
     }
     
 }

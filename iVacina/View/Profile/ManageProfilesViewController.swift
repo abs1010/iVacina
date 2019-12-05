@@ -16,53 +16,45 @@ class ManageProfilesViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pagControl: UIPageControl!
-    @IBOutlet weak var btnTrocarSenha: UIButton!
+    @IBOutlet weak var logOut: UIButton!
+    
+    let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //temp
-        self.nameTextField.text = "Bruna Marcela"
-        self.emailTextField.text = "seuemail.com.br"
+        self.nameTextField.text = self.uid?.displayName
+        self.emailTextField.text = self.uid?.email
         //
-
+        
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
-        self.btnTrocarSenha.formatarBotao()
-        self.btnTrocarSenha.backgroundColor = UIColor.green
+        self.logOut.formatarBotao()
+        self.logOut.backgroundColor = UIColor.green
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-
+        
     }
     
     
     @IBAction func tappedLogOut(_ sender: UIButton) {
         
         //Chamar metodo do Firebase
-            let firebaseAuth = Auth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-          try firebaseAuth.signOut()
+            try firebaseAuth.signOut()
         } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
+            print ("Error signing out: %@", signOutError)
         }
         
-        if let login : LoginViewController = storyboard?.instantiateViewController(identifier: "LoginViewController") {
+        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
         
-        self.present(login, animated: true, completion: nil)}
-    
+        guard let vc: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+        
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
-    
-    @IBAction func tappedAddDependent(_ sender: UIButton) {
-        
-      //  if let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-               
-      //         self.present(vc, animated: true, completion: nil)
-               
-    //       }
-
-    }
-    
-
 }
 
 extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -73,8 +65,8 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) {
-        
-        return cell
+            
+            return cell
         }
         else {
             

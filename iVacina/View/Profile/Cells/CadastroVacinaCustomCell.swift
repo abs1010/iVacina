@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CadastroVacinaCustomCellDelegate : class {
-    func changeOfState(state: Bool, string: String)
+    func changeOfState(state: Bool, string: String, index: IndexPath)
 }
 
 class CadastroVacinaCustomCell: UITableViewCell {
@@ -20,6 +20,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
     @IBOutlet weak var vacinaSwitch: UISwitch!
     
     weak var delegate : CadastroVacinaCustomCellDelegate?
+    var index : IndexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +31,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
     
     @IBAction func changedStateOnSwitch(_ sender: UISwitch) {
         
-        self.delegate?.changeOfState(state: sender.isOn, string: self.vacinaLabel.text!)
+        self.delegate?.changeOfState(state: sender.isOn, string: self.vacinaLabel.text!, index: index)
         
         if sender.isOn {
             //print("Liguei...\(self.vacinaLabel.text)")
@@ -53,7 +54,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
     }
     
     func setupCellHeader(indexPath: IndexPath){
-        
+        self.index = indexPath
         if indexPath.row == 2 && indexPath.section == 0 {
             self.vacinaLabel.text = "Hipertenso(a)"
         }
@@ -70,7 +71,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
     }
     
     func setupCell(grupo: Grupo, indexPath: IndexPath){
-
+        self.index = indexPath
         if grupo == .Crianca {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"

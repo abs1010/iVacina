@@ -8,15 +8,12 @@
 
 import UIKit
 import FirebaseDatabase
-//let uid = Auth.auth().currentUser?.uid
+import FirebaseAuth
 
-protocol ProfileViewControllerDelegate {
-    func setGrupo(grupo: Grupo)
-}
 
 class ProfileViewController: UIViewController {
-    var delegate : ProfileViewControllerDelegate?
-    var removerDepois : RemoverDepois = RemoverDepois()
+
+    var saveInfo : Salvar = Salvar()
     
     @IBOutlet private weak var imagem: UIImageView!
     @IBOutlet private weak var nomeTextField: UITextField!
@@ -26,11 +23,13 @@ class ProfileViewController: UIViewController {
     
     var selectedUser: Titular?
     
-    //Carrega grupo Adulto por padrao
+    //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
+    let uid = Auth.auth().currentUser?.email
     
     override func viewDidLoad() {
-        self.selectedUser?.email = "temp@globo.com"
+        //self.selectedUser?.email = uid
+        self.nomeTextField.text = uid
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
@@ -88,7 +87,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         //Calling the saving method
-        self.profileController.saveInfo(person: self.removerDepois.getTempPerson())
+        self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
         
     }
 }
@@ -154,6 +153,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
+                
                 
                 return cell ?? UITableViewCell()
                 
@@ -308,11 +308,34 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     
-    func changeOfState(state: Bool, string: String) {
+    func changeOfState(state: Bool, string: String, index: IndexPath) {
         
-
-        print("O Estado do botao é \(state) da \(string) do grupo \(self.group)")
-        self.removerDepois.tempUser.hipertenso = state
+        print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
+        
+//        switch self.group {
+//        case .Crianca:
+//            
+//            self.saveInfo.tempUser.listaVacinas[index.row].status = state
+//   
+//        case .Adolescente:
+//            
+//            print("Adolescente")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
+//            
+//        case .Adulto:
+//            
+//            print("Adulto")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 26].status = state
+//            
+//        case .Idoso:
+//            print("Idoso")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 38].status = state
+//            
+//        case .Gestante:
+//            print("Gestante")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 42].status = state
+//            
+//        }
 
     }
     

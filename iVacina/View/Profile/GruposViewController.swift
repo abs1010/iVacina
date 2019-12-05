@@ -34,14 +34,14 @@ class GruposViewController: UIViewController {
 extension GruposViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.controller?.grupoArray.count ?? 0
+        return self.controller?.getNumberOfRowsInSectionForGroup() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = self.controller?.grupoArray[indexPath.row]
+        cell.textLabel?.text = self.controller?.getIndexOfGroup(indexPath: indexPath)
         cell.detailTextLabel?.text = "Grupo"
         
         return cell

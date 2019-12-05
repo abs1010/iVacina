@@ -251,7 +251,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="tappedChangePass:" destination="tTb-wm-4Ku" eventType="touchUpInside" id="vdJ-ZO-CaJ"/>
+                                    <action selector="tappedLogOut:" destination="tTb-wm-4Ku" eventType="touchUpInside" id="015-kZ-OWY"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NfG-99-3YE">
@@ -333,7 +333,6 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="tappedAddDependent:" destination="tTb-wm-4Ku" eventType="touchUpInside" id="Mwn-5J-4fb"/>
                                     <segue destination="hj0-vF-z7w" kind="show" id="JbO-we-7mf"/>
                                 </connections>
                             </button>
@@ -381,9 +380,9 @@
                     <navigationItem key="navigationItem" title="Meus dependentes" id="8Yv-Ur-2F5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="btnTrocarSenha" destination="IWs-kr-q0c" id="HF5-p4-6li"/>
                         <outlet property="collectionView" destination="NfG-99-3YE" id="8Fq-oP-yWH"/>
                         <outlet property="emailTextField" destination="fCa-aT-yal" id="4JV-dc-qbb"/>
+                        <outlet property="logOut" destination="IWs-kr-q0c" id="8xG-2a-7gz"/>
                         <outlet property="nameTextField" destination="eCD-bQ-bil" id="AcF-oS-vrW"/>
                         <outlet property="pagControl" destination="8uB-oY-k5h" id="WYb-8d-CWi"/>
                         <outlet property="photoImageView" destination="IuS-MT-GWA" id="kOn-4K-RKT"/>
