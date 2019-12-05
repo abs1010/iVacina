@@ -44,12 +44,12 @@ class DadosMedicoTableViewCell: UITableViewCell {
                 grupo = "Idoso"
             }
             self.grupoLabel.text = grupo
-            self.idadeLabel.text = String(_pessoa.idade ?? 0)
-            self.tipoSanguineoLabel.text = _pessoa.tipoSanguineo
+//            self.idadeLabel.text = String(_pessoa.idade ?? 0)
+//            self.tipoSanguineoLabel.text = _pessoa.tipoSanguineo
             self.hipertensoLabel.text = (_pessoa.hipertenso ?? true) ? "Sim" : "Não"
             self.diabeticoLabel.text = (_pessoa.diabetico ?? true) ? "Sim" : "Não"
             self.doadorLabel.text = (_pessoa.doadorOrgaos ?? true) ? "Sim" : "Não"
-            self.alergiaLabel.text = _pessoa.alergias
+//            self.alergiaLabel.text = _pessoa.alergias
         }
     }
     

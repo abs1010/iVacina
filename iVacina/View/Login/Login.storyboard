@@ -10,7 +10,7 @@
         <!--Login View Controller-->
         <scene sceneID="VjM-LP-vFB">
             <objects>
-                <viewController id="eXf-RK-SAB" customClass="LoginViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="eXf-RK-SAB" customClass="LoginViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IJQ-4B-YkG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

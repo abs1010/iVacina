@@ -8,8 +8,12 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+
 
 class ProfileViewController: UIViewController {
+
+    var saveInfo : Salvar = Salvar()
     
     @IBOutlet private weak var imagem: UIImageView!
     @IBOutlet private weak var nomeTextField: UITextField!
@@ -17,13 +21,15 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
-    var selectedUser: Person?
+    var selectedUser: Titular?
     
-    //Carrega grupo Adulto por padrao
+    //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
+    let uid = Auth.auth().currentUser?.email
     
     override func viewDidLoad() {
-        
+        //self.selectedUser?.email = uid
+        self.nomeTextField.text = uid
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
@@ -80,66 +86,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
-        
-        print("Clicou no botao")
-        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: ["Davi de Franca"])
-        
-        saveInfo(field: tempUser)
+        //Calling the saving method
+        self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
         
     }
-    
-    func saveInfo(field: Person){
-        
-        //aponta par o banco de dados
-        let context = Database.database().reference()
-        
-        //fields
-        let nome = "Alan Teste"
-        let email = "abs101010@gmail.com"//self.selectedUser?.email
-        let imagem = "palmeiras"//UIImage(named: "palmeiras")
-        let grupo = "adulto"//self.group
-        let tipoSanguineo = field.nome
-        let hipertenso = field.hipertenso
-        let diabetico = field.diabetico
-        let doadorOrgaos = field.doadorOrgaos
-        let pcd = field.pcd
-        
-        //        vacinasCrianca: [[ .gripe : true, .caxumba : false ]],
-        //        vacinasAdolescente: [[ .gripe : true]],
-        //        vacinasAdulto: [[ .duplaAdultoDT : false, .gripe : true, .meningiteBACWY : true, .hpv : true, .pneumonia : true, .herpesZoster : true, .febreAmarela : false, .hepatiteB : true, .tripliceViral : false, .hepatiteA : true, .varicela : false]],
-        //        vacinasIdoso: [[ .gripe : true]],
-        //        vacinasGestante: [[ .gripe : true]],
-        //        dependentes: ["Davi de Franca"])
-        
-        let postObject:[String : Any] = ["name" : nome,
-                                         "email" : email,
-                                         "imagem" : imagem,
-                                         "grupo" : grupo,
-                                         "tipoSanguineo" : tipoSanguineo,
-                                         "hipertenso" : hipertenso,
-                                         "diabetico" : diabetico,
-                                         "doadorOrgaos" : doadorOrgaos,
-                                         "pcd" : pcd]
-        
-        
-        let formattedEmail = (email.replacingOccurrences(of: ".", with: ","))
-        print("salvando os dados")
-        
-        context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
-            
-            if error == nil {
-                print("Foi com sucesso")
-                //self.alertOk()
-            }else{
-                print("Deu erro: \(error)")
-            }
-            
-        }
-        
-    }
-    
 }
-
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - NUMBER OF ROWS IN SECTION
@@ -180,7 +131,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                cell.cellTitle.text = "Grupo"
+                
+                cell.setupCell(indexPath: indexPath)
                 
                 return cell
                 
@@ -188,7 +140,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 1 {
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                cell.cellTitle.text = "Tipo Sanguíneo "
+                
+                cell.setupCell(indexPath: indexPath)
                 
                 return cell
                 
@@ -197,7 +150,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 2 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Hipertenso(a)"
+                
+                cell?.setupCellHeader(indexPath: indexPath)
+                cell?.delegate = self
+                
                 
                 return cell ?? UITableViewCell()
                 
@@ -206,7 +162,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 3 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Diabético(a)"
+                cell?.setupCellHeader(indexPath: indexPath)
+                cell?.delegate = self
                 
                 return cell ?? UITableViewCell()
                 
@@ -215,7 +172,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "Doador de órgãos"
+                cell?.setupCellHeader(indexPath: indexPath)
+                cell?.delegate = self
                 
                 return cell ?? UITableViewCell()
                 
@@ -224,18 +182,18 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 5 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.vacinaLabel.text = "PCD"
+                cell?.setupCellHeader(indexPath: indexPath)
+                cell?.delegate = self
                 
                 return cell ?? UITableViewCell()
                 
             }
             
-            
-            
         case 1:
             
             let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
             cell?.setupCell(grupo: group, indexPath: indexPath)
+            cell?.delegate = self
             
             return cell ?? UITableViewCell()
             
@@ -344,4 +302,41 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+//MARK: - EXTENSION DE CADASTROVACINACUSTOMCELL
+
+extension ProfileViewController : CadastroVacinaCustomCellDelegate {
+    
+    func changeOfState(state: Bool, string: String, index: IndexPath) {
+        
+        print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
+        
+//        switch self.group {
+//        case .Crianca:
+//            
+//            self.saveInfo.tempUser.listaVacinas[index.row].status = state
+//   
+//        case .Adolescente:
+//            
+//            print("Adolescente")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
+//            
+//        case .Adulto:
+//            
+//            print("Adulto")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 26].status = state
+//            
+//        case .Idoso:
+//            print("Idoso")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 38].status = state
+//            
+//        case .Gestante:
+//            print("Gestante")
+//            //self.saveInfo.tempUser.listaVacinas[index.row + 42].status = state
+//            
+//        }
+
+    }
+    
 }
