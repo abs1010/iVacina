@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
-    var selectedUser: Person?
+    var selectedUser: Titular?
     
     //Carrega grupo Adulto por padrao
     var group: Grupo = .Adulto
@@ -309,10 +309,11 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     
     func changeOfState(state: Bool, string: String) {
-        //self.selectedUser = self.removerDepois.getTempPerson()
-        print("O Estado do botao é \(state) da \(string)")
+        
+
+        print("O Estado do botao é \(state) da \(string) do grupo \(self.group)")
         self.removerDepois.tempUser.hipertenso = state
-        print(self.removerDepois.tempUser.hipertenso)
+
     }
     
 }

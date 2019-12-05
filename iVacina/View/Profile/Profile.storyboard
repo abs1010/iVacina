@@ -247,7 +247,7 @@
                                     <constraint firstAttribute="height" constant="35" id="rSv-Xg-vXw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
-                                <state key="normal" title="Trocar Senha">
+                                <state key="normal" title="Deslogar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

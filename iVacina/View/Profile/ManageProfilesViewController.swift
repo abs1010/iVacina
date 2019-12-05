@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ManageProfilesViewController: UIViewController {
     
@@ -34,11 +35,20 @@ class ManageProfilesViewController: UIViewController {
     }
     
     
-    @IBAction func tappedChangePass(_ sender: UIButton) {
+    @IBAction func tappedLogOut(_ sender: UIButton) {
         
         //Chamar metodo do Firebase
+            let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
         
+        if let login : LoginViewController = storyboard?.instantiateViewController(identifier: "LoginViewController") {
         
+        self.present(login, animated: true, completion: nil)}
+    
     }
     
     

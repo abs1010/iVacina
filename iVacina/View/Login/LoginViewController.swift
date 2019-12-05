@@ -69,14 +69,10 @@ class LoginViewController: UIViewController {
     }
     
     func goToHome(email: String) {
-        
+
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
-        
-        self.homeController?.initHomeViewController()
-        //self.homeController?.homeViewController?.homeController = HomeController()
-        self.homeController?.homeViewController?.loggedEmail = email
         
         self.present(vc, animated: true, completion: nil)
     }
