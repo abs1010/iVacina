@@ -9,103 +9,76 @@
 import Foundation
 import MapKit
 
-struct PostoDeSaudeElement: Codable {
-    let codCnes: Int
-    let codUnidade: String
-    let codIbge: Int
-    let cnpj, nomeFantasia: String
-    let natureza: String
-    let tipoUnidade: String
-    let esferaAdministrativa: String
-    let vinculoSUS: String
-    let retencao: String
-    let fluxoClientela: String
-    let origemGeografica: String
-    let temAtendimentoUrgencia, temAtendimentoAmbulatorial, temCentroCirurgico, temObstetra: String
-    let temNeoNatal, temDialise: String
-    let descricaoCompleta: String
-    let tipoUnidadeCnes: String
-    let categoriaUnidade: String
-    let logradouro, numero, bairro, cidade: String
-    let uf, cep: String
-    let telefone: String?
-    let turnoAtendimento: String
-    let lat, long: Double
+struct ArrayMedicalCenters: Codable {
+    let total: Int
+    let businesses: [MedicalCenter]
+    let region: Region
+}
 
-        var address: String {
-            return "\(self.logradouro), \(self.numero) \n\(self.bairro) - \(self.cep) \n\(self.cidade) - \(self.uf)"
-        }
+struct MedicalCenter: Codable {
+    let rating: Double
+    let phone: String
+    let id: String
+    let alias: String
+    let isClosed: Bool
+    let categories: [Category]
+    let reviewCount: Int
+    let name: String
+    let url: String
+    let coordinates: Center
+    let imageURL: String
+    let location: Location
+    let distance: Double
+    let transactions: [String]
     
-        var coordinate: CLLocationCoordinate2D {
-            return CLLocationCoordinate2D(latitude: lat, longitude: long)
-        }
-    
+
     enum CodingKeys: String, CodingKey {
-        case codCnes, codUnidade, codIbge, cnpj, nomeFantasia, natureza, tipoUnidade, esferaAdministrativa
-        case vinculoSUS = "vinculoSus"
-        case retencao, fluxoClientela, origemGeografica, temAtendimentoUrgencia, temAtendimentoAmbulatorial, temCentroCirurgico, temObstetra, temNeoNatal, temDialise, descricaoCompleta, tipoUnidadeCnes, categoriaUnidade, logradouro, numero, bairro, cidade, uf, cep, telefone, turnoAtendimento, lat, long
+        case rating, id, alias, phone
+        case isClosed = "is_closed"
+        case categories
+        case reviewCount = "review_count"
+        case name, url, coordinates
+        case imageURL = "image_url"
+        case location, distance, transactions
     }
 }
 
-typealias PostoDeSaude = [PostoDeSaudeElement]
+struct Category: Codable {
+    let alias, title: String
+}
 
+struct Center: Codable {
+    let latitude, longitude: Double
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
+}
 
+struct Location: Codable {
+    let city, country: String
+    let state, address1, zipCode: String
+    let displayAddress: [String]
 
-//struct PostoDeSaudeElement: Codable {
-//    let nomeFantasia: String
-//    let tipoUnidade: TipoUnidade
-//    let vinculoSUS: TemVinculoSUS
-//    let descricaoCompleta: String
-//    let logradouro, numero, bairro, cidade: String
-//    let uf, cep: String
-//    let telefone: String?
-//    let turnoAtendimento: TurnoAtendimento
-//    let lat, long: Double
-//
-//    var address: String {
-//        return "\(self.logradouro), \(self.numero) \n\(self.bairro) - \(self.cep) \n\(self.cidade) - \(self.uf)"
-//    }
-//
-//    var coordinate: CLLocationCoordinate2D {
-//        return CLLocationCoordinate2D(latitude: lat, longitude: long)
-//    }
-//
-//    enum CodingKeys: String, CodingKey {
-//        case nomeFantasia, tipoUnidade
-//        case vinculoSUS = "vinculoSus"
-//        case descricaoCompleta, logradouro, numero, bairro, cidade, uf, cep, telefone, turnoAtendimento, lat, long
-//    }
-//}
-//
-//enum TemVinculoSUS: String, Codable {
-//    case não = "Não"
-//    case sim = "Sim"
-//}
-//
-//enum TipoUnidade: String, Codable {
-//    case clinicaEspecializada = "CLINICA ESPECIALIZADA"
-//    case consultórioParticular = "CONSULTÓRIO PARTICULAR"
-//    case policlinica = "POLICLINICA"
-//}
-//
-//enum TurnoAtendimento: String, Codable {
-//    case atendimentoCOMTurnosIntermitentes = "Atendimento com turnos intermitentes."
-//    case atendimentoNOSTurnosDaManhãEÀTarde = "Atendimento nos turnos da manhã e à tarde."
-//    case atendimentoSomenteÀTarde = "Atendimento somente à tarde."
-//    case atendimentosNOSTurnosDaManhãTardeENoite = "Atendimentos nos turnos da manhã, tarde e noite."
-//}
-//
-//typealias PostoDeSaude = [PostoDeSaudeElement]
+    enum CodingKeys: String, CodingKey {
+        case city, country, state, address1
+        case zipCode = "zip_code"
+        case displayAddress = "display_address"
+    }
+}
+
+struct Region: Codable {
+    let center: Center
+}
 
 
 
 class MapsLocals: NSObject, MKAnnotation {
     
     let title: String?
-    let subtitle: String?
+    let subtitle: [String]?
     var coordinate: CLLocationCoordinate2D
     
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, subtitle: [String], coordinate: CLLocationCoordinate2D) {
     
     self.title = title
     self.subtitle = subtitle
@@ -115,12 +88,10 @@ class MapsLocals: NSObject, MKAnnotation {
         
     }
     
-    init(json: PostoDeSaudeElement){
+    init(json: MedicalCenter){
         
-        self.title = json.nomeFantasia
-        self.subtitle = json.address
-        self.coordinate = json.coordinate
+        self.title = json.name
+        self.subtitle = json.location.displayAddress
+        self.coordinate = json.coordinates.coordinate
     }
 }
-
-

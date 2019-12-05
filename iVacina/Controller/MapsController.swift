@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import MapKit
 
 typealias completion <T> = (_ result: T, _ failure: NetworkingError?) -> Void
 
 class MapsController {
     
-    func getPostoDeSaude(completion: @escaping completion<[MapsLocals]?>) {
+    var selectedMKAnnotation: MKAnnotationView?
+    
+    func getMedicalCenters(latitude: Double, longitude: Double, completion: @escaping completion<[MapsLocals]?>) {
         
         var arrayMapsLocals: [MapsLocals] = []
         
-        MapsDataProvider().loadPostosDeSaude(latitude: -23.5615, longitude: -46.656, raio: 1000.0) { (response, error) in
+        MapsDataProvider().loadMedicalCenters(latitude: latitude, longitude: longitude) { (response, error) in
             if let response = response {
-                for value in response {
+                for value in response.businesses {
                     let currentPostoDeSaude = MapsLocals(json: value)
                     print (currentPostoDeSaude)
                     arrayMapsLocals.append(currentPostoDeSaude)
