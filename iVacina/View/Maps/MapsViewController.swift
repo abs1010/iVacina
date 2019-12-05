@@ -19,12 +19,14 @@ class MapsViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var mapsController: MapsController?
     let locationManager: CLLocationManager = CLLocationManager()
     let zoomInMeters: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapsController = MapsController()
         setupLocationManager()
         displayView(enable: false)
         
@@ -33,9 +35,48 @@ class MapsViewController: UIViewController {
     }
     
     @IBAction func tappedWazeBtn(_ sender: UIButton) {
-        
-        
+        if let location = mapsController?.selectedMKAnnotation?.annotation?.coordinate {
+            print (location.latitude)
+            callWazeApp(location: location)
+        }
     }
+    
+       // URL scheme
+    func callWazeApp(location: CLLocationCoordinate2D) {
+           
+           let latitude:Double = location.latitude
+           let longitude:Double = location.longitude
+           
+           var link: String = "waze://"
+           let url: URL = URL(string: link)!
+           
+           if UIApplication.shared.canOpenURL(url) {
+               
+               let urlStr:String = String(format: "waze://?ll=%f,%f&navigate=yes",latitude, longitude)
+               
+               if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: { (success) in
+                       
+                   })
+               } else {
+                   // Fallback on earlier versions
+               }
+               UIApplication.shared.isIdleTimerDisabled = true
+               
+               
+           } else {
+               link = "https://itunes.apple.com/us/app/id323229106"
+               
+               if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(URL(string:link)!, options: [:], completionHandler: { (success) in
+                       
+                   })
+               } else {
+                   // Fallback on earlier versions
+               }
+               UIApplication.shared.isIdleTimerDisabled = true
+           }
+       }
     
     
     func displayView(enable: Bool){
@@ -96,7 +137,7 @@ extension MapsViewController: CLLocationManagerDelegate {
         centerLocation()
         
         if let currentLocation = locationManager.location?.coordinate{
-        MapsController().getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
+        mapsController?.getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
             
             if let arrayLocals = array {
                 self.mapView.addAnnotations(arrayLocals)
@@ -117,8 +158,10 @@ extension MapsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print(view.annotation?.title)
+        print(view.annotation?.coordinate.latitude)
         displayView(enable: true)
         titleLbl.text = view.annotation?.title ?? ""
+        mapsController?.selectedMKAnnotation = view
         
     }
 }

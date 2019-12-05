@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import MapKit
 
 typealias completion <T> = (_ result: T, _ failure: NetworkingError?) -> Void
 
 class MapsController {
+    
+    var selectedMKAnnotation: MKAnnotationView?
     
     func getMedicalCenters(latitude: Double, longitude: Double, completion: @escaping completion<[MapsLocals]?>) {
         
