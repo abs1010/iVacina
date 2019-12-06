@@ -12,8 +12,6 @@ import FirebaseAuth
 
 
 class ProfileViewController: UIViewController {
-
-    var saveInfo : Salvar = Salvar()
     
     @IBOutlet private weak var imagem: UIImageView!
     @IBOutlet private weak var nomeTextField: UITextField!
@@ -25,11 +23,14 @@ class ProfileViewController: UIViewController {
     
     //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
-    let uid = Auth.auth().currentUser?.email
+    var bloodType : TipoSanguineo?
+    var saveInfo : Salvar = Salvar()
+    //   let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
         //self.selectedUser?.email = uid
-        self.nomeTextField.text = uid
+        //self.nomeTextField.text = uid?.email
+        
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
@@ -86,9 +87,28 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
+        
+        if self.bloodType == nil {
+        
+        let alert = UIAlertController(title: "Atencão!", message: "Escolha um tipo sanguíneo.", preferredStyle: .alert)
+        
+        let btnOk = UIAlertAction(title: "Ok", style: .default)
+            
+//            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//            blurEffectView.frame = view.bounds
+//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//            view.addSubview(blurEffectView)
+            //blurEffectView.removeFromSuperview()
+            alert.addAction(btnOk)
+            self.present(alert, animated: true, completion: nil)
+
+        }
+    
+    else {
         //Calling the saving method
         self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
-        
+    }
     }
 }
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -269,8 +289,9 @@ extension ProfileViewController : nameGruposViewControllerDelegate {
 //MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
 
 extension ProfileViewController : TipoSanguineoViewControllerDelegate {
+    
     func selectedTipoSanguineo(tipoSanguineo: TipoSanguineo) {
-        print("\(tipoSanguineo) foi selecionado hein!")
+        self.bloodType = tipoSanguineo
     }
     
 }
@@ -312,31 +333,48 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
         
         print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
         
-//        switch self.group {
-//        case .Crianca:
-//            
-//            self.saveInfo.tempUser.listaVacinas[index.row].status = state
-//   
-//        case .Adolescente:
-//            
-//            print("Adolescente")
-//            //self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
-//            
-//        case .Adulto:
-//            
-//            print("Adulto")
-//            //self.saveInfo.tempUser.listaVacinas[index.row + 26].status = state
-//            
-//        case .Idoso:
-//            print("Idoso")
-//            //self.saveInfo.tempUser.listaVacinas[index.row + 38].status = state
-//            
-//        case .Gestante:
-//            print("Gestante")
-//            //self.saveInfo.tempUser.listaVacinas[index.row + 42].status = state
-//            
-//        }
-
+        switch index.section {
+        case 0:
+            
+            switch index.row {
+            case 0:
+                self.saveInfo.tempUser.grupo = self.group
+            case 1:
+                self.saveInfo.tempUser.tipoSanguineo = self.bloodType!
+            case 2:
+                self.saveInfo.tempUser.hipertenso = state
+            case 3:
+                self.saveInfo.tempUser.diabetico = state
+            case 4:
+                self.saveInfo.tempUser.doadorOrgaos = state
+            case 5:
+                self.saveInfo.tempUser.pcd = state
+            default:
+                print("default")
+            }
+            
+        case 1:
+            
+            switch self.group {
+            case .Crianca:
+                self.saveInfo.tempUser.listaVacinas[index.row].status = state
+            case .Adolescente:
+                self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
+            case .Adulto:
+                self.saveInfo.tempUser.listaVacinas[index.row + 28].status = state
+            case .Idoso:
+                self.saveInfo.tempUser.listaVacinas[index.row + 39].status = state
+            case .Gestante:
+                self.saveInfo.tempUser.listaVacinas[index.row + 44].status = state
+            }
+            
+        default:
+            print("default")
+            
+        }
+        
     }
     
 }
+
+

@@ -18,13 +18,13 @@ class ManageProfilesViewController: UIViewController {
     @IBOutlet weak var pagControl: UIPageControl!
     @IBOutlet weak var logOut: UIButton!
     
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //temp
-        self.nameTextField.text = self.uid?.displayName
-        self.emailTextField.text = self.uid?.email
+        //self.nameTextField.text = self.uid?.displayName
+        //self.emailTextField.text = self.uid?.email
         //
         
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)

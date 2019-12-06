@@ -22,7 +22,7 @@
 		<key>FirebaseAuth.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>16</integer>
 		</dict>
 		<key>FirebaseAuthInterop.xcscheme_^#shared#^_</key>
 		<dict>
