@@ -15,6 +15,8 @@ protocol TipoSanguineoViewControllerDelegate {
 class TipoSanguineoViewController: UIViewController {
     
     @IBOutlet weak var tipoSanguineoTableView: UITableView!
+    @IBOutlet weak var btnCancelar: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     var delegate: TipoSanguineoViewControllerDelegate!
     
@@ -26,8 +28,14 @@ class TipoSanguineoViewController: UIViewController {
         self.tipoSanguineoTableView.delegate = self
         self.tipoSanguineoTableView.dataSource = self
         
+        self.tipoSanguineoTableView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 10
+        self.btnCancelar.layer.cornerRadius = 10
     }
     
+    @IBAction func btnCance(_ sender: UIButton) {
+         self.dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: - EXTENSION OF TABLE VIEW (DELEGATE AND DATASOURCE)

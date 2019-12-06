@@ -15,7 +15,9 @@ protocol nameGruposViewControllerDelegate {
 class GruposViewController: UIViewController {
 
     @IBOutlet weak var grupoTableView: UITableView!
-
+    @IBOutlet weak var btnCancelar: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    
     var delegate: nameGruposViewControllerDelegate!
     
     var controller : ProfileController?
@@ -25,10 +27,21 @@ class GruposViewController: UIViewController {
         self.controller = ProfileController()
         self.grupoTableView.delegate = self
         self.grupoTableView.dataSource = self
-
+        
+        self.grupoTableView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 10
+        self.btnCancelar.layer.cornerRadius = 10
+        
         // Do any additional setup after loading the view.
     }
 
+    
+    @IBAction func btnCancel(_ sender: UIButton) {
+    
+        self.dismiss(animated: true, completion: nil)
+    
+    }
+    
 }
 
 extension GruposViewController : UITableViewDelegate, UITableViewDataSource {
@@ -42,7 +55,7 @@ extension GruposViewController : UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = self.controller?.getIndexOfGroup(indexPath: indexPath)
-        cell.detailTextLabel?.text = "Grupo"
+        cell.imageView?.image = UIImage(named: self.controller?.getImageToSet(index: indexPath) ?? "")
         
         return cell
         

@@ -92,22 +92,17 @@ class ProfileViewController: UIViewController {
         
         let alert = UIAlertController(title: "Atencão!", message: "Escolha um tipo sanguíneo.", preferredStyle: .alert)
         
-        let btnOk = UIAlertAction(title: "Ok", style: .default) { (Action) in
+        let btnOk = UIAlertAction(title: "Ok", style: .default)
             
-//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "TipoSanguineoViewController") as? TipoSanguineoViewController {
-//
-//                vc.delegate = self
-//
-//                self.present(vc, animated: true, completion: nil)
-//            }
-        
-            
-        }
-            
-            
+//            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//            blurEffectView.frame = view.bounds
+//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//            view.addSubview(blurEffectView)
+            //blurEffectView.removeFromSuperview()
             alert.addAction(btnOk)
             self.present(alert, animated: true, completion: nil)
-        
+
         }
     
     else {

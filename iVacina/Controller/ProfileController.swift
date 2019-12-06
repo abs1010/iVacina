@@ -13,7 +13,7 @@ class ProfileController {
     var pessoa: Pessoa?
     var profileViewController : ProfileViewController?
     
-    private var grupoArray : [String] = ["Criança", "Adoslecente", "Adulto", "Idoso", "Gestante"]
+    private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
     private var tipoSanguineoArray : [String] = ["A-", "B-", "O-", "A+", "B+", "O+"]
     
     func getIndexOfGroup(indexPath: IndexPath) -> String{
@@ -31,6 +31,27 @@ class ProfileController {
     func getNumberOfRowsInSectionForBloodType() -> Int{
           return tipoSanguineoArray.count
       }
+    
+    func getImageToSet(index: IndexPath) -> String {
+        
+        if index.row == 0 {
+            return "crianca"
+        }
+        if index.row == 1 {
+            return "adolescente"
+        }
+        if index.row == 2 {
+            return "adulto"
+        }
+        if index.row == 3 {
+            return "idoso"
+        }
+        if index.row == 4 {
+            return "gestante"
+        }
+        
+        return ""
+    }
     
     //    func getTamanhoListaVacina() -> Int{
     //        return self.pessoa?.listaVacina.count ?? 0
