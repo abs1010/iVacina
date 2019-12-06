@@ -18,12 +18,39 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qkh-3t-Qyi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBT-c9-91h">
+                                <rect key="frame" x="0.0" y="683" width="414" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhT-yo-zuY">
+                                        <rect key="frame" x="186" y="17" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7Q-Wb-jGI">
+                                        <rect key="frame" x="184" y="50" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="tappedWazeBtn:" destination="w8u-6Q-DmN" eventType="touchUpInside" id="9Qx-CC-RV6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="Qvb-Kx-X1Y"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="trailing" secondItem="oBT-c9-91h" secondAttribute="trailing" id="2e3-GZ-uH2"/>
                             <constraint firstAttribute="bottom" secondItem="Qkh-3t-Qyi" secondAttribute="bottom" id="3lC-FY-BkO"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="trailing" secondItem="owL-Tc-Pfl" secondAttribute="trailing" id="BF7-S0-kva"/>
+                            <constraint firstItem="oBT-c9-91h" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="QqD-Et-GUl"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="Aii-Lg-Zca" secondAttribute="top" id="RkN-4p-ibo"/>
+                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="bottom" secondItem="oBT-c9-91h" secondAttribute="bottom" id="n8n-nd-NZs"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="uEp-qG-PvS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="owL-Tc-Pfl"/>
@@ -31,7 +58,10 @@
                     <tabBarItem key="tabBarItem" title="Maps" image="map" catalog="system" selectedImage="map.fill" id="Q50-GF-Eto"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="detailView" destination="oBT-c9-91h" id="PeQ-E5-vlt"/>
                         <outlet property="mapView" destination="Qkh-3t-Qyi" id="2AJ-jE-SJ6"/>
+                        <outlet property="titleLbl" destination="DhT-yo-zuY" id="zez-vE-bsg"/>
+                        <outlet property="wazeBtn" destination="E7Q-Wb-jGI" id="qgF-O6-4er"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftz-aL-qwz" userLabel="First Responder" sceneMemberID="firstResponder"/>

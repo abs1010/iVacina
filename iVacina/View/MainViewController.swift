@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
+    var email : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
