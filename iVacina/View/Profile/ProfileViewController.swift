@@ -82,9 +82,9 @@ class ProfileViewController: UIViewController {
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         
         print("Clicou no botao")
-        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: ["Davi de Franca"])
+//        let tempUser: Person = Person(nome: "Alan Silva", email: "abs10@globomail.com", imagem: "palmeiras", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: true, doadorOrgaos: true, pcd: false, vacinasCrianca: [[.DTP : true]], vacinasAdolescente: [[ .Hepatite_B : true]], vacinasAdulto: [[ vacinasAdultoEnum.Dupla_Adulto_DT : false, .Gripe : true, .Meningite_BACWY : true, .Hepatite_B : true]], vacinasIdoso: [[ .Hepatite_B : true]], vacinasGestante: [[ vacinasGestanteEnum.dTpa : true]], dependentes: ["Davi de Franca"])
         
-        saveInfo(field: tempUser)
+//        saveInfo(field: tempUser)
         
     }
     

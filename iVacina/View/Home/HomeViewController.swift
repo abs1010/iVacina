@@ -39,7 +39,8 @@ class HomeViewController: UIViewController {
         
         self.calendarLabel.text = self.getDate()
         
-        self.homeController?.carregarPessoas()
+//        self.homeController?.carregarPessoas()
+        self.homeController?.loadPerson()
     }
     
     @IBAction func editarAcao(_ sender: UIButton) {
@@ -66,13 +67,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.homeController?.getTamanhoListaPessoa() ?? 0
+//        return self.homeController?.getTamanhoListaPessoa() ?? 0
+        return self.homeController?.getPersonNumberOfItemsInSection() ?? 0
     
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item: PessoaCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "pessoaItem", for: indexPath) as? PessoaCollectionViewCell
         item?.setPessoa(pessoa: (self.homeController?.getPessoaSelecionada(index: indexPath.row))!)
+//        item?.setPessoa(pessoa: self.homeController?.getSelectedPerson(index: indexPath.row))
         return item ?? UICollectionViewCell()
     }
     
@@ -93,24 +96,35 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return self.homeController?.getTamanhoListaVacina() ?? 0
-        case 1:
-            return self.homeController?.getTamanhoListaProximaVacina() ?? 0
-        default:
-            return 1
+            case 0:
+                return self.homeController?.getVaccineNumberOfRowsInSection(grupo: .Crianca) ?? 0
+            case 1:
+                return self.homeController?.getVaccineNumberOfRowsInSection(grupo: .Adolescente) ?? 0
+            case 2:
+                return self.homeController?.getVaccineNumberOfRowsInSection(grupo: .Adulto) ?? 0
+            case 3:
+                return self.homeController?.getVaccineNumberOfRowsInSection(grupo: .Idoso) ?? 0
+            default:
+                return 1
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StatusCustomCell? = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as? StatusCustomCell
         switch indexPath.section {
         case 0:
-            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaVacina[indexPath.row])
+//            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaVacina[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getListCrianca()[indexPath.row])
             return cell ?? UITableViewCell()
         case 1:
-            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaProximaVacina[indexPath.row])
+//            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaProximaVacina[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getListAdolescente()[indexPath.row])
+            return cell ?? UITableViewCell()
+        case 2:
+            cell?.setUpCell(vacina: self.homeController?.getListAdulto()[indexPath.row])
+            return cell ?? UITableViewCell()
+        case 3:
+            cell?.setUpCell(vacina: self.homeController?.getListIdoso()[indexPath.row])
             return cell ?? UITableViewCell()
         default:
             let cell: DadosMedicoTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "dadosMedicoCell", for: indexPath) as? DadosMedicoTableViewCell
@@ -131,9 +145,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return ""
+            return "Vacinas Criança"
         case 1:
-           return "Próximas vacinas"
+           return "Vacinas Adolescente"
+        case 2:
+            return "Vacinas Adulto"
+        case 3:
+            return "Vacinas Idoso"
         default:
             return "Dados médico"
         }

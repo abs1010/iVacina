@@ -9,6 +9,7 @@
 import Foundation
 
 struct Vacina {
+    var grupo: Grupo
     var nome: String
     var status: Bool
 }
