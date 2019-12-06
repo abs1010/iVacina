@@ -11,9 +11,18 @@ import UIKit
 class OptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellTitle: UILabel!
-    @IBOutlet weak var btnLista: UIButton!
+    @IBOutlet weak var groupLabel: UILabel!
     
-    func setupCell(){
+    func setupCell(indexPath: IndexPath){
+        
+        //self.controller?.delegate = self
+        
+        if indexPath.row == 0 && indexPath.section == 0 {
+            self.cellTitle.text = "Grupo"
+        }
+        if indexPath.row == 1 && indexPath.section == 0 {
+            self.cellTitle.text = "Tipo Sanguíneo"
+        }
         
     }
     

@@ -59,11 +59,11 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let contadorSort = Int.random(in: 2...(self.controller?.numberOfRowsInSection() ?? 0))
+      //  let contadorSort = Int.random(in: 2...(self.controller?.numberOfRowsInSection() ?? 0))
         
         
         //CELL PEQUENA
-        if indexPath.row == contadorSort { // 3 || indexPath.row == 8 {
+        if indexPath.row == 6 || indexPath.row == 12 || indexPath.row == 18  {
             
             self.listaNewsTableView.rowHeight = 166
             let cell : News2TableViewCell = (tableView.dequeueReusableCell(withIdentifier: "News2TableViewCell", for: indexPath) as? News2TableViewCell)!
@@ -103,6 +103,7 @@ extension NewsViewController : UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
+        //set a timer
         //print("fez scroll")
 
 //        let activityView = UIActivityIndicatorView(style: .gray)

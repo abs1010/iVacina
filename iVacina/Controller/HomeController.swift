@@ -10,42 +10,36 @@ import Foundation
 
 class HomeController {
     
-    var homeViewController: HomeViewController?
-    
-    func initHomeViewController(){
-        self.homeViewController = HomeViewController()
-    }
-    
     var listaPessoa: [Pessoa]?
     var pessoa: Pessoa?
     
-    func carregarPessoas() {
-        self.listaPessoa = [Pessoa(nome: "Bruna", listaVacina: [Vacina(nome: "Gripe", status: true), Vacina(nome: "Sarampo", status: false)],listaProximaVacina: [Vacina(nome: "Catapora", status: false)],grupo: .Adulto, imagem: "bruna")]
-        self.listaPessoa?.append(Pessoa(nome: "Leonardo", listaVacina: [Vacina(nome: "Gripe", status: true)], listaProximaVacina: [Vacina(nome: "Sarampo", status: false)],grupo: .Adulto, imagem: "leonardo"))
-        self.listaPessoa?.append(Pessoa(nome: "Bia", listaVacina: [Vacina(nome: "Sarampo", status: true)],listaProximaVacina: [Vacina(nome: "Gripe", status: false)], grupo: .Adulto, imagem: "bia"))
-        self.pessoa = self.listaPessoa?[0]
-    }
-    
-    func setPessoa(index: Int){
-        self.pessoa = self.listaPessoa?[index]
-    }
-    
-    func getTamanhoListaPessoa() -> Int {
-        self.pessoa = self.listaPessoa?[0]
-        return self.listaPessoa?.count ?? 0
-    }
-        
-    func getPessoaSelecionada(index: Int) -> Pessoa {
-        self.pessoa = self.listaPessoa?[index]
-        return self.pessoa ?? Pessoa(nome: "", listaVacina: [],listaProximaVacina: [], grupo: .Crianca, imagem: "")
-    }
-    
-    func getTamanhoListaVacina() -> Int {
-        return self.pessoa?.listaVacina.count ?? 0
-    }
-    
-    func getTamanhoListaProximaVacina() -> Int {
-        return self.pessoa?.listaProximaVacina.count ?? 0
-    }
+//    func carregarPessoas() {
+//        self.listaPessoa = [Pessoa(nome: "Bruna", listaVacina: [Vacina(nome: "Gripe", status: true), Vacina(nome: "Sarampo", status: false)],listaProximaVacina: [Vacina(nome: "Catapora", status: false)],grupo: .Adulto, imagem: "bruna")]
+//        self.listaPessoa?.append(Pessoa(nome: "Leonardo", listaVacina: [Vacina(nome: "Gripe", status: true)], listaProximaVacina: [Vacina(nome: "Sarampo", status: false)],grupo: .Adulto, imagem: "leonardo"))
+//        self.listaPessoa?.append(Pessoa(nome: "Bia", listaVacina: [Vacina(nome: "Sarampo", status: true)],listaProximaVacina: [Vacina(nome: "Gripe", status: false)], grupo: .Adulto, imagem: "bia"))
+//        self.pessoa = self.listaPessoa?[0]
+//    }
+//    
+//    func setPessoa(index: Int){
+//        self.pessoa = self.listaPessoa?[index]
+//    }
+//    
+//    func getTamanhoListaPessoa() -> Int {
+//        self.pessoa = self.listaPessoa?[0]
+//        return self.listaPessoa?.count ?? 0
+//    }
+//        
+//    func getPessoaSelecionada(index: Int) -> Pessoa {
+//        self.pessoa = self.listaPessoa?[index]
+//        return self.pessoa ?? Pessoa(nome: "", listaVacina: [],listaProximaVacina: [], grupo: .Crianca, imagem: "")
+//    }
+//    
+//    func getTamanhoListaVacina() -> Int {
+//        return self.pessoa?.listaVacina.count ?? 0
+//    }
+//    
+//    func getTamanhoListaProximaVacina() -> Int {
+//        return self.pessoa?.listaProximaVacina.count ?? 0
+//    }
     
 }

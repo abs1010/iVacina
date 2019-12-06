@@ -21,6 +21,6 @@ class PessoaCollectionViewCell: UICollectionViewCell {
     
     func setPessoa(pessoa: Pessoa){
         self.nomeLabel.text = pessoa.nome
-        self.imagemPessoa.image = UIImage(named: pessoa.imagem)
+//        self.imagemPessoa.image = UIImage(named: pessoa.imagem)
     }
 }

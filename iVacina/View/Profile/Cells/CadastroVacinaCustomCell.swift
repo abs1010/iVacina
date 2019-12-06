@@ -8,16 +8,44 @@
 
 import UIKit
 
+protocol CadastroVacinaCustomCellDelegate : class {
+    func changeOfState(state: Bool, string: String, index: IndexPath)
+}
+
 class CadastroVacinaCustomCell: UITableViewCell {
+    
+    var profileViewController : ProfileViewController = ProfileViewController()
     
     @IBOutlet weak var vacinaLabel: UILabel!
     @IBOutlet weak var vacinaSwitch: UISwitch!
     
+    weak var delegate : CadastroVacinaCustomCellDelegate?
+    var index : IndexPath = IndexPath()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.vacinaSwitch.isOn = false
+        self.vacinaSwitch.backgroundColor = .azulClaroCustom
+        self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
     }
     
+    @IBAction func changedStateOnSwitch(_ sender: UISwitch) {
+        
+        self.delegate?.changeOfState(state: sender.isOn, string: self.vacinaLabel.text!, index: index)
+        
+        if sender.isOn {
+            //print("Liguei...\(self.vacinaLabel.text)")
+            self.vacinaSwitch.backgroundColor = .azulEscuroCustom
+            self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
+        }
+        else {
+            //print("Desliguei huhu...\(self.vacinaLabel.text)")
+            self.vacinaSwitch.backgroundColor = .azulClaroCustom
+            self.vacinaSwitch.layer.cornerRadius = self.vacinaSwitch.frame.height / 2
+            
+        }
+        
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -25,15 +53,32 @@ class CadastroVacinaCustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(grupo: Grupo, indexPath: IndexPath){
+    func setupCellHeader(indexPath: IndexPath){
+        self.index = indexPath
+        if indexPath.row == 2 && indexPath.section == 0 {
+            self.vacinaLabel.text = "Hipertenso(a)"
+        }
+        if indexPath.row == 3 && indexPath.section == 0 {
+            self.vacinaLabel.text = "Diabético(a)"
+        }
+        if indexPath.row == 4 && indexPath.section == 0 {
+            self.vacinaLabel.text = "Doador(a) de Órgãos"
+        }
+        if indexPath.row == 5 && indexPath.section == 0 {
+            self.vacinaLabel.text = "PCD"
+        }
         
+    }
+    
+    func setupCell(grupo: Grupo, indexPath: IndexPath){
+        self.index = indexPath
         if grupo == .Crianca {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
             
         }
-
+        
         if grupo == .Adolescente {
             
             let raw : String = "\(vacinasAdolescenteEnum(rawValue: indexPath.row) ?? vacinasAdolescenteEnum.none)"
@@ -44,11 +89,11 @@ class CadastroVacinaCustomCell: UITableViewCell {
         if grupo == .Adulto {
             
             let raw : String = "\(vacinasAdultoEnum(rawValue: indexPath.row) ?? vacinasAdultoEnum.none)"
-
-                self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-
+            
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+            
         }
-    
+        
         
         if grupo == .Idoso {
             
