@@ -10,7 +10,6 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-
 class ProfileViewController: UIViewController {
     
     @IBOutlet private weak var imagem: UIImageView!
@@ -25,12 +24,9 @@ class ProfileViewController: UIViewController {
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : Salvar = Salvar()
-    //   let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
-        //self.selectedUser?.email = uid
-        //self.nomeTextField.text = uid?.email
-        
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
