@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
             loginController = LoginController()
         }
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
@@ -62,6 +64,11 @@ class LoginViewController: UIViewController {
             self.loginController?.delegate = self
             loginController?.loginWithFirebase(email: email, senha: senha)
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        self.emailTextField.resignFirstResponder()
+        self.senhaTextField.resignFirstResponder()
     }
     
 }

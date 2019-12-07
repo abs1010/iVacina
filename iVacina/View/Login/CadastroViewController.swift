@@ -18,6 +18,7 @@ class CadastroViewController: UIViewController {
     @IBOutlet weak var senha2TextField: UITextField!
     @IBOutlet weak var botaoCriarConta: UIButton!
     
+    
     var cadastroController: CadastroController?
     
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class CadastroViewController: UIViewController {
         if cadastroController == nil {
             cadastroController = CadastroController()
         }
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         self.nomeTextField.delegate = self
         self.emailTextField.delegate = self
@@ -40,6 +43,16 @@ class CadastroViewController: UIViewController {
         self.senhaTextField.formatarTextField()
         self.senha2TextField.formatarTextField()
         self.botaoCriarConta.formatarBotao()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
@@ -59,17 +72,36 @@ class CadastroViewController: UIViewController {
                 Alert().showAlert(title: "Erro", message: "Verificar senha: os valores informados não são iguais", vc: self)
             }
         }
-        
     }
-    
     
     @IBAction func clicouCancelar(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc func dismissKeyboard(){
+        self.nomeTextField.resignFirstResponder()
+        self.emailTextField.resignFirstResponder()
+        self.senhaTextField.resignFirstResponder()
+        self.senha2TextField.resignFirstResponder()
+    }
     
+    @objc func keyboardWillChange(notification: Notification){
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+    
+        view.frame.origin.y = -keyboardSize.height
+            
+            
+        } else {
+            view.frame.origin.y = 0
+        }
+    }
 }
+
+
 
 
 extension CadastroViewController: CadastroControllerDelegate{
@@ -85,8 +117,6 @@ extension CadastroViewController: CadastroControllerDelegate{
     func callAlert(error: Error?) {
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
-    
-    
 }
 
 
