@@ -7,24 +7,58 @@
 //
 
 import UIKit
+import Foundation
 
 class EsqueceuSenhaViewController: UIViewController {
 
+    @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet weak var enviarBtn: UIButton!
+    
+    var esqueceuSenhaController: EsqueceuSenhaController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if esqueceuSenhaController == nil {
+            esqueceuSenhaController = EsqueceuSenhaController()
+        }
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
+        self.enviarBtn.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
+        self.enviarBtn.formatarBotao()
+        self.emailTxt.formatarTextField()
+        
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func clicouEnviar(_ sender: Any) {
+        
+        if let email = emailTxt.text {
+            esqueceuSenhaController?.resetPassword(email: email)
+        }
+        self.esqueceuSenhaController?.delegate = self
     }
-    */
+    
+    
+    @IBAction func clicouCancelar(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func dismissKeyboard(){
+        self.emailTxt.resignFirstResponder()
+    }
+}
 
+extension EsqueceuSenhaViewController: EsqueceuSenhaControllerDelegate {
+    func resetPasswordSucess() {
+        self.view.endEditing(true)
+        Alert().showAlert(title: "Sucesso", message: "Um email foi enviado para que você possa recuperar sua senha", vc: self)
+        
+    }
+    
+    func resetPasswordFail(error: Error?) {
+        self.view.endEditing(true)
+        Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
+    }
 }
