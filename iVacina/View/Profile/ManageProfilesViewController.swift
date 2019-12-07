@@ -19,13 +19,14 @@ class ManageProfilesViewController: UIViewController {
     @IBOutlet weak var logOut: UIButton!
     
     //let uid = Auth.auth().currentUser
+    var profileController: ProfileController = ProfileController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //temp
-        //self.nameTextField.text = self.uid?.displayName
-        //self.emailTextField.text = self.uid?.email
-        //
+        //self.profileController.getUserInfo()
+        
+        //self.nameTextField.text = self.profileController.pessoa?.nome
+        //self.emailTextField.text = self.profileController.pessoa?.email
         
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.logOut.formatarBotao()
@@ -34,6 +35,7 @@ class ManageProfilesViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+        self.collectionView.register(UINib(nibName: "PersonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PersonCollectionViewCell")
     }
     
     
@@ -59,12 +61,14 @@ class ManageProfilesViewController: UIViewController {
 
 extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.profileController.getNumberOfRowsInSectionForCells()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell : UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) {
+        if let cell : PersonCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCollectionViewCell", for: indexPath) as? PersonCollectionViewCell {
+            
+            //cell.setupCell(pessoa: self.profileController.getPessoa(indexPath: indexPath))
             
             return cell
         }
