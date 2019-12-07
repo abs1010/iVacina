@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
-    var selectedUser: Titular?
+    //var selectedUser: Titular?
     
     //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
     //let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
+        
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")

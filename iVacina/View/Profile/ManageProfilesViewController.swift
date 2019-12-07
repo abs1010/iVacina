@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
-class ManageProfilesViewController: UIViewController {
+class ManageProfilesViewController: BaseViewController {
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -23,6 +24,11 @@ class ManageProfilesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
+        
+        self.profileController.delegate = self
+        self.profileController.setupController()
+    
         //CARREGANDO DADOS DO USUARIO LOGADO
         //self.profileController.getUserInfo()
         //self.nameTextField.text = self.profileController.pessoa?.nome
@@ -31,6 +37,8 @@ class ManageProfilesViewController: UIViewController {
         //PERSONALIZANDO A VIEW
         self.photoImageView.layer.cornerRadius = self.photoImageView.frame.size.height / 2
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
+        self.nameTextField.formatarTextField()
+        self.emailTextField.formatarTextField()
         self.logOut.formatarBotao()
         self.logOut.backgroundColor = UIColor.green
         
@@ -44,11 +52,10 @@ class ManageProfilesViewController: UIViewController {
         //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         self.getPictureFromUserDefaults()
     }
-        
     
     @IBAction func tappedLogOut(_ sender: UIButton) {
         
-        //Chamar metodo do Firebase
+        //Chamar metodo do Firebase de logout
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
@@ -70,7 +77,7 @@ class ManageProfilesViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         
         if let imageData = userDefaults.data(forKey: "imagePerfil"),
-           let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
+            let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
             
             self.photoImageView.image = image
         }
@@ -92,7 +99,7 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         if let cell : PersonCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCollectionViewCell", for: indexPath) as? PersonCollectionViewCell {
             
-            //cell.setupCell(pessoa: self.profileController.getPessoa(indexPath: indexPath))
+            cell.setupCell(pessoa: self.profileController.loadCurrentTitular())
             
             return cell
         }
@@ -104,6 +111,26 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     }
     
     
+}
+
+//MARK: - DELEGATE
+
+extension ManageProfilesViewController : ProfileControllerDelegate {
+
+    func successOnLoadingProfileController() {
+
+        self.collectionView.reloadData()
+        hideLoading()
+        print("Passei pela extension de ProfileViewController")
+    }
+
+    func errorOnLoadingProfileController(error: Error?) {
+        print(error?.localizedDescription ?? "")
+        print("DEU MERDA!!! Mas passei pela extension de ProfileViewController")
+
+    }
+
+
 }
 
 
