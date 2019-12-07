@@ -41,6 +41,8 @@ class ProfileViewController: UIViewController {
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
         
+        //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
+        
     }
     
     //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
@@ -85,26 +87,37 @@ class ProfileViewController: UIViewController {
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         
         if self.bloodType == nil {
-        
-        let alert = UIAlertController(title: "Atencão!", message: "Escolha um tipo sanguíneo.", preferredStyle: .alert)
-        
-        let btnOk = UIAlertAction(title: "Ok", style: .default)
             
-//            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-//            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//            blurEffectView.frame = view.bounds
-//            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//            view.addSubview(blurEffectView)
+            let alert = UIAlertController(title: "Atencão!", message: "Escolha um tipo sanguíneo.", preferredStyle: .alert)
+            
+            let btnOk = UIAlertAction(title: "Ok", style: .default)
+            
+            //            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            //            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //            blurEffectView.frame = view.bounds
+            //            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            //            view.addSubview(blurEffectView)
             //blurEffectView.removeFromSuperview()
             alert.addAction(btnOk)
             self.present(alert, animated: true, completion: nil)
-
+            
         }
-    
-    else {
-        //Calling the saving method
-        self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
-    }
+            
+        else {
+            
+            //Save the pic from the ImageView
+            let userDefaults = UserDefaults.standard
+            if let image = self.imagem.image {
+                let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
+                userDefaults.set(imageData, forKey: "imagePerfil")
+                
+            }
+            
+            userDefaults.synchronize()
+            
+            //Calling the saving method
+            self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
+        }
     }
 }
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
