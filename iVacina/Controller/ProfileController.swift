@@ -163,8 +163,8 @@ class ProfileController {
             //personalData
             let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
                                                 "imagem"        : person.dependentes[seqDep]?.imagem ?? "",
-                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)"),
-                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)"),
+                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)" ?? ""),
+                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)" ?? ""),
                                                 "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
                                                 "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
                                                 "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",
