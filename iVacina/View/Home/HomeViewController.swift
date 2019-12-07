@@ -8,14 +8,8 @@
 
 import UIKit
 
-protocol HomeViewControllerDelegate : class {
-    func getUserInfo() -> String
-}
-
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
-    weak var delegate : HomeViewControllerDelegate?
-
     @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calendarLabel: UILabel!
@@ -29,16 +23,20 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        showLoading()
+        
         if self.homeController == nil {
            self.homeController = HomeController()
         }
-        self.statusLabel.text = self.delegate?.getUserInfo()
+        
+        self.homeController?.delegate = self
         // Do any additional setup after loading the view.
         
-//        self.homeCollectionView.dataSource = self
-//        self.homeCollectionView.delegate = self
-//        self.homeTableView.dataSource = self
-//        self.homeTableView.delegate = self
+        self.homeCollectionView.dataSource = self
+        self.homeCollectionView.delegate = self
+        self.homeTableView.dataSource = self
+        self.homeTableView.delegate = self
         
         self.homeTableView.register(UINib(nibName: "StatusCustomCell", bundle: nil), forCellReuseIdentifier: "statusCell")
         self.homeTableView.register(UINib(nibName: "DadosMedicoTableViewCell", bundle: nil), forCellReuseIdentifier: "dadosMedicoCell")
@@ -47,8 +45,10 @@ class HomeViewController: UIViewController {
         
         self.calendarLabel.text = self.getDate()
         
-//        self.homeController?.carregarPessoas()
+        
         self.homeController?.loadPerson()
+        self.atualizaStatusBar()
+        
     }
     
     @IBAction func editarAcao(_ sender: UIButton) {
@@ -56,15 +56,16 @@ class HomeViewController: UIViewController {
         self.tabBarController?.selectedIndex = 3
     }
     
-    func configureProfile() {
-        if let vc = self.tabBarController?.viewControllers?[3] as? ProfileViewController {
-            vc.profileController.setPessoa(pessoa: self.homeController.pessoa)
-        }
-        
-        self.barraStatus.setProgress(self.homeController.getStatusBarProgress(), animated: false)
-        self.porcentagemLabel.text = self.homeController.getStatusBarLabel()
-        
+    func atualizaStatusBar(){
+        self.barraStatus.setProgress(self.homeController?.getStatusBarProgress() ?? 0.0, animated: false)
+        self.porcentagemLabel.text = self.homeController?.getStatusBarLabel()
     }
+    
+//    func configureProfile() {
+//        if let vc = self.tabBarController?.viewControllers?[3] as? ProfileViewController {
+//            vc.profileController.setPessoa(pessoa: self.homeController?.pessoa)
+//        }
+//    }
     
     func getDate() -> String {
         let currentDateTime = Date()
@@ -79,26 +80,25 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.homeController?.getTamanhoListaPessoa() ?? 0
         return self.homeController?.getPersonNumberOfItemsInSection() ?? 0
-    
+
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item: PessoaCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: "pessoaItem", for: indexPath) as? PessoaCollectionViewCell
-        item?.setPessoa(pessoa: (self.homeController?.getPessoaSelecionada(index: indexPath.row))!)
-//        item?.setPessoa(pessoa: self.homeController?.getSelectedPerson(index: indexPath.row))
+        self.homeController?.setSelectedPessoa(index: indexPath.row)
+        item?.setUpItem(pessoa: (self.homeController?.getSelectedPerson())!)
         return item ?? UICollectionViewCell()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.homeController?.setPessoa(index: indexPath.row)
+        self.homeController?.setSelectedPessoa(index: indexPath.row)
         let item = collectionView.cellForItem(at: indexPath)
-        item?.backgroundColor = Colors.azulClaroCustom
-        self.configureProfile()
+        item?.backgroundColor = Colors.azulEscuroCustom
+        self.atualizaStatusBar()
         self.homeTableView.reloadData()
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let item = collectionView.cellForItem(at: indexPath)
         item?.backgroundColor = UIColor.clear
@@ -119,47 +119,46 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             default:
                 return 1
         }
+
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StatusCustomCell? = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as? StatusCustomCell
         switch indexPath.section {
         case 0:
-//            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaVacina[indexPath.row])
-            cell?.setUpCell(vacina: self.homeController?.getListCrianca()[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getVacinaGrupo(grupo: .Crianca)[indexPath.row])
             return cell ?? UITableViewCell()
         case 1:
-//            cell?.setStatusVacina(vacina: self.homeController?.pessoa?.listaProximaVacina[indexPath.row])
-            cell?.setUpCell(vacina: self.homeController?.getListAdolescente()[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getVacinaGrupo(grupo: .Adolescente)[indexPath.row])
             return cell ?? UITableViewCell()
         case 2:
-            cell?.setUpCell(vacina: self.homeController?.getListAdulto()[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getVacinaGrupo(grupo: .Adulto)[indexPath.row])
             return cell ?? UITableViewCell()
         case 3:
-            cell?.setUpCell(vacina: self.homeController?.getListIdoso()[indexPath.row])
+            cell?.setUpCell(vacina: self.homeController?.getVacinaGrupo(grupo: .Idoso)[indexPath.row])
             return cell ?? UITableViewCell()
         default:
             let cell: DadosMedicoTableViewCell? = tableView.dequeueReusableCell(withIdentifier: "dadosMedicoCell", for: indexPath) as? DadosMedicoTableViewCell
-            cell?.setCell(pessoa: self.homeController?.pessoa)
+            cell?.setUpCell(pessoa: self.homeController?.getSelectedPerson())
             cell?.isUserInteractionEnabled = false
             return cell ?? UITableViewCell()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Vacinas Criança"
         case 1:
-           return "Vacinas Adolescente"
+            return "Vacinas Adolescente"
         case 2:
             return "Vacinas Adulto"
         case 3:
@@ -168,5 +167,21 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             return "Dados médico"
         }
     }
+
+}
+
+extension HomeViewController: HomeControllerDelegate{
+    func successOnLoadingHomeController() {
+        self.homeController?.setSelectedPessoa(index: 0)
+        self.homeTableView.reloadData()
+        self.homeCollectionView.reloadData()
+        hideLoading()
+    }
+    
+    func errorOnLoadingHomeController(error: Error?) {
+        print("Erro: \(error)")
+        hideLoading()
+    }
+    
     
 }
