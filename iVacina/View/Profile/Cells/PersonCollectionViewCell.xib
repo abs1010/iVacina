@@ -24,7 +24,7 @@
                         </constraints>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bruna Aveiro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2u-pW-Yp2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2u-pW-Yp2">
                         <rect key="frame" x="144" y="20" width="160" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="160" id="TyR-Zi-7N9"/>
@@ -34,7 +34,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adulto" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR6-Cf-mCi">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="grupoLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR6-Cf-mCi">
                         <rect key="frame" x="144" y="55" width="160" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="160" id="W8s-IN-Nit"/>
@@ -44,7 +44,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmp-4H-6U2">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="typeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmp-4H-6U2">
                         <rect key="frame" x="145" y="89" width="159" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="159" id="k6n-Vh-jJp"/>
@@ -76,6 +76,7 @@
                 <outlet property="grupoLabel" destination="AR6-Cf-mCi" id="H1a-Fo-fcU"/>
                 <outlet property="nameLabel" destination="D2u-pW-Yp2" id="mb2-re-XSa"/>
                 <outlet property="profileImageView" destination="TbC-ep-jUr" id="EJR-Mc-ge9"/>
+                <outlet property="typeLabel" destination="kmp-4H-6U2" id="QgR-JP-Dnd"/>
             </connections>
             <point key="canvasLocation" x="336.23188405797106" y="140.625"/>
         </collectionViewCell>

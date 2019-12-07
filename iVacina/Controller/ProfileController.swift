@@ -23,7 +23,7 @@ class ProfileController {
     
     private let uid = Auth.auth().currentUser
     
-    private var saveModelController : Salvar?
+    //private var saveModelController : Salvar?
     private var provider: ProfileProvider?
     
     private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
@@ -40,6 +40,12 @@ class ProfileController {
     func loadCurrentTitular() -> Titular {
         
         return self.pessoa!
+        
+    }
+    
+    func getNomePessoa() -> String {
+        
+        return self.pessoa?.nome ?? ""
         
     }
     
@@ -97,7 +103,7 @@ class ProfileController {
         //personalData
         let personalData:[String : Any] = ["name"          : person.nome ?? "",
                                            "email"         : person.email ?? "",
-                                           "imagem"        : person.imagem ?? "",
+                                           "imagem"        : person.email ?? "",
                                            "grupo"         : String("\(person.grupo)"),
                                            "tipoSanguineo" : String("\(person.tipoSanguineo)"),
                                            "hipertenso"    : person.hipertenso,
@@ -141,9 +147,9 @@ class ProfileController {
             
             //personalData
             let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
-                                                "imagem"        : person.dependentes[seqDep]?.imagem ?? "",
-                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)" ?? ""),
-                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)" ?? ""),
+                                                "imagem"        : "\(uid?.email ?? "").dep\(seqDep)",
+                                                "grupo"         : "\(person.dependentes[seqDep]?.grupo ?? .Adulto)",
+                                                "tipoSanguineo" : "\(person.dependentes[seqDep]?.tipoSanguineo ?? .A_)",
                                                 "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
                                                 "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
                                                 "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",

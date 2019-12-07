@@ -339,7 +339,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Bxd-mL-MfG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -398,6 +398,7 @@
                         <outlet property="nameTextField" destination="eCD-bQ-bil" id="AcF-oS-vrW"/>
                         <outlet property="pagControl" destination="8uB-oY-k5h" id="WYb-8d-CWi"/>
                         <outlet property="photoImageView" destination="IuS-MT-GWA" id="kOn-4K-RKT"/>
+                        <outlet property="plusButton" destination="IMd-5K-unb" id="cd8-ir-qbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYU-fB-r5O" sceneMemberID="firstResponder"/>

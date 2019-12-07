@@ -18,21 +18,20 @@ class ManageProfilesViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pagControl: UIPageControl!
     @IBOutlet weak var logOut: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
-    //let uid = Auth.auth().currentUser
+    let uid = Auth.auth().currentUser
     var profileController: ProfileController = ProfileController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoading()
-        
+
         self.profileController.delegate = self
         self.profileController.setupController()
     
         //CARREGANDO DADOS DO USUARIO LOGADO
-        //self.profileController.getUserInfo()
-        //self.nameTextField.text = self.profileController.pessoa?.nome
-        //self.emailTextField.text = self.profileController.pessoa?.email
+        self.nameTextField.text = self.profileController.getNomePessoa()
+        self.emailTextField.text = self.uid?.email
         
         //PERSONALIZANDO A VIEW
         self.photoImageView.layer.cornerRadius = self.photoImageView.frame.size.height / 2
@@ -41,6 +40,8 @@ class ManageProfilesViewController: BaseViewController {
         self.emailTextField.formatarTextField()
         self.logOut.formatarBotao()
         self.logOut.backgroundColor = UIColor.green
+        self.pagControl.numberOfPages = self.profileController.getNumberOfRowsInSectionForCells()
+        self.plusButton.pulse()
         
         //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW E TEXTFIELD
         self.collectionView.delegate = self
@@ -71,12 +72,11 @@ class ManageProfilesViewController: BaseViewController {
         
     }
     
-    
     func getPictureFromUserDefaults(){
         
         let userDefaults = UserDefaults.standard
         
-        if let imageData = userDefaults.data(forKey: "imagePerfil"),
+        if let imageData = userDefaults.data(forKey: uid?.email ?? "loading"),
             let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
             
             self.photoImageView.image = image
@@ -99,7 +99,7 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         if let cell : PersonCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCollectionViewCell", for: indexPath) as? PersonCollectionViewCell {
             
-            cell.setupCell(pessoa: self.profileController.loadCurrentTitular())
+            cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
             
             return cell
         }
@@ -110,6 +110,13 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Clicou em \(indexPath.row)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        self.pagControl.currentPage = indexPath.row
+    }
     
 }
 

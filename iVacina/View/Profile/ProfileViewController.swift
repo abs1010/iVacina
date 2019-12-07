@@ -18,8 +18,6 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
-    //var selectedUser: Titular?
-    
     //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
@@ -77,7 +75,6 @@ class ProfileViewController: UIViewController {
             self.present(imagePickerController, animated: true, completion: nil)
         }
     }
-    
     
     //MARK: - BUTTONS DA NAVIGATION
     

@@ -9,7 +9,7 @@
 import Foundation
 
 class Salvar {
-    
+
     let tempUser: Titular = Titular(nome: "Alan Bezerra Silva", email: "alan@gmail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false,
         listaVacinas: [Vacina(nome: "BCG", grupo: .Crianca, status: false),
         Vacina(nome: "Hepatite_B", grupo: .Crianca, status: false),
@@ -31,7 +31,7 @@ class Salvar {
         Vacina(nome: "Tetra_Viral", grupo: .Crianca, status: false),
         Vacina(nome: "DTP", grupo: .Crianca, status: false),
         Vacina(nome: "Varicela", grupo: .Crianca, status: false),
-        
+
         Vacina(nome: "HPV_1_Dose", grupo: .Adolescente, status: false),
         Vacina(nome: "HPV_2_Dose", grupo: .Adolescente, status: false),
         Vacina(nome: "Meningococica_C", grupo: .Adolescente, status: false),
@@ -40,7 +40,7 @@ class Salvar {
         Vacina(nome: "Dupla_Adulto_DT", grupo: .Adolescente, status: false),
         Vacina(nome: "Triplice_Viral", grupo: .Adolescente, status: false),
         Vacina(nome: "Pneumococica_23_Valente", grupo: .Adolescente, status: false),
-        
+
         Vacina(nome: "Dupla_Adulto_DT", grupo: .Adulto, status: false),
         Vacina(nome: "Gripe", grupo: .Adulto, status: false),
         Vacina(nome: "Meningite_BACWY", grupo: .Adulto, status: false),
@@ -52,20 +52,20 @@ class Salvar {
         Vacina(nome: "Triplice_Viral", grupo: .Adulto, status: false),
         Vacina(nome: "Hepatite_A", grupo: .Adulto, status: false),
         Vacina(nome: "Varicela", grupo: .Adulto, status: false),
-                         
+
         Vacina(nome: "Hepatite_B", grupo: .Idoso, status: false),
         Vacina(nome: "Febre_Amarela", grupo: .Idoso, status: false),
         Vacina(nome: "Dupla_Adulto_DT", grupo: .Idoso, status: false),
         Vacina(nome: "Pneumococica_23_Valente", grupo: .Idoso, status: false),
         Vacina(nome: "Gripe_Anual", grupo: .Idoso, status: false),
-                         
+
         Vacina(nome: "Hepatite_B", grupo: .Gestante, status: false),
         Vacina(nome: "Dupla_Adulto_DT", grupo: .Gestante, status: false),
         Vacina(nome: "dTpa", grupo: .Gestante, status: false),
         Vacina(nome: "Influenza", grupo: .Gestante, status: false)],
-        
+
         dependentes: [])
-    
+
     let dependente1 : Pessoa = Pessoa(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas:
     [Vacina(nome: "BCG", grupo: .Crianca, status: false),
     Vacina(nome: "Hepatite_B", grupo: .Crianca, status: false),
@@ -87,7 +87,7 @@ class Salvar {
     Vacina(nome: "Tetra_Viral", grupo: .Crianca, status: false),
     Vacina(nome: "DTP", grupo: .Crianca, status: false),
     Vacina(nome: "Varicela", grupo: .Crianca, status: false),
-    
+
     Vacina(nome: "HPV_1_Dose", grupo: .Adolescente, status: false),
     Vacina(nome: "HPV_2_Dose", grupo: .Adolescente, status: false),
     Vacina(nome: "Meningococica_C", grupo: .Adolescente, status: false),
@@ -96,7 +96,7 @@ class Salvar {
     Vacina(nome: "Dupla_Adulto_DT", grupo: .Adolescente, status: false),
     Vacina(nome: "Triplice_Viral", grupo: .Adolescente, status: false),
     Vacina(nome: "Pneumococica_23_Valente", grupo: .Adolescente, status: false),
-    
+
     Vacina(nome: "Dupla_Adulto_DT", grupo: .Adulto, status: false),
     Vacina(nome: "Gripe", grupo: .Adulto, status: false),
     Vacina(nome: "Meningite_BACWY", grupo: .Adulto, status: false),
@@ -108,13 +108,13 @@ class Salvar {
     Vacina(nome: "Triplice_Viral", grupo: .Adulto, status: false),
     Vacina(nome: "Hepatite_A", grupo: .Adulto, status: false),
     Vacina(nome: "Varicela", grupo: .Adulto, status: false),
-                     
+
     Vacina(nome: "Hepatite_B", grupo: .Idoso, status: false),
     Vacina(nome: "Febre_Amarela", grupo: .Idoso, status: false),
     Vacina(nome: "Dupla_Adulto_DT", grupo: .Idoso, status: false),
     Vacina(nome: "Pneumococica_23_Valente", grupo: .Idoso, status: false),
     Vacina(nome: "Gripe_Anual", grupo: .Idoso, status: false),
-                     
+
     Vacina(nome: "Hepatite_B", grupo: .Gestante, status: false),
     Vacina(nome: "Dupla_Adulto_DT", grupo: .Gestante, status: false),
     Vacina(nome: "dTpa", grupo: .Gestante, status: false),
@@ -141,7 +141,7 @@ class Salvar {
      Vacina(nome: "Tetra_Viral", grupo: .Crianca, status: false),
      Vacina(nome: "DTP", grupo: .Crianca, status: false),
      Vacina(nome: "Varicela", grupo: .Crianca, status: false),
-     
+
      Vacina(nome: "HPV_1_Dose", grupo: .Adolescente, status: false),
      Vacina(nome: "HPV_2_Dose", grupo: .Adolescente, status: false),
      Vacina(nome: "Meningococica_C", grupo: .Adolescente, status: false),
@@ -150,7 +150,7 @@ class Salvar {
      Vacina(nome: "Dupla_Adulto_DT", grupo: .Adolescente, status: false),
      Vacina(nome: "Triplice_Viral", grupo: .Adolescente, status: false),
      Vacina(nome: "Pneumococica_23_Valente", grupo: .Adolescente, status: false),
-     
+
      Vacina(nome: "Dupla_Adulto_DT", grupo: .Adulto, status: false),
      Vacina(nome: "Gripe", grupo: .Adulto, status: false),
      Vacina(nome: "Meningite_BACWY", grupo: .Adulto, status: false),
@@ -162,24 +162,24 @@ class Salvar {
      Vacina(nome: "Triplice_Viral", grupo: .Adulto, status: false),
      Vacina(nome: "Hepatite_A", grupo: .Adulto, status: false),
      Vacina(nome: "Varicela", grupo: .Adulto, status: false),
-                      
+
      Vacina(nome: "Hepatite_B", grupo: .Idoso, status: false),
      Vacina(nome: "Febre_Amarela", grupo: .Idoso, status: false),
      Vacina(nome: "Dupla_Adulto_DT", grupo: .Idoso, status: false),
      Vacina(nome: "Pneumococica_23_Valente", grupo: .Idoso, status: false),
      Vacina(nome: "Gripe_Anual", grupo: .Idoso, status: false),
-                      
+
      Vacina(nome: "Hepatite_B", grupo: .Gestante, status: false),
      Vacina(nome: "Dupla_Adulto_DT", grupo: .Gestante, status: false),
      Vacina(nome: "dTpa", grupo: .Gestante, status: false),
      Vacina(nome: "Influenza", grupo: .Gestante, status: false)])
 
     func getTempPerson() -> Titular{
-        
+
         self.tempUser.dependentes.append(dependente1)
         self.tempUser.dependentes.append(dependente2)
         return self.tempUser
-        
+
     }
-    
+
 }
