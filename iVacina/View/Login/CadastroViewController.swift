@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
+
 
 class CadastroViewController: UIViewController {
 
@@ -19,8 +18,17 @@ class CadastroViewController: UIViewController {
     @IBOutlet weak var senha2TextField: UITextField!
     @IBOutlet weak var botaoCriarConta: UIButton!
     
+    
+    var cadastroController: CadastroController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if cadastroController == nil {
+            cadastroController = CadastroController()
+        }
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         self.nomeTextField.delegate = self
         self.emailTextField.delegate = self
@@ -35,69 +43,82 @@ class CadastroViewController: UIViewController {
         self.senhaTextField.formatarTextField()
         self.senha2TextField.formatarTextField()
         self.botaoCriarConta.formatarBotao()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
-        if let email = emailTextField.text,
+        if let nome = nomeTextField.text,
+            let email = emailTextField.text,
             let senha = senhaTextField.text,
             let senha2 = senha2TextField.text {
             
             if senha == senha2 {
-                Auth.auth().createUser(withEmail: email, password: senha) { (authResult, error) in
-                    if error == nil {
-                        self.registrarUsuario()
-                    } else {
-                        Alert().showAlert(title: "Erro", message: error?.localizedDescription , vc: self)
-                    }
-                }
+                
+                self.cadastroController?.delegate = self
+                
+                self.cadastroController?.createUserWithFirebase(nome: nome, email: email, senha: senha)
                 
             } else {
                 Alert().showAlert(title: "Erro", message: "Verificar senha: os valores informados não são iguais", vc: self)
             }
         }
-        
     }
-    
     
     @IBAction func clicouCancelar(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
     }
 
-    
-    func registrarUsuario(){
-        let nome = nomeTextField.text ?? ""
-            let email = emailTextField.text ?? ""
-            let senha = senhaTextField.text ?? ""
-            
-            let context = Database.database().reference()
-            
-            let postObject = ["nome": nome, "email": email, "senha": senha]
-            
-            let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
-            
-            context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
-                if error == nil {
-                    self.goToHome()
-                    print("Passei por aqui ")
-                } else {
-                    if let error = error {
-                    print("Erro ao criar referencia do usuário no Firebase: \(error.localizedDescription)")
-                    }
-                }
-            }
-        
+    @objc func dismissKeyboard(){
+        self.nomeTextField.resignFirstResponder()
+        self.emailTextField.resignFirstResponder()
+        self.senhaTextField.resignFirstResponder()
+        self.senha2TextField.resignFirstResponder()
     }
     
-    func goToHome() {
-        let storyboard = UIStoryboard.init(name: "Home", bundle: nil)
+    @objc func keyboardWillChange(notification: Notification){
         
-        guard let vc: HomeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+    
+        view.frame.origin.y = -keyboardSize.height
+            
+            
+        } else {
+            view.frame.origin.y = 0
+        }
+    }
+}
+
+
+
+
+extension CadastroViewController: CadastroControllerDelegate{
+    func goToHome() {
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        
+        guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
         self.present(vc, animated: true, completion: nil)
     }
+    
+    func callAlert(error: Error?) {
+        Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
+    }
 }
+
 
 extension CadastroViewController: UITextFieldDelegate{
     
@@ -116,5 +137,5 @@ extension CadastroViewController: UITextFieldDelegate{
         }
         return true
     }
-    
 }
+

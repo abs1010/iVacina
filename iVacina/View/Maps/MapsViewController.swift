@@ -10,32 +10,80 @@ import UIKit
 import MapKit //mapa
 import CoreLocation //localização do usuário
 
-class MapsViewController: UIViewController, MKMapViewDelegate {
+class MapsViewController: UIViewController {
     
+    
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var wazeBtn: UIButton!
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var mapsController: MapsController?
     let locationManager: CLLocationManager = CLLocationManager()
     let zoomInMeters: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapsController = MapsController()
         setupLocationManager()
+        displayView(enable: false)
         
-        
-        MapsController().getPostoDeSaude { (array, error) in
-            
-            if let arrayLocals = array {
-                print(arrayLocals[26].coordinate)
-                print(arrayLocals[27].coordinate)
-                print(arrayLocals[28].coordinate)
-                print(arrayLocals[29].coordinate)
-                self.mapView.addAnnotations(arrayLocals)
-            }
+        mapView.delegate = self
+
+    }
+    
+    @IBAction func tappedWazeBtn(_ sender: UIButton) {
+        if let location = mapsController?.selectedMKAnnotation?.annotation?.coordinate {
+            print (location.latitude)
+            callWazeApp(location: location)
         }
     }
     
+       // URL scheme
+    func callWazeApp(location: CLLocationCoordinate2D) {
+           
+           let latitude:Double = location.latitude
+           let longitude:Double = location.longitude
+           
+           var link: String = "waze://"
+           let url: URL = URL(string: link)!
+           
+           if UIApplication.shared.canOpenURL(url) {
+               
+               let urlStr:String = String(format: "waze://?ll=%f,%f&navigate=yes",latitude, longitude)
+               
+               if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: { (success) in
+                       
+                   })
+               } else {
+                   // Fallback on earlier versions
+               }
+               UIApplication.shared.isIdleTimerDisabled = true
+               
+               
+           } else {
+               link = "https://itunes.apple.com/us/app/id323229106"
+               
+               if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(URL(string:link)!, options: [:], completionHandler: { (success) in
+                       
+                   })
+               } else {
+                   // Fallback on earlier versions
+               }
+               UIApplication.shared.isIdleTimerDisabled = true
+           }
+       }
+    
+    
+    func displayView(enable: Bool){
+        self.detailView.isHidden = !enable
+        self.titleLbl.isHidden = !enable
+        self.wazeBtn.isHidden = !enable
+    }
     
     
     func centerLocation() {
@@ -44,6 +92,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
+            
         }
     }
     
@@ -78,18 +127,43 @@ class MapsViewController: UIViewController, MKMapViewDelegate {
             //alerta de erro
         }
     }
+
 }
 
 
 extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         centerLocation()
+        
+        if let currentLocation = locationManager.location?.coordinate{
+        mapsController?.getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
+            
+            if let arrayLocals = array {
+                self.mapView.addAnnotations(arrayLocals)
+            }
+            }
+        }
+        
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAutorization()
     }
     
+}
+
+extension MapsViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print(view.annotation?.title)
+        print(view.annotation?.coordinate.latitude)
+        displayView(enable: true)
+        titleLbl.text = view.annotation?.title ?? ""
+        mapsController?.selectedMKAnnotation = view
+        
+    }
 }
 
 

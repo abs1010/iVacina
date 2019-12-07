@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -17,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var botaoCriarConta: UIButton!
     @IBOutlet weak var botaoFacebook: UIButton!
     
-    var homeController: HomeController?
+    var loginController: LoginController?
     var imagem: UIImage? = UIImage(named: "fb-login-button-pt")
     
     //Colocar a Status Bar em branco
@@ -27,6 +26,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if loginController == nil {
+            loginController = LoginController()
+        }
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
@@ -56,16 +61,21 @@ class LoginViewController: UIViewController {
     @IBAction func clicouEntrar(_ sender: UIButton) {
         
         if let email = emailTextField.text, let senha = senhaTextField.text {
-            
-            Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
-                if error == nil {
-                    self.goToHome(email: email)
-                    
-                } else {
-                    Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
-                }
-            }
+            self.loginController?.delegate = self
+            loginController?.loginWithFirebase(email: email, senha: senha)
         }
+    }
+    
+    @objc func dismissKeyboard() {
+        self.emailTextField.resignFirstResponder()
+        self.senhaTextField.resignFirstResponder()
+    }
+    
+}
+
+extension LoginViewController: LoginControllerDelegate {
+    func callAlert(error: Error?) {
+        Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
     
     func goToHome(email: String) {
@@ -76,6 +86,8 @@ class LoginViewController: UIViewController {
         
         self.present(vc, animated: true, completion: nil)
     }
+    
+   
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -93,3 +105,5 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
 }
+
+

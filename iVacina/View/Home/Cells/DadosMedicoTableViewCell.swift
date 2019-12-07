@@ -11,12 +11,10 @@ import UIKit
 class DadosMedicoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var grupoLabel: UILabel!
-    @IBOutlet weak var idadeLabel: UILabel!
     @IBOutlet weak var tipoSanguineoLabel: UILabel!
     @IBOutlet weak var hipertensoLabel: UILabel!
     @IBOutlet weak var diabeticoLabel: UILabel!
     @IBOutlet weak var doadorLabel: UILabel!
-    @IBOutlet weak var alergiaLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -30,7 +28,7 @@ class DadosMedicoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(pessoa: Pessoa?){
+    func setUpCell(pessoa: Pessoa?){
         if let _pessoa = pessoa {
             let grupo: String
             switch _pessoa.grupo {
@@ -45,7 +43,24 @@ class DadosMedicoTableViewCell: UITableViewCell {
             }
             self.grupoLabel.text = grupo
 //            self.idadeLabel.text = String(_pessoa.idade ?? 0)
-//            self.tipoSanguineoLabel.text = _pessoa.tipoSanguineo
+            
+            let tipoSanquineo: String
+            switch _pessoa.tipoSanguineo {
+                case .A:
+                    tipoSanquineo = "A"
+                case .A_:
+                    tipoSanquineo = "A-"
+                case .B:
+                    tipoSanquineo = "B"
+                case .B_:
+                    tipoSanquineo = "B-"
+                case .O:
+                    tipoSanquineo = "O"
+                case .O_:
+                    tipoSanquineo = "O-"
+            }
+            self.tipoSanguineoLabel.text = tipoSanquineo
+            
             self.hipertensoLabel.text = (_pessoa.hipertenso ?? true) ? "Sim" : "Não"
             self.diabeticoLabel.text = (_pessoa.diabetico ?? true) ? "Sim" : "Não"
             self.doadorLabel.text = (_pessoa.doadorOrgaos ?? true) ? "Sim" : "Não"
