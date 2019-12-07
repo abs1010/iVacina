@@ -143,7 +143,7 @@
         <!--Cadastro View Controller-->
         <scene sceneID="24H-cZ-K8Z">
             <objects>
-                <viewController storyboardIdentifier="CadastroViewController" id="8Dm-i1-TQA" customClass="CadastroViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CadastroViewController" modalPresentationStyle="fullScreen" id="8Dm-i1-TQA" customClass="CadastroViewController" customModule="iVacina" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uCd-ZX-au8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
