@@ -10,16 +10,44 @@ import Foundation
 import FirebaseDatabase
 import FirebaseAuth
 
+protocol ProfileControllerDelegate : class {
+    func successOnLoadingProfileController()
+    func errorOnLoadingProfileController(error: Error?)
+}
+
 class ProfileController {
     
-   // private let uid = Auth.auth().currentUser
-    
     var pessoa: Titular?
-    private var saveModelController : Salvar?
-    var profileViewController : ProfileViewController?
+    
+    weak var delegate: ProfileControllerDelegate?
+    
+    private let uid = Auth.auth().currentUser
+    
+    //private var saveModelController : Salvar?
+    private var provider: ProfileProvider?
     
     private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
     private var tipoSanguineoArray : [String] = ["A-", "B-", "O-", "A+", "B+", "O+"]
+    
+    func setupController(){
+        
+        self.provider = ProfileProvider()
+        self.provider?.delegate = self
+        self.provider?.getProfileData()
+        
+    }
+    
+    func loadCurrentTitular() -> Titular {
+        
+        return self.pessoa!
+        
+    }
+    
+    func getNomePessoa() -> String {
+        
+        return self.pessoa?.nome ?? ""
+        
+    }
     
     func getIndexOfGroup(indexPath: IndexPath) -> String{
         return grupoArray[indexPath.row]
@@ -46,18 +74,6 @@ class ProfileController {
         return total
     }
     
-    func getPessoa(indexPath: IndexPath) -> Pessoa {
-        
-        //if indexPath.row == 0 {
-            
-        return self.saveModelController!.tempUser
-            
-        //}
-        
-        //return
-        
-    }
-    
     func getImageToSet(index: IndexPath) -> String {
         
         if index.row == 0 {
@@ -79,37 +95,6 @@ class ProfileController {
         return ""
     }
     
-//    func getUserInfo() -> Titular {
-//
-//        let email = "alan@gmail.com"
-//        //if let email = self.uid?.email {
-//
-//            let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
-//
-//            let user = Database.database().reference().child("user/profile/\(formattedEmail)")
-//
-//            user.observe(.value) { (userInformation) in
-//
-//                if let dictUser = userInformation.value as? [String:Any]{
-//                    self.pessoa?.nome = dictUser["name"] as? String
-//                    self.pessoa?.email = dictUser["email"] as? String
-//                    //self.pessoa.grupo = dictUser["grupo"] as? String
-//                    //self.pessoa?.tipoSanguineo = dictUser["grupo"] as? String
-//                    self.pessoa?.hipertenso = dictUser["hipertenso"] as! Bool
-//                    self.pessoa?.diabetico = dictUser["diabetico"] as! Bool
-//                    self.pessoa?.doadorOrgaos = dictUser["doadorOrgaos"] as! Bool
-//                    self.pessoa?.pcd = dictUser["pcd"] as! Bool
-//
-//                }
-//
-//            }
-//
-//      //  }
-//
-//        return self.pessoa ?? self.saveModelController!.tempUser
-//
-//    }
-    
     func saveInfo(person: Titular) {
         
         //Aponta par o banco de dados
@@ -118,7 +103,7 @@ class ProfileController {
         //personalData
         let personalData:[String : Any] = ["name"          : person.nome ?? "",
                                            "email"         : person.email ?? "",
-                                           "imagem"        : person.imagem ?? "",
+                                           "imagem"        : person.email ?? "",
                                            "grupo"         : String("\(person.grupo)"),
                                            "tipoSanguineo" : String("\(person.tipoSanguineo)"),
                                            "hipertenso"    : person.hipertenso,
@@ -162,9 +147,9 @@ class ProfileController {
             
             //personalData
             let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
-                                                "imagem"        : person.dependentes[seqDep]?.imagem ?? "",
-                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)" ?? ""),
-                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)" ?? ""),
+                                                "imagem"        : "\(uid?.email ?? "").dep\(seqDep)",
+                                                "grupo"         : "\(person.dependentes[seqDep]?.grupo ?? .Adulto)",
+                                                "tipoSanguineo" : "\(person.dependentes[seqDep]?.tipoSanguineo ?? .A_)",
                                                 "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
                                                 "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
                                                 "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",
@@ -203,3 +188,17 @@ class ProfileController {
     
 }
 
+extension ProfileController : ProfileProviderDelegate {
+    
+    func successOnLoadingProfiles(titular: Titular?) {
+        self.pessoa = titular
+        self.delegate?.successOnLoadingProfileController()
+    }
+    
+    func errorOnLoadingProfiles(error: Error?) {
+        
+        self.delegate?.errorOnLoadingProfileController(error: error)
+        
+    }
+    
+}
