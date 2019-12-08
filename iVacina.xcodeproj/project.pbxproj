@@ -12,6 +12,7 @@
 		1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */; };
 		1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */; };
 		1FDE34FD239C0BDE0043D546 /* EsqueceuSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */; };
+		1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */; };
 		4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA02361348500DC0941 /* HomeViewController.swift */; };
 		4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */; };
 		4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */; };
@@ -79,6 +80,7 @@
 		1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
 		1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocals.swift; sourceTree = "<group>"; };
 		1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaController.swift; sourceTree = "<group>"; };
+		1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
 		4F90ABA02361348500DC0941 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DadosMedicoTableViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FDE34FE239D50BC0043D546 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B313066A86070179B25CE2A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +313,7 @@
 		BC571723235922A400E60909 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1FDE34FE239D50BC0043D546 /* Extensions */,
 				BCA3252A237C823300151E44 /* Animation */,
 				BCDE134823612516006F6657 /* Colors.swift */,
 				BC5717262359236400E60909 /* Extensions.swift */,
@@ -544,6 +555,7 @@
 				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
 				BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */,
+				1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
