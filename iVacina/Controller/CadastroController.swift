@@ -11,8 +11,8 @@ import FirebaseAuth
 import FirebaseDatabase
 
 protocol CadastroControllerDelegate: class {
-    func goToHome()
-    func callAlert(error: Error?)
+    func sucessCreateUser()
+    func failCreateUser(error: Error?)
 }
 
 class CadastroController {
@@ -25,7 +25,7 @@ class CadastroController {
             if error == nil {
                 self.registrarUsuario(nome: nome, email: email, senha: senha)
             } else {
-                self.delegate?.callAlert(error: error)
+                self.delegate?.failCreateUser(error: error)
             }
         }
     }
@@ -40,12 +40,16 @@ class CadastroController {
         
         context.child("user/profile").child(formattedEmail).setValue(postObject) { (error, context) in
             if error == nil {
-                self.delegate?.goToHome()
+                self.delegate?.sucessCreateUser()
             } else {
                 if let error = error {
                     print("Erro ao criar referencia do usuário no Firebase: \(error.localizedDescription)")
                 }
             }
         }
+    }
+    
+    func isLoggedIn(value: Bool){
+        UserDefaults.standard.setLoggedInState(value: value)
     }
 }

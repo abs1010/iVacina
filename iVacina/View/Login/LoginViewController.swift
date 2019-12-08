@@ -81,11 +81,13 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginControllerDelegate {
-    func callAlert(error: Error?) {
+    func loginFail(error: Error?) {
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
     
-    func goToHome(email: String) {
+    func loginSucess(email: String) {
+        
+        loginController?.isLoggedIn(value: true)
 
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
@@ -93,8 +95,6 @@ extension LoginViewController: LoginControllerDelegate {
         
         self.present(vc, animated: true, completion: nil)
     }
-    
-   
 }
 
 extension LoginViewController: UITextFieldDelegate {
