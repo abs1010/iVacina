@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
     //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
-    var saveInfo : Salvar = Salvar()
+    var saveInfo : ProfileProvider = ProfileProvider()
     let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
         self.imagem.layer.cornerRadius = self.imagem.frame.size.height / 2
+        self.nomeTextField.becomeFirstResponder()
         
         //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW E TEXTFIELD
         self.profileTableView.delegate = self
@@ -82,6 +83,16 @@ class ProfileViewController: UIViewController {
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
         
+        if self.nomeTextField.text == "" {
+            
+            let alert = UIAlertController(title: "Atencão!", message: "Informe o nome!", preferredStyle: .alert)
+            
+            let btnOk = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(btnOk)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        
         if self.bloodType == nil {
             
             let alert = UIAlertController(title: "Atencão!", message: "Escolha um tipo sanguíneo.", preferredStyle: .alert)
@@ -111,9 +122,26 @@ class ProfileViewController: UIViewController {
             
             userDefaults.synchronize()
             
+            //Saving name, group, blood type.
+            self.saveInfo.tempUser.nome = self.nomeTextField.text
+            self.saveInfo.tempUser.grupo = self.group
+            self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
+            
             //Calling the saving method
             self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
+            
+            //}
+            
+            //Mostra Aviso
+            let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         }
+        
     }
 }
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -287,19 +315,8 @@ extension ProfileViewController : nameGruposViewControllerDelegate {
     func selectedGroup(grupo: Grupo?) {
         self.group = grupo!
         self.profileTableView.reloadData()
-    }
     
-}
-
-//MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
-
-extension ProfileViewController : TipoSanguineoViewControllerDelegate {
-    
-    func selectedTipoSanguineo(tipoSanguineo: TipoSanguineo) {
-        self.bloodType = tipoSanguineo
-    }
-    
-}
+//MARK: - EXTENSION DE UITEXTFIELD
 
 extension ProfileViewController : UITextFieldDelegate {
     
