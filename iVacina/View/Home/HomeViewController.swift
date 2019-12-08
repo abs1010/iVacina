@@ -51,6 +51,13 @@ class HomeViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.homeController?.setSelectedPessoa(index: 0)
+        self.homeTableView.reloadData()
+        self.homeCollectionView.reloadData()
+        self.atualizaStatusBar()
+    }
+    
     @IBAction func editarAcao(_ sender: UIButton) {
 //        self.configureProfile()
         self.tabBarController?.selectedIndex = 3
@@ -90,11 +97,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         item?.setUpItem(pessoa: (self.homeController?.getSelectedPerson())!)
         return item ?? UICollectionViewCell()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.homeController?.setSelectedPessoa(index: indexPath.row)
         let item = collectionView.cellForItem(at: indexPath)
-        item?.backgroundColor = Colors.azulEscuroCustom
+        item?.backgroundColor = UIColor.azulEscuroCustom
         self.atualizaStatusBar()
         self.homeTableView.reloadData()
     }
@@ -175,6 +182,8 @@ extension HomeViewController: HomeControllerDelegate{
         self.homeController?.setSelectedPessoa(index: 0)
         self.homeTableView.reloadData()
         self.homeCollectionView.reloadData()
+        self.atualizaStatusBar()
+//        self.homeCollectionView.selectItem(at: IndexPath(index: 0), animated: true, scrollPosition: .left)
         hideLoading()
     }
     

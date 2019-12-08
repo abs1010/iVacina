@@ -25,7 +25,8 @@ class HomeController {
     
     func loadPerson() {
         
-        self.titular = Titular(nome: "Bruna", email: "teste@teste.com", imagem: "", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [Vacina(nome: "Dupla Adulto DT", grupo: .Adulto, status: true), Vacina(nome: "Febre Amarela", grupo: .Adulto, status: true)], dependentes: [Pessoa(nome: "Bia", imagem: "", grupo: .Crianca, tipoSanguineo: .B, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [Vacina(nome: "BCG", grupo: .Crianca, status: true), Vacina(nome: "DTP", grupo: .Crianca, status: false)])])
+//        self.titular = Titular(nome: "Bruna", email: "teste@teste.com", imagem: "", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [Vacina(nome: "Dupla Adulto DT", grupo: .Adulto, status: true), Vacina(nome: "Febre Amarela", grupo: .Adulto, status: true)], dependentes: [Pessoa(nome: "Bia", imagem: "", grupo: .Crianca, tipoSanguineo: .B, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [Vacina(nome: "BCG", grupo: .Crianca, status: true), Vacina(nome: "DTP", grupo: .Crianca, status: false)])])
+        
         self.selectedPerson = 0
         self.loadPersonFromFirebase()
     }
@@ -34,6 +35,7 @@ class HomeController {
         let email = self.uid?.email ?? ""
         let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
         let user = Database.database().reference().child("user/profile/\(formattedEmail)")
+        self.titular = Titular(nome: "", email: "", imagem: "", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [], dependentes: [])
         
         self.titular?.email = email
         user.observe(.value) { (userInformation) in
@@ -58,9 +60,44 @@ class HomeController {
                 self.titular?.imagem = dictUser["imagem"] as? String
                 self.titular?.pcd = dictUser["pcd"] as? Bool ?? false
                 
+                
+               var listaVacinaFirebaseTitular: Array = dictUser["vacinas"] as? Array ?? []
+               var indexVacinaTitular: Int = 0
+               var listaVacinaTitular: [Vacina] = []
+               while indexVacinaTitular < listaVacinaFirebaseTitular.count {
+                   let vacina = listaVacinaFirebaseTitular[indexVacinaTitular] as? [String:Any]
+                   var grupo: Grupo
+
+                   switch vacina!["grupo"] as! String {
+                   case "Crianca":
+                       grupo = .Crianca
+                   case "Adolescente":
+                       grupo = .Adolescente
+                   case "Adulto":
+                       grupo = .Adulto
+                   case "Idoso":
+                       grupo = .Idoso
+                   default:
+                       grupo = .Gestante
+                   }
+                   
+                   var nome: String = vacina!["nome"] as! String
+                   var status: Bool = false
+                   
+                   if vacina!["status"] as! String == "true" {
+                       status = true
+                   }
+
+                   var newVacina: Vacina = Vacina(nome: nome, grupo: grupo, status: status)
+                   indexVacinaTitular = indexVacinaTitular + 1
+                   listaVacinaTitular.append(newVacina)
+               }
+                
+                self.titular?.listaVacinas = listaVacinaTitular
+                
+                //Pegando dados dependentes!
                 var listaDependenteFirebase: Array = dictUser["dependentes"] as? Array ?? []
                 var index: Int = 0
-//                print(information?["name"])
                 var listaDependente: [Pessoa] = []
                 while index < listaDependenteFirebase.count ?? 0{
                     let information = listaDependenteFirebase[index] as? [String:Any]
@@ -74,7 +111,7 @@ class HomeController {
                         grupo = .Adolescente
                     case "Adulto":
                         grupo = .Adulto
-                    case "Idose":
+                    case "Idoso":
                         grupo = .Idoso
                     default:
                         grupo = .Gestante
