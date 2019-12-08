@@ -8,9 +8,14 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 class ProfileController {
-    var pessoa: Pessoa?
+    
+   // private let uid = Auth.auth().currentUser
+    
+    var pessoa: Titular?
+    private var saveModelController : Salvar?
     var profileViewController : ProfileViewController?
     
     private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
@@ -21,16 +26,37 @@ class ProfileController {
     }
     
     func getIndexOfBloodType(indexPath: IndexPath) -> String{
-          return tipoSanguineoArray[indexPath.row]
-      }
+        return tipoSanguineoArray[indexPath.row]
+    }
     
     func getNumberOfRowsInSectionForGroup() -> Int{
         return grupoArray.count
     }
     
     func getNumberOfRowsInSectionForBloodType() -> Int{
-          return tipoSanguineoArray.count
-      }
+        return tipoSanguineoArray.count
+    }
+    
+    func getNumberOfRowsInSectionForCells() -> Int{
+        
+        let dep : Int = self.pessoa?.dependentes.count ?? 0
+        //1 titular + dependentes
+        let total = 1 + dep
+        
+        return total
+    }
+    
+    func getPessoa(indexPath: IndexPath) -> Pessoa {
+        
+        //if indexPath.row == 0 {
+            
+        return self.saveModelController!.tempUser
+            
+        //}
+        
+        //return
+        
+    }
     
     func getImageToSet(index: IndexPath) -> String {
         
@@ -53,23 +79,36 @@ class ProfileController {
         return ""
     }
     
-    //    func getTamanhoListaVacina() -> Int{
-    //        return self.pessoa?.listaVacina.count ?? 0
-    //    }
-    //
-    //    func getTamanhoListaProximaVacina() -> Int{
-    //        return self.pessoa?.listaProximaVacina.count ?? 0
-    //    }
-    //
-    //    func setPessoa(pessoa: Pessoa?){
-    //        if let _pessoa = pessoa{
-    //            self.pessoa = _pessoa
-    //        }
-    //    }
-    //
-    //    func getPessoa() -> Pessoa?{
-    //        return self.pessoa
-    //    }
+//    func getUserInfo() -> Titular {
+//
+//        let email = "alan@gmail.com"
+//        //if let email = self.uid?.email {
+//
+//            let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
+//
+//            let user = Database.database().reference().child("user/profile/\(formattedEmail)")
+//
+//            user.observe(.value) { (userInformation) in
+//
+//                if let dictUser = userInformation.value as? [String:Any]{
+//                    self.pessoa?.nome = dictUser["name"] as? String
+//                    self.pessoa?.email = dictUser["email"] as? String
+//                    //self.pessoa.grupo = dictUser["grupo"] as? String
+//                    //self.pessoa?.tipoSanguineo = dictUser["grupo"] as? String
+//                    self.pessoa?.hipertenso = dictUser["hipertenso"] as! Bool
+//                    self.pessoa?.diabetico = dictUser["diabetico"] as! Bool
+//                    self.pessoa?.doadorOrgaos = dictUser["doadorOrgaos"] as! Bool
+//                    self.pessoa?.pcd = dictUser["pcd"] as! Bool
+//
+//                }
+//
+//            }
+//
+//      //  }
+//
+//        return self.pessoa ?? self.saveModelController!.tempUser
+//
+//    }
     
     func saveInfo(person: Titular) {
         
@@ -124,8 +163,8 @@ class ProfileController {
             //personalData
             let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
                                                 "imagem"        : person.dependentes[seqDep]?.imagem ?? "",
-                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)"),
-                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)"),
+                                                "grupo"         : String("\(person.dependentes[seqDep]?.grupo)" ?? ""),
+                                                "tipoSanguineo" : String("\(person.dependentes[seqDep]?.tipoSanguineo)" ?? ""),
                                                 "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
                                                 "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
                                                 "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",
@@ -144,11 +183,11 @@ class ProfileController {
             //GRAVANDO AS VACINAS DEPENDENTE
             var seqVacDep = 0
             for vacina in person.dependentes[seqDep]!.listaVacinas {
-
+                
                 let setVacina:[String : Any] = ["nome"    : vacina.nome,
                                                 "grupo"   : String("\(vacina.grupo)"),
                                                 "status"  : String("\(vacina.status)")]
-
+                
                 context.child("user/profile").child(formattedEmail).child("dependentes/\(seqDep)/vacinas/\(seqVacDep)").setValue(setVacina) { (error, context) in
                     if error == nil {}
                     else{print("Deu merda: \(error.debugDescription)")}
