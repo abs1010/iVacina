@@ -30,6 +30,8 @@
 		BC12EE85237B748E00B6A691 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE84237B748E00B6A691 /* BaseViewController.swift */; };
 		BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */; };
 		BC12EE8C237B74EA00B6A691 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */; };
+		BC1AF971239B169900D027F5 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */; };
+		BC1AF972239B169900D027F5 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
 		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
@@ -98,6 +100,8 @@
 		BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2TableViewCell.swift; sourceTree = "<group>"; };
 		BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		BC12EE89237B74EA00B6A691 /* News2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
+		BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */,
 				BC5365B42391BDD6001F9822 /* OptionTableViewCell.swift */,
 				BC5365B52391BDD6001F9822 /* OptionTableViewCell.xib */,
+				BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */,
+				BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCA32526237C80BB00151E44 /* NewsTableViewCell.swift in Resources */,
+				BC1AF972239B169900D027F5 /* PersonCollectionViewCell.xib in Resources */,
 				BCA32527237C80BB00151E44 /* NewsTableViewCell.xib in Resources */,
 				BCA32528237C80BB00151E44 /* News2TableViewCell.swift in Resources */,
 				BCA32529237C80BB00151E44 /* News2TableViewCell.xib in Resources */,
@@ -500,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1AF971239B169900D027F5 /* PersonCollectionViewCell.swift in Sources */,
 				4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */,
 				4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */,
 				BC12EE8C237B74EA00B6A691 /* NewsTableViewCell.swift in Sources */,

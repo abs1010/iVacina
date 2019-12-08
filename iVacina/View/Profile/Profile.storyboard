@@ -90,7 +90,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" id="Y5k-jp-HIz">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="4Po-b0-G2L">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="4Po-b0-G2L">
                                 <rect key="frame" x="20" y="10" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -163,7 +163,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJ6-54-q5B">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="270"/>
+                                        <rect key="frame" x="0.0" y="15" width="300" height="255"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cell" textLabel="wP9-QQ-bFc" style="IBUITableViewCellStyleDefault" id="Zb9-8V-BBo">
@@ -191,7 +191,7 @@
                                     <constraint firstAttribute="trailing" secondItem="yie-k6-g2f" secondAttribute="trailing" id="1wd-MP-jrR"/>
                                     <constraint firstAttribute="height" constant="300" id="1zW-Dm-P9g"/>
                                     <constraint firstAttribute="trailing" secondItem="uJ6-54-q5B" secondAttribute="trailing" id="FTf-Ua-3nD"/>
-                                    <constraint firstItem="uJ6-54-q5B" firstAttribute="top" secondItem="vjY-6n-xwy" secondAttribute="top" id="VYk-Z7-jiH"/>
+                                    <constraint firstItem="uJ6-54-q5B" firstAttribute="top" secondItem="vjY-6n-xwy" secondAttribute="top" constant="15" id="VYk-Z7-jiH"/>
                                     <constraint firstItem="yie-k6-g2f" firstAttribute="leading" secondItem="vjY-6n-xwy" secondAttribute="leading" id="aDh-Ey-Zke"/>
                                     <constraint firstAttribute="bottom" secondItem="yie-k6-g2f" secondAttribute="bottom" id="emd-5g-jna"/>
                                     <constraint firstItem="yie-k6-g2f" firstAttribute="top" secondItem="uJ6-54-q5B" secondAttribute="bottom" id="mSM-Cw-4Ff"/>
@@ -290,7 +290,7 @@
                                     <constraint firstAttribute="height" constant="130" id="d3t-av-Ua9"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e5O-wj-IDb">
-                                    <size key="itemSize" width="282" height="130"/>
+                                    <size key="itemSize" width="316" height="130"/>
                                     <size key="estimatedItemSize" width="161" height="130"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -298,31 +298,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="IOQ-nH-TUQ" customClass="PessoaCollectionViewCell" customModule="iVacina" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="282" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="316" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CrZ-gc-WWJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="282" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="130"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bruna" translatesAutoresizingMaskIntoConstraints="NO" id="EkB-5k-XR6">
-                                                    <rect key="frame" x="20" y="11" width="116" height="107"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QK-yb-tHc">
-                                                    <rect key="frame" x="144" y="11" width="114" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="282" height="130"/>
-                                        <connections>
-                                            <outlet property="imagemPessoa" destination="EkB-5k-XR6" id="VoA-3C-Hdt"/>
-                                            <outlet property="nomeLabel" destination="8QK-yb-tHc" id="gOO-b2-nbj"/>
-                                        </connections>
+                                        <size key="customSize" width="316" height="130"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -521,7 +504,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bruna" width="750" height="1334"/>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="loading" width="236" height="236"/>
