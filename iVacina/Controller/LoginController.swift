@@ -10,8 +10,8 @@ import Foundation
 import FirebaseAuth
 
 protocol LoginControllerDelegate: class {
-    func goToHome(email: String)
-    func callAlert(error: Error?)
+    func loginSucess(email: String)
+    func loginFail(error: Error?)
 }
 
 class LoginController {
@@ -22,13 +22,16 @@ class LoginController {
         
         Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
             if error == nil {
-                self.delegate?.goToHome(email: email)
+                self.delegate?.loginSucess(email: email)
                 
             } else {
-                self.delegate?.callAlert(error: error)
-               // Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
+                self.delegate?.loginFail(error: error)
             }
         }
+    }
+    
+    func isLoggedIn(value: Bool){
+        UserDefaults.standard.setLoggedInState(value: value)
     }
     
 }

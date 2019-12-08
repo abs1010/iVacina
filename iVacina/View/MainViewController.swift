@@ -11,22 +11,27 @@ import UIKit
 class MainViewController: UITabBarController {
 
     var email : String?
+    var homeController: HomeController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if isLoggedIn(){
+            homeController = HomeController()
+        } else {
+            perform(#selector(showLoginViewController), with: nil, afterDelay: 0.01)
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    fileprivate func isLoggedIn() -> Bool {
+        return UserDefaults.standard.getLoggedInState()
     }
-    */
+    
+    @objc func showLoginViewController(){
+        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+        guard let vc: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+        self.present(vc, animated: false, completion: nil)
+    }
+
 
 }

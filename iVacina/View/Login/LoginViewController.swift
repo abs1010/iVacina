@@ -51,9 +51,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-        
         guard let vc: CadastroViewController = storyboard.instantiateViewController(withIdentifier: "CadastroViewController") as? CadastroViewController else {return}
-        
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -66,6 +64,15 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func clicouEsqueceuSenha(_ sender: Any) {
+        
+        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+        guard let vc: EsqueceuSenhaViewController = storyboard.instantiateViewController(withIdentifier: "EsqueceuSenhaViewController") as? EsqueceuSenhaViewController else { return }
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
     @objc func dismissKeyboard() {
         self.emailTextField.resignFirstResponder()
         self.senhaTextField.resignFirstResponder()
@@ -74,11 +81,13 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginControllerDelegate {
-    func callAlert(error: Error?) {
+    func loginFail(error: Error?) {
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
     
-    func goToHome(email: String) {
+    func loginSucess(email: String) {
+        
+        loginController?.isLoggedIn(value: true)
 
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
@@ -86,8 +95,6 @@ extension LoginViewController: LoginControllerDelegate {
         
         self.present(vc, animated: true, completion: nil)
     }
-    
-   
 }
 
 extension LoginViewController: UITextFieldDelegate {

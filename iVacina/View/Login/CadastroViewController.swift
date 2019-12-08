@@ -101,11 +101,11 @@ class CadastroViewController: UIViewController {
     }
 }
 
-
-
-
 extension CadastroViewController: CadastroControllerDelegate{
-    func goToHome() {
+    
+    func sucessCreateUser() {
+        
+        cadastroController?.isLoggedIn(value: true)
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
@@ -114,7 +114,7 @@ extension CadastroViewController: CadastroControllerDelegate{
         self.present(vc, animated: true, completion: nil)
     }
     
-    func callAlert(error: Error?) {
+    func failCreateUser(error: Error?) {
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
 }
