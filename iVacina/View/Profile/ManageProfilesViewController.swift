@@ -22,15 +22,16 @@ class ManageProfilesViewController: BaseViewController {
     
     let uid = Auth.auth().currentUser
     var profileController: ProfileController = ProfileController()
+    var titular: Titular?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.profileController.delegate = self
         self.profileController.setupController()
-    
+        self.titular = self.profileController.loadCurrentTitular()
+        
         //CARREGANDO DADOS DO USUARIO LOGADO
-        self.nameTextField.text = self.profileController.getNomePessoa()
+        //self.nameTextField.text = self.titular?.nome
         self.emailTextField.text = self.uid?.email
         
         //PERSONALIZANDO A VIEW
@@ -110,7 +111,10 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         if let cell : PersonCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCollectionViewCell", for: indexPath) as? PersonCollectionViewCell {
             
-            cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            cell.setupCell(pessoa: self.titular ?? self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            
+            //cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            
             
             return cell
         }
@@ -138,8 +142,9 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
 
 extension ManageProfilesViewController : ProfileControllerDelegate {
 
-    func successOnLoadingProfileController() {
-
+    func successOnLoadingProfileController(titular: Titular?) {
+        self.titular = titular
+        self.nameTextField.text = titular?.nome
         self.collectionView.reloadData()
         hideLoading()
         print("Passei pela extension de ProfileViewController")
