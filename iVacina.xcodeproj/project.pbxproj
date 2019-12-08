@@ -11,6 +11,7 @@
 		1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */; };
 		1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */; };
 		1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */; };
+		1FDE34FD239C0BDE0043D546 /* EsqueceuSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */; };
 		4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA02361348500DC0941 /* HomeViewController.swift */; };
 		4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */; };
 		4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */; };
@@ -77,6 +78,7 @@
 		1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDataProvider.swift; sourceTree = "<group>"; };
 		1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
 		1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocals.swift; sourceTree = "<group>"; };
+		1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaController.swift; sourceTree = "<group>"; };
 		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
 		4F90ABA02361348500DC0941 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DadosMedicoTableViewCell.xib; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				4F90ABBC2361356600DC0941 /* ProfileController.swift */,
 				BC82FE3E238F4F010091327D /* LoginController.swift */,
 				BC82FE40238F4F250091327D /* CadastroController.swift */,
+				1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */,
 				BC12EE85237B748E00B6A691 /* BaseViewController.swift in Sources */,
 				BCDE134923612516006F6657 /* Colors.swift in Sources */,
+				1FDE34FD239C0BDE0043D546 /* EsqueceuSenhaController.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
 				4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */,
 				4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */,

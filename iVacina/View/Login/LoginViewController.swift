@@ -51,9 +51,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
         let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-        
         guard let vc: CadastroViewController = storyboard.instantiateViewController(withIdentifier: "CadastroViewController") as? CadastroViewController else {return}
-        
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -64,6 +62,15 @@ class LoginViewController: UIViewController {
             self.loginController?.delegate = self
             loginController?.loginWithFirebase(email: email, senha: senha)
         }
+    }
+    
+    
+    @IBAction func clicouEsqueceuSenha(_ sender: Any) {
+        
+        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+        guard let vc: EsqueceuSenhaViewController = storyboard.instantiateViewController(withIdentifier: "EsqueceuSenhaViewController") as? EsqueceuSenhaViewController else { return }
+        self.present(vc, animated: true, completion: nil)
+        
     }
     
     @objc func dismissKeyboard() {
