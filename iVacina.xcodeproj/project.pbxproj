@@ -551,7 +551,6 @@
 				BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */,
 				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
-				BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */,
 				1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */,

@@ -315,9 +315,21 @@ extension ProfileViewController : nameGruposViewControllerDelegate {
     func selectedGroup(grupo: Grupo?) {
         self.group = grupo!
         self.profileTableView.reloadData()
+    }
     
-//MARK: - EXTENSION DE UITEXTFIELD
+}
 
+//MARK: - EXTENSION PARA PROTOCOLO DE GRUPO (GruposViewController)
+
+extension ProfileViewController : TipoSanguineoViewControllerDelegate {
+    
+    func selectedTipoSanguineo(tipoSanguineo: TipoSanguineo) {
+        self.bloodType = tipoSanguineo
+    }
+    
+}
+
+//MARK: - EXTENSION DE UITEXTFIELD
 extension ProfileViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
