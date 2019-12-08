@@ -128,7 +128,7 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
             //Calling the saving method
-            self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
+            //self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
             
             //}
             
