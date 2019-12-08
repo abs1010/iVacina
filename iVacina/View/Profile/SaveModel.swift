@@ -10,7 +10,7 @@ import Foundation
 
 class Salvar {
 
-    let tempUser: Titular = Titular(nome: "Alan Bezerra Silva", email: "alan@gmail.com", imagem: "alan.jpg", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false,
+    let tempUser: Titular = Titular(nome: "Alan Bezerra Silva", email: "alan@gmail.com", imagem: "alan@gmail.com", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false,
         listaVacinas: [Vacina(nome: "BCG", grupo: .Crianca, status: false),
         Vacina(nome: "Hepatite_B", grupo: .Crianca, status: false),
         Vacina(nome: "Penta_1_Dose", grupo: .Crianca, status: false),
@@ -66,7 +66,7 @@ class Salvar {
 
         dependentes: [])
 
-    let dependente1 : Pessoa = Pessoa(nome: "Davi Silva", imagem: "davi.jpg", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas:
+    let dependente1 : Pessoa = Pessoa(nome: "Davi Silva", imagem: "alan@gmail.com", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas:
     [Vacina(nome: "BCG", grupo: .Crianca, status: false),
     Vacina(nome: "Hepatite_B", grupo: .Crianca, status: false),
     Vacina(nome: "Penta_1_Dose", grupo: .Crianca, status: false),

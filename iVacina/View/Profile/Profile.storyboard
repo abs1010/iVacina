@@ -268,11 +268,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWs-kr-q0c">
-                                <rect key="frame" x="85.5" y="430.5" width="243" height="35"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWs-kr-q0c">
+                                <rect key="frame" x="107" y="430.5" width="200" height="35"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="T8d-bS-C76"/>
+                                    <constraint firstAttribute="width" constant="200" id="T8d-bS-C76"/>
                                     <constraint firstAttribute="height" constant="35" id="rSv-Xg-vXw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
@@ -334,15 +334,23 @@
                                 <color key="pageIndicatorTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-5K-unb">
-                                <rect key="frame" x="157" y="731" width="100" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-5K-unb">
+                                <rect key="frame" x="177" y="722" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Bxd-mL-MfG"/>
+                                    <constraint firstAttribute="height" constant="60" id="eSD-Qp-vBs"/>
+                                    <constraint firstAttribute="width" constant="60" id="ydc-4n-OaM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="+">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <font key="NSFont" metaFont="system" size="55"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
                                 </state>
                                 <connections>
                                     <segue destination="hj0-vF-z7w" kind="show" id="JbO-we-7mf"/>
@@ -353,21 +361,21 @@
                         <constraints>
                             <constraint firstItem="gj4-bW-CS3" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="20" id="0Jw-aD-e3e"/>
                             <constraint firstItem="YLU-fN-GX4" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="20" id="1GJ-9X-7XA"/>
-                            <constraint firstItem="IMd-5K-unb" firstAttribute="top" secondItem="8uB-oY-k5h" secondAttribute="bottom" constant="9.5" id="1J3-sb-Hxd"/>
                             <constraint firstItem="IWs-kr-q0c" firstAttribute="centerX" secondItem="KeQ-hH-dbW" secondAttribute="centerX" id="4H6-OY-ooG"/>
                             <constraint firstItem="NfG-99-3YE" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="10" id="7OK-dP-Uco"/>
-                            <constraint firstItem="IMd-5K-unb" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="157" id="BkT-TL-z5B"/>
+                            <constraint firstItem="IMd-5K-unb" firstAttribute="top" secondItem="8uB-oY-k5h" secondAttribute="bottom" constant="0.5" id="BL5-CA-lav"/>
                             <constraint firstItem="eCD-bQ-bil" firstAttribute="top" secondItem="qdr-qc-H14" secondAttribute="bottom" constant="10" id="Di0-sm-W3v"/>
                             <constraint firstItem="fCa-aT-yal" firstAttribute="top" secondItem="YLU-fN-GX4" secondAttribute="bottom" constant="8.5" id="Ecc-Ws-eJ1"/>
                             <constraint firstItem="TSJ-mI-mjJ" firstAttribute="trailing" secondItem="fCa-aT-yal" secondAttribute="trailing" constant="20" id="EjM-18-hQm"/>
                             <constraint firstItem="TSJ-mI-mjJ" firstAttribute="trailing" secondItem="IuS-MT-GWA" secondAttribute="trailing" constant="107" id="Fpd-5Q-N63"/>
                             <constraint firstItem="IWs-kr-q0c" firstAttribute="top" secondItem="fCa-aT-yal" secondAttribute="bottom" constant="25" id="GHJ-Yt-EhG"/>
-                            <constraint firstItem="TSJ-mI-mjJ" firstAttribute="trailing" secondItem="IMd-5K-unb" secondAttribute="trailing" constant="157" id="If3-nr-dMY"/>
+                            <constraint firstItem="IMd-5K-unb" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="177" id="K55-cE-nQV"/>
                             <constraint firstItem="XlQ-A0-pUV" firstAttribute="leading" secondItem="KeQ-hH-dbW" secondAttribute="leading" id="KYI-pj-XWs"/>
                             <constraint firstItem="TSJ-mI-mjJ" firstAttribute="trailing" secondItem="8uB-oY-k5h" secondAttribute="trailing" constant="162.5" id="Mdg-gc-u3n"/>
                             <constraint firstItem="NfG-99-3YE" firstAttribute="top" secondItem="XlQ-A0-pUV" secondAttribute="bottom" constant="20" id="Nfh-kN-t76"/>
                             <constraint firstItem="8uB-oY-k5h" firstAttribute="top" secondItem="NfG-99-3YE" secondAttribute="bottom" constant="8" id="Nk4-Nh-zmw"/>
                             <constraint firstItem="IuS-MT-GWA" firstAttribute="leading" secondItem="TSJ-mI-mjJ" secondAttribute="leading" constant="107" id="QPa-pc-xvU"/>
+                            <constraint firstItem="TSJ-mI-mjJ" firstAttribute="trailing" secondItem="IMd-5K-unb" secondAttribute="trailing" constant="177" id="XHb-0d-ymf"/>
                             <constraint firstItem="IuS-MT-GWA" firstAttribute="top" secondItem="TSJ-mI-mjJ" secondAttribute="top" constant="7.5" id="XM2-al-yvR"/>
                             <constraint firstAttribute="trailing" secondItem="XlQ-A0-pUV" secondAttribute="trailing" id="as8-db-qNQ"/>
                             <constraint firstItem="YLU-fN-GX4" firstAttribute="top" secondItem="eCD-bQ-bil" secondAttribute="bottom" constant="11.5" id="bF5-jI-qGK"/>

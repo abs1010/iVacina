@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : Salvar = Salvar()
-    //let uid = Auth.auth().currentUser
+    let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
         
@@ -39,8 +39,6 @@ class ProfileViewController: UIViewController {
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
-        
-        //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         
     }
     
@@ -107,7 +105,7 @@ class ProfileViewController: UIViewController {
             let userDefaults = UserDefaults.standard
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
-                userDefaults.set(imageData, forKey: "imagePerfil")
+                userDefaults.set(imageData, forKey: self.uid?.email ?? "")
                 
             }
             
