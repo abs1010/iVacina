@@ -104,6 +104,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9H-qb-8u0">
+                                <rect key="frame" x="343.5" y="379.5" width="26" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="Muk-P5-LdP"/>
+                                    <constraint firstAttribute="height" constant="22" id="j9s-Po-zly"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="eye" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clicouMostrarSenha:" destination="eXf-RK-SAB" eventType="touchUpInside" id="7MV-kW-fAB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2274509804" green="0.52156862749999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -118,7 +132,9 @@
                             <constraint firstItem="AZQ-fi-N4N" firstAttribute="top" secondItem="w2E-nB-5US" secondAttribute="bottom" constant="25" id="RRd-cH-dZa"/>
                             <constraint firstItem="Gbl-Zw-eDx" firstAttribute="top" secondItem="4aw-28-c6V" secondAttribute="bottom" constant="19" id="TJv-BO-BLx"/>
                             <constraint firstItem="5za-Ab-w6C" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="WNX-E0-WH6"/>
+                            <constraint firstItem="s9H-qb-8u0" firstAttribute="leading" secondItem="5za-Ab-w6C" secondAttribute="trailing" constant="15" id="XFS-xX-JyG"/>
                             <constraint firstItem="4aw-28-c6V" firstAttribute="top" secondItem="l83-oM-I1u" secondAttribute="bottom" constant="97" id="bNx-mZ-IiJ"/>
+                            <constraint firstItem="s9H-qb-8u0" firstAttribute="centerY" secondItem="5za-Ab-w6C" secondAttribute="centerY" id="dLn-Op-d34"/>
                             <constraint firstItem="4aw-28-c6V" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="gEN-2G-iKH"/>
                             <constraint firstItem="l83-oM-I1u" firstAttribute="top" secondItem="Poz-Mh-hbO" secondAttribute="bottom" constant="13" id="hq7-qe-IGa"/>
                             <constraint firstItem="9bD-4V-uA1" firstAttribute="top" secondItem="nmr-FM-dJZ" secondAttribute="bottom" constant="15" id="jc3-ub-N3y"/>
@@ -135,6 +151,7 @@
                         <outlet property="botaoCriarConta" destination="4aw-28-c6V" id="tiC-ev-4d9"/>
                         <outlet property="botaoEntrar" destination="Poz-Mh-hbO" id="AUq-v0-rfe"/>
                         <outlet property="botaoFacebook" destination="Gbl-Zw-eDx" id="xoU-k8-HCi"/>
+                        <outlet property="botaoMostrarSenha" destination="s9H-qb-8u0" id="7z8-jl-KJ6"/>
                         <outlet property="emailTextField" destination="nmr-FM-dJZ" id="Jc6-QP-aIP"/>
                         <outlet property="senhaTextField" destination="5za-Ab-w6C" id="gEN-rC-hmq"/>
                     </connections>
@@ -241,6 +258,18 @@
                                     <action selector="clicouCancelar:" destination="8Dm-i1-TQA" eventType="touchUpInside" id="jlz-5z-bCF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn1-PY-KHg">
+                                <rect key="frame" x="343.5" y="437" width="26" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="8sB-ho-GrR"/>
+                                    <constraint firstAttribute="width" constant="26" id="hgb-S0-sFo"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="eye" catalog="system"/>
+                                <connections>
+                                    <action selector="clicouMostrarSenha:" destination="8Dm-i1-TQA" eventType="touchUpInside" id="lgM-ab-fZt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2274509804" green="0.52156862749999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -256,6 +285,7 @@
                             <constraint firstItem="N0H-WB-LCL" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="EVz-BY-n5m"/>
                             <constraint firstItem="TXR-1e-7vO" firstAttribute="top" secondItem="N0H-WB-LCL" secondAttribute="bottom" constant="15" id="EfW-s1-Car"/>
                             <constraint firstItem="Xp5-f0-VfZ" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="FCI-D2-XGv"/>
+                            <constraint firstItem="Hn1-PY-KHg" firstAttribute="leading" secondItem="Y8S-Lu-38o" secondAttribute="trailing" constant="15" id="HWJ-cq-ljW"/>
                             <constraint firstItem="Y8S-Lu-38o" firstAttribute="top" secondItem="HfN-7j-kCN" secondAttribute="bottom" constant="5" id="MXe-2b-jNy"/>
                             <constraint firstItem="Y8S-Lu-38o" firstAttribute="centerY" secondItem="uCd-ZX-au8" secondAttribute="centerY" id="NYC-M2-XnY"/>
                             <constraint firstItem="Ml7-vc-lnq" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="QRH-4d-1Re"/>
@@ -267,6 +297,7 @@
                             <constraint firstItem="TXR-1e-7vO" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="cph-iK-wbe"/>
                             <constraint firstItem="u0a-vC-4id" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="d3i-lV-7Z2"/>
                             <constraint firstItem="6rQ-5T-rzc" firstAttribute="top" secondItem="u0a-vC-4id" secondAttribute="bottom" constant="79" id="d6q-du-tVb"/>
+                            <constraint firstItem="Hn1-PY-KHg" firstAttribute="centerY" secondItem="Y8S-Lu-38o" secondAttribute="centerY" id="lkv-PE-oli"/>
                             <constraint firstItem="9eT-zk-Zvc" firstAttribute="centerX" secondItem="uCd-ZX-au8" secondAttribute="centerX" id="m9x-6o-irf"/>
                             <constraint firstItem="u0a-vC-4id" firstAttribute="top" secondItem="HAP-se-EEi" secondAttribute="bottom" constant="5" id="tiT-9C-vZk"/>
                         </constraints>
@@ -274,6 +305,7 @@
                     </view>
                     <connections>
                         <outlet property="botaoCriarConta" destination="6rQ-5T-rzc" id="WWa-Ab-cD7"/>
+                        <outlet property="botaoMostrarSenha" destination="Hn1-PY-KHg" id="rLL-dN-FSg"/>
                         <outlet property="emailTextField" destination="Ml7-vc-lnq" id="iV7-Ij-tOH"/>
                         <outlet property="nomeTextField" destination="N0H-WB-LCL" id="zke-Su-Xxd"/>
                         <outlet property="senha2TextField" destination="u0a-vC-4id" id="Lab-L1-Q9Y"/>
@@ -369,4 +401,7 @@
             <point key="canvasLocation" x="1483" y="126"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eye" catalog="system" width="64" height="40"/>
+    </resources>
 </document>
