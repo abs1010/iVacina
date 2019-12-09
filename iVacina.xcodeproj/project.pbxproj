@@ -45,7 +45,6 @@
 		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
 		BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85523930AC000DE5457 /* GruposViewController.swift */; };
 		BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */; };
-		BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A88B23982FF900DE5457 /* SaveModel.swift */; };
 		BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE34238C59620091327D /* ManageProfilesViewController.swift */; };
 		BC82FE37238DD36B0091327D /* TipoVacinasStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */; };
 		BC82FE3F238F4F020091327D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE3E238F4F010091327D /* LoginController.swift */; };
@@ -117,7 +116,6 @@
 		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		BC66A85523930AC000DE5457 /* GruposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GruposViewController.swift; sourceTree = "<group>"; };
 		BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoSanguineoViewController.swift; sourceTree = "<group>"; };
-		BC66A88B23982FF900DE5457 /* SaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; };
 		BC82FE34238C59620091327D /* ManageProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfilesViewController.swift; sourceTree = "<group>"; };
 		BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoVacinasStrings.swift; sourceTree = "<group>"; };
 		BC82FE3E238F4F010091327D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
 				BC66A85523930AC000DE5457 /* GruposViewController.swift */,
 				BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */,
-				BC66A88B23982FF900DE5457 /* SaveModel.swift */,
 				BC82FE43238F59060091327D /* Cells */,
 			);
 			path = Profile;
@@ -554,7 +551,6 @@
 				BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */,
 				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
-				BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */,
 				1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */,

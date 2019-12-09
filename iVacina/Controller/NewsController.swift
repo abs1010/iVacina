@@ -17,7 +17,6 @@ protocol NewsControllerDelegate : class {
 class NewsController {
   
     //Array que recebes as noticias do provider
-    //private
     private var arrayOfNews: [NewsElement] = []
     //delegate
     weak var delegate: NewsControllerDelegate?
