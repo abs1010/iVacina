@@ -147,7 +147,7 @@ class HomeController {
                             grupo = .Adolescente
                         case "Adulto":
                             grupo = .Adulto
-                        case "Idose":
+                        case "Idoso":
                             grupo = .Idoso
                         default:
                             grupo = .Gestante

@@ -26,12 +26,12 @@ class ManageProfilesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.profileController.delegate = self
+        
         self.profileController.setupController()
+        self.profileController.delegate = self
         self.titular = self.profileController.loadCurrentTitular()
         
         //CARREGANDO DADOS DO USUARIO LOGADO
-        //self.nameTextField.text = self.titular?.nome
         self.emailTextField.text = self.uid?.email
         
         //PERSONALIZANDO A VIEW
@@ -58,12 +58,27 @@ class ManageProfilesViewController: BaseViewController {
         
         //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         self.getPictureFromUserDefaults()
+        
+        //IMPEDE DE ADD DEPENDENTE SE NAO HOUVER TITULAR
+//        if self.profileController.getNumberOfRowsInSectionForCells() == 1 {
+//            self.plusButton.isEnabled = false
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.getPictureFromUserDefaults()
         self.plusButton.pulse()
+        
         print("Voltou p a profile")
+    }
+    
+    func isUserNil() -> Bool{
+        if self.titular?.nome == nil {
+            return true
+        }
+        else{
+            return false
+        }
     }
     
     @IBAction func tappedLogOut(_ sender: UIButton) {
@@ -98,8 +113,6 @@ class ManageProfilesViewController: BaseViewController {
     
 }
 
-
-
 //MARK: - EXTENSION DA COLLETION VIEW - DELEGATE AND DATASOURCE
 
 extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -129,7 +142,13 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         print("Clicou em \(indexPath.row)")
         
-        //IMPLEMENTAR O PRESENT DA TELA DE PERFIL
+            if let vc : NavigationViewController = storyboard?.instantiateViewController(identifier: "NavigationViewController") {
+
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -146,7 +165,6 @@ extension ManageProfilesViewController : ProfileControllerDelegate {
         self.titular = titular
         self.nameTextField.text = titular?.nome
         self.collectionView.reloadData()
-        hideLoading()
         print("Passei pela extension de ProfileViewController")
     }
 
