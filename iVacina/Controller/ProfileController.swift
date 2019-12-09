@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 protocol ProfileControllerDelegate : class {
-    func successOnLoadingProfileController()
+    func successOnLoadingProfileController(titular: Titular?)
     func errorOnLoadingProfileController(error: Error?)
 }
 
@@ -192,7 +192,7 @@ extension ProfileController : ProfileProviderDelegate {
     
     func successOnLoadingProfiles(titular: Titular?) {
         self.pessoa = titular
-        self.delegate?.successOnLoadingProfileController()
+        self.delegate?.successOnLoadingProfileController(titular: titular)
     }
     
     func errorOnLoadingProfiles(error: Error?) {

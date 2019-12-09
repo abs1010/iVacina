@@ -57,12 +57,10 @@ struct Center: Codable {
 struct Location: Codable {
     let city, country: String
     let state, address1, zipCode: String
-    let displayAddress: [String]
 
     enum CodingKeys: String, CodingKey {
         case city, country, state, address1
         case zipCode = "zip_code"
-        case displayAddress = "display_address"
     }
 }
 
@@ -75,10 +73,10 @@ struct Region: Codable {
 class MapsLocals: NSObject, MKAnnotation {
     
     let title: String?
-    let subtitle: [String]?
+    let subtitle: String?
     var coordinate: CLLocationCoordinate2D
     
-    init(title: String, subtitle: [String], coordinate: CLLocationCoordinate2D) {
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
     
     self.title = title
     self.subtitle = subtitle
@@ -91,7 +89,7 @@ class MapsLocals: NSObject, MKAnnotation {
     init(json: MedicalCenter){
         
         self.title = json.name
-        self.subtitle = json.location.displayAddress
+        self.subtitle = json.location.address1
         self.coordinate = json.coordinates.coordinate
     }
 }

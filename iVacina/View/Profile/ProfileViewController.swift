@@ -17,8 +17,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet private weak var profileTableView: UITableView!
     
     var profileController: ProfileController = ProfileController()
-    
+    var manager: ManageProfilesViewController = ManageProfilesViewController()
     //Carrega grupo Adulto por padrao e busca user logado
+    var titular: Titular?
+    var dependente: Pessoa?
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : ProfileProvider = ProfileProvider()
@@ -128,8 +130,13 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
             //Calling the saving method
-            self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
-            
+            if manager.isUserNil() {
+            //    self.profileController.saveInfo(person: self.saveInfo.tempUser)
+            }
+            //else{
+                
+            //   self.saveInfo.addDependente(dependente: self.saveInfo.tempUser)
+                self.profileController.saveInfo(person: self.saveInfo.tempUser)
             //}
             
             //Mostra Aviso
