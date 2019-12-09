@@ -19,36 +19,58 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBT-c9-91h">
-                                <rect key="frame" x="0.0" y="683" width="414" height="130"/>
+                                <rect key="frame" x="20" y="663" width="374" height="150"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhT-yo-zuY">
-                                        <rect key="frame" x="186" y="17" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DhT-yo-zuY">
+                                        <rect key="frame" x="20" y="20" width="239" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="X17-Zb-5Qb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7Q-Wb-jGI">
-                                        <rect key="frame" x="184" y="50" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7Q-Wb-jGI">
+                                        <rect key="frame" x="274" y="35" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="kRx-Cn-F9D"/>
+                                            <constraint firstAttribute="height" constant="80" id="sDF-8P-86W"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="waze"/>
                                         <connections>
                                             <action selector="tappedWazeBtn:" destination="w8u-6Q-DmN" eventType="touchUpInside" id="9Qx-CC-RV6"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4W0-NE-eVu">
+                                        <rect key="frame" x="20" y="70" width="234" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Rc3-um-0RI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Qvb-Kx-X1Y"/>
+                                    <constraint firstItem="DhT-yo-zuY" firstAttribute="leading" secondItem="oBT-c9-91h" secondAttribute="leading" constant="20" id="MvX-Et-Fbg"/>
+                                    <constraint firstAttribute="height" constant="150" id="Qvb-Kx-X1Y"/>
+                                    <constraint firstItem="4W0-NE-eVu" firstAttribute="leading" secondItem="oBT-c9-91h" secondAttribute="leading" constant="20" id="bho-dM-9aw"/>
+                                    <constraint firstItem="E7Q-Wb-jGI" firstAttribute="centerY" secondItem="oBT-c9-91h" secondAttribute="centerY" id="dfV-1k-G1r"/>
+                                    <constraint firstItem="DhT-yo-zuY" firstAttribute="top" secondItem="oBT-c9-91h" secondAttribute="top" constant="20" id="h32-Pb-wMK"/>
+                                    <constraint firstAttribute="trailing" secondItem="E7Q-Wb-jGI" secondAttribute="trailing" constant="20" id="kHf-Dh-5vy"/>
+                                    <constraint firstItem="4W0-NE-eVu" firstAttribute="top" secondItem="DhT-yo-zuY" secondAttribute="bottom" constant="10" id="kUO-kt-Zih"/>
+                                    <constraint firstItem="E7Q-Wb-jGI" firstAttribute="leading" secondItem="DhT-yo-zuY" secondAttribute="trailing" constant="15" id="vkI-IY-kVV"/>
+                                    <constraint firstItem="E7Q-Wb-jGI" firstAttribute="leading" secondItem="4W0-NE-eVu" secondAttribute="trailing" constant="20" id="zcG-D1-IBC"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="trailing" secondItem="oBT-c9-91h" secondAttribute="trailing" id="2e3-GZ-uH2"/>
+                            <constraint firstItem="owL-Tc-Pfl" firstAttribute="trailing" secondItem="oBT-c9-91h" secondAttribute="trailing" constant="20" id="2e3-GZ-uH2"/>
                             <constraint firstAttribute="bottom" secondItem="Qkh-3t-Qyi" secondAttribute="bottom" id="3lC-FY-BkO"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="trailing" secondItem="owL-Tc-Pfl" secondAttribute="trailing" id="BF7-S0-kva"/>
-                            <constraint firstItem="oBT-c9-91h" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="QqD-Et-GUl"/>
+                            <constraint firstItem="oBT-c9-91h" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" constant="20" id="QqD-Et-GUl"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="top" secondItem="Aii-Lg-Zca" secondAttribute="top" id="RkN-4p-ibo"/>
                             <constraint firstItem="owL-Tc-Pfl" firstAttribute="bottom" secondItem="oBT-c9-91h" secondAttribute="bottom" id="n8n-nd-NZs"/>
                             <constraint firstItem="Qkh-3t-Qyi" firstAttribute="leading" secondItem="owL-Tc-Pfl" secondAttribute="leading" id="uEp-qG-PvS"/>
@@ -58,6 +80,7 @@
                     <tabBarItem key="tabBarItem" title="Maps" image="map" catalog="system" selectedImage="map.fill" id="Q50-GF-Eto"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addressLbl" destination="4W0-NE-eVu" id="neh-Sw-KfC"/>
                         <outlet property="detailView" destination="oBT-c9-91h" id="PeQ-E5-vlt"/>
                         <outlet property="mapView" destination="Qkh-3t-Qyi" id="2AJ-jE-SJ6"/>
                         <outlet property="titleLbl" destination="DhT-yo-zuY" id="zez-vE-bsg"/>
@@ -66,11 +89,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftz-aL-qwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="159"/>
+            <point key="canvasLocation" x="79.710144927536234" y="158.70535714285714"/>
         </scene>
     </scenes>
     <resources>
         <image name="map" catalog="system" width="64" height="56"/>
         <image name="map.fill" catalog="system" width="64" height="56"/>
+        <image name="waze" width="200" height="200"/>
     </resources>
 </document>

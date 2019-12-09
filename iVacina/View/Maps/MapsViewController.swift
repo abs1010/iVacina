@@ -15,6 +15,7 @@ class MapsViewController: UIViewController {
     
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var wazeBtn: UIButton!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -22,6 +23,8 @@ class MapsViewController: UIViewController {
     var mapsController: MapsController?
     let locationManager: CLLocationManager = CLLocationManager()
     let zoomInMeters: CLLocationDistance = 1000
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,58 +34,69 @@ class MapsViewController: UIViewController {
         displayView(enable: false)
         
         mapView.delegate = self
-
+        
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(hideDetailView))
+        downSwipe.direction = .down
+        
+        self.detailView.addGestureRecognizer(downSwipe)
+        
     }
     
     @IBAction func tappedWazeBtn(_ sender: UIButton) {
         if let location = mapsController?.selectedMKAnnotation?.annotation?.coordinate {
-            print (location.latitude)
             callWazeApp(location: location)
         }
     }
     
-       // URL scheme
+    // URL scheme
     func callWazeApp(location: CLLocationCoordinate2D) {
-           
-           let latitude:Double = location.latitude
-           let longitude:Double = location.longitude
-           
-           var link: String = "waze://"
-           let url: URL = URL(string: link)!
-           
-           if UIApplication.shared.canOpenURL(url) {
-               
-               let urlStr:String = String(format: "waze://?ll=%f,%f&navigate=yes",latitude, longitude)
-               
-               if #available(iOS 10.0, *) {
-                   UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: { (success) in
-                       
-                   })
-               } else {
-                   // Fallback on earlier versions
-               }
-               UIApplication.shared.isIdleTimerDisabled = true
-               
-               
-           } else {
-               link = "https://itunes.apple.com/us/app/id323229106"
-               
-               if #available(iOS 10.0, *) {
-                   UIApplication.shared.open(URL(string:link)!, options: [:], completionHandler: { (success) in
-                       
-                   })
-               } else {
-                   // Fallback on earlier versions
-               }
-               UIApplication.shared.isIdleTimerDisabled = true
-           }
-       }
+        
+        let latitude:Double = location.latitude
+        let longitude:Double = location.longitude
+        
+        var link: String = "waze://"
+        let url: URL = URL(string: link)!
+        
+        if UIApplication.shared.canOpenURL(url) {
+            
+            let urlStr:String = String(format: "waze://?ll=%f,%f&navigate=yes",latitude, longitude)
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: { (success) in
+                    
+                })
+            } else {
+                // Fallback on earlier versions
+            }
+            UIApplication.shared.isIdleTimerDisabled = true
+            
+            
+        } else {
+            link = "https://itunes.apple.com/us/app/id323229106"
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string:link)!, options: [:], completionHandler: { (success) in
+                    
+                })
+            } else {
+                // Fallback on earlier versions
+            }
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+    }
     
+    @objc func hideDetailView() {
+        self.displayView(enable: false)
+    }
     
     func displayView(enable: Bool){
         self.detailView.isHidden = !enable
         self.titleLbl.isHidden = !enable
         self.wazeBtn.isHidden = !enable
+        
+        self.detailView.layer.cornerRadius = 30.0
+        self.detailView.clipsToBounds = true
+        self.detailView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     
@@ -92,7 +106,6 @@ class MapsViewController: UIViewController {
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: zoomInMeters, longitudinalMeters: zoomInMeters)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
-            
         }
     }
     
@@ -127,7 +140,7 @@ class MapsViewController: UIViewController {
             //alerta de erro
         }
     }
-
+    
 }
 
 
@@ -137,11 +150,11 @@ extension MapsViewController: CLLocationManagerDelegate {
         centerLocation()
         
         if let currentLocation = locationManager.location?.coordinate{
-        mapsController?.getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
-            
-            if let arrayLocals = array {
-                self.mapView.addAnnotations(arrayLocals)
-            }
+            mapsController?.getMedicalCenters(latitude: (currentLocation.latitude), longitude: (currentLocation.longitude)) { (array, error) in
+                
+                if let arrayLocals = array {
+                    self.mapView.addAnnotations(arrayLocals)
+                }
             }
         }
         
@@ -157,10 +170,9 @@ extension MapsViewController: CLLocationManagerDelegate {
 extension MapsViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print(view.annotation?.title)
-        print(view.annotation?.coordinate.latitude)
         displayView(enable: true)
         titleLbl.text = view.annotation?.title ?? ""
+        addressLbl.text = view.annotation?.subtitle ?? ""
         mapsController?.selectedMKAnnotation = view
         
     }

@@ -18,19 +18,19 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     
-    var selectedUser: Titular?
-    
     //Carrega grupo Adulto por padrao e busca user logado
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
-    var saveInfo : Salvar = Salvar()
-    //let uid = Auth.auth().currentUser
+    var saveInfo : ProfileProvider = ProfileProvider()
+    let uid = Auth.auth().currentUser
     
     override func viewDidLoad() {
+        
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
         self.imagem.layer.cornerRadius = self.imagem.frame.size.height / 2
+        self.nomeTextField.becomeFirstResponder()
         
         //ASSINANDO DELEGATE E DTSOURCE DA TABLEVIEW E TEXTFIELD
         self.profileTableView.delegate = self
@@ -40,8 +40,6 @@ class ProfileViewController: UIViewController {
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
-        
-        //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         
     }
     
@@ -77,7 +75,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    
     //MARK: - BUTTONS DA NAVIGATION
     
     @IBAction func btnVoltar(_ sender: UIButton) {
@@ -85,6 +82,16 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func btnSalvar(_ sender: UIBarButtonItem) {
+        
+        if self.nomeTextField.text == "" {
+            
+            let alert = UIAlertController(title: "Atencão!", message: "Informe o nome!", preferredStyle: .alert)
+            
+            let btnOk = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(btnOk)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
         
         if self.bloodType == nil {
             
@@ -109,15 +116,32 @@ class ProfileViewController: UIViewController {
             let userDefaults = UserDefaults.standard
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
-                userDefaults.set(imageData, forKey: "imagePerfil")
+                userDefaults.set(imageData, forKey: self.uid?.email ?? "")
                 
             }
             
             userDefaults.synchronize()
             
+            //Saving name, group, blood type.
+            self.saveInfo.tempUser.nome = self.nomeTextField.text
+            self.saveInfo.tempUser.grupo = self.group
+            self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
+            
             //Calling the saving method
             self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
+            
+            //}
+            
+            //Mostra Aviso
+            let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
         }
+        
     }
 }
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -305,6 +329,7 @@ extension ProfileViewController : TipoSanguineoViewControllerDelegate {
     
 }
 
+//MARK: - EXTENSION DE UITEXTFIELD
 extension ProfileViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
