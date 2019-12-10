@@ -22,10 +22,13 @@ class ProfileViewController: UIViewController {
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : ProfileProvider = ProfileProvider()
-    let uid = Auth.auth().currentUser
+
+    var uid: User?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
+        uid = Auth.auth().currentUser
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")

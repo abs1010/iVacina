@@ -113,8 +113,7 @@ class CadastroViewController: UIViewController {
         
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
     
-        view.frame.origin.y = -keyboardSize.height
-            
+        view.frame.origin.y = -30
             
         } else {
             view.frame.origin.y = 0

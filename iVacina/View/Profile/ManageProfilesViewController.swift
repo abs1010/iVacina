@@ -20,12 +20,14 @@ class ManageProfilesViewController: BaseViewController {
     @IBOutlet weak var logOut: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
-    let uid = Auth.auth().currentUser
+    var uid: User?
     var profileController: ProfileController = ProfileController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        uid = Auth.auth().currentUser
+        
         self.profileController.delegate = self
         self.profileController.setupController()
     

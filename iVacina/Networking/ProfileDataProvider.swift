@@ -193,9 +193,11 @@ class ProfileProvider {
 //MARK: - METODO DE OBTER DADOS DO FIREBASE A PARTIR DO E-MAIL LOGADO
     
     var delegate : ProfileProviderDelegate?
-    private let uid = Auth.auth().currentUser
+    
+    var uid: User?
     
     func getProfileData(){
+        uid = Auth.auth().currentUser
         
         //        let email = "alan@gmail.com"
         //        //if let email = self.uid?.email {

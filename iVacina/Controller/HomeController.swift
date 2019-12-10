@@ -19,7 +19,8 @@ class HomeController {
     
     private var titular: Titular?
     private var selectedPerson: Int?
-    private let uid = Auth.auth().currentUser
+    
+    private var uid: User?
     
     weak var delegate: HomeControllerDelegate?
     
@@ -32,6 +33,7 @@ class HomeController {
     }
     
     func loadPersonFromFirebase(){
+        uid = Auth.auth().currentUser
         let email = self.uid?.email ?? ""
         let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
         let user = Database.database().reference().child("user/profile/\(formattedEmail)")
