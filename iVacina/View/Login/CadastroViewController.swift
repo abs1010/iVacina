@@ -18,6 +18,8 @@ class CadastroViewController: UIViewController {
     @IBOutlet weak var senha2TextField: UITextField!
     @IBOutlet weak var botaoCriarConta: UIButton!
     
+    @IBOutlet weak var botaoMostrarSenha: UIButton!
+    
     
     var cadastroController: CadastroController?
     
@@ -34,6 +36,10 @@ class CadastroViewController: UIViewController {
         self.emailTextField.delegate = self
         self.senhaTextField.delegate = self
         self.senha2TextField.delegate = self
+        
+        self.senhaTextField.isSecureTextEntry = true
+        self.senha2TextField.isSecureTextEntry = true
+        self.botaoMostrarSenha.setImage(UIImage(systemName: "eye"), for: .normal)
         
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
@@ -78,6 +84,21 @@ class CadastroViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func clicouMostrarSenha(_ sender: UIButton) {
+        switch senhaTextField.isSecureTextEntry {
+        case true:
+            self.senhaTextField.isSecureTextEntry = false
+            self.senha2TextField.isSecureTextEntry = false
+            self.botaoMostrarSenha.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        case false:
+            self.senhaTextField.isSecureTextEntry = true
+            self.senha2TextField.isSecureTextEntry = true
+            self.botaoMostrarSenha.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+        
+    }
+    
 
     @objc func dismissKeyboard(){
         self.nomeTextField.resignFirstResponder()

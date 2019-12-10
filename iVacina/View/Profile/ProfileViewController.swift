@@ -119,9 +119,12 @@ class ProfileViewController: UIViewController {
             
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
+            let count: String = String(self.profileController.getNumberOfDependent())
+            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) ?? ""
+            
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
-                userDefaults.set(imageData, forKey: self.uid?.email ?? "")
+                userDefaults.set(imageData, forKey: (nomeImagem))
                 
             }
             
@@ -139,8 +142,12 @@ class ProfileViewController: UIViewController {
             //else{
                 
             //   self.saveInfo.addDependente(dependente: self.saveInfo.tempUser)
-                self.profileController.saveInfo(person: self.saveInfo.tempUser)
+//                self.profileController.saveInfo(person: self.saveInfo.tempUser)
             //}
+            
+//            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.)
+//            
+//            self.profileController.saveDependent(pessoa: )
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)

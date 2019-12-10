@@ -21,7 +21,6 @@ class MainViewController: UITabBarController {
             perform(#selector(showLoginViewController), with: nil, afterDelay: 0.01)
         }
     }
-    
 
     fileprivate func isLoggedIn() -> Bool {
         return UserDefaults.standard.getLoggedInState()

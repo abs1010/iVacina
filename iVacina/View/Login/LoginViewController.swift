@@ -15,9 +15,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var botaoEntrar: UIButton!
     @IBOutlet weak var botaoCriarConta: UIButton!
     @IBOutlet weak var botaoFacebook: UIButton!
+    @IBOutlet weak var botaoMostrarSenha: UIButton!
     
     var loginController: LoginController?
-    var imagem: UIImage? = UIImage(named: "fb-login-button-pt")
     
     //Colocar a Status Bar em branco
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -30,13 +30,16 @@ class LoginViewController: UIViewController {
             loginController = LoginController()
         }
         
+        self.botaoMostrarSenha.setImage(UIImage(systemName: "eye"), for: .normal)
+        self.senhaTextField.isSecureTextEntry = true
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
         self.botaoEntrar.backgroundColor = Colors.green
-        self.botaoFacebook.setImage(imagem, for: .normal)
+        self.botaoFacebook.setImage(UIImage(named: "fb-login-button-pt"), for: .normal)
         
         self.botaoCriarConta.formatarBotao()
         self.botaoEntrar.formatarBotao()
@@ -71,6 +74,18 @@ class LoginViewController: UIViewController {
         guard let vc: EsqueceuSenhaViewController = storyboard.instantiateViewController(withIdentifier: "EsqueceuSenhaViewController") as? EsqueceuSenhaViewController else { return }
         self.present(vc, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func clicouMostrarSenha(_ sender: UIButton) {
+        
+        switch senhaTextField.isSecureTextEntry {
+        case true:
+            self.senhaTextField.isSecureTextEntry = false
+            self.botaoMostrarSenha.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        case false:
+            self.senhaTextField.isSecureTextEntry = true
+            self.botaoMostrarSenha.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
     }
     
     @objc func dismissKeyboard() {
