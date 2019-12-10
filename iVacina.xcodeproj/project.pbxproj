@@ -28,6 +28,7 @@
 		4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */; };
 		4F90ABC52361365000DC0941 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC42361365000DC0941 /* Home.storyboard */; };
 		8C0DBBE85E60F02E89467D6A /* Pods_iVacina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02481286E08E332928A0808E /* Pods_iVacina.framework */; };
+		BC010CCB239F0F7600FE7966 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */; };
 		BC12EE85237B748E00B6A691 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE84237B748E00B6A691 /* BaseViewController.swift */; };
 		BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */; };
 		BC12EE8C237B74EA00B6A691 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */; };
@@ -96,6 +97,7 @@
 		4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CadastroVacinaCustomCell.xib; sourceTree = "<group>"; };
 		4F90ABC42361365000DC0941 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.release.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.release.xcconfig"; sourceTree = "<group>"; };
+		BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		BC12EE84237B748E00B6A691 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BC12EE86237B74EA00B6A691 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2TableViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
 				BC66A85523930AC000DE5457 /* GruposViewController.swift */,
 				BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */,
+				BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */,
 				BC82FE43238F59060091327D /* Cells */,
 			);
 			path = Profile;
@@ -539,6 +542,7 @@
 				1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */,
 				BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */,
 				BC82FE41238F4F250091327D /* CadastroController.swift in Sources */,
+				BC010CCB239F0F7600FE7966 /* NavigationViewController.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				1FAB5367238DC10500C19B1F /* Alert.swift in Sources */,
 				BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */,
@@ -704,7 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27L9T4JU4D;
+				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,7 +728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 27L9T4JU4D;
+				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

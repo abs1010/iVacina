@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 protocol ProfileControllerDelegate : class {
-    func successOnLoadingProfileController()
+    func successOnLoadingProfileController(titular: Titular?)
     func errorOnLoadingProfileController(error: Error?)
 }
 
@@ -21,9 +21,9 @@ class ProfileController {
     
     weak var delegate: ProfileControllerDelegate?
     
-    private let uid = Auth.auth().currentUser
+    //private let uid = Auth.auth().currentUser
+    private var uid : User?
     
-    //private var saveModelController : Salvar?
     private var provider: ProfileProvider?
     
     private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
@@ -35,6 +35,10 @@ class ProfileController {
         self.provider?.delegate = self
         self.provider?.getProfileData()
         
+    }
+    
+    func isLoggedIn(value: Bool){
+        UserDefaults.standard.setLoggedInState(value: value)
     }
     
     func loadCurrentTitular() -> Titular {
@@ -97,6 +101,7 @@ class ProfileController {
     
     func saveInfo(person: Titular) {
         
+        self.uid = Auth.auth().currentUser
         //Aponta par o banco de dados
         let context = Database.database().reference()
         
@@ -186,13 +191,57 @@ class ProfileController {
         }
     }
     
+    func getNumberOfDependent() -> Int {
+        return self.pessoa?.dependentes.count ?? 0
+    }
+    
+    func saveDependent(pessoa: Pessoa) {
+        //Aponta par o banco de dados
+        let context = Database.database().reference()
+        let count: Int = self.getNumberOfDependent()
+        let dependentData:[String : Any] = ["name"          : pessoa.nome ?? "",
+                                            "imagem"        : pessoa.imagem ?? "",
+                                            "grupo"         : "\(pessoa.grupo)",
+                                            "tipoSanguineo" : "\(pessoa.tipoSanguineo)",
+                                            "hipertenso"    : pessoa.hipertenso ,
+                                            "diabetico"     : pessoa.diabetico ,
+                                            "doadorOrgaos"  : pessoa.doadorOrgaos ,
+                                            "pcd"           : pessoa.pcd ]
+        
+        
+        //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
+        let formattedEmail = (self.pessoa?.email?.replacingOccurrences(of: ".", with: ",")) ?? ""
+    context.child("user/profile").child(formattedEmail).child("dependentes/\(count)").setValue(dependentData) { (error, context) in
+            if error == nil {
+                print("Dependente salvo")
+            }else{
+                print("Deu merda: \(error.debugDescription)")
+            }
+        }
+        
+        //GRAVANDO AS VACINAS DEPENDENTE
+        var seqVacDep = 0
+        for vacina in pessoa.listaVacinas ?? [] {
+            
+            let setVacina:[String : Any] = ["nome"    : vacina.nome,
+                                            "grupo"   : String("\(vacina.grupo)"),
+                                            "status"  : String("\(vacina.status)")]
+            
+            context.child("user/profile").child(formattedEmail).child("dependentes/\(count)/vacinas/\(seqVacDep)").setValue(setVacina) { (error, context) in
+                if error == nil {}
+                else{print("Deu merda: \(error.debugDescription)")}
+            }
+            seqVacDep += 1
+        }
+    }
+    
 }
 
 extension ProfileController : ProfileProviderDelegate {
     
     func successOnLoadingProfiles(titular: Titular?) {
         self.pessoa = titular
-        self.delegate?.successOnLoadingProfileController()
+        self.delegate?.successOnLoadingProfileController(titular: titular)
     }
     
     func errorOnLoadingProfiles(error: Error?) {

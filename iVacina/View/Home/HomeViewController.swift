@@ -101,14 +101,18 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.homeController?.setSelectedPessoa(index: indexPath.row)
         let item = collectionView.cellForItem(at: indexPath)
-        item?.backgroundColor = UIColor.azulEscuroCustom
+//        item?.backgroundColor = .white
+        item?.layer.borderColor = UIColor.blue.cgColor
+        item?.layer.borderWidth = 1
+        
         self.atualizaStatusBar()
         self.homeTableView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let item = collectionView.cellForItem(at: indexPath)
-        item?.backgroundColor = UIColor.clear
+//        item?.backgroundColor = UIColor.clear
+        item?.layer.borderWidth = 0
     }
 }
 

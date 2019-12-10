@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" constant="171" id="88P-3b-F67"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gy-nR-kUa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gy-nR-kUa">
                                 <rect key="frame" x="179" y="28" width="211" height="112"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="e9l-5U-Btb"/>
@@ -78,6 +78,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="loading" width="236" height="236"/>
+        <image name="loading" width="1200" height="800"/>
     </resources>
 </document>

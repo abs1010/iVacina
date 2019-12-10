@@ -20,17 +20,20 @@ class ManageProfilesViewController: BaseViewController {
     @IBOutlet weak var logOut: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
+    private var uid : User?
     var profileController: ProfileController = ProfileController()
+    var titular: Titular?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.profileController.delegate = self
+        
         self.profileController.setupController()
-    
+        self.profileController.delegate = self
+        self.titular = self.profileController.loadCurrentTitular()
+        
         //CARREGANDO DADOS DO USUARIO LOGADO
-        self.nameTextField.text = self.profileController.getNomePessoa()
+        self.uid = Auth.auth().currentUser
         self.emailTextField.text = self.uid?.email
         
         //PERSONALIZANDO A VIEW
@@ -57,28 +60,38 @@ class ManageProfilesViewController: BaseViewController {
         
         //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         self.getPictureFromUserDefaults()
+        
+        //IMPEDE DE ADD DEPENDENTE SE NAO HOUVER TITULAR
+//        if self.profileController.getNumberOfRowsInSectionForCells() == 1 {
+//            self.plusButton.isEnabled = false
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.getPictureFromUserDefaults()
         self.plusButton.pulse()
+        
         print("Voltou p a profile")
+    }
+    
+    func isUserNil() -> Bool{
+        if self.titular?.nome == nil {
+            return true
+        }
+        else{
+            return false
+        }
     }
     
     @IBAction func tappedLogOut(_ sender: UIButton) {
         
         //Chamar metodo do Firebase de logout
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        self.profileController.isLoggedIn(value: false)
         
         let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-        
+
         guard let vc: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
-        
+
         self.present(vc, animated: true, completion: nil)
         
     }
@@ -97,8 +110,6 @@ class ManageProfilesViewController: BaseViewController {
     
 }
 
-
-
 //MARK: - EXTENSION DA COLLETION VIEW - DELEGATE AND DATASOURCE
 
 extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -110,7 +121,10 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         if let cell : PersonCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCollectionViewCell", for: indexPath) as? PersonCollectionViewCell {
             
-            cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            cell.setupCell(pessoa: self.titular ?? self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            
+            //cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
+            
             
             return cell
         }
@@ -125,7 +139,13 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         
         print("Clicou em \(indexPath.row)")
         
-        //IMPLEMENTAR O PRESENT DA TELA DE PERFIL
+            if let vc : NavigationViewController = storyboard?.instantiateViewController(identifier: "NavigationViewController") {
+
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -138,10 +158,10 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
 
 extension ManageProfilesViewController : ProfileControllerDelegate {
 
-    func successOnLoadingProfileController() {
-
+    func successOnLoadingProfileController(titular: Titular?) {
+        self.titular = titular
+        self.nameTextField.text = titular?.nome
         self.collectionView.reloadData()
-        hideLoading()
         print("Passei pela extension de ProfileViewController")
     }
 

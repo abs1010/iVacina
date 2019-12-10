@@ -16,11 +16,14 @@ class PersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var grupoLabel: UILabel!
     @IBOutlet private weak var typeLabel: UILabel!
     
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
+    private var uid : User?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2
+        self.uid = Auth.auth().currentUser
+        
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.azulEscuroCustom.cgColor
         self.layer.borderWidth = 0.5
@@ -45,7 +48,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
         if indexPath.row == 0 {
         
         self.nameLabel.text = pessoa.nome
-        self.grupoLabel.text = String("\(pessoa.grupo)")
+        self.grupoLabel.text = "\(pessoa.grupo)" ?? ""
         self.typeLabel.text = "Titular"
         
         let userDefaults = UserDefaults.standard

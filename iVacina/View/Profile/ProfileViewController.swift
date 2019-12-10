@@ -17,14 +17,19 @@ class ProfileViewController: UIViewController {
     @IBOutlet private weak var profileTableView: UITableView!
     
     var profileController: ProfileController = ProfileController()
-    
+    var manager: ManageProfilesViewController = ManageProfilesViewController()
     //Carrega grupo Adulto por padrao e busca user logado
+    var titular: Titular?
+    var dependente: Pessoa?
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : ProfileProvider = ProfileProvider()
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
+    private var uid : User?
     
     override func viewDidLoad() {
+        
+        self.uid = Auth.auth().currentUser
         
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
@@ -114,9 +119,12 @@ class ProfileViewController: UIViewController {
             
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
+            let count: String = String(self.profileController.getNumberOfDependent())
+            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) ?? ""
+            
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
-                userDefaults.set(imageData, forKey: self.uid?.email ?? "")
+                userDefaults.set(imageData, forKey: (nomeImagem))
                 
             }
             
@@ -128,9 +136,18 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
             //Calling the saving method
-            self.profileController.saveInfo(person: self.saveInfo.getTempPerson())
-            
+            if manager.isUserNil() {
+            //    self.profileController.saveInfo(person: self.saveInfo.tempUser)
+            }
+            //else{
+                
+            //   self.saveInfo.addDependente(dependente: self.saveInfo.tempUser)
+//                self.profileController.saveInfo(person: self.saveInfo.tempUser)
             //}
+            
+//            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.)
+//            
+//            self.profileController.saveDependent(pessoa: )
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
