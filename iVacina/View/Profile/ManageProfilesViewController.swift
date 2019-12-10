@@ -20,7 +20,8 @@ class ManageProfilesViewController: BaseViewController {
     @IBOutlet weak var logOut: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
+    private var uid : User?
     var profileController: ProfileController = ProfileController()
     var titular: Titular?
     
@@ -32,6 +33,7 @@ class ManageProfilesViewController: BaseViewController {
         self.titular = self.profileController.loadCurrentTitular()
         
         //CARREGANDO DADOS DO USUARIO LOGADO
+        self.uid = Auth.auth().currentUser
         self.emailTextField.text = self.uid?.email
         
         //PERSONALIZANDO A VIEW
@@ -84,17 +86,12 @@ class ManageProfilesViewController: BaseViewController {
     @IBAction func tappedLogOut(_ sender: UIButton) {
         
         //Chamar metodo do Firebase de logout
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        self.profileController.isLoggedIn(value: false)
         
         let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-        
+
         guard let vc: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
-        
+
         self.present(vc, animated: true, completion: nil)
         
     }

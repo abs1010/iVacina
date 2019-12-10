@@ -24,9 +24,12 @@ class ProfileViewController: UIViewController {
     var group: Grupo = .Adulto
     var bloodType : TipoSanguineo?
     var saveInfo : ProfileProvider = ProfileProvider()
-    let uid = Auth.auth().currentUser
+    //let uid = Auth.auth().currentUser
+    private var uid : User?
     
     override func viewDidLoad() {
+        
+        self.uid = Auth.auth().currentUser
         
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)

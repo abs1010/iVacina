@@ -17,11 +17,12 @@ protocol HomeProviderProtocol: class {
 
 class HomeDataProvider {
     
-    private let uid = Auth.auth().currentUser
+    private var uid : User?
     var titular: Titular?
     weak var delegate: HomeProviderProtocol?
     
     func loadPersonFromFirebase(){
+        self.uid = Auth.auth().currentUser
         let email = self.uid?.email ?? ""
         let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
         let user = Database.database().reference().child("user/profile/\(formattedEmail)")
