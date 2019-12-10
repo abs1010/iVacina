@@ -21,9 +21,9 @@ class ProfileController {
     
     weak var delegate: ProfileControllerDelegate?
     
-    private let uid = Auth.auth().currentUser
+    //private let uid = Auth.auth().currentUser
+    private var uid : User?
     
-    //private var saveModelController : Salvar?
     private var provider: ProfileProvider?
     
     private var grupoArray : [String] = ["Criança", "Adolescente", "Adulto", "Idoso", "Gestante"]
@@ -35,6 +35,10 @@ class ProfileController {
         self.provider?.delegate = self
         self.provider?.getProfileData()
         
+    }
+    
+    func isLoggedIn(value: Bool){
+        UserDefaults.standard.setLoggedInState(value: value)
     }
     
     func loadCurrentTitular() -> Titular {
@@ -97,6 +101,7 @@ class ProfileController {
     
     func saveInfo(person: Titular) {
         
+        self.uid = Auth.auth().currentUser
         //Aponta par o banco de dados
         let context = Database.database().reference()
         

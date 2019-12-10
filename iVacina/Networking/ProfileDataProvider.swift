@@ -19,7 +19,8 @@ class ProfileProvider {
     
     weak var delegate : ProfileProviderDelegate?
     private var titular: Titular?
-    private let uid = Auth.auth().currentUser
+    //private let uid = Auth.auth().currentUser
+    private var uid : User?
     
     var tempUser: Titular = Titular(nome: "nome", email: (Auth.auth().currentUser?.email)! , imagem: "imagem", grupo: .Adulto, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [
         Vacina(nome: "BCG", grupo: .Crianca, status: false),
@@ -133,7 +134,7 @@ class ProfileProvider {
     //MARK: - METODO DE OBTER DADOS DO FIREBASE A PARTIR DO E-MAIL LOGADO
     
     func getProfileData(){
-        
+        self.uid = Auth.auth().currentUser
         let email = self.uid?.email ?? ""
         let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
         let user = Database.database().reference().child("user/profile/\(formattedEmail)")
