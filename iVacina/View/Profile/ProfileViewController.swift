@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     
     var profileController: ProfileController = ProfileController()
     var manager: ManageProfilesViewController = ManageProfilesViewController()
+    
     //Carrega grupo Adulto por padrao e busca user logado
     var titular: Titular?
     var dependente: Pessoa?

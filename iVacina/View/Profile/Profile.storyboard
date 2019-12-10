@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="200" width="414" height="608"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="palmeiras" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coK-dC-v4M">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coK-dC-v4M">
                                         <rect key="frame" x="142" y="18" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="le8-Xo-jZr"/>
@@ -88,23 +88,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aQb-F4-6Ub"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" id="Y5k-jp-HIz">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="4Po-b0-G2L">
-                                <rect key="frame" x="20" y="10" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="IaB-Y2-qQA"/>
-                                    <constraint firstAttribute="width" constant="66" id="XIT-7p-5vs"/>
-                                </constraints>
-                                <state key="normal" title="Salvar">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="29"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Perfil" id="Alm-Af-wra">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="rUW-YW-TLy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ROg-U8-zPu" userLabel="Back">
@@ -138,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RNa-h2-7bC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2205.7971014492755" y="564.50892857142856"/>
+            <point key="canvasLocation" x="2207" y="638"/>
         </scene>
         <!--Grupo-->
         <scene sceneID="6i1-jf-gfR">
@@ -217,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8W-kA-t7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037.68115942029" y="564.50892857142856"/>
+            <point key="canvasLocation" x="2971" y="638"/>
         </scene>
         <!--Meus dependentes-->
         <scene sceneID="mJ3-qj-aoz">
@@ -377,7 +361,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <segue destination="hj0-vF-z7w" kind="show" id="JbO-we-7mf"/>
+                                            <segue destination="hj0-vF-z7w" kind="show" identifier="VisualizarViewProfile" id="JbO-we-7mf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -545,14 +529,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsS-pd-8g8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3746" y="565"/>
+            <point key="canvasLocation" x="3678" y="638"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
         <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="loading" width="1200" height="800"/>
-        <image name="palmeiras" width="225" height="225"/>
         <image name="person" catalog="system" width="64" height="58"/>
     </resources>
 </document>

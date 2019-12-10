@@ -61,10 +61,6 @@ class ManageProfilesViewController: BaseViewController {
         //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         self.getPictureFromUserDefaults()
         
-        //IMPEDE DE ADD DEPENDENTE SE NAO HOUVER TITULAR
-//        if self.profileController.getNumberOfRowsInSectionForCells() == 1 {
-//            self.plusButton.isEnabled = false
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,15 +131,22 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let vc: ProfileViewController = segue.destination as? ProfileViewController {
+            
+            vc.titular = self.titular
+            
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print("Clicou em \(indexPath.row)")
-        
-            if let vc : NavigationViewController = storyboard?.instantiateViewController(identifier: "NavigationViewController") {
 
-                self.navigationController?.pushViewController(vc, animated: true)
 
-            }
+        performSegue(withIdentifier: "VisualizarViewProfile", sender: indexPath.row)
         
         
     }
