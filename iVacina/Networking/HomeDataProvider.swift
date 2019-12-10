@@ -42,7 +42,7 @@ class HomeDataProvider {
                     self.titular?.grupo = .Adolescente
                 case "Adulto":
                     self.titular?.grupo = .Adulto
-                case "Idose":
+                case "Idoso":
                     self.titular?.grupo = .Idoso
                 default:
                     self.titular?.grupo = .Gestante
@@ -151,7 +151,7 @@ class HomeDataProvider {
                             grupo = .Adolescente
                         case "Adulto":
                             grupo = .Adulto
-                        case "Idose":
+                        case "Idoso":
                             grupo = .Idoso
                         default:
                             grupo = .Gestante

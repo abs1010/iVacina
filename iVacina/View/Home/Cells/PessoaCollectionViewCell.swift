@@ -20,6 +20,11 @@ class PessoaCollectionViewCell: UICollectionViewCell {
     
     func setUpItem(pessoa: Pessoa){
         self.nomeLabel.text = pessoa.nome
-//        self.imagemPessoa.image = UIImage(named: pessoa.imagem)
+        let userDefaults = UserDefaults.standard
+        if let imageData = userDefaults.data(forKey: pessoa.imagem ?? ""),
+            let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
+            
+            self.imagemPessoa.image = image
+        }
     }
 }

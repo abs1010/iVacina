@@ -186,6 +186,50 @@ class ProfileController {
         }
     }
     
+    func getNumberOfDependent() -> Int {
+        return self.pessoa?.dependentes.count ?? 0
+    }
+    
+    func saveDependent(pessoa: Pessoa) {
+        //Aponta par o banco de dados
+        let context = Database.database().reference()
+        let count: Int = self.getNumberOfDependent()
+        let dependentData:[String : Any] = ["name"          : pessoa.nome ?? "",
+                                            "imagem"        : pessoa.imagem ?? "",
+                                            "grupo"         : "\(pessoa.grupo)",
+                                            "tipoSanguineo" : "\(pessoa.tipoSanguineo)",
+                                            "hipertenso"    : pessoa.hipertenso ,
+                                            "diabetico"     : pessoa.diabetico ,
+                                            "doadorOrgaos"  : pessoa.doadorOrgaos ,
+                                            "pcd"           : pessoa.pcd ]
+        
+        
+        //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
+        let formattedEmail = (self.pessoa?.email?.replacingOccurrences(of: ".", with: ",")) ?? ""
+    context.child("user/profile").child(formattedEmail).child("dependentes/\(count)").setValue(dependentData) { (error, context) in
+            if error == nil {
+                print("Dependente salvo")
+            }else{
+                print("Deu merda: \(error.debugDescription)")
+            }
+        }
+        
+        //GRAVANDO AS VACINAS DEPENDENTE
+        var seqVacDep = 0
+        for vacina in pessoa.listaVacinas ?? [] {
+            
+            let setVacina:[String : Any] = ["nome"    : vacina.nome,
+                                            "grupo"   : String("\(vacina.grupo)"),
+                                            "status"  : String("\(vacina.status)")]
+            
+            context.child("user/profile").child(formattedEmail).child("dependentes/\(count)/vacinas/\(seqVacDep)").setValue(setVacina) { (error, context) in
+                if error == nil {}
+                else{print("Deu merda: \(error.debugDescription)")}
+            }
+            seqVacDep += 1
+        }
+    }
+    
 }
 
 extension ProfileController : ProfileProviderDelegate {
