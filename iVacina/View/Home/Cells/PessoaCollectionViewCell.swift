@@ -15,8 +15,7 @@ class PessoaCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.imagemPessoa.layer.cornerRadius = self.imagemPessoa.frame.size.height/2
         self.layer.cornerRadius = 10
-        self.layer.borderColor = UIColor.blue.cgColor
-        self.layer.borderWidth = 1
+        
     }
     
     func setUpItem(pessoa: Pessoa){
