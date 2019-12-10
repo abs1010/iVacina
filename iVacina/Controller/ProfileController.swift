@@ -21,7 +21,7 @@ class ProfileController {
     
     weak var delegate: ProfileControllerDelegate?
     
-    private var uid: User?
+    private let uid = Auth.auth().currentUser
     
     //private var saveModelController : Salvar?
     private var provider: ProfileProvider?
@@ -144,8 +144,6 @@ class ProfileController {
         //DEPENDENTES
         var seqDep = 0//contador de dependentes
         for _ in person.dependentes {
-            
-            uid = Auth.auth().currentUser
             
             //personalData
             let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",

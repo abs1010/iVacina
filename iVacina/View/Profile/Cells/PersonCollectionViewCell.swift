@@ -16,13 +16,10 @@ class PersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var grupoLabel: UILabel!
     @IBOutlet private weak var typeLabel: UILabel!
     
-    var uid: User?
+    let uid = Auth.auth().currentUser
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        uid = Auth.auth().currentUser
-        
          self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.azulEscuroCustom.cgColor
