@@ -84,7 +84,7 @@ class ManageProfilesViewController: BaseViewController {
     }
     
     @IBAction func btnPlusButton(_ sender: Any) {
-        performSegue(withIdentifier: "performAdd", sender: nil)
+        performSegue(withIdentifier: "VisualizarViewProfile", sender: nil)
     }
         
     func getPictureFromUserDefaults(){
@@ -156,7 +156,7 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         }
         
         
-//        performSegue(withIdentifier: "VisualizarViewProfile", sender: self.titular)
+        performSegue(withIdentifier: "VisualizarViewProfile", sender: self.titular)
         
         
     }

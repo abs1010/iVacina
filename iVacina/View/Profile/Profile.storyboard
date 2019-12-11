@@ -427,7 +427,7 @@
                         <outlet property="pagControl" destination="8uB-oY-k5h" id="WYb-8d-CWi"/>
                         <outlet property="photoImageView" destination="IuS-MT-GWA" id="kOn-4K-RKT"/>
                         <outlet property="plusButton" destination="IMd-5K-unb" id="cd8-ir-qbm"/>
-                        <segue destination="hj0-vF-z7w" kind="show" identifier="performAdd" id="u0d-j2-Mqo"/>
+                        <segue destination="hj0-vF-z7w" kind="show" identifier="VisualizarViewProfile" id="u0d-j2-Mqo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYU-fB-r5O" sceneMemberID="firstResponder"/>
