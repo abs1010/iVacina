@@ -53,6 +53,35 @@ class CadastroVacinaCustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCellForEdition(titular: Titular, indexPath: IndexPath, grupo: Grupo){
+        
+        if grupo == .Crianca {
+            
+            let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
+            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
+
+            
+            if indexPath.row == 2 {
+            self.vacinaSwitch.isOn = titular.hipertenso
+            }
+            if indexPath.row == 3 {
+            self.vacinaSwitch.isOn = titular.diabetico
+            }
+            if indexPath.row == 4 {
+            self.vacinaSwitch.isOn = titular.doadorOrgaos
+            }
+            if indexPath.row == 5 {
+            self.vacinaSwitch.isOn = titular.pcd
+            }
+
+            
+        }
+        
+        
+        
+
+     }
+    
     func setupCellHeader(indexPath: IndexPath){
         self.index = indexPath
         if indexPath.row == 2 && indexPath.section == 0 {
@@ -76,7 +105,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-            
+            print(self.vacinaLabel.text)
         }
         
         if grupo == .Adolescente {
