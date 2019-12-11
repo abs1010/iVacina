@@ -223,16 +223,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 
-                if self.titular == nil {
+//                if self.titular == nil {
                     cell?.setupCellHeader(indexPath: indexPath)
                     cell?.delegate = self
                     return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
+//                }
+//                else{
+//                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+//                    cell?.delegate = self
+//                    return cell ?? UITableViewCell()
+//                }
                 
                 
                 //                cell?.setupCellHeader(indexPath: indexPath)
@@ -247,16 +247,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 
-                if self.titular == nil {
+//                if self.titular == nil {
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
                 return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
+//                }
+//                else{
+//                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+//                    cell?.delegate = self
+//                    return cell ?? UITableViewCell()
+//                }
                     
             }
             
@@ -412,8 +412,8 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     
     func changeOfState(state: Bool, string: String, index: IndexPath) {
         
-        print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
-        
+//        print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
+//
         switch index.section {
         case 0:
             
