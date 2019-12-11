@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var senhaTextField: UITextField!
@@ -61,6 +61,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func clicouEntrar(_ sender: UIButton) {
         
+        self.showLoading()
+        
         if let email = emailTextField.text, let senha = senhaTextField.text {
             self.loginController?.delegate = self
             loginController?.loginWithFirebase(email: email, senha: senha)
@@ -97,10 +99,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginControllerDelegate {
     func loginFail(error: Error?) {
+        
+        self.hideLoading()
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
     
     func loginSucess(email: String) {
+        
+        self.hideLoading()
         
         loginController?.isLoggedIn(value: true)
 

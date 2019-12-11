@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CadastroViewController: UIViewController {
+class CadastroViewController: BaseViewController {
 
     @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -67,6 +67,9 @@ class CadastroViewController: UIViewController {
     
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
+        
+        self.showLoading()
+        
         if let nome = nomeTextField.text,
             let email = emailTextField.text,
             let senha = senhaTextField.text,
@@ -124,6 +127,8 @@ extension CadastroViewController: CadastroControllerDelegate{
     
     func sucessCreateUser() {
         
+        self.hideLoading()
+        
         cadastroController?.isLoggedIn(value: true)
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -134,6 +139,8 @@ extension CadastroViewController: CadastroControllerDelegate{
     }
     
     func failCreateUser(error: Error?) {
+        
+        self.hideLoading()
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
 }
