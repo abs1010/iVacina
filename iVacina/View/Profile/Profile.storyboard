@@ -428,6 +428,7 @@
                         <outlet property="photoImageView" destination="IuS-MT-GWA" id="kOn-4K-RKT"/>
                         <outlet property="plusButton" destination="IMd-5K-unb" id="cd8-ir-qbm"/>
                         <segue destination="hj0-vF-z7w" kind="show" identifier="VisualizarViewProfile" id="u0d-j2-Mqo"/>
+                        <segue destination="hj0-vF-z7w" kind="show" identifier="editProfile" id="F5j-rE-fvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYU-fB-r5O" sceneMemberID="firstResponder"/>
@@ -539,4 +540,7 @@
         <image name="loading" width="1200" height="800"/>
         <image name="person" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="F5j-rE-fvF"/>
+    </inferredMetricsTieBreakers>
 </document>

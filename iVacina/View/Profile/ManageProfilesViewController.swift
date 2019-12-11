@@ -86,7 +86,7 @@ class ManageProfilesViewController: BaseViewController {
     @IBAction func btnPlusButton(_ sender: Any) {
         performSegue(withIdentifier: "VisualizarViewProfile", sender: nil)
     }
-        
+    
     func getPictureFromUserDefaults(){
         
         let userDefaults = UserDefaults.standard
@@ -130,16 +130,18 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let navigation: NavigationViewController = segue.destination as? NavigationViewController {
-            if let vc: ProfileViewController = navigation.viewControllers.first as? ProfileViewController {
-                vc.titular = self.titular
+            if segue.identifier == "VisualizarViewProfile"{
+                if let vc: ProfileViewController = navigation.viewControllers.first as? ProfileViewController {
+                    vc.titular = self.titular
+                }
+            } else {
+                if let vc = navigation.viewControllers.first as? ProfileViewController {
+                    vc.titular = self.titular
+                }
             }
             
-            if let vc = navigation.viewControllers.first as? ProfileViewController {
-                vc.titular = self.titular
-            }
-
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -156,7 +158,7 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
         }
         
         
-        performSegue(withIdentifier: "VisualizarViewProfile", sender: self.titular)
+        performSegue(withIdentifier: "editProfile", sender: self.titular)
         
         
     }

@@ -48,9 +48,6 @@ class ProfileViewController: UIViewController {
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
-        
-        
-        nomeTextField.text = titular?.nome
     }
     
     //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
@@ -125,7 +122,7 @@ class ProfileViewController: UIViewController {
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
             let count: String = String(self.titular?.dependentes.count ?? 0)
-            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) ?? ""
+            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) 
             
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?

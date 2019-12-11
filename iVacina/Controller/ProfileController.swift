@@ -210,7 +210,7 @@ class ProfileController {
         
         
         //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
-        let formattedEmail = (email.replacingOccurrences(of: ".", with: ",")) ?? ""
+        let formattedEmail = (email.replacingOccurrences(of: ".", with: ",")) 
     context.child("user/profile").child(formattedEmail).child("dependentes/\(count)").setValue(dependentData) { (error, context) in
             if error == nil {
                 print("Dependente salvo")
@@ -221,7 +221,7 @@ class ProfileController {
         
         //GRAVANDO AS VACINAS DEPENDENTE
         var seqVacDep = 0
-        for vacina in dependente.listaVacinas ?? [] {
+        for vacina in dependente.listaVacinas {
             
             let setVacina:[String : Any] = ["nome"    : vacina.nome,
                                             "grupo"   : String("\(vacina.grupo)"),

@@ -60,7 +60,6 @@ class CadastroVacinaCustomCell: UITableViewCell {
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
 
-            
             if indexPath.row == 2 {
             self.vacinaSwitch.isOn = titular.hipertenso
             }
@@ -73,12 +72,8 @@ class CadastroVacinaCustomCell: UITableViewCell {
             if indexPath.row == 5 {
             self.vacinaSwitch.isOn = titular.pcd
             }
-
             
         }
-        
-        
-        
 
      }
     
@@ -105,7 +100,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-            print(self.vacinaLabel.text)
+
         }
         
         if grupo == .Adolescente {
