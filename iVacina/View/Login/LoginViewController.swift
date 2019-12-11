@@ -44,6 +44,8 @@ class LoginViewController: UIViewController {
         self.emailTextField.formatarTextField()
         self.senhaTextField.formatarTextField()
         
+        self.emailTextField.keyboardType = UIKeyboardType.emailAddress
+        
         self.emailTextField.delegate = self
         self.senhaTextField.delegate = self
         
