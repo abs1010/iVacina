@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tTb-wm-4Ku">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tTb-wm-4Ku">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,15 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3u-Pj-9io" userLabel="Back">
-                                <rect key="frame" x="207" y="440" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title=" Back" image="chevron.left" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-4G-8yc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-4G-8yc">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome Completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWp-WF-9Xt">
@@ -39,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="200" width="414" height="608"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coK-dC-v4M">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="coK-dC-v4M">
                                         <rect key="frame" x="142" y="18" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="le8-Xo-jZr"/>
@@ -71,9 +63,11 @@
                                     <constraint firstItem="i6I-NH-PiJ" firstAttribute="top" secondItem="gWp-WF-9Xt" secondAttribute="bottom" constant="8" id="SEs-iE-wz2"/>
                                     <constraint firstItem="5hA-aT-0U3" firstAttribute="leading" secondItem="coK-dC-v4M" secondAttribute="trailing" constant="-20" id="or5-bg-ceQ"/>
                                     <constraint firstItem="i6I-NH-PiJ" firstAttribute="leading" secondItem="nnA-Jh-SQ8" secondAttribute="leading" id="pJv-n2-CBZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gWp-WF-9Xt" secondAttribute="trailing" constant="33.5" id="wMg-Bu-yfN"/>
                                     <constraint firstItem="nnA-Jh-SQ8" firstAttribute="trailing" secondItem="coK-dC-v4M" secondAttribute="trailing" constant="142" id="woh-T1-jbG"/>
                                     <constraint firstItem="gWp-WF-9Xt" firstAttribute="top" secondItem="coK-dC-v4M" secondAttribute="bottom" constant="10" id="xgb-03-j6w"/>
                                     <constraint firstItem="i6I-NH-PiJ" firstAttribute="trailing" secondItem="nnA-Jh-SQ8" secondAttribute="trailing" id="yBa-cb-kWp"/>
+                                    <constraint firstAttribute="bottom" secondItem="i6I-NH-PiJ" secondAttribute="bottom" id="yoq-mx-tGC"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="eH6-KP-ZqW"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="nnA-Jh-SQ8"/>
@@ -81,16 +75,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="trailing" secondItem="aQb-F4-6Ub" secondAttribute="trailing" id="ZtM-5y-aD3"/>
-                            <constraint firstAttribute="bottom" secondItem="Uyw-4G-8yc" secondAttribute="bottom" id="eaM-Ph-3WO"/>
-                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="top" secondItem="aQb-F4-6Ub" secondAttribute="top" id="eoo-8s-cAe"/>
-                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="leading" secondItem="aQb-F4-6Ub" secondAttribute="leading" id="sPh-E6-U8i"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Uyw-4G-8yc" secondAttribute="bottom" constant="-83" id="4hF-tU-Kpy"/>
+                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="top" secondItem="aQb-F4-6Ub" secondAttribute="top" id="NVL-3T-hSs"/>
+                            <constraint firstItem="Uyw-4G-8yc" firstAttribute="centerX" secondItem="634-3a-Zmt" secondAttribute="centerX" id="TOY-si-T2D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aQb-F4-6Ub"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Perfil" id="Alm-Af-wra">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="rUW-YW-TLy">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="rUW-YW-TLy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ROg-U8-zPu" userLabel="Back">
                                 <rect key="frame" x="20" y="11" width="70" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -100,7 +93,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title=" Voltar" image="chevron.left" catalog="system">
-                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="btnVoltar:" destination="Vnr-wA-iXe" eventType="touchUpInside" id="PVm-qV-WWx"/>
@@ -344,7 +337,7 @@
                                     </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-5K-unb">
                                         <rect key="frame" x="177" y="230" width="60" height="60"/>
-                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="MfK-Pi-eGd"/>
                                             <constraint firstAttribute="width" constant="60" id="Uo7-RJ-rT5"/>
@@ -536,9 +529,9 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
-        <image name="chevron.left" catalog="system" width="46" height="64"/>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="loading" width="1200" height="800"/>
-        <image name="person" catalog="system" width="64" height="60"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="F5j-rE-fvF"/>

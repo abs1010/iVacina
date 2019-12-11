@@ -24,7 +24,7 @@ class EsqueceuSenhaController {
                 self.delegate?.resetPasswordSucess()
             } else {
                 self.delegate?.resetPasswordFail(error: error)
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "Erro ao resetar senha")
             }
         }
     }

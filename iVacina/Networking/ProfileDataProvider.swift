@@ -279,11 +279,13 @@ class ProfileProvider {
                 
                 self.titular?.dependentes = listaDependente
             }
+            
             self.delegate?.successOnLoadingProfiles(titular: self.titular)
+        
         }
         
-//        self.delegate?.successOnLoadingProfiles(titular: titular)
         self.tempUser = self.titular!
+    
     }
     
 }

@@ -48,7 +48,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
         if indexPath.row == 0 {
         
         self.nameLabel.text = pessoa.nome
-        self.grupoLabel.text = "\(pessoa.grupo)" ?? ""
+        self.grupoLabel.text = "\(pessoa.grupo)"// ?? ""
         self.typeLabel.text = "Titular"
         
         let userDefaults = UserDefaults.standard

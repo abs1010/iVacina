@@ -186,7 +186,6 @@ extension HomeController: HomeProviderProtocol {
     }
     
     func errorOnLoadingHomeProvider(error: Error?) {
-        print(error)
         self.delegate?.errorOnLoadingHomeController(error: error)
     }
 }
