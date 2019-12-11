@@ -54,9 +54,7 @@
 		BC82FE48238F59D00091327D /* ProfileDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE47238F59D00091327D /* ProfileDataProvider.swift */; };
 		BC82FE4A238F5AE80091327D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE49238F5AE80091327D /* MainViewController.swift */; };
 		BCA32525237C7D8000151E44 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEA0A6E235E95D600C33D1E /* News.storyboard */; };
-		BCA32526237C80BB00151E44 /* NewsTableViewCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */; };
 		BCA32527237C80BB00151E44 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE86237B74EA00B6A691 /* NewsTableViewCell.xib */; };
-		BCA32528237C80BB00151E44 /* News2TableViewCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */; };
 		BCA32529237C80BB00151E44 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE89237B74EA00B6A691 /* News2TableViewCell.xib */; };
 		BCA3252C237C823300151E44 /* loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA3252B237C823300151E44 /* loading1.json */; };
 		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
@@ -447,10 +445,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA32526237C80BB00151E44 /* NewsTableViewCell.swift in Resources */,
 				BC1AF972239B169900D027F5 /* PersonCollectionViewCell.xib in Resources */,
 				BCA32527237C80BB00151E44 /* NewsTableViewCell.xib in Resources */,
-				BCA32528237C80BB00151E44 /* News2TableViewCell.swift in Resources */,
 				BCA32529237C80BB00151E44 /* News2TableViewCell.xib in Resources */,
 				BCA3252C237C823300151E44 /* loading1.json in Resources */,
 				BCA32525237C7D8000151E44 /* News.storyboard in Resources */,

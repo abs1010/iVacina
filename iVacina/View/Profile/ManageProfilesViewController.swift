@@ -99,10 +99,6 @@ class ManageProfilesViewController: BaseViewController {
         
     }
     
-    //    func getSelectedUser() -> Titular {
-    //        return self.titular!
-    //    }
-    
 }
 
 //MARK: - EXTENSION DA COLLETION VIEW - DELEGATE AND DATASOURCE

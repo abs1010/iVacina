@@ -66,7 +66,7 @@ class HomeDataProvider {
                    }
                 
                 
-               var listaVacinaFirebaseTitular: Array = dictUser["vacinas"] as? Array ?? []
+                let listaVacinaFirebaseTitular: Array = dictUser["vacinas"] as? Array ?? []
                var indexVacinaTitular: Int = 0
                var listaVacinaTitular: [Vacina] = []
                while indexVacinaTitular < listaVacinaFirebaseTitular.count {
@@ -86,14 +86,14 @@ class HomeDataProvider {
                        grupo = .Gestante
                    }
                    
-                   var nome: String = vacina!["nome"] as! String
+                let nome: String = vacina!["nome"] as! String
                    var status: Bool = false
                    
                    if vacina!["status"] as! String == "true" {
                        status = true
                    }
 
-                   var newVacina: Vacina = Vacina(nome: nome, grupo: grupo, status: status)
+                let newVacina: Vacina = Vacina(nome: nome, grupo: grupo, status: status)
                    indexVacinaTitular = indexVacinaTitular + 1
                    listaVacinaTitular.append(newVacina)
                }
@@ -101,10 +101,10 @@ class HomeDataProvider {
                 self.titular?.listaVacinas = listaVacinaTitular
                 
                 //Pegando dados dependentes!
-                var listaDependenteFirebase: Array = dictUser["dependentes"] as? Array ?? []
+                let listaDependenteFirebase: Array = dictUser["dependentes"] as? Array ?? []
                 var index: Int = 0
                 var listaDependente: [Pessoa] = []
-                while index < listaDependenteFirebase.count ?? 0{
+                while index < listaDependenteFirebase.count {
                     let information = listaDependenteFirebase[index] as? [String:Any]
                     var grupo: Grupo
                     var tipoSanguineo: TipoSanguineo
@@ -138,7 +138,7 @@ class HomeDataProvider {
                     }
                     
                     
-                    var listaVacinaFirebase: Array = information?["vacinas"] as? Array ?? []
+                    let listaVacinaFirebase: Array = information?["vacinas"] as? Array ?? []
                     var indexVacina: Int = 0
                     var listaVacina: [Vacina] = []
                     while indexVacina < listaVacinaFirebase.count {
@@ -158,20 +158,20 @@ class HomeDataProvider {
                             grupo = .Gestante
                         }
                         
-                        var nome: String = vacina!["nome"] as! String
+                        let nome: String = vacina!["nome"] as! String
                         var status: Bool = false
                         
                         if vacina!["status"] as! String == "true" {
                             status = true
                         }
 
-                        var newVacina: Vacina = Vacina(nome: nome, grupo: grupo, status: status)
+                        let newVacina: Vacina = Vacina(nome: nome, grupo: grupo, status: status)
                         indexVacina = indexVacina + 1
                         listaVacina.append(newVacina)
                     }
                     
                     
-                    var pessoa: Pessoa = Pessoa(nome: information?["name"] as? String , imagem: information?["imagem"] as? String, grupo: grupo, tipoSanguineo: tipoSanguineo, hipertenso: information?["hipertenso"] as? Bool ?? false, diabetico: information?["diabetico"] as? Bool ?? false, doadorOrgaos: information?["doadorOrgaos"] as? Bool ?? false, pcd: information?["pcd"] as? Bool ?? false, listaVacinas: listaVacina)
+                    let pessoa: Pessoa = Pessoa(nome: information?["name"] as? String , imagem: information?["imagem"] as? String, grupo: grupo, tipoSanguineo: tipoSanguineo, hipertenso: information?["hipertenso"] as? Bool ?? false, diabetico: information?["diabetico"] as? Bool ?? false, doadorOrgaos: information?["doadorOrgaos"] as? Bool ?? false, pcd: information?["pcd"] as? Bool ?? false, listaVacinas: listaVacina)
                     
                     
                     
