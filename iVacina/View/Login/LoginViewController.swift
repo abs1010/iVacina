@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var senhaTextField: UITextField!
     @IBOutlet weak var botaoEntrar: UIButton!
     @IBOutlet weak var botaoCriarConta: UIButton!
-    @IBOutlet weak var botaoFacebook: UIButton!
     @IBOutlet weak var botaoMostrarSenha: UIButton!
     
     var loginController: LoginController?
@@ -39,7 +38,6 @@ class LoginViewController: UIViewController {
         self.botaoCriarConta.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
         
         self.botaoEntrar.backgroundColor = Colors.green
-        self.botaoFacebook.setImage(UIImage(named: "fb-login-button-pt"), for: .normal)
         
         self.botaoCriarConta.formatarBotao()
         self.botaoEntrar.formatarBotao()

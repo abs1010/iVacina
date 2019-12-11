@@ -29,16 +29,6 @@
                                     <action selector="clicouCriarConta:" destination="eXf-RK-SAB" eventType="touchUpInside" id="tEa-J2-ldP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbl-Zw-eDx">
-                                <rect key="frame" x="85.5" y="664.5" width="243" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="4bd-Z2-qfJ"/>
-                                    <constraint firstAttribute="height" constant="35" id="lV4-fi-wf2"/>
-                                </constraints>
-                                <state key="normal" title="Facebook">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmr-FM-dJZ">
                                 <rect key="frame" x="57" y="303.5" width="300" height="34"/>
                                 <constraints>
@@ -130,7 +120,6 @@
                             <constraint firstItem="w2E-nB-5US" firstAttribute="top" secondItem="3fs-lb-l5P" secondAttribute="bottom" constant="5" id="H52-kA-1eb"/>
                             <constraint firstItem="l83-oM-I1u" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="Ksi-CB-J6h"/>
                             <constraint firstItem="AZQ-fi-N4N" firstAttribute="top" secondItem="w2E-nB-5US" secondAttribute="bottom" constant="25" id="RRd-cH-dZa"/>
-                            <constraint firstItem="Gbl-Zw-eDx" firstAttribute="top" secondItem="4aw-28-c6V" secondAttribute="bottom" constant="19" id="TJv-BO-BLx"/>
                             <constraint firstItem="5za-Ab-w6C" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="WNX-E0-WH6"/>
                             <constraint firstItem="s9H-qb-8u0" firstAttribute="leading" secondItem="5za-Ab-w6C" secondAttribute="trailing" constant="15" id="XFS-xX-JyG"/>
                             <constraint firstItem="4aw-28-c6V" firstAttribute="top" secondItem="l83-oM-I1u" secondAttribute="bottom" constant="97" id="bNx-mZ-IiJ"/>
@@ -143,14 +132,12 @@
                             <constraint firstItem="l83-oM-I1u" firstAttribute="centerY" secondItem="IJQ-4B-YkG" secondAttribute="centerY" constant="48" id="tvd-hP-aBU"/>
                             <constraint firstItem="3fs-lb-l5P" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="usE-Rk-3uB"/>
                             <constraint firstItem="w2E-nB-5US" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="ylc-Sh-QCH"/>
-                            <constraint firstItem="Gbl-Zw-eDx" firstAttribute="centerX" secondItem="IJQ-4B-YkG" secondAttribute="centerX" id="z7G-Kf-yTw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XsW-50-JlC"/>
                     </view>
                     <connections>
                         <outlet property="botaoCriarConta" destination="4aw-28-c6V" id="tiC-ev-4d9"/>
                         <outlet property="botaoEntrar" destination="Poz-Mh-hbO" id="AUq-v0-rfe"/>
-                        <outlet property="botaoFacebook" destination="Gbl-Zw-eDx" id="xoU-k8-HCi"/>
                         <outlet property="botaoMostrarSenha" destination="s9H-qb-8u0" id="7z8-jl-KJ6"/>
                         <outlet property="emailTextField" destination="nmr-FM-dJZ" id="Jc6-QP-aIP"/>
                         <outlet property="senhaTextField" destination="5za-Ab-w6C" id="gEN-rC-hmq"/>
