@@ -202,7 +202,7 @@ class ProfileProvider {
                 let listaDependenteFirebase: Array = dictUser["dependentes"] as? Array ?? []
                 var index: Int = 0
                 var listaDependente: [Pessoa] = []
-                while index < listaDependenteFirebase.count ?? 0 {
+                while index < listaDependenteFirebase.count {
                     let information = listaDependenteFirebase[index] as? [String:Any]
                     var grupo: Grupo
                     var tipoSanguineo: TipoSanguineo

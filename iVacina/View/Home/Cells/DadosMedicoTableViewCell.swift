@@ -63,10 +63,10 @@ class DadosMedicoTableViewCell: UITableViewCell {
             }
             self.tipoSanguineoLabel.text = tipoSanquineo
             
-            self.hipertensoLabel.text = (_pessoa.hipertenso ?? true) ? "Sim" : "Não"
-            self.diabeticoLabel.text = (_pessoa.diabetico ?? true) ? "Sim" : "Não"
-            self.doadorLabel.text = (_pessoa.doadorOrgaos ?? true) ? "Sim" : "Não"
-            self.pcdLabel.text = (_pessoa.pcd ?? true) ? "Sim" : "Não"
+            self.hipertensoLabel.text = (_pessoa.hipertenso ) ? "Sim" : "Não"
+            self.diabeticoLabel.text = (_pessoa.diabetico ) ? "Sim" : "Não"
+            self.doadorLabel.text = (_pessoa.doadorOrgaos ) ? "Sim" : "Não"
+            self.pcdLabel.text = (_pessoa.pcd ) ? "Sim" : "Não"
         }
     }
     
