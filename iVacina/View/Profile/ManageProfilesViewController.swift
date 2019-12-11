@@ -70,24 +70,15 @@ class ManageProfilesViewController: BaseViewController {
         print("Voltou p a profile")
     }
     
-    func isUserNil() -> Bool{
-        if self.titular?.nome == nil {
-            return true
-        }
-        else{
-            return false
-        }
-    }
-    
     @IBAction func tappedLogOut(_ sender: UIButton) {
         
         //Chamar metodo do Firebase de logout
         self.profileController.isLoggedIn(value: false)
         
         let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-
+        
         guard let vc: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
-
+        
         self.present(vc, animated: true, completion: nil)
         
     }
@@ -104,6 +95,10 @@ class ManageProfilesViewController: BaseViewController {
         
     }
     
+    //    func getSelectedUser() -> Titular {
+    //        return self.titular!
+    //    }
+    
 }
 
 //MARK: - EXTENSION DA COLLETION VIEW - DELEGATE AND DATASOURCE
@@ -119,9 +114,6 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
             
             cell.setupCell(pessoa: self.titular ?? self.profileController.loadCurrentTitular(), indexPath: indexPath)
             
-            //cell.setupCell(pessoa: self.profileController.loadCurrentTitular(), indexPath: indexPath)
-            
-            
             return cell
         }
         else {
@@ -133,20 +125,29 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let vc: ProfileViewController = segue.destination as? ProfileViewController {
-            
-            vc.titular = self.titular
-            
+        if let navigation: NavigationViewController = segue.destination as? NavigationViewController {
+            if let vc: ProfileViewController = navigation.viewControllers.first as? ProfileViewController {
+                vc.titular = self.titular
+            }
         }
-        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
         print("Clicou em \(indexPath.row)")
-
-
-        performSegue(withIdentifier: "VisualizarViewProfile", sender: indexPath.row)
+        
+        if let vc: ProfileViewController = storyboard?.instantiateInitialViewController() as? ProfileViewController {
+            
+            //self.delegate?.getSelectedPersonForEditing(person: self.titular)
+            
+            vc.nomeTextField.text = "Alan Teste"
+            
+        }
+        
+        
+        performSegue(withIdentifier: "VisualizarViewProfile", sender: self.titular)
         
         
     }
@@ -160,21 +161,21 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
 //MARK: - DELEGATE
 
 extension ManageProfilesViewController : ProfileControllerDelegate {
-
+    
     func successOnLoadingProfileController(titular: Titular?) {
         self.titular = titular
         self.nameTextField.text = titular?.nome
         self.collectionView.reloadData()
         print("Passei pela extension de ProfileViewController")
     }
-
+    
     func errorOnLoadingProfileController(error: Error?) {
         print(error?.localizedDescription ?? "")
         print("DEU MERDA!!! Mas passei pela extension de ProfileViewController")
-
+        
     }
-
-
+    
+    
 }
 
 

@@ -286,5 +286,4 @@ class ProfileProvider {
         self.tempUser = self.titular!
     }
     
-    
 }

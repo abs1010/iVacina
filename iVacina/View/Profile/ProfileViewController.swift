@@ -13,23 +13,22 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     
     @IBOutlet private weak var imagem: UIImageView!
-    @IBOutlet private weak var nomeTextField: UITextField!
+    @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet private weak var profileTableView: UITableView!
     
     var profileController: ProfileController = ProfileController()
     var manager: ManageProfilesViewController = ManageProfilesViewController()
+    var changeGroup = false
     
     //Carrega grupo Adulto por padrao e busca user logado
     var titular: Titular?
-    var dependente: Pessoa?
-    var group: Grupo = .Adulto
-    var bloodType : TipoSanguineo?
-    var saveInfo : ProfileProvider = ProfileProvider()
-    //let uid = Auth.auth().currentUser
+    private var dependente: Pessoa?
+    private var group: Grupo = .Adulto
+    private var bloodType : TipoSanguineo?
+    private var saveInfo : ProfileProvider = ProfileProvider()
     private var uid : User?
     
     override func viewDidLoad() {
-        
         self.uid = Auth.auth().currentUser
         
         //PERSONALIZACAO DA VIEW
@@ -47,6 +46,8 @@ class ProfileViewController: UIViewController {
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
         
+        
+        nomeTextField.text = titular?.nome
     }
     
     //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
@@ -110,7 +111,7 @@ class ProfileViewController: UIViewController {
             //            blurEffectView.frame = view.bounds
             //            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             //            view.addSubview(blurEffectView)
-            //blurEffectView.removeFromSuperview()
+            //            blurEffectView.removeFromSuperview()
             alert.addAction(btnOk)
             self.present(alert, animated: true, completion: nil)
             
@@ -137,9 +138,9 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
             //Calling the saving method
-            if manager.isUserNil() {
+//            if manager.isUserNil() {
             //    self.profileController.saveInfo(person: self.saveInfo.tempUser)
-            }
+//            }
             //else{
                 
             //   self.saveInfo.addDependente(dependente: self.saveInfo.tempUser)
@@ -222,22 +223,41 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 
-                cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
+                if self.titular == nil {
+                    cell?.setupCellHeader(indexPath: indexPath)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
+                else{
+                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
                 
                 
-                return cell ?? UITableViewCell()
+                //                cell?.setupCellHeader(indexPath: indexPath)
+                //                cell?.delegate = self
+                //
+                //
+                //                return cell ?? UITableViewCell()
                 
             }
             
             if indexPath.row == 3 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                
+                if self.titular == nil {
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
-                
                 return cell ?? UITableViewCell()
-                
+                }
+                else{
+                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
+                    
             }
             
             if indexPath.row == 4 {
@@ -245,6 +265,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
+
                 
                 return cell ?? UITableViewCell()
                 
@@ -254,7 +275,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
+
                 
                 return cell ?? UITableViewCell()
                 
@@ -266,6 +287,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.setupCell(grupo: group, indexPath: indexPath)
             cell?.delegate = self
             
+            if changeGroup {
+                cell?.vacinaSwitch.isOn = false
+                if (indexPath.last != nil) {
+                 changeGroup = false
+                }
+            }
+
             return cell ?? UITableViewCell()
             
         default:
@@ -332,6 +360,7 @@ extension ProfileViewController : nameGruposViewControllerDelegate {
     
     func selectedGroup(grupo: Grupo?) {
         self.group = grupo!
+        changeGroup = true
         self.profileTableView.reloadData()
     }
     
@@ -428,5 +457,6 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     }
     
 }
+
 
 
