@@ -13,23 +13,26 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     
     @IBOutlet private weak var imagem: UIImageView!
-    @IBOutlet private weak var nomeTextField: UITextField!
+    @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet private weak var profileTableView: UITableView!
     
     var profileController: ProfileController = ProfileController()
     var manager: ManageProfilesViewController = ManageProfilesViewController()
+    var changeGroup = false
+    
     //Carrega grupo Adulto por padrao e busca user logado
     var titular: Titular?
-    var dependente: Pessoa?
-    var group: Grupo = .Adulto
-    var bloodType : TipoSanguineo?
-    var saveInfo : ProfileProvider = ProfileProvider()
-    //let uid = Auth.auth().currentUser
+    private var dependente: Pessoa?
+    private var group: Grupo = .Adulto
+    private var bloodType : TipoSanguineo?
+    private var saveInfo : ProfileProvider = ProfileProvider()
     private var uid : User?
     
     override func viewDidLoad() {
-        
         self.uid = Auth.auth().currentUser
+        
+//        self.profileController.setupController()
+        self.profileController.delegate = self
         
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
@@ -45,7 +48,6 @@ class ProfileViewController: UIViewController {
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
-        
     }
     
     //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
@@ -109,7 +111,7 @@ class ProfileViewController: UIViewController {
             //            blurEffectView.frame = view.bounds
             //            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             //            view.addSubview(blurEffectView)
-            //blurEffectView.removeFromSuperview()
+            //            blurEffectView.removeFromSuperview()
             alert.addAction(btnOk)
             self.present(alert, animated: true, completion: nil)
             
@@ -119,8 +121,8 @@ class ProfileViewController: UIViewController {
             
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
-            let count: String = String(self.profileController.getNumberOfDependent())
-            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) ?? ""
+            let count: String = String(self.titular?.dependentes.count ?? 0)
+            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) 
             
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
@@ -136,18 +138,18 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
             //Calling the saving method
-            if manager.isUserNil() {
+//            if manager.isUserNil() {
             //    self.profileController.saveInfo(person: self.saveInfo.tempUser)
-            }
+//            }
             //else{
                 
             //   self.saveInfo.addDependente(dependente: self.saveInfo.tempUser)
 //                self.profileController.saveInfo(person: self.saveInfo.tempUser)
             //}
             
-//            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.)
+            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.listaVacinas)
 //            
-//            self.profileController.saveDependent(pessoa: )
+            self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser)
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
@@ -221,22 +223,41 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 
-                cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
+                if self.titular == nil {
+                    cell?.setupCellHeader(indexPath: indexPath)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
+                else{
+                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
                 
                 
-                return cell ?? UITableViewCell()
+                //                cell?.setupCellHeader(indexPath: indexPath)
+                //                cell?.delegate = self
+                //
+                //
+                //                return cell ?? UITableViewCell()
                 
             }
             
             if indexPath.row == 3 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                
+                if self.titular == nil {
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
-                
                 return cell ?? UITableViewCell()
-                
+                }
+                else{
+                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+                    cell?.delegate = self
+                    return cell ?? UITableViewCell()
+                }
+                    
             }
             
             if indexPath.row == 4 {
@@ -244,6 +265,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.setupCellHeader(indexPath: indexPath)
                 cell?.delegate = self
+
                 
                 return cell ?? UITableViewCell()
                 
@@ -253,7 +275,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
+
                 
                 return cell ?? UITableViewCell()
                 
@@ -265,6 +287,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell?.setupCell(grupo: group, indexPath: indexPath)
             cell?.delegate = self
             
+            if changeGroup {
+                cell?.vacinaSwitch.isOn = false
+                if (indexPath.last != nil) {
+                 changeGroup = false
+                }
+            }
+
             return cell ?? UITableViewCell()
             
         default:
@@ -331,6 +360,7 @@ extension ProfileViewController : nameGruposViewControllerDelegate {
     
     func selectedGroup(grupo: Grupo?) {
         self.group = grupo!
+        changeGroup = true
         self.profileTableView.reloadData()
     }
     
@@ -428,4 +458,16 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     
 }
 
+extension ProfileViewController : ProfileControllerDelegate {
 
+    func successOnLoadingProfileController(titular: Titular?) {
+        self.titular = titular
+        print("Passei pela extension de ProfileViewController")
+    }
+
+    func errorOnLoadingProfileController(error: Error?) {
+        print(error?.localizedDescription ?? "")
+        print("DEU MERDA!!! Mas passei pela extension de ProfileViewController")
+
+    }
+}

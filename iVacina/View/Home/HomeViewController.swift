@@ -192,7 +192,7 @@ extension HomeViewController: HomeControllerDelegate{
     }
     
     func errorOnLoadingHomeController(error: Error?) {
-        print("Erro: \(error)")
+        print("Erro: \(String(describing: error))")
         hideLoading()
     }
     

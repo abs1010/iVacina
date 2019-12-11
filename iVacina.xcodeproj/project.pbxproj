@@ -707,6 +707,7 @@
 			baseConfigurationReference = 43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
@@ -717,6 +718,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "projeto-integrador.iVacina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -727,6 +729,7 @@
 			baseConfigurationReference = 64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VF7VYA94WY;
 				INFOPLIST_FILE = iVacina/Info.plist;
@@ -737,6 +740,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "projeto-integrador.iVacina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

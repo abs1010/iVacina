@@ -18,7 +18,7 @@ protocol ProfileProviderDelegate : class {
 class ProfileProvider {
     
     weak var delegate : ProfileProviderDelegate?
-    private var titular: Titular?
+    var titular: Titular?
     //private let uid = Auth.auth().currentUser
     private var uid : User?
     
@@ -71,7 +71,7 @@ class ProfileProvider {
         Vacina(nome: "Dupla_Adulto_DT", grupo: .Gestante, status: false),
         Vacina(nome: "dTpa", grupo: .Gestante, status: false),
         Vacina(nome: "Influenza", grupo: .Gestante, status: false)],
-        dependentes: [])
+                                    dependentes: [])
     
     var dependente : Pessoa = Pessoa(nome: "", imagem: "", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [
         Vacina(nome: "BCG", grupo: .Crianca, status: false),
@@ -202,7 +202,7 @@ class ProfileProvider {
                 let listaDependenteFirebase: Array = dictUser["dependentes"] as? Array ?? []
                 var index: Int = 0
                 var listaDependente: [Pessoa] = []
-                while index < listaDependenteFirebase.count ?? 0{
+                while index < listaDependenteFirebase.count {
                     let information = listaDependenteFirebase[index] as? [String:Any]
                     var grupo: Grupo
                     var tipoSanguineo: TipoSanguineo
@@ -282,9 +282,8 @@ class ProfileProvider {
             self.delegate?.successOnLoadingProfiles(titular: self.titular)
         }
         
-        self.delegate?.successOnLoadingProfiles(titular: titular)
+//        self.delegate?.successOnLoadingProfiles(titular: titular)
         self.tempUser = self.titular!
     }
-    
     
 }
