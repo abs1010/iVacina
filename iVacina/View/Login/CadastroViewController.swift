@@ -111,8 +111,6 @@ class CadastroViewController: BaseViewController {
     
     @objc func keyboardWillChange(notification: Notification){
         
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
     
         view.frame.origin.y = -30
