@@ -12,6 +12,7 @@ import Lottie
 class BaseViewController: UIViewController {
     
     var animationLoadingView: AnimationView?
+    var whiteView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,10 @@ class BaseViewController: UIViewController {
     }
     
     func showLoading(){
+        whiteView = UIView(frame: self.view.frame)
+        whiteView?.backgroundColor = .white
+        self.view.addSubview(whiteView ?? UIView())
+        
         self.animationLoadingView = AnimationView()
         
         self.animationLoadingView?.frame = self.view.frame
@@ -29,11 +34,12 @@ class BaseViewController: UIViewController {
         animationLoadingView?.animation = animation
         animationLoadingView?.loopMode = .loop
         
-        self.view.addSubview(self.animationLoadingView ?? UIView())
+        whiteView?.addSubview(self.animationLoadingView ?? UIView())
         animationLoadingView?.play()
     }
     
     func hideLoading(){
+        whiteView?.removeFromSuperview()
         self.animationLoadingView?.stop()
         self.animationLoadingView?.removeFromSuperview()
         

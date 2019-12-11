@@ -38,8 +38,10 @@ class DadosMedicoTableViewCell: UITableViewCell {
                 grupo = "Adulto"
             case .Crianca:
                 grupo = "Criança"
-            default:
+            case .Idoso:
                 grupo = "Idoso"
+            default:
+                grupo = "Gestante"
             }
             self.grupoLabel.text = grupo
 //            self.idadeLabel.text = String(_pessoa.idade ?? 0)

@@ -43,7 +43,7 @@ class ProfileController {
     
     func loadCurrentTitular() -> Titular {
         
-        return self.pessoa!
+        return self.pessoa ?? Titular(nome: "", email: "", imagem: "", grupo: .Adolescente, tipoSanguineo: .A, hipertenso: true, diabetico: true, doadorOrgaos: true, pcd: true, listaVacinas: [], dependentes: [])
         
     }
     
@@ -195,22 +195,22 @@ class ProfileController {
         return self.pessoa?.dependentes.count ?? 0
     }
     
-    func saveDependent(pessoa: Pessoa) {
+    func saveDependent(dependente: Pessoa, email: String, tmpUser: Titular) {
         //Aponta par o banco de dados
         let context = Database.database().reference()
-        let count: Int = self.getNumberOfDependent()
-        let dependentData:[String : Any] = ["name"          : pessoa.nome ?? "",
-                                            "imagem"        : pessoa.imagem ?? "",
-                                            "grupo"         : "\(pessoa.grupo)",
-                                            "tipoSanguineo" : "\(pessoa.tipoSanguineo)",
-                                            "hipertenso"    : pessoa.hipertenso ,
-                                            "diabetico"     : pessoa.diabetico ,
-                                            "doadorOrgaos"  : pessoa.doadorOrgaos ,
-                                            "pcd"           : pessoa.pcd ]
+        let count: Int = tmpUser.dependentes.count
+        let dependentData:[String : Any] = ["name"          : dependente.nome ?? "",
+                                            "imagem"        : dependente.imagem ?? "",
+                                            "grupo"         : "\(dependente.grupo)",
+                                            "tipoSanguineo" : "\(dependente.tipoSanguineo)",
+                                            "hipertenso"    : dependente.hipertenso ,
+                                            "diabetico"     : dependente.diabetico ,
+                                            "doadorOrgaos"  : dependente.doadorOrgaos ,
+                                            "pcd"           : dependente.pcd ]
         
         
         //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
-        let formattedEmail = (self.pessoa?.email?.replacingOccurrences(of: ".", with: ",")) ?? ""
+        let formattedEmail = (email.replacingOccurrences(of: ".", with: ",")) ?? ""
     context.child("user/profile").child(formattedEmail).child("dependentes/\(count)").setValue(dependentData) { (error, context) in
             if error == nil {
                 print("Dependente salvo")
@@ -221,7 +221,7 @@ class ProfileController {
         
         //GRAVANDO AS VACINAS DEPENDENTE
         var seqVacDep = 0
-        for vacina in pessoa.listaVacinas ?? [] {
+        for vacina in dependente.listaVacinas ?? [] {
             
             let setVacina:[String : Any] = ["nome"    : vacina.nome,
                                             "grupo"   : String("\(vacina.grupo)"),

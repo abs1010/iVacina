@@ -96,6 +96,18 @@ class ManageProfilesViewController: BaseViewController {
         
     }
     
+    @IBAction func btnPlusButton(_ sender: Any) {
+        performSegue(withIdentifier: "performAdd", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigation = segue.destination as? UINavigationController {
+            if let vc = navigation.viewControllers.first as? ProfileViewController {
+                vc.titular = self.titular
+            }
+        }
+    }
+    
     func getPictureFromUserDefaults(){
         
         let userDefaults = UserDefaults.standard
@@ -154,7 +166,7 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     
 }
 
-//MARK: - DELEGATE
+//MARK: - DELEGATE  
 
 extension ManageProfilesViewController : ProfileControllerDelegate {
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tTb-wm-4Ku">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tTb-wm-4Ku">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -353,7 +353,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="hj0-vF-z7w" kind="show" id="JbO-we-7mf"/>
+                                    <action selector="btnPlusButton:" destination="tTb-wm-4Ku" eventType="touchUpInside" id="UhN-L2-JVt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -407,6 +407,7 @@
                         <outlet property="pagControl" destination="8uB-oY-k5h" id="WYb-8d-CWi"/>
                         <outlet property="photoImageView" destination="IuS-MT-GWA" id="kOn-4K-RKT"/>
                         <outlet property="plusButton" destination="IMd-5K-unb" id="cd8-ir-qbm"/>
+                        <segue destination="hj0-vF-z7w" kind="show" identifier="performAdd" id="Fvd-5J-SlY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYU-fB-r5O" sceneMemberID="firstResponder"/>
@@ -514,9 +515,9 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
-        <image name="loading" width="236" height="236"/>
+        <image name="chevron.left" catalog="system" width="46" height="64"/>
+        <image name="loading" width="1200" height="800"/>
         <image name="palmeiras" width="225" height="225"/>
-        <image name="person" catalog="system" width="64" height="58"/>
+        <image name="person" catalog="system" width="64" height="60"/>
     </resources>
 </document>

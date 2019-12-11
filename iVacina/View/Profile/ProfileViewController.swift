@@ -31,6 +31,9 @@ class ProfileViewController: UIViewController {
         
         self.uid = Auth.auth().currentUser
         
+//        self.profileController.setupController()
+        self.profileController.delegate = self
+        
         //PERSONALIZACAO DA VIEW
         view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
         self.imagem.image = UIImage(named: "loading")
@@ -119,7 +122,7 @@ class ProfileViewController: UIViewController {
             
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
-            let count: String = String(self.profileController.getNumberOfDependent())
+            let count: String = String(self.titular?.dependentes.count ?? 0)
             let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) ?? ""
             
             if let image = self.imagem.image {
@@ -145,9 +148,9 @@ class ProfileViewController: UIViewController {
 //                self.profileController.saveInfo(person: self.saveInfo.tempUser)
             //}
             
-//            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.)
+            let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.listaVacinas)
 //            
-//            self.profileController.saveDependent(pessoa: )
+            self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser)
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
@@ -428,4 +431,18 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
     
 }
 
+extension ProfileViewController : ProfileControllerDelegate {
 
+    func successOnLoadingProfileController(titular: Titular?) {
+        self.titular = titular
+        print("Passei pela extension de ProfileViewController")
+    }
+
+    func errorOnLoadingProfileController(error: Error?) {
+        print(error?.localizedDescription ?? "")
+        print("DEU MERDA!!! Mas passei pela extension de ProfileViewController")
+
+    }
+
+
+}
