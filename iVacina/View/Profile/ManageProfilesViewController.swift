@@ -60,6 +60,7 @@ class ManageProfilesViewController: BaseViewController {
         
         //GET IMAGE DO USER DEFAULTS PARA SETAR NA IMAGE VIEW
         self.getPictureFromUserDefaults()
+        self.nameTextField.text = self.titular?.nome
         
     }
     
@@ -90,7 +91,7 @@ class ManageProfilesViewController: BaseViewController {
     func getPictureFromUserDefaults(){
         
         let userDefaults = UserDefaults.standard
-        // if let imageData = userDefaults.data(forKey: uid?.email ?? "loading"),
+        
         if let imageData = userDefaults.data(forKey: self.uid?.email ?? ""),
             let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
             
@@ -141,21 +142,20 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        print("Clicou em \(indexPath.row)")
-        
-        if let vc: ProfileViewController = storyboard?.instantiateInitialViewController() as? ProfileViewController {
+        if indexPath.row == 0 {
             
-            //self.delegate?.getSelectedPersonForEditing(person: self.titular)
+            print("Clicou em \(indexPath.row)")
             
-            vc.nomeTextField.text = "Alan Teste"
+            if let vc: ProfileViewController = storyboard?.instantiateInitialViewController() as? ProfileViewController {
+    
+                vc.nomeTextField.text = self.titular?.nome
+
+                
+            }
+            
+            performSegue(withIdentifier: "editProfile", sender: self.titular)
             
         }
-        
-        
-        performSegue(withIdentifier: "editProfile", sender: self.titular)
-        
         
     }
     
