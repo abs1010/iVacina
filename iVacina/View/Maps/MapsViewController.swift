@@ -12,24 +12,22 @@ import CoreLocation //localização do usuário
 
 class MapsViewController: UIViewController {
     
-    
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var wazeBtn: UIButton!
-    
     @IBOutlet weak var mapView: MKMapView!
     
-    var mapsController: MapsController?
-    let locationManager: CLLocationManager = CLLocationManager()
-    let zoomInMeters: CLLocationDistance = 1000
-    
-    
+    private var mapsController: MapsController?
+    private let locationManager: CLLocationManager = CLLocationManager()
+    private let zoomInMeters: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if mapsController == nil {
+            mapsController = MapsController()
+        }
         
-        mapsController = MapsController()
         setupLocationManager()
         displayView(enable: false)
         
@@ -37,7 +35,6 @@ class MapsViewController: UIViewController {
         
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(hideDetailView))
         downSwipe.direction = .down
-        
         self.detailView.addGestureRecognizer(downSwipe)
         
     }
@@ -63,13 +60,11 @@ class MapsViewController: UIViewController {
             
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(URL(string:urlStr)!, options: [:], completionHandler: { (success) in
-                    
                 })
             } else {
                 // Fallback on earlier versions
             }
             UIApplication.shared.isIdleTimerDisabled = true
-            
             
         } else {
             link = "https://itunes.apple.com/us/app/id323229106"
@@ -126,7 +121,7 @@ class MapsViewController: UIViewController {
                 //alerta de erro
                 break
             case .notDetermined:
-                self.locationManager.requestAlwaysAuthorization()
+                self.locationManager.requestWhenInUseAuthorization()
                 break
             case .restricted:
                 //alerta de erro
@@ -164,7 +159,6 @@ extension MapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAutorization()
     }
-    
 }
 
 extension MapsViewController: MKMapViewDelegate {

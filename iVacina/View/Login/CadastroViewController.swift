@@ -9,19 +9,21 @@
 import UIKit
 
 
-class CadastroViewController: UIViewController {
+class CadastroViewController: BaseViewController {
 
-    
     @IBOutlet weak var nomeTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var senhaTextField: UITextField!
     @IBOutlet weak var senha2TextField: UITextField!
     @IBOutlet weak var botaoCriarConta: UIButton!
-    
     @IBOutlet weak var botaoMostrarSenha: UIButton!
     
+    private var cadastroController: CadastroController?
     
-    var cadastroController: CadastroController?
+    //Colocar a Status Bar em branco
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,8 @@ class CadastroViewController: UIViewController {
         self.senha2TextField.formatarTextField()
         self.botaoCriarConta.formatarBotao()
         
+        self.emailTextField.keyboardType = UIKeyboardType.emailAddress
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -63,17 +67,17 @@ class CadastroViewController: UIViewController {
     
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
+        
+        self.showLoading()
+        
         if let nome = nomeTextField.text,
             let email = emailTextField.text,
             let senha = senhaTextField.text,
             let senha2 = senha2TextField.text {
             
             if senha == senha2 {
-                
                 self.cadastroController?.delegate = self
-                
                 self.cadastroController?.createUserWithFirebase(nome: nome, email: email, senha: senha)
-                
             } else {
                 Alert().showAlert(title: "Erro", message: "Verificar senha: os valores informados não são iguais", vc: self)
             }
@@ -96,10 +100,8 @@ class CadastroViewController: UIViewController {
             self.senha2TextField.isSecureTextEntry = true
             self.botaoMostrarSenha.setImage(UIImage(systemName: "eye"), for: .normal)
         }
-        
     }
     
-
     @objc func dismissKeyboard(){
         self.nomeTextField.resignFirstResponder()
         self.emailTextField.resignFirstResponder()
@@ -113,8 +115,7 @@ class CadastroViewController: UIViewController {
         
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
     
-        view.frame.origin.y = -keyboardSize.height
-            
+        view.frame.origin.y = -30
             
         } else {
             view.frame.origin.y = 0
@@ -126,6 +127,8 @@ extension CadastroViewController: CadastroControllerDelegate{
     
     func sucessCreateUser() {
         
+        self.hideLoading()
+        
         cadastroController?.isLoggedIn(value: true)
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -136,10 +139,11 @@ extension CadastroViewController: CadastroControllerDelegate{
     }
     
     func failCreateUser(error: Error?) {
+        
+        self.hideLoading()
         Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
     }
 }
-
 
 extension CadastroViewController: UITextFieldDelegate{
     
