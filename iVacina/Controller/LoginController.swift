@@ -23,7 +23,6 @@ class LoginController {
         Auth.auth().signIn(withEmail: email, password: senha) { (authResult, error) in
             if error == nil {
                 self.delegate?.loginSucess(email: email)
-                
             } else {
                 self.delegate?.loginFail(error: error)
             }
