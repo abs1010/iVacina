@@ -52,31 +52,93 @@ class CadastroVacinaCustomCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
+    //========================================
     func setupCellForEdition(titular: Titular, indexPath: IndexPath, grupo: Grupo){
         
+        self.index = indexPath
         if grupo == .Crianca {
             
-            let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
-            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-
-            if indexPath.row == 2 {
-            self.vacinaSwitch.isOn = titular.hipertenso
-            }
-            if indexPath.row == 3 {
-            self.vacinaSwitch.isOn = titular.diabetico
-            }
-            if indexPath.row == 4 {
-            self.vacinaSwitch.isOn = titular.doadorOrgaos
-            }
-            if indexPath.row == 5 {
-            self.vacinaSwitch.isOn = titular.pcd
-            }
             
         }
-
-     }
+        
+        if grupo == .Adolescente {
+            
+            
+        }
+        
+        if grupo == .Adulto {
+            
+            switch indexPath.section {
+            case 0:
+                
+                if indexPath.row == 2 {
+                    self.vacinaLabel.text = "Hipertenso(a)"
+                    self.vacinaSwitch.isOn = titular.hipertenso
+                }
+                if indexPath.row == 3 {
+                    self.vacinaLabel.text = "Diabético(a)"
+                    self.vacinaSwitch.isOn = titular.diabetico
+                }
+                if indexPath.row == 4 {
+                    self.vacinaLabel.text = "Doador(a) de Órgãos"
+                    self.vacinaSwitch.isOn = titular.doadorOrgaos
+                }
+                if indexPath.row == 5 {
+                    self.vacinaLabel.text = "PCD"
+                    self.vacinaSwitch.isOn = titular.pcd
+                }
+                
+            case 1:
+                
+                //var inicio = 28
+                //var fim = 38
+                //for i in titular.listaVacinas
+                
+                if indexPath.row == 0 {
+                    self.vacinaLabel.text = "VACINAS"
+                    self.vacinaSwitch.isOn = titular.listaVacinas[0].status
+                }
+                
+                
+                
+                
+            default:
+                self.vacinaLabel.text = "Problema ao carregar vacinas"
+            }
+            
+            //             if indexPath.row == 2 && indexPath.section == 0 {
+            //                self.vacinaLabel.text = "Hipertenso(a)"
+            //                self.vacinaSwitch.isOn = titular.hipertenso
+            //             }
+            //             if indexPath.row == 3 && indexPath.section == 0 {
+            //                self.vacinaLabel.text = "Diabético(a)"
+            //                self.vacinaSwitch.isOn = titular.diabetico
+            //             }
+            //             if indexPath.row == 4 && indexPath.section == 0 {
+            //                self.vacinaLabel.text = "Doador(a) de Órgãos"
+            //                self.vacinaSwitch.isOn = titular.doadorOrgaos
+            //             }
+            //             if indexPath.row == 5 && indexPath.section == 0 {
+            //                self.vacinaLabel.text = "PCD"
+            //                self.vacinaSwitch.isOn = titular.pcd
+            //             }
+            
+            
+        }
+        
+        if grupo == .Idoso {
+            
+        }
+        
+        if grupo == .Gestante {
+            
+            
+        }
+        
+        
+    }
     
+    //========================================
     func setupCellHeader(indexPath: IndexPath){
         self.index = indexPath
         if indexPath.row == 2 && indexPath.section == 0 {
@@ -100,7 +162,7 @@ class CadastroVacinaCustomCell: UITableViewCell {
             
             let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
             self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-
+            
         }
         
         if grupo == .Adolescente {

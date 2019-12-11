@@ -125,7 +125,10 @@ extension CadastroViewController: CadastroControllerDelegate{
     
     func sucessCreateUser() {
         
+<<<<<<< HEAD
         
+=======
+>>>>>>> Profile-feature
         cadastroController?.isLoggedIn(value: true)
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -133,7 +136,10 @@ extension CadastroViewController: CadastroControllerDelegate{
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
         self.present(vc, animated: true, completion: nil)
+<<<<<<< HEAD
         
+=======
+>>>>>>> Profile-feature
         self.hideLoading()
     }
     

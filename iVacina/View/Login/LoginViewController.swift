@@ -106,7 +106,10 @@ extension LoginViewController: LoginControllerDelegate {
     
     func loginSucess(email: String) {
         
+<<<<<<< HEAD
         
+=======
+>>>>>>> Profile-feature
         loginController?.isLoggedIn(value: true)
 
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -114,7 +117,10 @@ extension LoginViewController: LoginControllerDelegate {
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
         self.present(vc, animated: true, completion: nil)
+<<<<<<< HEAD
         
+=======
+>>>>>>> Profile-feature
         self.hideLoading()
     }
 }
