@@ -17,7 +17,8 @@ protocol ProfileControllerDelegate : class {
 
 class ProfileController {
     
-    var pessoa: Titular?
+    var titular: Titular?
+    var pessoa: Pessoa?
     
     weak var delegate: ProfileControllerDelegate?
     
@@ -43,7 +44,7 @@ class ProfileController {
     
     func loadCurrentTitular() -> Titular {
         
-        return self.pessoa ?? Titular(nome: "", email: "", imagem: "", grupo: .Adolescente, tipoSanguineo: .A, hipertenso: true, diabetico: true, doadorOrgaos: true, pcd: true, listaVacinas: [], dependentes: [])
+        return self.titular ?? Titular(nome: "", email: "", imagem: "", grupo: .Adolescente, tipoSanguineo: .A, hipertenso: true, diabetico: true, doadorOrgaos: true, pcd: true, listaVacinas: [], dependentes: [])
         
     }
     
@@ -71,7 +72,7 @@ class ProfileController {
     
     func getNumberOfRowsInSectionForCells() -> Int{
         
-        let dep : Int = self.pessoa?.dependentes.count ?? 0
+        let dep : Int = self.titular?.dependentes.count ?? 0
         //1 titular + dependentes
         let total = 1 + dep
         
@@ -147,58 +148,59 @@ class ProfileController {
         }
         
         //DEPENDENTES
-        var seqDep = 0//contador de dependentes
-        for _ in person.dependentes {
+//        var seqDep = 0//contador de dependentes
+//        for _ in person.dependentes {
+//
+//            //personalData
+//            let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
+//                                                "imagem"        : "\(uid?.email ?? "").dep\(seqDep)",
+//                                                "grupo"         : "\(person.dependentes[seqDep]?.grupo ?? .Adulto)",
+//                                                "tipoSanguineo" : "\(person.dependentes[seqDep]?.tipoSanguineo ?? .A_)",
+//                                                "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
+//                                                "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
+//                                                "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",
+//                                                "pcd"           : person.dependentes[seqDep]?.pcd ?? ""]
+//
+//
+//            //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
+//            context.child("user/profile").child(formattedEmail).child("dependentes/\(seqDep)").setValue(dependentData) { (error, context) in
+//                if error == nil {
+//                    print("Dependente salvo")
+//                }else{
+//                    print("Deu merda: \(error.debugDescription)")
+//                }
+//            }
+//
+//            //GRAVANDO AS VACINAS DEPENDENTE
+//            var seqVacDep = 0
+//            for vacina in person.dependentes[seqDep]!.listaVacinas {
+//
+//                let setVacina:[String : Any] = ["nome"    : vacina.nome,
+//                                                "grupo"   : String("\(vacina.grupo)"),
+//                                                "status"  : String("\(vacina.status)")]
+//
+//                context.child("user/profile").child(formattedEmail).child("dependentes/\(seqDep)/vacinas/\(seqVacDep)").setValue(setVacina) { (error, context) in
+//                    if error == nil {}
+//                    else{print("Deu merda: \(error.debugDescription)")}
+//                }
+//                seqVacDep += 1
+//            }
+//
+//
+//            seqDep += 1//acrescentando ao contador de dependentes
             
-            //personalData
-            let dependentData:[String : Any] = ["name"          : person.dependentes[seqDep]?.nome ?? "",
-                                                "imagem"        : "\(uid?.email ?? "").dep\(seqDep)",
-                                                "grupo"         : "\(person.dependentes[seqDep]?.grupo ?? .Adulto)",
-                                                "tipoSanguineo" : "\(person.dependentes[seqDep]?.tipoSanguineo ?? .A_)",
-                                                "hipertenso"    : person.dependentes[seqDep]?.hipertenso ?? "",
-                                                "diabetico"     : person.dependentes[seqDep]?.diabetico ?? "",
-                                                "doadorOrgaos"  : person.dependentes[seqDep]?.doadorOrgaos ?? "",
-                                                "pcd"           : person.dependentes[seqDep]?.pcd ?? ""]
-            
-            
-            //GRAVANDO DADOS PESSOAIS DO DEPENDENTE
-            context.child("user/profile").child(formattedEmail).child("dependentes/\(seqDep)").setValue(dependentData) { (error, context) in
-                if error == nil {
-                    print("Dependente salvo")
-                }else{
-                    print("Deu merda: \(error.debugDescription)")
-                }
-            }
-            
-            //GRAVANDO AS VACINAS DEPENDENTE
-            var seqVacDep = 0
-            for vacina in person.dependentes[seqDep]!.listaVacinas {
-                
-                let setVacina:[String : Any] = ["nome"    : vacina.nome,
-                                                "grupo"   : String("\(vacina.grupo)"),
-                                                "status"  : String("\(vacina.status)")]
-                
-                context.child("user/profile").child(formattedEmail).child("dependentes/\(seqDep)/vacinas/\(seqVacDep)").setValue(setVacina) { (error, context) in
-                    if error == nil {}
-                    else{print("Deu merda: \(error.debugDescription)")}
-                }
-                seqVacDep += 1
-            }
-            
-            
-            seqDep += 1//acrescentando ao contador de dependentes
-            
-        }
+//        }
     }
     
     func getNumberOfDependent() -> Int {
-        return self.pessoa?.dependentes.count ?? 0
+        return self.titular?.dependentes.count ?? 0
     }
     
-    func saveDependent(dependente: Pessoa, email: String, tmpUser: Titular) {
+func saveDependent(dependente: Pessoa, email: String, tmpUser: Titular, index: Int) {
         //Aponta par o banco de dados
         let context = Database.database().reference()
-        let count: Int = tmpUser.dependentes.count
+//        let count: Int = tmpUser.dependentes.count
+        let count: Int = index
         let dependentData:[String : Any] = ["name"          : dependente.nome ?? "",
                                             "imagem"        : dependente.imagem ?? "",
                                             "grupo"         : "\(dependente.grupo)",
@@ -235,6 +237,58 @@ class ProfileController {
         }
     }
     
+    func getSelectedPerson(index: Int) -> Pessoa {
+        if index == 0 {
+            return self.titular ?? self.loadNilTitular()
+        } else {
+            return self.titular?.dependentes[((index ?? 0)-1)] ?? self.loadNilPerson()
+        }
+    }
+    
+    func loadNilPerson() -> Pessoa {
+        return Pessoa(nome: "", imagem: "", grupo: .Crianca, tipoSanguineo: .A, hipertenso: true, diabetico: true, doadorOrgaos: true, pcd: true, listaVacinas: [])
+    }
+    
+    func loadNilTitular() -> Titular {
+        return Titular(nome: "", email: "", imagem: "", grupo: .Crianca, tipoSanguineo: .A, hipertenso: false, diabetico: false, doadorOrgaos: false, pcd: false, listaVacinas: [], dependentes: [])
+    }
+    
+    func getVacinaGrupo(grupo: Grupo, selected: Int) -> [Vacina] {
+        var listaVacina: [Vacina] = []
+        switch grupo {
+        case .Crianca:
+            for vacina in self.getSelectedPerson(index: selected).listaVacinas {
+                if vacina.grupo == .Crianca{
+                    listaVacina.append(vacina)
+                }
+            }
+        case .Adolescente:
+            for vacina in self.getSelectedPerson(index: selected).listaVacinas {
+                if vacina.grupo == .Adolescente{
+                    listaVacina.append(vacina)
+                }
+            }
+        case .Adulto:
+            for vacina in self.getSelectedPerson(index: selected).listaVacinas {
+                if vacina.grupo == .Adulto{
+                    listaVacina.append(vacina)
+                }
+            }
+        case .Idoso:
+            for vacina in self.getSelectedPerson(index: selected).listaVacinas {
+                if vacina.grupo == .Idoso{
+                    listaVacina.append(vacina)
+                }
+            }
+        case .Gestante:
+            for vacina in self.getSelectedPerson(index: selected).listaVacinas {
+                if vacina.grupo == .Gestante{
+                    listaVacina.append(vacina)
+                }
+            }
+        }
+        return listaVacina
+    }
 }
 
 extension ProfileController : ProfileProviderDelegate {

@@ -27,11 +27,13 @@ class ProfileViewController: UIViewController {
     private var bloodType : TipoSanguineo?
     private var saveInfo : ProfileProvider = ProfileProvider()
     private var uid : User?
+    var start: String?
+    var index: Int?
     
     override func viewDidLoad() {
         self.uid = Auth.auth().currentUser
         
-//        self.profileController.setupController()
+        self.profileController.setupController()
         self.profileController.delegate = self
         
         //PERSONALIZACAO DA VIEW
@@ -48,6 +50,24 @@ class ProfileViewController: UIViewController {
         //REGISTRANDO AS CELULAS CUSTOMIZADAS
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
+        
+        if start == "editar" {
+            self.configureEdit()
+        }
+            
+    }
+    
+    func configureEdit() {
+        
+        let userDefaults = UserDefaults.standard
+        if let imageData = userDefaults.data(forKey: self.profileController.getSelectedPerson(index: self.index ?? 0).imagem ?? ""),
+            let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
+            
+            self.imagem.image = image
+        }
+        self.nomeTextField.text = self.profileController.getSelectedPerson(index: self.index ?? 0).nome ?? ""
+        self.bloodType = self.profileController.getSelectedPerson(index: self.index ?? 0).tipoSanguineo
+        self.group = self.profileController.getSelectedPerson(index: self.index ?? 0).grupo
     }
     
     //MARK: - GET ACCESS TO CAMERA AND PHOTO LIBRARY
@@ -122,7 +142,15 @@ class ProfileViewController: UIViewController {
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
             let count: String = String(self.titular?.dependentes.count ?? 0)
-            let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count) 
+            var nomeImagem: String = ""
+            
+            if start == "botaoMais" {
+                nomeImagem = ((self.uid?.email ?? "") + ".dep" + count)
+            } else if start == "editar"{
+                nomeImagem = self.profileController.getSelectedPerson(index: self.index ?? 0).imagem ?? ""
+            } else {
+                nomeImagem = (self.uid?.email ?? "")
+            }
             
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
@@ -139,7 +167,7 @@ class ProfileViewController: UIViewController {
             
             //Calling the saving method
 //            if manager.isUserNil() {
-            //    self.profileController.saveInfo(person: self.saveInfo.tempUser)
+//                self.profileController.saveInfo(person: self.saveInfo.tempUser)
 //            }
             //else{
                 
@@ -148,8 +176,18 @@ class ProfileViewController: UIViewController {
             //}
             
             let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.listaVacinas)
-//            
-            self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser)
+
+            if start == "editar" {
+                if index == 0 {
+                    self.profileController.saveInfo(person: self.saveInfo.tempUser)
+                } else {
+                    self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser, index: self.index ?? 0)
+                }
+            } else if start == "botaoMais" {
+                self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser, index: self.titular?.dependentes.count ?? 0)
+            } else {
+                self.profileController.saveInfo(person: self.saveInfo.tempUser)
+            }
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
@@ -169,23 +207,40 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if self.start != "editar" {
+            switch section {
+            case 0:
+                return 6
+            case 1:
+                switch self.group {
+                case .Crianca:
+                    return vacinasCriancaEnum.allCases.count - 1
+                case .Adolescente:
+                    return vacinasAdolescenteEnum.allCases.count - 1
+                case .Adulto:
+                    return vacinasAdultoEnum.allCases.count - 1
+                case .Idoso:
+                    return vacinasIdosoEnum.allCases.count - 1
+                case .Gestante:
+                    return vacinasGestanteEnum.allCases.count - 1
+                }
+                
+            default:
+                return 0
+            }
+        }
+        
         switch section {
         case 0:
             return 6
         case 1:
-            switch self.group {
-            case .Crianca:
-                return vacinasCriancaEnum.allCases.count - 1
-            case .Adolescente:
-                return vacinasAdolescenteEnum.allCases.count - 1
-            case .Adulto:
-                return vacinasAdultoEnum.allCases.count - 1
-            case .Idoso:
-                return vacinasIdosoEnum.allCases.count - 1
-            case .Gestante:
-                return vacinasGestanteEnum.allCases.count - 1
-            }
-            
+            return vacinasCriancaEnum.allCases.count - 1
+        case 2:
+            return vacinasAdolescenteEnum.allCases.count - 1
+        case 3:
+            return vacinasAdultoEnum.allCases.count - 1
+        case 4:
+            return vacinasIdosoEnum.allCases.count - 1
         default:
             return 0
         }
@@ -196,11 +251,52 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //Alterar
+        if self.start == "editar" {
+            let cellVacina: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+            switch indexPath.section {
+                
+            case 0:
+                if indexPath.row == 0 || indexPath.row == 1 {
+                    
+                    let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
+                    
+                    cell.setupCell(indexPath: indexPath)
+                    
+                    return cell
+                    
+                }
+                
+                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+                cell?.setupCellForEdition(pessoa: self.profileController.getSelectedPerson(index: self.index ?? 0), indexPath: indexPath, grupo: self.group)
+                cell?.delegate = self
+                return cell ?? UITableViewCell()
+            case 1:
+                cellVacina?.setupCellForEdition(vacina: self.profileController.getVacinaGrupo(grupo: .Crianca,selected: self.index ?? 0)[indexPath.row], indexPath: indexPath)
+                return cellVacina ?? UITableViewCell()
+            case 2:
+                cellVacina?.setupCellForEdition(vacina: self.profileController.getVacinaGrupo(grupo: .Adolescente, selected: self.index ?? 0)[indexPath.row], indexPath: indexPath)
+                return cellVacina ?? UITableViewCell()
+            case 3:
+                cellVacina?.setupCellForEdition(vacina: self.profileController.getVacinaGrupo(grupo: .Adulto, selected: self.index ?? 0)[indexPath.row], indexPath: indexPath)
+                return cellVacina ?? UITableViewCell()
+            case 4:
+                cellVacina?.setupCellForEdition(vacina: self.profileController.getVacinaGrupo(grupo: .Idoso, selected: self.index ?? 0)[indexPath.row], indexPath: indexPath)
+                return cellVacina ?? UITableViewCell()
+            default:
+                
+                cellVacina?.setupCellForEdition(vacina: self.profileController.getVacinaGrupo(grupo: self.profileController.getSelectedPerson(index: self.index ?? 0).grupo, selected: self.index ?? 0)[indexPath.row], indexPath: indexPath)
+                cellVacina?.delegate = self
+                return cellVacina ?? UITableViewCell()
+            }
+        }
+        
+        //Adicionar
         switch indexPath.section {
             
         case 0:
             
-            if indexPath.row == 0 {
+            if indexPath.row == 0 || indexPath.row == 1 {
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
                 
@@ -209,77 +305,77 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
                 
             }
-            if indexPath.row == 1 {
-                
-                let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                
-                cell.setupCell(indexPath: indexPath)
-                
-                return cell
-                
-            }
+//            if indexPath.row == 1 {
+//
+//                let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
+//
+//                cell.setupCell(indexPath: indexPath)
+//
+//                return cell
+//
+//            }
             
-            if indexPath.row == 2 {
+//            if indexPath.row == 2 {
+//
+//                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+//
+////                if self.titular == nil {
+//                    cell?.setupCellHeader(indexPath: indexPath)
+//                    cell?.delegate = self
+//                    return cell ?? UITableViewCell()
+////                }
+////                else{
+////                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+////                    cell?.delegate = self
+////                    return cell ?? UITableViewCell()
+////                }
+//
+//
+//                //                cell?.setupCellHeader(indexPath: indexPath)
+//                //                cell?.delegate = self
+//                //
+//                //
+//                //                return cell ?? UITableViewCell()
+//
+//            }
+//
+//            if indexPath.row == 3 {
+//
+//                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+//
+////                if self.titular == nil {
+//                cell?.setupCellHeader(indexPath: indexPath)
+//                cell?.delegate = self
+//                return cell ?? UITableViewCell()
+////                }
+////                else{
+////                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
+////                    cell?.delegate = self
+////                    return cell ?? UITableViewCell()
+////                }
+//
+//            }
+//
+//            if indexPath.row == 4 {
+//
+//                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
+//                cell?.setupCellHeader(indexPath: indexPath)
+//                cell?.delegate = self
+//
+//
+//                return cell ?? UITableViewCell()
+//
+//            }
+//
+//            if indexPath.row == 5 {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                
-                if self.titular == nil {
-                    cell?.setupCellHeader(indexPath: indexPath)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                
-                
-                //                cell?.setupCellHeader(indexPath: indexPath)
-                //                cell?.delegate = self
-                //
-                //
-                //                return cell ?? UITableViewCell()
-                
-            }
-            
-            if indexPath.row == 3 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                
-                if self.titular == nil {
                 cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
-                return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                    
-            }
-            
-            if indexPath.row == 4 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.setupCellHeader(indexPath: indexPath)
-                cell?.delegate = self
 
                 
                 return cell ?? UITableViewCell()
                 
-            }
-            
-            if indexPath.row == 5 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                cell?.setupCellHeader(indexPath: indexPath)
-
-                
-                return cell ?? UITableViewCell()
-                
-            }
+//            }
             
         case 1:
             
@@ -305,19 +401,41 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if self.start != "editar"{
+            return 2
+        } else {
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-            
-        case 0:
-            return "Dados Pessoais"
-        case 1:
-            return "Marque as vacinas que tomou"
-        default:
-            return ""
+        if self.start != "editar" {
+            switch section {
+                
+            case 0:
+                return "Dados Pessoais"
+            case 1:
+                return "Marque as vacinas que tomou"
+            default:
+                return ""
+            }
         }
+        
+        switch section {
+                       
+           case 0:
+               return "Dados Pessoais"
+           case 1:
+               return "Marque as vacinas que tomou criança"
+           case 2:
+               return "Marque as vacinas que tomou Adolescente"
+           case 3:
+               return "Marque as vacinas que tomou Adulto"
+           case 4:
+               return "Marque as vacinas que tomou Idoso"
+            default:
+            return ""
+           }
         
     }
     
@@ -414,45 +532,79 @@ extension ProfileViewController : CadastroVacinaCustomCellDelegate {
         
         print("O Estado do botao é \(state) da \(string) do grupo \(self.group) e index: \(index.row) e section : \(index.section)")
         
-        switch index.section {
-        case 0:
-            
-            switch index.row {
+//        if self.start != "editar" {
+            switch index.section {
             case 0:
-                self.saveInfo.tempUser.grupo = self.group
+                
+                switch index.row {
+                case 0:
+                    self.saveInfo.tempUser.grupo = self.group
+                case 1:
+                    self.saveInfo.tempUser.tipoSanguineo = self.bloodType!
+                case 2:
+                    self.saveInfo.tempUser.hipertenso = state
+                case 3:
+                    self.saveInfo.tempUser.diabetico = state
+                case 4:
+                    self.saveInfo.tempUser.doadorOrgaos = state
+                case 5:
+                    self.saveInfo.tempUser.pcd = state
+                default:
+                    print("default")
+                }
+                
             case 1:
-                self.saveInfo.tempUser.tipoSanguineo = self.bloodType!
-            case 2:
-                self.saveInfo.tempUser.hipertenso = state
-            case 3:
-                self.saveInfo.tempUser.diabetico = state
-            case 4:
-                self.saveInfo.tempUser.doadorOrgaos = state
-            case 5:
-                self.saveInfo.tempUser.pcd = state
+                
+                switch self.group {
+                case .Crianca:
+                    self.saveInfo.tempUser.listaVacinas[index.row].status = state
+                case .Adolescente:
+                    self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
+                case .Adulto:
+                    self.saveInfo.tempUser.listaVacinas[index.row + 28].status = state
+                case .Idoso:
+                    self.saveInfo.tempUser.listaVacinas[index.row + 39].status = state
+                case .Gestante:
+                    self.saveInfo.tempUser.listaVacinas[index.row + 44].status = state
+                }
+                
             default:
                 print("default")
+                
             }
-            
-        case 1:
-            
-            switch self.group {
-            case .Crianca:
-                self.saveInfo.tempUser.listaVacinas[index.row].status = state
-            case .Adolescente:
-                self.saveInfo.tempUser.listaVacinas[index.row + 20].status = state
-            case .Adulto:
-                self.saveInfo.tempUser.listaVacinas[index.row + 28].status = state
-            case .Idoso:
-                self.saveInfo.tempUser.listaVacinas[index.row + 39].status = state
-            case .Gestante:
-                self.saveInfo.tempUser.listaVacinas[index.row + 44].status = state
-            }
-            
-        default:
-            print("default")
-            
-        }
+//        } else {
+//            switch index.section {
+//            case 0:
+//
+//                switch index.row {
+//                case 0:
+//                    self.saveInfo.tempUser.grupo = self.group
+//                case 1:
+//                    self.saveInfo.tempUser.tipoSanguineo = self.bloodType!
+//                case 2:
+//                    self.saveInfo.tempUser.hipertenso = state
+//                case 3:
+//                    self.saveInfo.tempUser.diabetico = state
+//                case 4:
+//                    self.saveInfo.tempUser.doadorOrgaos = state
+//                case 5:
+//                    self.saveInfo.tempUser.pcd = state
+//                default:
+//                    print("default")
+//                }
+//
+////            case 1:
+//////                self.profileController.pessoa?.
+////            case 2:
+//////                self.profileController.getVacinaGrupo(grupo: .Adolescente,selected: self.index ?? 0)[index.row].status = state
+////            case 3:
+//////                self.profileController.getVacinaGrupo(grupo: .Adulto,selected: self.index ?? 0)[index.row].status = state
+////            case 4:
+//////               self.profileController.getVacinaGrupo(grupo: .Idoso,selected: self.index ?? 0)[index.row].status = state
+////            default:
+////                print("default")
+////            }
+//        }
         
     }
     

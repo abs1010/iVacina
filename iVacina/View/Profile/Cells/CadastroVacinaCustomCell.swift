@@ -53,29 +53,31 @@ class CadastroVacinaCustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCellForEdition(titular: Titular, indexPath: IndexPath, grupo: Grupo){
-        
-        if grupo == .Crianca {
-            
-            let raw : String = "\(vacinasCriancaEnum(rawValue: indexPath.row) ?? vacinasCriancaEnum.none)"
-            self.vacinaLabel.text = raw.replacingOccurrences(of: "_", with: " ")
-
-            if indexPath.row == 2 {
-            self.vacinaSwitch.isOn = titular.hipertenso
-            }
-            if indexPath.row == 3 {
-            self.vacinaSwitch.isOn = titular.diabetico
-            }
-            if indexPath.row == 4 {
-            self.vacinaSwitch.isOn = titular.doadorOrgaos
-            }
-            if indexPath.row == 5 {
-            self.vacinaSwitch.isOn = titular.pcd
-            }
-            
+    func setupCellForEdition(pessoa: Pessoa, indexPath: IndexPath, grupo: Grupo){
+        self.index = indexPath
+        if indexPath.row == 2 {
+            self.vacinaLabel.text = "Hipertenso(a)"
+            self.vacinaSwitch.isOn = pessoa.hipertenso
         }
-
+        else if indexPath.row == 3 {
+            self.vacinaLabel.text = "Diabético(a)"
+            self.vacinaSwitch.isOn = pessoa.diabetico
+        }
+        else if indexPath.row == 4 {
+            self.vacinaLabel.text = "Doador(a) de Órgãos"
+            self.vacinaSwitch.isOn = pessoa.doadorOrgaos
+        }
+        else if indexPath.row == 5 {
+            self.vacinaLabel.text = "PCD"
+            self.vacinaSwitch.isOn = pessoa.pcd
+        }
      }
+    
+    func setupCellForEdition(vacina: Vacina, indexPath: IndexPath){
+        self.index = indexPath
+        self.vacinaLabel.text = vacina.nome.replacingOccurrences(of: "_", with: " ")
+        self.vacinaSwitch.isOn = vacina.status
+    }
     
     func setupCellHeader(indexPath: IndexPath){
         self.index = indexPath

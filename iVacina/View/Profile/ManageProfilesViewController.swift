@@ -24,6 +24,7 @@ class ManageProfilesViewController: BaseViewController {
     private var uid : User?
     var profileController: ProfileController = ProfileController()
     var titular: Titular?
+    var selectedPerson: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,10 +134,14 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
             if segue.identifier == "VisualizarViewProfile"{
                 if let vc: ProfileViewController = navigation.viewControllers.first as? ProfileViewController {
                     vc.titular = self.titular
+                    vc.start = "botaoMais"
                 }
             } else {
                 if let vc = navigation.viewControllers.first as? ProfileViewController {
                     vc.titular = self.titular
+                    vc.start = "editar"
+                    vc.profileController = self.profileController
+                    vc.index = self.selectedPerson
                 }
             }
             
@@ -153,12 +158,12 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
             
             //self.delegate?.getSelectedPersonForEditing(person: self.titular)
             
-            vc.nomeTextField.text = "Alan Teste"
-            
+//            vc.nomeTextField.text = "Alan Teste"
+//            vc.index = indexPath.row
         }
+        self.selectedPerson = indexPath.row
         
-        
-        performSegue(withIdentifier: "editProfile", sender: self.titular)
+        performSegue(withIdentifier: "editProfile", sender: indexPath.row)
         
         
     }
