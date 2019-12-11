@@ -14,7 +14,12 @@ class EsqueceuSenhaViewController: UIViewController {
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var enviarBtn: UIButton!
     
-    var esqueceuSenhaController: EsqueceuSenhaController?
+    private var esqueceuSenhaController: EsqueceuSenhaController?
+    
+    //Colocar a Status Bar em branco
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +34,7 @@ class EsqueceuSenhaViewController: UIViewController {
         self.enviarBtn.formatarBotao()
         self.emailTxt.formatarTextField()
         
-
+        self.emailTxt.keyboardType = UIKeyboardType.emailAddress
     }
     
     @IBAction func clicouEnviar(_ sender: Any) {
@@ -54,7 +59,6 @@ extension EsqueceuSenhaViewController: EsqueceuSenhaControllerDelegate {
     func resetPasswordSucess() {
         self.view.endEditing(true)
         Alert().showAlert(title: "Sucesso", message: "Um email foi enviado para que você possa recuperar sua senha", vc: self)
-        
     }
     
     func resetPasswordFail(error: Error?) {

@@ -23,18 +23,18 @@ class CadastroController {
         
         Auth.auth().createUser(withEmail: email, password: senha) { (authResult, error) in
             if error == nil {
-                self.registrarUsuario(nome: nome, email: email, senha: senha)
+                self.registrarUsuario(nome: nome, email: email)
             } else {
                 self.delegate?.failCreateUser(error: error)
             }
         }
     }
     
-    func registrarUsuario(nome: String, email: String, senha: String){
+    func registrarUsuario(nome: String, email: String){
         
         let context = Database.database().reference()
         
-        let postObject = ["nome": nome, "email": email, "senha": senha]
+        let postObject = ["nome": nome, "email": email]
         
         let formattedEmail = email.replacingOccurrences(of: ".", with: ",")
         
