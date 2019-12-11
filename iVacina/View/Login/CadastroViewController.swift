@@ -125,7 +125,6 @@ extension CadastroViewController: CadastroControllerDelegate{
     
     func sucessCreateUser() {
         
-        self.hideLoading()
         
         cadastroController?.isLoggedIn(value: true)
         
@@ -134,6 +133,8 @@ extension CadastroViewController: CadastroControllerDelegate{
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
         self.present(vc, animated: true, completion: nil)
+        
+        self.hideLoading()
     }
     
     func failCreateUser(error: Error?) {
