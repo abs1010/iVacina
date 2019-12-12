@@ -130,10 +130,12 @@ extension ManageProfilesViewController : UICollectionViewDelegate, UICollectionV
             if segue.identifier == "VisualizarViewProfile"{
                 if let vc: ProfileViewController = navigation.viewControllers.first as? ProfileViewController {
                     vc.titular = self.titular
+                    vc.editar = false
                 }
             } else {
                 if let vc = navigation.viewControllers.first as? ProfileViewController {
                     vc.titular = self.titular
+                    vc.editar = true
                 }
             }
             

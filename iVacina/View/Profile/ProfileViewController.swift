@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     var profileController: ProfileController = ProfileController()
     var manager: ManageProfilesViewController = ManageProfilesViewController()
     var changeGroup = false
+    var editar: Bool = false
     
     //Carrega grupo Adulto por padrao e busca user logado
     var titular: Titular?
@@ -49,7 +50,7 @@ class ProfileViewController: UIViewController {
         self.profileTableView.register(UINib(nibName: "CadastroVacinaCustomCell", bundle: nil), forCellReuseIdentifier: "cadastroVacinaCustomCell")
         self.profileTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
     
-        if self.titular?.nome != nil {
+        if self.titular?.nome != nil && self.editar {
             self.nomeTextField.text = self.titular?.nome
         }
         
@@ -121,8 +122,13 @@ class ProfileViewController: UIViewController {
             //Save the pic from the ImageView
             let userDefaults = UserDefaults.standard
             let count: String = String(self.titular?.dependentes.count ?? 0)
-            let nomeImagem: String = ((self.uid?.email ?? ""))
-            //let nomeImagem: String = ((self.uid?.email ?? "") + ".dep" + count)
+            var nomeImagem: String = ""
+            
+            if self.editar {
+               nomeImagem = ((self.uid?.email ?? ""))
+            } else {
+                nomeImagem = ((self.uid?.email ?? "") + ".dep" + count)
+            }
             
             if let image = self.imagem.image {
                 let imageData = NSKeyedArchiver.archivedData(withRootObject: image) as NSData?
@@ -137,12 +143,14 @@ class ProfileViewController: UIViewController {
             self.saveInfo.tempUser.grupo = self.group
             self.saveInfo.tempUser.tipoSanguineo = self.bloodType ?? TipoSanguineo.A
             
-            //Calling the saving method
-            self.profileController.saveInfo(person: self.saveInfo.tempUser)
-            
             let pessoa: Pessoa = Pessoa(nome: self.nomeTextField.text, imagem: nomeImagem, grupo: self.group, tipoSanguineo: self.bloodType ?? TipoSanguineo.A, hipertenso: self.saveInfo.tempUser.hipertenso, diabetico: self.saveInfo.tempUser.diabetico, doadorOrgaos: self.saveInfo.tempUser.doadorOrgaos, pcd: self.saveInfo.tempUser.pcd, listaVacinas: self.saveInfo.tempUser.listaVacinas)
             
-            //self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser)
+            if self.editar {
+                //Calling the saving method
+                self.profileController.saveInfo(person: self.saveInfo.tempUser)
+            } else {
+                self.profileController.saveDependent(dependente: pessoa, email: self.saveInfo.tempUser.email ?? "",tmpUser: self.titular ?? self.saveInfo.tempUser)
+            }
             
             //Mostra Aviso
             let alert = UIAlertController(title: "iVacina", message: "Dados Salvos com sucesso!", preferredStyle: .alert)
@@ -193,7 +201,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 0:
             
-            if indexPath.row == 0 {
+            if indexPath.row == 0 || indexPath.row == 1{
                 
                 let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
                 
@@ -202,72 +210,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
                 
             }
-            if indexPath.row == 1 {
-                
-                let cell : OptionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OptionTableViewCell") as! OptionTableViewCell
-                
-                cell.setupCell(indexPath: indexPath)
-                
-                return cell
-                
-            }
-            
-            if indexPath.row == 2 {
+            else {
                 
                 let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
                 
-                if self.titular?.nome == nil {
-                    cell?.setupCellHeader(indexPath: indexPath)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                
-            }
-            
-            if indexPath.row == 3 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                
-                if self.titular?.nome == nil {
-                    cell?.setupCellHeader(indexPath: indexPath)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                
-            }
-            
-            if indexPath.row == 4 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                
-                if self.titular?.nome == nil {
-                    cell?.setupCellHeader(indexPath: indexPath)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                else{
-                    cell?.setupCellForEdition(titular: self.titular!, indexPath: indexPath, grupo: self.group)
-                    cell?.delegate = self
-                    return cell ?? UITableViewCell()
-                }
-                
-            }
-            
-            if indexPath.row == 5 {
-                
-                let cell: CadastroVacinaCustomCell? = tableView.dequeueReusableCell(withIdentifier: "cadastroVacinaCustomCell", for: indexPath) as? CadastroVacinaCustomCell
-                
-                if self.titular?.nome == nil {
+                if self.titular?.nome == nil || !self.editar {
                     cell?.setupCellHeader(indexPath: indexPath)
                     cell?.delegate = self
                     return cell ?? UITableViewCell()
