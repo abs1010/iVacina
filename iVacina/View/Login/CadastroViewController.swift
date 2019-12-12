@@ -68,6 +68,7 @@ class CadastroViewController: BaseViewController {
     
     @IBAction func clicouCriarConta(_ sender: UIButton) {
         
+        self.view.endEditing(true)
         self.showLoading()
         
         if let nome = nomeTextField.text,
@@ -125,14 +126,16 @@ extension CadastroViewController: CadastroControllerDelegate{
     
     func sucessCreateUser() {
         
+
         cadastroController?.isLoggedIn(value: true)
         
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         
         guard let vc: MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController else {return}
         
-        self.present(vc, animated: true, completion: nil)
-        self.hideLoading()
+        self.present(vc, animated: true) {
+            self.hideLoading()
+        }
     }
     
     func failCreateUser(error: Error?) {
