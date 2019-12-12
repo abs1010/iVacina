@@ -14,13 +14,17 @@ class PessoaCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.imagemPessoa.layer.cornerRadius = self.imagemPessoa.frame.size.height/2
-        self.layer.cornerRadius = 15
-        self.layer.borderColor = UIColor.blue.cgColor
-        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 10
+        
     }
     
-    func setPessoa(pessoa: Pessoa){
+    func setUpItem(pessoa: Pessoa){
         self.nomeLabel.text = pessoa.nome
-//        self.imagemPessoa.image = UIImage(named: pessoa.imagem)
+        let userDefaults = UserDefaults.standard
+        if let imageData = userDefaults.data(forKey: pessoa.imagem ?? ""),
+            let image = NSKeyedUnarchiver.unarchiveObject(with: imageData) as? UIImage {
+            
+            self.imagemPessoa.image = image
+        }
     }
 }

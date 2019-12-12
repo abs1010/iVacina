@@ -11,6 +11,8 @@
 		1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */; };
 		1FAC8A3F2378D8F0008F9D4F /* MapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */; };
 		1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */; };
+		1FDE34FD239C0BDE0043D546 /* EsqueceuSenhaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */; };
+		1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */; };
 		4F90ABA12361348500DC0941 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA02361348500DC0941 /* HomeViewController.swift */; };
 		4F90ABA9236134A200DC0941 /* DadosMedicoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */; };
 		4F90ABAA236134A200DC0941 /* PessoaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F90ABA3236134A100DC0941 /* PessoaCollectionViewCell.swift */; };
@@ -26,9 +28,12 @@
 		4F90ABC32361359F00DC0941 /* CadastroVacinaCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */; };
 		4F90ABC52361365000DC0941 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F90ABC42361365000DC0941 /* Home.storyboard */; };
 		8C0DBBE85E60F02E89467D6A /* Pods_iVacina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02481286E08E332928A0808E /* Pods_iVacina.framework */; };
+		BC010CCB239F0F7600FE7966 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */; };
 		BC12EE85237B748E00B6A691 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE84237B748E00B6A691 /* BaseViewController.swift */; };
 		BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */; };
 		BC12EE8C237B74EA00B6A691 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */; };
+		BC1AF971239B169900D027F5 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */; };
+		BC1AF972239B169900D027F5 /* PersonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */; };
 		BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */; };
 		BC4DAFF72335794700AEC6F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF52335794700AEC6F7 /* Main.storyboard */; };
 		BC4DAFF92335794800AEC6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4DAFF82335794800AEC6F7 /* Assets.xcassets */; };
@@ -41,7 +46,6 @@
 		BC57172D23593E8300E60909 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57172C23593E8300E60909 /* NewsController.swift */; };
 		BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85523930AC000DE5457 /* GruposViewController.swift */; };
 		BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */; };
-		BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC66A88B23982FF900DE5457 /* SaveModel.swift */; };
 		BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE34238C59620091327D /* ManageProfilesViewController.swift */; };
 		BC82FE37238DD36B0091327D /* TipoVacinasStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */; };
 		BC82FE3F238F4F020091327D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE3E238F4F010091327D /* LoginController.swift */; };
@@ -50,9 +54,7 @@
 		BC82FE48238F59D00091327D /* ProfileDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE47238F59D00091327D /* ProfileDataProvider.swift */; };
 		BC82FE4A238F5AE80091327D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC82FE49238F5AE80091327D /* MainViewController.swift */; };
 		BCA32525237C7D8000151E44 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEA0A6E235E95D600C33D1E /* News.storyboard */; };
-		BCA32526237C80BB00151E44 /* NewsTableViewCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */; };
 		BCA32527237C80BB00151E44 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE86237B74EA00B6A691 /* NewsTableViewCell.xib */; };
-		BCA32528237C80BB00151E44 /* News2TableViewCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */; };
 		BCA32529237C80BB00151E44 /* News2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC12EE89237B74EA00B6A691 /* News2TableViewCell.xib */; };
 		BCA3252C237C823300151E44 /* loading1.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA3252B237C823300151E44 /* loading1.json */; };
 		BCDE13402361241B006F6657 /* EsqueceuSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDE133C2361241B006F6657 /* EsqueceuSenhaViewController.swift */; };
@@ -75,6 +77,8 @@
 		1FAC8A3A23787E7F008F9D4F /* MapsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDataProvider.swift; sourceTree = "<group>"; };
 		1FAC8A3E2378D8F0008F9D4F /* MapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsController.swift; sourceTree = "<group>"; };
 		1FAC8A402379A9C7008F9D4F /* MapsLocals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsLocals.swift; sourceTree = "<group>"; };
+		1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsqueceuSenhaController.swift; sourceTree = "<group>"; };
+		1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.debug.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.debug.xcconfig"; sourceTree = "<group>"; };
 		4F90ABA02361348500DC0941 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4F90ABA2236134A100DC0941 /* DadosMedicoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DadosMedicoTableViewCell.xib; sourceTree = "<group>"; };
@@ -91,11 +95,14 @@
 		4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CadastroVacinaCustomCell.xib; sourceTree = "<group>"; };
 		4F90ABC42361365000DC0941 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVacina.release.xcconfig"; path = "Target Support Files/Pods-iVacina/Pods-iVacina.release.xcconfig"; sourceTree = "<group>"; };
+		BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		BC12EE84237B748E00B6A691 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BC12EE86237B74EA00B6A691 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		BC12EE87237B74EA00B6A691 /* News2TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News2TableViewCell.swift; sourceTree = "<group>"; };
 		BC12EE88237B74EA00B6A691 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		BC12EE89237B74EA00B6A691 /* News2TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = News2TableViewCell.xib; sourceTree = "<group>"; };
+		BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCollectionViewCell.xib; sourceTree = "<group>"; };
 		BC4DAFEE2335794600AEC6F7 /* iVacina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVacina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4DAFF12335794700AEC6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4DAFF62335794700AEC6F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,7 +116,6 @@
 		BC57172C23593E8300E60909 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		BC66A85523930AC000DE5457 /* GruposViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GruposViewController.swift; sourceTree = "<group>"; };
 		BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoSanguineoViewController.swift; sourceTree = "<group>"; };
-		BC66A88B23982FF900DE5457 /* SaveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; };
 		BC82FE34238C59620091327D /* ManageProfilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageProfilesViewController.swift; sourceTree = "<group>"; };
 		BC82FE36238DD36B0091327D /* TipoVacinasStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipoVacinasStrings.swift; sourceTree = "<group>"; };
 		BC82FE3E238F4F010091327D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FDE34FE239D50BC0043D546 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE34FF239D50FD0043D546 /* UserDefaultsExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B313066A86070179B25CE2A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +179,7 @@
 				4F90ABBC2361356600DC0941 /* ProfileController.swift */,
 				BC82FE3E238F4F010091327D /* LoginController.swift */,
 				BC82FE40238F4F250091327D /* CadastroController.swift */,
+				1FDE34FC239C0BDE0043D546 /* EsqueceuSenhaController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -225,7 +240,7 @@
 				4F90ABBE2361359700DC0941 /* ProfileViewController.swift */,
 				BC66A85523930AC000DE5457 /* GruposViewController.swift */,
 				BC66A85723930AD900DE5457 /* TipoSanguineoViewController.swift */,
-				BC66A88B23982FF900DE5457 /* SaveModel.swift */,
+				BC010CCA239F0F7600FE7966 /* NavigationViewController.swift */,
 				BC82FE43238F59060091327D /* Cells */,
 			);
 			path = Profile;
@@ -296,6 +311,7 @@
 		BC571723235922A400E60909 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1FDE34FE239D50BC0043D546 /* Extensions */,
 				BCA3252A237C823300151E44 /* Animation */,
 				BCDE134823612516006F6657 /* Colors.swift */,
 				BC5717262359236400E60909 /* Extensions.swift */,
@@ -324,6 +340,8 @@
 				4F90ABC12361359F00DC0941 /* CadastroVacinaCustomCell.xib */,
 				BC5365B42391BDD6001F9822 /* OptionTableViewCell.swift */,
 				BC5365B52391BDD6001F9822 /* OptionTableViewCell.xib */,
+				BC1AF96F239B169900D027F5 /* PersonCollectionViewCell.swift */,
+				BC1AF970239B169900D027F5 /* PersonCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -427,9 +445,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA32526237C80BB00151E44 /* NewsTableViewCell.swift in Resources */,
+				BC1AF972239B169900D027F5 /* PersonCollectionViewCell.xib in Resources */,
 				BCA32527237C80BB00151E44 /* NewsTableViewCell.xib in Resources */,
-				BCA32528237C80BB00151E44 /* News2TableViewCell.swift in Resources */,
 				BCA32529237C80BB00151E44 /* News2TableViewCell.xib in Resources */,
 				BCA3252C237C823300151E44 /* loading1.json in Resources */,
 				BCA32525237C7D8000151E44 /* News.storyboard in Resources */,
@@ -497,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1AF971239B169900D027F5 /* PersonCollectionViewCell.swift in Sources */,
 				4F90ABBD2361356600DC0941 /* ProfileController.swift in Sources */,
 				4F90ABB7236134B900DC0941 /* Pessoa.swift in Sources */,
 				BC12EE8C237B74EA00B6A691 /* NewsTableViewCell.swift in Sources */,
@@ -506,6 +524,7 @@
 				BCDE13432361241B006F6657 /* LoginViewController.swift in Sources */,
 				BC12EE85237B748E00B6A691 /* BaseViewController.swift in Sources */,
 				BCDE134923612516006F6657 /* Colors.swift in Sources */,
+				1FDE34FD239C0BDE0043D546 /* EsqueceuSenhaController.swift in Sources */,
 				BCDE473F23551AD5004F565A /* News.swift in Sources */,
 				4F90ABB5236134B900DC0941 /* Vacina.swift in Sources */,
 				4F90ABBF2361359700DC0941 /* ProfileViewController.swift in Sources */,
@@ -519,6 +538,7 @@
 				1FAC8A3B23787E7F008F9D4F /* MapsDataProvider.swift in Sources */,
 				BC66A85623930AC000DE5457 /* GruposViewController.swift in Sources */,
 				BC82FE41238F4F250091327D /* CadastroController.swift in Sources */,
+				BC010CCB239F0F7600FE7966 /* NavigationViewController.swift in Sources */,
 				4F90ABAC236134A200DC0941 /* DadosMedicoTableViewCell.swift in Sources */,
 				1FAB5367238DC10500C19B1F /* Alert.swift in Sources */,
 				BC12EE8B237B74EA00B6A691 /* News2TableViewCell.swift in Sources */,
@@ -531,7 +551,7 @@
 				BC82FE35238C59620091327D /* ManageProfilesViewController.swift in Sources */,
 				BC5365B62391BDD6001F9822 /* OptionTableViewCell.swift in Sources */,
 				BCDE473D23551AB0004F565A /* NewsViewController.swift in Sources */,
-				BC66A88C23982FFA00DE5457 /* SaveModel.swift in Sources */,
+				1FDE3500239D50FD0043D546 /* UserDefaultsExtension.swift in Sources */,
 				1FAC8A412379A9C7008F9D4F /* MapsLocals.swift in Sources */,
 				BC66A85823930AD900DE5457 /* TipoSanguineoViewController.swift in Sources */,
 				BC4DAFF22335794700AEC6F7 /* AppDelegate.swift in Sources */,
@@ -683,6 +703,7 @@
 			baseConfigurationReference = 43389CBB95FE7534C77A42C9 /* Pods-iVacina.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 27L9T4JU4D;
 				INFOPLIST_FILE = iVacina/Info.plist;
@@ -693,6 +714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "projeto-integrador.iVacina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -703,6 +725,7 @@
 			baseConfigurationReference = 64D747EB49D9DAFB5069AC85 /* Pods-iVacina.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 27L9T4JU4D;
 				INFOPLIST_FILE = iVacina/Info.plist;
@@ -713,6 +736,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "projeto-integrador.iVacina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

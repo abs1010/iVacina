@@ -24,10 +24,10 @@ class StatusCustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setStatusVacina(vacina: Vacina?){
+    func setUpCell(vacina: Vacina?) {
         if let _vacina = vacina {
             let imageName: String
-            self.descricaoLabel.text = _vacina.nome
+            self.descricaoLabel.text = _vacina.nome.replacingOccurrences(of: "_", with: " ")
             if _vacina.status {
                  imageName = "ok"
             } else {

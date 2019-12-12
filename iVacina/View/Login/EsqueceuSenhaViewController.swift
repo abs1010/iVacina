@@ -7,24 +7,70 @@
 //
 
 import UIKit
+import Foundation
 
-class EsqueceuSenhaViewController: UIViewController {
+class EsqueceuSenhaViewController: BaseViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet weak var enviarBtn: UIButton!
+    
+    private var esqueceuSenhaController: EsqueceuSenhaController?
+    
+    //Colocar a Status Bar em branco
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if esqueceuSenhaController == nil {
+            esqueceuSenhaController = EsqueceuSenhaController()
+        }
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        view.setGradientBackground(colorOne: Colors.azulEscuroCustom, colorTwo: Colors.azulClaroCustom)
+        self.enviarBtn.setGradientToButton(colorOne: Colors.azulClaroCustom, colorTwo: Colors.azulEscuroCustom)
+        self.enviarBtn.formatarBotao()
+        self.emailTxt.formatarTextField()
+        
+        self.emailTxt.keyboardType = UIKeyboardType.emailAddress
     }
-    */
+    
+    @IBAction func clicouEnviar(_ sender: Any) {
+        
+        self.showLoading()
+        
+        if let email = emailTxt.text {
+            esqueceuSenhaController?.resetPassword(email: email)
+        }
+        self.esqueceuSenhaController?.delegate = self
+    }
+    
+    
+    @IBAction func clicouCancelar(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func dismissKeyboard(){
+        self.emailTxt.resignFirstResponder()
+    }
+}
 
+extension EsqueceuSenhaViewController: EsqueceuSenhaControllerDelegate {
+    func resetPasswordSucess() {
+        
+        self.hideLoading()
+        
+        self.view.endEditing(true)
+        Alert().showAlert(title: "Sucesso", message: "Um email foi enviado para que você possa recuperar sua senha", vc: self)
+    }
+    
+    func resetPasswordFail(error: Error?) {
+        
+        self.hideLoading()
+        
+        self.view.endEditing(true)
+        Alert().showAlert(title: "Erro", message: error?.localizedDescription, vc: self)
+    }
 }

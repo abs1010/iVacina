@@ -94,6 +94,40 @@ extension UIButton {
         self.layer.cornerRadius = self.frame.size.height/2
         self.layer.masksToBounds = true
     }
+    
+    func pulse(){
+        
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 1.6
+        pulse.fromValue = 0.95
+        pulse.toValue = 1.0
+        pulse.autoreverses = true
+        pulse.repeatCount = 100
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1.0
+        
+        layer.add(pulse, forKey: nil)
+    }
+    
+    func shake(){
+        
+        let shake = CABasicAnimation(keyPath: "position")
+        shake.duration = 0.1
+        shake.repeatCount = 2
+        shake.autoreverses = true
+        
+        let fromPoint = CGPoint(x: center.x - 5, y: center.y)
+        let fromValue = NSValue(cgPoint: fromPoint)
+        
+        let toPoint = CGPoint(x: center.x - 5, y: center.y)
+        let toValue = NSValue(cgPoint: toPoint)
+        
+        shake.fromValue = fromValue
+        shake.toValue = toValue
+        
+        layer.add(shake, forKey: nil)
+        
+    }
 
 }
 
@@ -123,40 +157,3 @@ extension UITableViewCell {
     
     
 }
-
-
-//===============================================================================================================
-
-//DA TELA LOGIN TESTE ANTERIOR COPY
-
-
-//Criando as Outlets
-//@IBOutlet weak var botaoEntrar: UIButton!
-//@IBOutlet weak var botaoCriarConta: UIButton!
-//@IBOutlet weak var botaoFacebook: UIButton!
-//@IBOutlet weak var emailTextField: UITextField!
-//@IBOutlet weak var senhaTextField: UITextField!
-//     //Setar a cor na View
-//     view.setGradientToView(colorOne: UIColor.azulEscuroCustom, colorTwo: UIColor.azulClaroCustom)
-//     self.botaoCriarConta.setGradientToButton(colorOne: UIColor.azulClaroCustom, colorTwo: UIColor.azulEscuroCustom)
-//
-//
-//     formatarBotao(botao: botaoEntrar)
-//     formatarBotao(botao: botaoCriarConta)
-//     formatarBotao(botao: botaoFacebook)
-//     formatarTextField(textField: emailTextField)
-//     formatarTextField(textField: senhaTextField)
-// }
-//
-//
-//
-// func formatarBotao(botao: UIButton){
-//     botao.layer.cornerRadius = botao.frame.size.height/2
-//     botao.layer.masksToBounds = true
-// }
-//
-// func formatarTextField(textField: UITextField){
-//     textField.layer.cornerRadius = textField.frame.size.height/2
-//     textField.layer.masksToBounds = true
-//     textField.backgroundColor = UIColor.lightGreyCustom
-// }
